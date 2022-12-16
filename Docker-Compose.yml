@@ -1,0 +1,17 @@
+version: '1'
+services:
+  Api:
+    image: 'nginx:latest'
+    ports:
+      - '8080:80'
+  frontend:
+    image: 'nginx:latest'
+    ports:
+      - '3000:3000'
+  sqldata:
+    image: mcr.microsoft.com/mssql/server:latest
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "5433:1433"
