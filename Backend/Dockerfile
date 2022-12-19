@@ -9,3 +9,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /App
 COPY --from=build /App/out .
 ENTRYPOINT ["dotnet", "Backend.dll"]
+
+# Build this image with the following command
+# docker build -t backendimage -f Dockerfile .
