@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Component } from "react";
+import Contact from "./Components/Contact";
 import Hero from "./Components/Hero";
 
 class Home extends Component {
@@ -12,6 +13,7 @@ class Home extends Component {
         return(
             <>
                 <Hero />
+                <Contact />
             </>
         );
     }
