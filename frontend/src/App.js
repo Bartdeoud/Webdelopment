@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
 
+import Header from './Pages/Shared/Header';
+import Footer from './Pages/Shared/Footer';
+import Title from './Pages/Shared/Titel';
+import Main from './Main';
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    return (
+      <div>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="Assets/css/styles.css" />
+        <Header />
+        <Title />  
+        <Main />
+        <Footer />
+      </div>
+    );
+  }
 
 export default App;
