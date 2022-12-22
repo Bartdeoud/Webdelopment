@@ -2,7 +2,7 @@ import React from "react";
 
 //const Alinea = ({titel, tekst}) => {
 const Alinea = (props) => {
-    const {titel,tekst} = props
+    const {titel} = props
 
     // below same as above
     // const titel = props.titel;
