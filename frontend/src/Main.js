@@ -13,12 +13,12 @@ class Main extends React.Component {
     return (
       <BrowserRouter>
           <Routes>
-            <Route exact path="" element={<Home />} />
-            <Route exact path="Overons" element={<About />} />
-            <Route exact path="Contact" element={<Contact />} />
-            <Route exact path="Programma" element={<Programma />} />
-            <Route exact path="Accesibility" element={<Accesibility />} />
-            <Route exact path="Voorwaarden" element={<Voorwaarden />} />
+            <Route exact path="/" element={<Home />} />
+            <Route path="/Overons" element={<About />} />
+            <Route path="/Contact" element={<Contact />} />
+            <Route path="/Programma" element={<Programma />} />
+            <Route path="/Accesibility" element={<Accesibility />} />
+            <Route path="/Voorwaarden" element={<Voorwaarden />} />
             <Route path="*" element={<VierNulVier />} />
           </Routes>
       </BrowserRouter>
