@@ -6,6 +6,7 @@ import Contact from "./Pages/Contact/Contact";
 import Programma from "./Pages/Programma/Programma";
 import Accesibility from "./Pages/Accesibility/Accesibility";
 import Voorwaarden from "./Pages/Voorwaarden/Voorwaarden";
+import VierNulVier from "./Pages/404/404";
 
 class Main extends React.Component {
   render() {
@@ -18,6 +19,7 @@ class Main extends React.Component {
             <Route path="/Programma" element={<Programma />} />
             <Route path="/Accesibility" element={<Accesibility />} />
             <Route path="/Voorwaarden" element={<Voorwaarden />} />
+            <Route path="*" element={<VierNulVier />} />
           </Routes>
       </BrowserRouter>
     );

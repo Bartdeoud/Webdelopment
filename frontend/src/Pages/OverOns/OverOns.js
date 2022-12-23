@@ -3,14 +3,13 @@ import Alinea from "../Shared/Alinea";
 import Hero2 from "../Shared/Hero2";
 
 class OverOns extends Component {
-
     render () {
         return(
             <>
                 <Hero2 tekst="Over ons"/>
 
                 <section className="contact">
-                    <Alinea titel="Dt is een kop" tekst="Dit is een tekst"/>
+                    <Alinea titel="Dit is een kop" tekst="Dit is een tekst"/>
                 </section>
             </>
         );
