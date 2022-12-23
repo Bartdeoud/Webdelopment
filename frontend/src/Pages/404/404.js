@@ -10,7 +10,7 @@ class VierNulVier extends Component {
                 <Hero2 tekst="404 page not found"/>
 
                 <section className="contact">
-                    <Alinea titel="De pagina bestaat" 
+                    <Alinea titel="De pagina bestaat niet" 
                     tekst="De pagina die u probeert te 
                     zoeken bestaat helaas niet." 
                     link ="Ga terug naar de home pagina."/>
