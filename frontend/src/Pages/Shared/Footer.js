@@ -12,7 +12,7 @@ return (
             <Link icon="fa fa-youtube-square"/>
             <Link icon="fa-brands fa-square-instagram"/>
             </ul> 
-            <p>Made by <a href="https://github.com/Kikkerslijm410" target="_blank">Shitshow inc</a></p>
+            <p>Made by <a href="https://github.com/Kikkerslijm410" target="_blank" rel="noreferrer">Shitshow inc</a></p>
             <p>Lees hier<a href="/Voorwaarden"> de algemene voorwaarden</a></p>
         </footer>
     );
