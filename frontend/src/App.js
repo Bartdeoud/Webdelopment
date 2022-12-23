@@ -1,5 +1,4 @@
 import './App.css';
-
 import Header from './Pages/Shared/Header';
 import Footer from './Pages/Shared/Footer';
 import Title from './Pages/Shared/Titel';
