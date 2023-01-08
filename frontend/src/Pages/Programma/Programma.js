@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Alinea from "../Shared/Alinea";
 import Hero2 from "../Shared/Hero2";
 import Evenement from "./Evenement.js";
 
