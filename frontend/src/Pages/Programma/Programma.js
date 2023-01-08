@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Alinea from "../Shared/Alinea";
 import Hero2 from "../Shared/Hero2";
+import Evenement from "./Evenement.js";
 
 class Programma extends Component {
     constructor(props) {
@@ -13,10 +14,8 @@ class Programma extends Component {
         return(
             <>
                 <Hero2 tekst="Programma"/>
-
-                <section className="contact">
-                    <Alinea titel="Dit is een kop" tekst="Dit is een tekst"/>
-                </section>
+                <Evenement TitelVoorstelling="Titel Voorstelling" Artiest="artiest" zaal="zaal" LinkToEv="/voorstelling1" LinkToImg="..\\assets\\image\\LaakZaal3.jpg"/>
+                <Evenement TitelVoorstelling="Titel Voorstelling 2" Artiest="artiest 2" zaal="zaal 2" LinkToEv="/voorstelling2" LinkToImg="..\\assets\\image\\LaakZaal2.jpg"/>
             </>
         );
     }

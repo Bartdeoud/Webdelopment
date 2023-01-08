@@ -64,3 +64,28 @@ button.remove {
   background-color: #ff0000;
   width: 1.5rem;
 }
+
+.evenement {
+  border: 3px solid black;
+  display: flex;                  /* establish flex container */
+  flex-direction: row;            /* default value; can be omitted */
+  flex-wrap: nowrap;              /* default value; can be omitted */
+  justify-content: space-between; /* switched from default (flex-start, see below) */
+  background-color: #F0D732;
+  width: 70%;
+  margin: auto;
+}
+
+.evenement > div {
+  width: 100%;
+  object-fit: contain;
+  text-align: center;
+  display:flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+#bestel {
+  color: white;
+  background-color: black;
+}
