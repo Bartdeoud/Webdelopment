@@ -1,25 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "c:\\School\\Projecten\\Webdelopment\\Backend\\Backend.csproj": {}
+    "C:\\Users\\bartd\\VSC\\Webdevelopment the great\\backend\\backend.csproj": {}
   },
   "projects": {
-    "c:\\School\\Projecten\\Webdelopment\\Backend\\Backend.csproj": {
+    "C:\\Users\\bartd\\VSC\\Webdevelopment the great\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\School\\Projecten\\Webdelopment\\Backend\\Backend.csproj",
-        "projectName": "Backend",
-        "projectPath": "c:\\School\\Projecten\\Webdelopment\\Backend\\Backend.csproj",
-        "packagesPath": "C:\\Users\\Lucas Clavel\\.nuget\\packages\\",
-        "outputPath": "c:\\School\\Projecten\\Webdelopment\\Backend\\obj\\",
+        "projectUniqueName": "C:\\Users\\bartd\\VSC\\Webdevelopment the great\\backend\\backend.csproj",
+        "projectName": "backend",
+        "projectPath": "C:\\Users\\bartd\\VSC\\Webdevelopment the great\\backend\\backend.csproj",
+        "packagesPath": "C:\\Users\\bartd\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bartd\\VSC\\Webdevelopment the great\\backend\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Lucas Clavel\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\bartd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -54,24 +61,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.11, 6.0.11]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.11, 6.0.11]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.11, 6.0.11]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.11, 6.0.11]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -80,7 +69,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
