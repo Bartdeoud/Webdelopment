@@ -9,7 +9,7 @@ class OverOns extends Component {
                 <Hero2 tekst="Over ons"/>
 
                 <section className="contact">
-                    <Alinea titel="Dit is een kop" tekst="Dit is een tekst"/>
+                    <Alinea titel="Wie wij zijn" tekst="<s>Wij zijn 4 studenten die een phishing website opgezet hebben voor een lokaal theater</s>Wij zijn het laaktheater! Wij verkopen kaartjes voor al uw favoriete shows"/>
                 </section>
             </>
         );
