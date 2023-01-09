@@ -41,8 +41,8 @@ button{
 	opacity: 80%;
 }
 
-button:hover{
-	opacity: 100%;
+.btn:hover{
+	color: white;
 }
 
 .btn{
@@ -53,6 +53,7 @@ button:hover{
 	font-weight: 800;
 	text-align: center;
 	padding: 30px 60px;
+	opacity: 100%;
 }
 
 /*-------------

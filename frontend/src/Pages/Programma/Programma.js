@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Hero2 from "../Shared/Hero2";
-import Evenement from "./Evenement.js";
+import EvenementBlock from "./EvenementBlock.js";
 
 class Programma extends Component {
     constructor(props) {
@@ -13,8 +13,8 @@ class Programma extends Component {
         return(
             <>
                 <Hero2 tekst="Programma"/>
-                <Evenement TitelVoorstelling="Titel Voorstelling" Artiest="artiest" zaal="zaal" LinkToEv="/voorstelling1" LinkToImg="..\\assets\\image\\LaakZaal3.jpg"/>
-                <Evenement TitelVoorstelling="Titel Voorstelling 2" Artiest="artiest 2" zaal="zaal 2" LinkToEv="/voorstelling2" LinkToImg="..\\assets\\image\\LaakZaal2.jpg"/>
+                <EvenementBlock TitelVoorstelling="Titel Voorstelling" Artiest="artiest" zaal="zaal" datum="datum" tijd="tijd" LinkToImg="..\\assets\\image\\LaakZaal3.jpg"/>
+                <EvenementBlock TitelVoorstelling="Titel Voorstelling 2" Artiest="artiest 2" zaal="zaal 2" datum="datum 2" tijd="tijd 2" LinkToImg="..\\assets\\image\\LaakZaal2.jpg"/>
             </>
         );
     }

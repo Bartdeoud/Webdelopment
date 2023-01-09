@@ -7,6 +7,7 @@ import Programma from "./Pages/Programma/Programma";
 import Accesibility from "./Pages/Accesibility/Accesibility";
 import Voorwaarden from "./Pages/Voorwaarden/Voorwaarden";
 import VierNulVier from "./Pages/404/404";
+import Evenement from "./Pages/Evenement/Evenement";
 
 class Main extends React.Component {
   render() {
@@ -17,6 +18,7 @@ class Main extends React.Component {
             <Route path="/Overons" element={<About />} />
             <Route path="/Contact" element={<Contact />} />
             <Route path="/Programma" element={<Programma />} />
+            <Route path="/Evenement" element={<Evenement/>} />
             <Route path="/Accesibility" element={<Accesibility />} />
             <Route path="/Voorwaarden" element={<Voorwaarden />} />
             <Route path="*" element={<VierNulVier />} />

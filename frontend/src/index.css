@@ -44,45 +44,31 @@ body {
   border-radius: 0.5rem;
 }
 
-button {
-  color: #fff;
-	text-transform: uppercase;
-	font-weight: 800;
-	text-align: center;
-  font-size: 0.8rem;
-  padding: 0.5rem;
-  margin: 0.1rem;
-  border-radius: 20px;
-  width: 100%;
-  cursor: pointer;
-}
-button.add {
-  background-color: #40c0f0;
-  width: 1.5rem;
-}
-button.remove {
-  background-color: #ff0000;
-  width: 1.5rem;
-}
 
-.evenement {
+
+.evenementblock {
   border: 3px solid black;
-  display: flex;                  /* establish flex container */
-  flex-direction: row;            /* default value; can be omitted */
-  flex-wrap: nowrap;              /* default value; can be omitted */
-  justify-content: space-between; /* switched from default (flex-start, see below) */
+  display: flex;                  
+  flex-direction: row;          
+  flex-wrap: nowrap;              
+  justify-content: space-between;
   background-color: #F0D732;
   width: 70%;
   margin: auto;
 }
 
-.evenement > div {
+.evenementblock > div {
   width: 100%;
   object-fit: contain;
   text-align: center;
   display:flex;
   flex-direction: column;
   row-gap: 20px;
+}
+
+.evenementblock > div > a {
+  width: 70%;
+  align-self: center;
 }
 
 #bestel {
