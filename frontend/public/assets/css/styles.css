@@ -106,6 +106,7 @@ ul.grid{
 header{
 	position: fixed;
 	z-index: 10;
+	overflow: hidden;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -123,9 +124,12 @@ header nav{
 	display: flex;
 }
 
+/*
 header nav li{
+	float: none;
 	margin: 25px;
 }
+*/
 
 header h3{
 	font: bold 40px 'Open Sans', sans-serif;
@@ -133,6 +137,8 @@ header h3{
 
 header a{
 	font: bold 30px 'Open Sans', sans-serif;
+	float: none;
+	margin: 25px;
 }
 
 /*----------------
