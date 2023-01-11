@@ -18,7 +18,7 @@ export default function Header() {
                         <li><a href="/OverOns">Over ons</a></li>
                         <li><a href="/OverOns">Huur</a></li>
                         <li><a href="/OverOns">Mijn account</a></li>
-                        <li><a href="/Contact"><i class="fa-solid fa-basket-shopping"></i></a></li>
+                        <li><a href="/Winkelmand"><i class="fa-solid fa-basket-shopping"></i></a></li>
                         <li><a href="/Accesibility"><i className="fa fa-wheelchair" /></a></li>
                     </ul>
                 </div>
