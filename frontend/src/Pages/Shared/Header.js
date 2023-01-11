@@ -1,26 +1,28 @@
-import React from "react";
+import { useState } from "react";
 
-const Header = () => {         
-return (
+export default function Header() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    return (
         <header>
-            <h3>&nbsp;<a href="/">Laaktheater</a></h3>
-            <nav class="headerClass">
-                <a href="/">Home</a>
-                <a href="/Programma">Programma</a>
-                <a href="/OverOns">Over ons</a>
-                <a href="/Contact"><i class="fa-solid fa-basket-shopping"></i></a>
-                <a href="/Accesibility"><i className="fa fa-wheelchair" /></a>
-                <a class="icon" onclick="buttonClick()"><i class="fa fa-bars"></i></a>
-            </nav>        
+            <nav className="navigation">
+                <h3>&nbsp;<a href="/">Laaktheater</a></h3>
+                <button className="icon" onClick={
+                    () => { setIsMenuOpen(!isMenuOpen); }
+                }
+                ><i class="fa fa-bars"></i></button>
+                <div className={isMenuOpen ? "menu open" : "menu"}>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/Programma">Programma</a></li>
+                        <li><a href="/OverOns">Over ons</a></li>
+                        <li><a href="/OverOns">Huur</a></li>
+                        <li><a href="/OverOns">Mijn account</a></li>
+                        <li><a href="/Contact"><i class="fa-solid fa-basket-shopping"></i></a></li>
+                        <li><a href="/Accesibility"><i className="fa fa-wheelchair" /></a></li>
+                    </ul>
+                </div>
+            </nav>
         </header>
     );
-} 
-function buttonClick(){
-    var x = document.getElementById("headerLinks");
-    if (x.className === "headerClass") {
-        x.className += " responsive";
-      } else {
-        x.className = "header";
-      }
 }
-export default Header;
