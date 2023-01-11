@@ -16,7 +16,7 @@ class Accesibility extends Component {
                 <Hero2 tekst="Accesibility"/>
 
                 <section className="contact">
-                    <Alinea titel="Dit is een kop" tekst="Dit is een tekst"/>
+                    <Alinea titel="Toegankelijkheid" tekst="Vind hier uw informatie over toegankelijkheid bij theater Laak."/>
                 </section>
             </>
         );
