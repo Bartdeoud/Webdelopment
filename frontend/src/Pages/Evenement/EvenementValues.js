@@ -14,15 +14,16 @@ const EvenementValues = () => {
 
     return (
         <section className="programmaBlock">
-                <div class="evenementblock">
-                <img src={LinkToImg} alt="Afbeelding evenement" width="100%" height="100%"></img>
-                    <h1>
+                
+                <div class="Evenement">
+                    <img src={LinkToImg} alt="Afbeelding evenement" width="50%" height="50%"></img>
+                        <p>
                         {TitelVoorstelling}<br/>
                         {Artiest}<br/>
                         {zaal}<br/>
                         {datum}<br/>
                         {tijd}<br/>
-                    </h1>
+                        </p>
                 </div>
         </section>
     );
