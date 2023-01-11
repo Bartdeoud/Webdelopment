@@ -13,7 +13,7 @@ class Contact extends Component {
     render () {
         return(
             <>
-                <Hero2 tekst="Contact"/>
+                <Hero2 tekst="Winkelmand"/>
 
                 <section className="contact">
                     <Alinea titel="Dit is een kop" tekst="Dit is een tekst"/>

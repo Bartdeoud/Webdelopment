@@ -8,7 +8,7 @@ return (
             <li><a href="/">Home</a></li>
             <li><a href="/Programma">Programma</a></li>
             <li><a href="/OverOns">Over ons</a></li>
-            <li><a href="/Contact"><i class="fa-solid fa-basket-shopping"></i></a></li>
+            <li><a href="/Winkelmand"><i class="fa-solid fa-basket-shopping"></i></a></li>
             <li><a href="/Accesibility"><i className="fa fa-wheelchair" /></a></li>
             </nav>
         </header>
