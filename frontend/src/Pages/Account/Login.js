@@ -1,11 +1,11 @@
 import React from 'react';
 import Hero2 from '../Shared/Hero2';
 
-export default function Login() {
+function Login() {
   return(
     <>
         <Hero2 tekst="Inloggen"/>
-        <form>
+        <form className="contact">
         <label>
             <p>Username</p>
             <input type="text" />
@@ -21,3 +21,5 @@ export default function Login() {
     </>
   )
 }
+
+export default Login;

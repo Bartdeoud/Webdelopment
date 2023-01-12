@@ -1,88 +1,86 @@
 *{
-  box-sizing: border-box;
+box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+margin: 0;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
 }
 
 .row {
-  display: flex;
-  justify-content: space-between;
+display: flex;
+justify-content: space-between;
 }
 
 .row.center {
-  align-items: center;
+align-items: center;
 }
 
 .col-1 {
-  flex: 1;
+flex: 1;
 }
 
 .col-2 {
-  flex: 2;
+flex: 2;
 }
 
 @media screen and (min-width: 800px) {
-  .col-1 {
-    flex-basis: 1;
-  }
-  .col-2 {
-    flex-basis: 2;
-  }
+.col-1 {
+  flex-basis: 1;
+}
+.col-2 {
+  flex-basis: 2;
+}
 }
 
 .block {
-  background-color: #ed900d;
-  padding: 1rem;
-  margin: 0.5rem;
-  border-radius: 0.5rem;
+background-color: #ed900d;
+padding: 1rem;
+margin: 0.5rem;
+border-radius: 0.5rem;
 }
 
-
-
 .evenementblock {
-  border: 3px solid black;
-  display: flex;                  
-  flex-direction: row;          
-  flex-wrap: nowrap;              
-  justify-content: space-between;
-  background-color: #F0D732;
-  width: 70%;
-  margin: auto;
+border: 3px solid black;
+display: flex;                  
+flex-direction: row;          
+flex-wrap: nowrap;              
+justify-content: space-between;
+background-color: #F0D732;
+width: 70%;
+margin: auto;
 }
 
 .evenementblock > div {
-  width: 100%;
-  object-fit: contain;
-  text-align: center;
-  display:flex;
-  flex-direction: column;
-  row-gap: 20px;
+width: 100%;
+object-fit: contain;
+text-align: center;
+display:flex;
+flex-direction: column;
+row-gap: 20px;
 }
 
 .evenementblock > div > button {
-  width: 70%;
-  align-self: center;
+width: 70%;
+align-self: center;
 }
 
 #bestel {
-  color: white;
-  background-color: black;
+color: white;
+background-color: black;
 }
 
 .Evenement {
-  width: 70%;
-  padding: 10px;
-  display:flex;
+width: 70%;
+padding: 10px;
+display:flex;
 }
 
 .Evenement > p {
-  font-size: xx-large;
-  font-weight: bold;
+font-size: xx-large;
+font-weight: bold;
 }
