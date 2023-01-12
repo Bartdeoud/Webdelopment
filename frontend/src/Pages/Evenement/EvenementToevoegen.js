@@ -31,6 +31,7 @@ const EvenementToevoegen = (props) => {
                 <Daypicker
                     mode="multiple"
                     min={1}
+                    // Willen we hier nog een max toevoegen?
                     selected={days}
                     onSelect={setDays}
                 ></Daypicker>
