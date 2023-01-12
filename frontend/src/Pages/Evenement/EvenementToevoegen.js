@@ -1,9 +1,11 @@
 import React from 'react';
 import Hero2 from '../Shared/Hero2';
 import { useState } from "react";
+import {DayPicker} from "react-day-picker";
 
 const EvenementToevoegen = (props) => {
     const [formData, setFormData] = useState();
+    const [days, setDays] = useState;
 
     //e staat voor event
     const handleChange = (e) => {
@@ -26,7 +28,13 @@ const EvenementToevoegen = (props) => {
                 <p>Zaal</p>
 
                 <p>Dagen</p>
-                {/* Hier moet de dayselector komen, ik moet hier ff samen met bart naar kijken. Groetjes Lucas */}
+                <Daypicker
+                    mode="multiple"
+                    min={1}
+                    selected={days}
+                    onSelect={setDays}
+                ></Daypicker>
+
                 <button className="btn" onClick={handleSubmit}> Submit </button>
             </form>
             </section>   
