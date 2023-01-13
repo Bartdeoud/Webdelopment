@@ -14,3 +14,6 @@ npm install react-day-picker date-fns
 
 React router dom, (https://reactrouter.com/en/6.6.2)
 npm install react-router-dom
+
+React password checklist, (https://www.npmjs.com/package/react-password-checklist)
+npm install react-password-checklist
