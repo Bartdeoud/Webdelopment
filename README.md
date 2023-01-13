@@ -1,11 +1,16 @@
 # Webdelopment
 
-Docker is nu toegevoegd aan de applicatie
-gebruik hier docker-compose up --build
-(zorg wel dat de images gebuild zijn)
+Project voor het vak Webdevelopment
+Door:
+Lucas Clavel
+Burton Braam
+Christiaan de Haan
+Bart de Jong
 
-In de backend map staan alle api's die gebruikt worden
-gebruik hier dotnet run
+Extra npm functions (make sure you have npm and these extras installed):
 
-In de frontend map staat de react applicatie 
-gebruik hier npm run start
+React day picker, (https://react-day-picker.js.org)
+npm install react-day-picker date-fns
+
+React router dom, (https://reactrouter.com/en/6.6.2)
+npm install react-router-dom

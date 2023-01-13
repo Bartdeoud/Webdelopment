@@ -13,7 +13,8 @@ class VierNulVier extends Component {
                     <Alinea titel="De pagina bestaat niet" 
                     tekst="De pagina die u probeert te 
                     zoeken bestaat helaas niet." 
-                    link ="Ga terug naar de home pagina."/>
+                    link ="/"
+                    linknaam="Ga terug naar de home pagina."/>
                 </section>
             </>
         );
