@@ -1,11 +1,12 @@
 import React from 'react';
 import Hero2 from '../Shared/Hero2';
 import { useState } from "react";
-import {DayPicker} from "react-day-picker";
+import { DayPicker } from "react-day-picker";
+import 'react-day-picker/dist/style.css';
 
 const EvenementToevoegen = (props) => {
     const [formData, setFormData] = useState();
-    const [days, setDays] = useState;
+    const [days, setDays] = useState();
 
     //e staat voor event
     const handleChange = (e) => {
@@ -20,7 +21,8 @@ const EvenementToevoegen = (props) => {
     return (
         <>
             <Hero2 tekst="Evenement Toevoegen" />
-                
+            
+
             <section className="contact">
              <form>
                 <p>Naam evenement</p>
@@ -28,16 +30,16 @@ const EvenementToevoegen = (props) => {
                 <p>Zaal</p>
 
                 <p>Dagen</p>
-                <Daypicker
+                <DayPicker
                     mode="multiple"
                     min={1}
-                    // Willen we hier nog een max toevoegen?
                     selected={days}
                     onSelect={setDays}
-                ></Daypicker>
+                />
 
                 <button className="btn" onClick={handleSubmit}> Submit </button>
             </form>
+
             </section>   
         </>
     );
