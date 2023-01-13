@@ -11,6 +11,7 @@ import Evenement from "./Pages/Evenement/Evenement";
 import Login from "./Pages/Account/Login";
 import Account from "./Pages/Account/Account";
 import Aanmaken from "./Pages/Account/Aanmaken";
+import Huren from "./Pages/Winkelmand/Huren";
 import EvenementToevoegen from "./Pages/Evenement/EvenementToevoegen";
 
 class Main extends React.Component {
@@ -29,6 +30,7 @@ class Main extends React.Component {
             <Route path="/Account" element={<Account />} />
             <Route path="/Aanmaken" element={<Aanmaken />} />
             <Route path="/EvenementToevoegen" element={<EvenementToevoegen />} />
+            <Route path="/Huren" element={<Huren />} />
             <Route path="*" element={<VierNulVier />} />
           </Routes>
       </BrowserRouter>
