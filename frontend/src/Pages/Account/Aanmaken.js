@@ -1,8 +1,6 @@
 import React from 'react';
 import Hero2 from '../Shared/Hero2';
 import { useState } from "react";
-import PasswordChecklist from "react-password-checklist"
-
 
 const Aanmaken = () => {
     const [naam, setNaam] = useState();
