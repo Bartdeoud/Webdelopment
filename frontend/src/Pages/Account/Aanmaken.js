@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero2 from '../Shared/Hero2';
 import { useState } from "react";
+//import PasswordChecklist from "react-password-checklist";
 
 const Aanmaken = () => {
     const [naam, setNaam] = useState();
@@ -28,7 +29,7 @@ const Aanmaken = () => {
                 <p>Wachtwoord herhalen</p>
                 <input type="password" onChange={e => setPassword2(e.target.value)}/>
 
-                <PasswordChecklist
+                {/* <PasswordChecklist
                 //these are the default rules
 				rules={["minLength","specialChar","number","capital","match"]}
 				minLength={5}
@@ -43,7 +44,7 @@ const Aanmaken = () => {
                     match: "Wachtwoorden moeten overeen komen",
                 }}
 				onChange={() => {}}
-			    />
+			    /> */}
                 <br></br>
 
                 <p>Email</p>

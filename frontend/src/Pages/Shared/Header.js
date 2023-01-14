@@ -10,7 +10,7 @@ export default function Header() {
                 <button className="icon" onClick={
                     () => { setIsMenuOpen(!isMenuOpen); }
                 }
-                ><i class="fa fa-bars"></i></button>
+                ><i className="fa fa-bars"></i></button>
                 <div className={isMenuOpen ? "menu open" : "menu"}>
                     <ul>
                         <li><a href="/">Home</a></li>
@@ -18,7 +18,7 @@ export default function Header() {
                         <li><a href="/OverOns">Over ons</a></li>
                         <li><a href="/Huren">Huur</a></li>
                         <li><a href="/Account">Mijn account</a></li>
-                        <li><a href="/Winkelmand"><i class="fa-solid fa-basket-shopping"></i></a></li>
+                        <li><a href="/Winkelmand"><i className="fa-solid fa-basket-shopping"></i></a></li>
                         <li><a href="/Accesibility"><i className="fa fa-wheelchair" /></a></li>
                     </ul>
                 </div>
