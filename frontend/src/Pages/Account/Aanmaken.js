@@ -4,19 +4,16 @@ import { useState } from "react";
 import PasswordChecklist from "react-password-checklist"
 
 
-const Aanmaken = (props) => {
-    const [formData, setFormData] = useState();
+const Aanmaken = () => {
+    const [naam, setNaam] = useState();
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
-
-    //e staat voor event
-    const handleChange = (e) => {
-        setFormData(e.target.value);
-    }
+    const [email, setEmail] = useState();
+    const [date, setDate] = useState();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert(formData);
+        alert(naam + email + date);
     }
 
     return (
@@ -26,7 +23,7 @@ const Aanmaken = (props) => {
             <section className="contact">
              <form>
                 <p>Gebruikersnaam</p>
-                <input type="text" onChange={handleChange}/>
+                <input type="text" onChange={e => setNaam(e.target.value)}/>
                 
                 <p>Wachtwoord</p>
                 <input type="password" onChange={e => setPassword(e.target.value)}/>
@@ -34,26 +31,28 @@ const Aanmaken = (props) => {
                 <input type="password" onChange={e => setPassword2(e.target.value)}/>
 
                 <PasswordChecklist
+                //these are the default rules
 				rules={["minLength","specialChar","number","capital","match"]}
 				minLength={5}
 				value={password}
 				valueAgain={password2}
                 messages={{
+                    // this changes the default messages
                     minLength: "Minimaal 5 karakters",
                     specialChar: "Minimaal 1 speciaal karakter",
                     number: "Minimaal 1 getal",
                     capital: "Minimaal 1 hoofdletter",
                     match: "Wachtwoorden moeten overeen komen",
                 }}
-				onChange={(isValid) => {}}
+				onChange={() => {}}
 			    />
                 <br></br>
 
                 <p>Email</p>
-                <input type="email" placeholder={props.tekst} onChange={handleChange}/>
+                <input type="email" onChange={e => setEmail(e.target.value)}/>
 
                 <p>Geboortedatum</p>
-                <input type="date" placeholder={props.date} onChange={handleChange}/>
+                <input type="date" onChange={e => setDate(e.target.value)} />
 
                 <button className="btn" onClick={handleSubmit}> Submit </button>
             </form>
