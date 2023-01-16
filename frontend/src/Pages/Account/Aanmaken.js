@@ -55,8 +55,8 @@ const Aanmaken = () => {
                 <br></br>
 
                 <p>Email</p>
-                <input type="email" onChange={e => setEmail(e.target.value)}/>
-
+                <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}" onChange={e => setEmail(e.target.value)}/>
+                
                 <p>Geboortedatum</p>
                 <input type="date" onChange={e => setDate(e.target.value)} />
 
