@@ -30,12 +30,7 @@ jobs:
           app_location: "/frontend" # App source code path
           api_location: "/backend" # Api source code path - optional
           output_location: "/build" # Built app content directory - optional
-          app_build_command: "cd..;
-          cd backend;
-          dotnet add package Microsoft.Data.SqlClient;
-          cd..;
-          cd frontend;
-          npm install react-router-dom@6 --unsafe-perm;
+          app_build_command: "npm install react-router-dom@6 --unsafe-perm;
           npm i axios --unsafe-perm;
           npm install react-password-checklist --unsafe-perm;
           npm install react-day-picker date-fns --unsafe-perm;
