@@ -6,10 +6,6 @@ namespace backend.Controllers;
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
 
     private readonly ILogger<WeatherForecastController> _logger; 
 
@@ -24,5 +20,11 @@ public class WeatherForecastController : ControllerBase
         DBConnect dBConnect = new DBConnect();
         dBConnect.open_connection();
         return "Gelukt!!";
+    }
+
+    [HttpGet(Name = "GetEvenementen")]
+    public EvenementHadler GetEvenementen()
+    {
+        return "";
     }
 }
