@@ -1,8 +1,8 @@
+import EvenementBlock from "../Programma/EvenementBlock";
 import React from "react";
 import Alinea from "../Shared/Alinea";
 import Hero2 from "../Shared/Hero2";
 import { useState } from "react";
-
 
 const Winkelmand = () => {
     // const [totaal, setTotaal] = useState("");
@@ -24,7 +24,7 @@ const Winkelmand = () => {
     return(
         <>
             <Hero2 tekst="Winkelmand"/>
-
+            <EvenementBlock TitelVoorstelling="Titel Voorstelling" Artiest="artiest" zaal="zaal" datum="datum" tijd="tijd" LinkToImg="..\\assets\\image\\LaakZaal3.jpg"/>
             <section className="contact">
                 <Alinea titel="Dit is een kop" tekst="Dit is een tekst"/>
             </section>

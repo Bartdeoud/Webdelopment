@@ -7,7 +7,7 @@ namespace backend.Controllers;
 public class WeatherForecastController : ControllerBase
 {
 
-    private readonly ILogger<WeatherForecastController> _logger;
+    private readonly ILogger<WeatherForecastController> _logger; 
 
     public WeatherForecastController(ILogger<WeatherForecastController> logger)
     {
@@ -23,8 +23,8 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet(Name = "GetEvenementen")]
-    public EvenementHadler GetEvenementen()
+    public List<EvenementHadler> GetEvenementen()
     {
-        return "";
+        return EvenementHadler.GetEvenementen();
     }
 }
