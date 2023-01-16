@@ -11,7 +11,6 @@ const Aanmaken = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [email, setEmail] = useState();
     const [date, setDate] = useState();
-    var regex = 
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -24,13 +23,13 @@ const Aanmaken = () => {
                 
             <section className="contact">
              <form>
-                <p>Gebruikersnaam:</p>
-                <input type="text" onChange={e => setNaam(e.target.value)}/>
+                <p>*Gebruikersnaam:</p>
+                <input type="text" onChange={e => setNaam(e.target.value)} required/>
                 
-                <p>Wachtwoord:</p>
-                <input type="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[$&+,:;=?@#|'<>.^*()%!-]).{7,}" onChange={e => setPassword(e.target.value)}/>
-                <p>Bevestig wachtwoord:</p>
-                <input type="password" onChange={e => setConfirmPassword(e.target.value)}/>
+                <p>*Wachtwoord:</p>
+                <input type="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[$&+,:;=?@#|'<>.^*()%!-]).{7,}" onChange={e => setPassword(e.target.value)} required/>
+                <p>*Bevestig wachtwoord:</p>
+                <input type="password" onChange={e => setConfirmPassword(e.target.value)} required/>
 
                 <PasswordChecklist
                 //these are the default rules
@@ -54,8 +53,8 @@ const Aanmaken = () => {
 			    />
                 <br></br>
 
-                <p>Email</p>
-                <input type="email" onChange={e => setEmail(e.target.value)}/>
+                <p>*Email</p>
+                <input type="email" onChange={e => setEmail(e.target.value)} required/>
                 
                 <p>Geboortedatum</p>
                 <input type="date" onChange={e => setDate(e.target.value)} />
