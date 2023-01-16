@@ -1,26 +1,40 @@
-import React, { Component } from "react";
 import EvenementBlock from "../Programma/EvenementBlock";
+import React from "react";
+import Alinea from "../Shared/Alinea";
 import Hero2 from "../Shared/Hero2";
+import { useState } from "react";
 
+const Winkelmand = () => {
+    // const [totaal, setTotaal] = useState("");
 
-
-class Contact extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: null,
-        };
+    let handleSubmit = () =>{
+        fetch('https://fakepay.azurewebsites.net/', {
+            method: 'POST',
+            headers:{
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },    
+            body: new URLSearchParams({
+                'amount': totaal,
+                'reference': 'Betaal',
+                'url': 'www.google.com'
+            })
+        });
     }
-    render () {
-        return(
-            <>
-                <Hero2 tekst="Winkelmand"/>
-                <EvenementBlock TitelVoorstelling="Titel Voorstelling" Artiest="artiest" zaal="zaal" datum="datum" tijd="tijd" LinkToImg="..\\assets\\image\\LaakZaal3.jpg"/>
 
-                
-            </>
-        );
-    }
+    return(
+        <>
+            <Hero2 tekst="Winkelmand"/>
+            <EvenementBlock TitelVoorstelling="Titel Voorstelling" Artiest="artiest" zaal="zaal" datum="datum" tijd="tijd" LinkToImg="..\\assets\\image\\LaakZaal3.jpg"/>
+            <section className="contact">
+                <Alinea titel="Dit is een kop" tekst="Dit is een tekst"/>
+            </section>
+
+            <form onSubmit={handleSubmit}>
+                {/* <input type="number" placeholder="Totaal" onChange={(e) => setTotaal(e.target.value)} /> */}
+                <input type="submit" value="Submit" />
+            </form>
+        </>
+    );
 }
 
-export default Contact;
+export default Winkelmand;
