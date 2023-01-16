@@ -16,5 +16,5 @@ public class Gebruiker: IdentityUser
     [Required]
     public string Wachtwoord {set; get;}
 
-    public Ticket[] tickets {set; get;}
+    public List<Ticket> tickets {set; get;}
 }
