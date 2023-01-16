@@ -23,6 +23,7 @@ const Aanmaken = () => {
                 
             <section className="contact">
              <form>
+                <p>*verplicht</p>
                 <p>*Gebruikersnaam:</p>
                 <input type="text" onChange={e => setNaam(e.target.value)} required/>
                 
