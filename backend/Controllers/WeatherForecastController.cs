@@ -7,7 +7,7 @@ namespace backend.Controllers;
 public class WeatherForecastController : ControllerBase
 {
 
-    private readonly ILogger<WeatherForecastController> _logger;
+    private readonly ILogger<WeatherForecastController> _logger; 
 
     public WeatherForecastController(ILogger<WeatherForecastController> logger)
     {
