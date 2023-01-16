@@ -17,3 +17,5 @@ npm install react-router-dom
 
 React password checklist, (https://www.npmjs.com/package/react-password-checklist)
 npm install react-password-checklist
+
+npm i axios
