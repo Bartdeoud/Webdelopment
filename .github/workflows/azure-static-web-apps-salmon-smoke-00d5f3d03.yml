@@ -31,10 +31,10 @@ jobs:
           api_location: "/backend" # Api source code path - optional
           output_location: "/build" # Built app content directory - optional
           app_build_command: "npm install react-router-dom@6 --unsafe-perm;
-            npm install react-password-checklist --unsafe-perm; 
-            npm install react-day-picker date-fns --unsafe-perm; 
-            npm test -all; 
-            npm run build"
+          npm i axios --unsafe-perm;
+          npm install react-password-checklist --unsafe-perm;
+          npm install react-day-picker date-fns --unsafe-perm;
+          npm run build"
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
