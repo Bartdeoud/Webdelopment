@@ -16,7 +16,7 @@ const EvenementBlock = (props) => {
 
     return (
         <section className="programmaBlock">
-                <div class="evenementblock">
+                <div className="evenementblock">
                     <div>
                         <img src={LinkToImg} alt="Afbeelding evenement" width="100%" height="100%"></img>
                     </div>
