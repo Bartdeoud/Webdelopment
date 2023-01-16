@@ -21,12 +21,12 @@ const Aanmaken = () => {
                 
             <section className="contact">
              <form>
-                <p>Gebruikersnaam</p>
+                <p>Gebruikersnaam:</p>
                 <input type="text" onChange={e => setNaam(e.target.value)}/>
                 
-                <p>Wachtwoord</p>
+                <p>Wachtwoord:</p>
                 <input type="password" onChange={e => setPassword(e.target.value)}/>
-                <p>Wachtwoord herhalen</p>
+                <p>Bevestig wachtwoord:</p>
                 <input type="password" onChange={e => setPassword2(e.target.value)}/>
 
                 {/* <PasswordChecklist
