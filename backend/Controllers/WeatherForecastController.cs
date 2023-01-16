@@ -23,8 +23,8 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet(Name = "GetEvenementen")]
-    public EvenementHadler GetEvenementen()
+    public List<EvenementHadler> GetEvenementen()
     {
-        return "";
+        return EvenementHadler.GetEvenementen();
     }
 }
