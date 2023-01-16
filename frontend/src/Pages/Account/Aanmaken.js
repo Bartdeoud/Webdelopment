@@ -3,12 +3,15 @@ import Hero2 from '../Shared/Hero2';
 import { useState } from "react";
 import PasswordChecklist from "react-password-checklist";
 
+/*https://www.npmjs.com/package/react-password-checklist*/
+
 const Aanmaken = () => {
     const [naam, setNaam] = useState();
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [email, setEmail] = useState();
     const [date, setDate] = useState();
+    var regex = 
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,7 +28,7 @@ const Aanmaken = () => {
                 <input type="text" onChange={e => setNaam(e.target.value)}/>
                 
                 <p>Wachtwoord:</p>
-                <input type="password" onChange={e => setPassword(e.target.value)}/>
+                <input type="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[$&+,:;=?@#|'<>.^*()%!-]).{7,}" onChange={e => setPassword(e.target.value)}/>
                 <p>Bevestig wachtwoord:</p>
                 <input type="password" onChange={e => setConfirmPassword(e.target.value)}/>
 
