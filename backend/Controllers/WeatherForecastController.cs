@@ -22,9 +22,9 @@ public class WeatherForecastController : ControllerBase
         return "Gelukt!!";
     }
 
-    [HttpGet(Name = "GetEvenementen")]
-    public List<EvenementHadler> GetEvenementen()
-    {
-        return EvenementHadler.GetEvenementen();
-    }
+    //[HttpGet(Name = "GetEvenementen")]
+    //public List<EvenementHadler> GetEvenementen()
+    //{
+    //    return EvenementHadler.GetEvenementen();
+    //}
 }
