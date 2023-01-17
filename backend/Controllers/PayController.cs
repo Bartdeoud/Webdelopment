@@ -25,8 +25,8 @@ public class PayController : ControllerBase
     [HttpPost]
     public void Post([FromBody] string value)
     {
+    }
 
-    } 
     //PUT api/<PayController>/id
     [HttpPut ("{id}")]
     public void Put(int id, [FromBody] string value)
@@ -38,5 +38,4 @@ public class PayController : ControllerBase
     public void Delete(int id)
     {
     }
-
 }
