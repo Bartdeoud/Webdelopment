@@ -20,3 +20,6 @@ npm install react-password-checklist
 
 React bootstrap, (https://react-bootstrap.github.io/getting-started/introduction)
 npm i axios
+
+DBContext 
+cd .backend, dotnet ef migrations add Migrations_1

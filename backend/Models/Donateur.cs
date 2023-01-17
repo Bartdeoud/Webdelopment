@@ -1,4 +1,4 @@
-internal class Donateur : Gebruiker
+public class Donateur : Gebruiker
 {
     public int TotaleDonatie { get; set; }
 }

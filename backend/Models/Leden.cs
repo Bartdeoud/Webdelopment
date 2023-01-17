@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
-internal class Leden
+public class Leden
 {
     public string Id { get; set; }
     [ForeignKey("Band")]

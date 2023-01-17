@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-internal class Zaal {
+public class Zaal {
     [Key]
     public int Zaalnr {get;set;}
     public string Naam {get;set;}

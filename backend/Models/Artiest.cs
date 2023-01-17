@@ -1,3 +1,4 @@
-public class Artiest : Gebruiker{
-public string artiest_naam {get;set;}
+public class Artiest : Gebruiker
+{
+    public string artiest_naam { get; set; }
 }
