@@ -3,7 +3,8 @@ import Hero2 from '../Shared/Hero2';
 import { useState } from "react";
 
 const Login = (props) => {
-    const [formData, setFormData] = useState();
+    const [gebruikersnaam, setGebruikersnaam] = useState("");
+    const [wachtwoord, setWachtwoord]=useState("");
 
     //e staat voor event
     const handleChange = (e) => {
@@ -20,12 +21,12 @@ const Login = (props) => {
             <Hero2 tekst="Inloggen" />
                 
             <section className="contact">
-             <form>
-                <label for="gebruikersnaam">Gebruikersnaam</label>
-                <input type="text" placeholder={props.tekst} onChange={handleChange} id="gebruikersnaam" name="gebruikersnaam"/>
-                <label for="wachtwoord">Wachtwoord</label>
-                <input type="password" placeholder={props.tekst} onChange={handleChange} id="wachtwoord" name="wachtwoord"/>
-                <button className="btn" onClick={handleSubmit}> Log in </button>
+             <form onSubmit={handleSubmit}>
+                <label htmlFor="gebruikersnaam">Gebruikersnaam</label>
+                <input value={gebruikersnaam} type="text" placeholder={props.tekst} onChange={handleChange} id="gebruikersnaam" name="gebruikersnaam"/>
+                <label htmlFor="wachtwoord">Wachtwoord</label>
+                <input value={wachtwoord} type="password" placeholder={props.tekst} onChange={handleChange} id="wachtwoord" name="wachtwoord"/>
+                <button className="btn" onClick={handleSubmit} type="submit"> Log in </button>
             </form>
             </section>   
         </>

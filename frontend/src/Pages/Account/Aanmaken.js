@@ -24,33 +24,33 @@ const Aanmaken = () => {
             <section className="contact">
              <form>
                 <p>*verplicht</p>
-                <label for="Username">*Gebruikersnaam:</label>
+                <label htmlFor="Username">*Gebruikersnaam:</label>
                 <input type="text" onChange={e => setNaam(e.target.value)} id="Username" name="Username" required/>
                 
-                <label for="Wachtwoord">*Wachtwoord:</label>
+                <label htmlFor="Wachtwoord">*Wachtwoord:</label>
                 <input type="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[$&+,:;=?@#|'<>.^*()%!-]).{7,}" onChange={e => setPassword(e.target.value)} id="Wachtwoord" name="Wachtwoord" required/>
-                <label for="herhaalWachtwoord">*Bevestig wachtwoord:</label>
+                <label htmlFor="herhaalWachtwoord">*Bevestig wachtwoord:</label>
                 <input type="password" onChange={e => setConfirmPassword(e.target.value)} id="herhaalWachtwoord" name="herhaalWachtwoord" required/>
 
                 <PasswordChecklist
-                //these are the default rules
-				rules={["minLength","specialChar","number","capital","lowercase","match"]}
-				minLength={7}
-                capital={1}
-                lowercase={1}
-                specialChar={1}
-				value={password}
-				valueAgain={confirmPassword}
-                messages={{
-                    // this changes the default messages
-                    minLength: "Minimaal 7 karakters",
-                    specialChar: "Minimaal 1 speciaal karakter",
-                    number: "Minimaal 1 getal",
-                    capital: "Minimaal 1 hoofdletter",
-                    lowercase: "Minimaal 1 kleine letter",
-                    match: "Wachtwoorden moeten overeen komen",
-                }}
-				onChange={(isValid) => {}}
+                    //these are the default rules
+                    rules={["minLength","specialChar","number","capital","lowercase","match"]}
+                    minLength={7}
+                    capital={1}
+                    lowercase={1}
+                    specialChar={1}
+                    value={password}
+                    valueAgain={confirmPassword}
+                    messages={{
+                        // this changes the default messages
+                        minLength: "Minimaal 7 karakters",
+                        specialChar: "Minimaal 1 speciaal karakter",
+                        number: "Minimaal 1 getal",
+                        capital: "Minimaal 1 hoofdletter",
+                        lowercase: "Minimaal 1 kleine letter",
+                        match: "Wachtwoorden moeten overeen komen",
+                    }}
+                    onChange={(isValid) => {}}
 			    />
                 <br></br>
 
