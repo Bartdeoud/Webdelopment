@@ -21,9 +21,9 @@ const Login = (props) => {
                 
             <section className="contact">
              <form>
-                <p>Gebruikersnaam</p>
+                <label for="gebruikersnaam">Gebruikersnaam</label>
                 <input type="text" placeholder={props.tekst} onChange={handleChange}/>
-                <p>Wachtwoord</p>
+                <label for="wachtwoord">Wachtwoord</label>
                 <input type="password" placeholder={props.tekst} onChange={handleChange}/>
                 <button className="btn" onClick={handleSubmit}> Submit </button>
             </form>
