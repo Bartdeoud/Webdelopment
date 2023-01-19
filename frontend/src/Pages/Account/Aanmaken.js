@@ -34,8 +34,15 @@ const Aanmaken = () => {
     const [success, setSuccess] = useState(false);
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        const v1 = User_regex.test(user);
+        const v2 = Wachtwoord_regex.test(password);
+        const v3 = Email_regex.test(email);
+        if(!v1||!v2||!v3){
+            setErrMsg("Een of meerdere ingevoerde gegevens zijn incorrect.")
+            return;
+        }
         alert(naam + email + date);
     }
 
@@ -75,7 +82,7 @@ const Aanmaken = () => {
             <Hero2 tekst="Account aanmaken" />
             <section classname="contact">
                 <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <label htmlFor="username">
                         Gebruikersnaam:
                         <span className={validName ? "valid" : "hide"}>
@@ -129,7 +136,7 @@ const Aanmaken = () => {
                         <FontAwesomeicon icon={faInfoCircle}/>
                         Voer een geldig e-mailadres in.
                     </p>
-                    
+
                     <label htmlFor="password">
                         Wachtwoord:
                         <span className={validPwd ? "valid": "hide"}>
@@ -175,6 +182,12 @@ const Aanmaken = () => {
                         onFocus={()=>setMatchFocus(true)}
                         onBlur={()=>setMatchFocus(false)}
                     />
+
+                    <button 
+                        disabled={!validName || !validEmail  || !validPwd || !validMatch ? true : false}
+                    >
+                            Registreer
+                    </button>
                 </form>
             </section>
         </>
