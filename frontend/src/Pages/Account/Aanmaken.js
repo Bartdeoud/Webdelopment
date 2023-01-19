@@ -13,6 +13,9 @@ const Wachtwoord_regex = /^(?=.*[a-z])(?.*[A-Z])(?=.*[0-9])(?+.*[!@#$%]){7,}/;
 const Email_regex = /^[a-zA-Z0-9.!#$%&*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const Aanmaken = () => {
+    const userRef = userRef();
+    const errRef = useRef();
+    
     const [user, setUser] = useState("");
     const [naam, setNaam] = useState(false);
     const [validName, setValidName] = useState(false);
