@@ -179,7 +179,7 @@ const Aanmaken = () => {
                             <input 
                                 type="password"
                                 id="confirm_pwd"
-                                onChange={(e)=>setMatchPwd(e.target.value)}
+                                onChange={(e)=>setConfirmPassword(e.target.value)}
                                 required
                                 aria-invalid={validMatch ? "false" : "true"}
                                 aria-describedby="contirmnote"
