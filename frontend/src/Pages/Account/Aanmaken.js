@@ -10,6 +10,7 @@ import {FontAwesomeicon} from "@fortawesome/react-fontawesome";
 
 const User_regex = /^[a-zA-Z][a-zA-Z0-9-_]{8,}$/;
 const Wachtwoord_regex = /^(?=.*[a-z])(?.*[A-Z])(?=.*[0-9])(?+.*[!@#$%]){7,}$/;
+const Email_regex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const Aanmaken = () => {
     const [user, setUser] = useState("");
@@ -24,11 +25,14 @@ const Aanmaken = () => {
     const [validMatch, setValidMatch] = useState(false);
     const [matchFocus, setMatchFocus] = useState(false);
 
+    const [email, setEmail] = useState("");
+    const [validEmail, setValidEmail]=useState(false);
+    const [emailFocus, setEmailFocus]=useState(false);
+
+    
     const [errMsg, setErrMsg] = useState("");
     const [success, setSuccess] = useState(false);
 
-    const [email, setEmail] = useState();
-    const [date, setDate] = useState();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -55,9 +59,16 @@ const Aanmaken = () => {
         setValidMatch(match);
     },[password, confirmPassword])
 
+    useEffect(()=>{//emailadres
+        const result = Email_regex.test(email);
+        console.log(result);
+        console.log(email);
+        setValidEmail(result);
+    },[email])
+
     useEffect(()=>{
         setErrMsg("");
-    },[user, password, confirmPassword])
+    },[user, password, confirmPassword,email])
 
     return(
         <>
@@ -82,7 +93,7 @@ const Aanmaken = () => {
                         onChange={(e)=>setUser(e.target.value)} 
                         required
                         aria-invalid={validName ? "false" :  "true"}
-                        aroa-describedby="uidnote"
+                        aria-describedby="uidnote"
                         onFocus={()=>setUserFocus(true)}
                         onBlur={()=>setUserFocus(false)}
                     />
@@ -93,6 +104,32 @@ const Aanmaken = () => {
                         Letters, nummers, underscore, streepjes toegestaan.
                     </p>
 
+                    <label htmlFor="emailadres">
+                        E-mail adres:
+                        <span className={validEmail ? "valid" : "hide"}>
+                            <FontAwesomeicon icon={faCheck}/>
+                        </span>
+                        <span className={validName || !user ? "hide" : "invalid"}>
+                            <FontAwesomeIcon icon={faTimes}/>
+                        </span>
+                    </label>
+                    <input 
+                        type="email" 
+                        id="emailadres" 
+                        ref={userRef} 
+                        autoComplete="off" 
+                        onChange={(e)=>setEmail(e.target.value)} 
+                        required
+                        aria-invalid={validName ? "false" :  "true"}
+                        aroa-describedby="emailnote"
+                        onFocus={()=>setEmailFocus(true)}
+                        onBlur={()=>setEmailFocus(false)}
+                    />
+                    <p id="uidnote" classname={userFocus && user && !validName ? "instructions" : "offscreen"}>
+                        <FontAwesomeicon icon={faInfoCircle}/>
+                        Voer een geldig e-mailadres in.
+                    </p>
+                    
                     <label htmlFor="password">
                         Wachtwoord:
                         <span className={validPwd ? "valid": "hide"}>
@@ -119,7 +156,25 @@ const Aanmaken = () => {
                         Toegestane speciale tekens: <span aria-label="uitroepteken">!</span> <span aria-label="apenstaartje">@</span> <span aria-label="hekje">#</span> <span aria-label="dollar teken">$</span> <span aria-label="procennt">%</span>
                     </p>
                         
-                        
+                    <label htmlFor="confirm_pwd">
+                        Bevestig wachtwoord:
+                        <span className={validMatch && confirmPassword ? "valid": "hide"}>
+                            <FontAwesomeicon icon={faCheck}/>
+                        </span>
+                        <span classname={validMatch || !confirmPassword ? "hide" : "invalid"}>
+                            <FontAwesomeicon icon={faTimes}/>
+                        </span>
+                    </label>
+                    <input 
+                        type="password"
+                        id="confirm_pwd"
+                        onChange={(e)=>setMatchPwd(e.target.value)}
+                        required
+                        aria-invalid={validMatch ? "false" : "true"}
+                        aria-describedby="contirmnote"
+                        onFocus={()=>setMatchFocus(true)}
+                        onBlur={()=>setMatchFocus(false)}
+                    />
                 </form>
             </section>
         </>
