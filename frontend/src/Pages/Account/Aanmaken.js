@@ -9,13 +9,13 @@ import {FontAwesomeicon} from "@fortawesome/react-fontawesome";
 /*https://www.youtube.com/watch?v=brcHK3P6ChQ&list=PL0Zuz27SZ-6PRCpm9clX0WiBEMB70FWwd&ab_channel=DaveGray form validation EN ACCESSIBILIITY VOOR SCREENREADER*/
 
 const User_regex = /^[a-zA-Z][a-zA-Z0-9-_]{8,}$/;
-const Wachtwoord_regex = /^(?=.*[a-z])(?.*[A-Z])(?=.*[0-9])(?+.*[!@#$%]){7,}/;
+const Wachtwoord_regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,}$/
 const Email_regex = /^[a-zA-Z0-9.!#$%&*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const Aanmaken = () => {
     const userRef = userRef();
     const errRef = useRef();
-    
+
     const [user, setUser] = useState("");
     const [naam, setNaam] = useState(false);
     const [validName, setValidName] = useState(false);
