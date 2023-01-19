@@ -107,8 +107,8 @@ const Aanmaken = () => {
                             />
                             <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
                                 <FontAwesomeIcon icon={faInfoCircle}/>
-                                Minimaal 8 karakters
-                                Begint met een letter
+                                Minimaal 8 karakters<br/>
+                                Begint met een letter<br/>
                                 Letters, nummers, underscore, streepjes toegestaan.
                             </p>
 
