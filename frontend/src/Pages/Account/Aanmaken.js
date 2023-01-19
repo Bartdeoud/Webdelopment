@@ -2,7 +2,7 @@ import React from 'react';
 import Hero2 from '../Shared/Hero2';
 import { useRef, useState, useEffect } from "react";
 import {faCheck, faTimes, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeicon} from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 //import PasswordChecklist from "react-password-checklist";
 
 /*https://www.npmjs.com/package/react-password-checklist*/
@@ -94,10 +94,10 @@ const Aanmaken = () => {
                             <label htmlFor="username">
                                 Gebruikersnaam:
                                 <span className={validName ? "valid" : "hide"}>
-                                    <FontAwesomeicon icon={faCheck}/>
+                                    <FontAwesomeIcon icon={faCheck}/>
                                 </span>
                                 <span className={validName || !user ? "hide" : "invalid"}>
-                                    <FontAwesomeicon icon={faTimes}/>
+                                    <FontAwesomeIcon icon={faTimes}/>
                                 </span>
                             </label>
                             <input 
@@ -113,7 +113,7 @@ const Aanmaken = () => {
                                 onBlur={()=>setUserFocus(false)}
                             />
                             <p id="uidnote" classname={userFocus && user && !validName ? "instructions" : "offscreen"}>
-                                <FontAwesomeicon icon={faInfoCircle}/>
+                                <FontAwesomeIcon icon={faInfoCircle}/>
                                 Minimaal 8 karakters
                                 Begint met een letter
                                 Letters, nummers, underscore, streepjes toegestaan.
@@ -122,10 +122,10 @@ const Aanmaken = () => {
                             <label htmlFor="emailadres">
                                 E-mail adres:
                                 <span className={validEmail ? "valid" : "hide"}>
-                                    <FontAwesomeicon icon={faCheck}/>
+                                    <FontAwesomeIcon icon={faCheck}/>
                                 </span>
                                 <span className={validName || !user ? "hide" : "invalid"}>
-                                    <FontAwesomeicon icon={faTimes}/>
+                                    <FontAwesomeIcon icon={faTimes}/>
                                 </span>
                             </label>
                             <input 
@@ -141,17 +141,17 @@ const Aanmaken = () => {
                                 onBlur={()=>setEmailFocus(false)}
                             />
                             <p id="uidnote" classname={userFocus && user && !validName ? "instructions" : "offscreen"}>
-                                <FontAwesomeicon icon={faInfoCircle}/>
+                                <FontAwesomeIcon icon={faInfoCircle}/>
                                 Voer een geldig e-mailadres in.
                             </p>
 
                             <label htmlFor="password">
                                 Wachtwoord:
                                 <span className={validPwd ? "valid": "hide"}>
-                                    <FontAwesomeicon icon={faCheck}/>
+                                    <FontAwesomeIcon icon={faCheck}/>
                                 </span>
                                 <span classname={validPwd || !password ? "hide" : "invalid"}>
-                                    <FontAwesomeicon icon={faTimes}/>
+                                    <FontAwesomeIcon icon={faTimes}/>
                                 </span>
                             </label>
                             <input
@@ -165,7 +165,7 @@ const Aanmaken = () => {
                                 onBlur={()=>setPwdFocus(false)}
                             />
                             <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
-                                <FontAwesomeicon icon={faInfoCircle}/>
+                                <FontAwesomeIcon icon={faInfoCircle}/>
                                 Minimaal 7 karakters. <br/>
                                 Bevat minimaal 1 kleine letter, 1 hoofdletter, 1 cijfer en 1 speciaal teken.<br/>
                                 Toegestane speciale tekens: <span aria-label="uitroepteken">!</span> <span aria-label="apenstaartje">@</span> <span aria-label="hekje">#</span> <span aria-label="dollar teken">$</span> <span aria-label="procennt">%</span>
@@ -174,10 +174,10 @@ const Aanmaken = () => {
                             <label htmlFor="confirm_pwd">
                                 Bevestig wachtwoord:
                                 <span className={validMatch && confirmPassword ? "valid": "hide"}>
-                                    <FontAwesomeicon icon={faCheck}/>
+                                    <FontAwesomeIcon icon={faCheck}/>
                                 </span>
                                 <span classname={validMatch || !confirmPassword ? "hide" : "invalid"}>
-                                    <FontAwesomeicon icon={faTimes}/>
+                                    <FontAwesomeIcon icon={faTimes}/>
                                 </span>
                             </label>
                             <input 
