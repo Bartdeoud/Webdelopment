@@ -137,10 +137,6 @@ const Aanmaken = () => {
                                 onFocus={()=>setEmailFocus(true)}
                                 onBlur={()=>setEmailFocus(false)}
                             />
-                            <p id="uidnote" classname={userFocus && user && !validName ? "instructions" : "offscreen"}>
-                                <FontAwesomeIcon icon={faInfoCircle}/>
-                                Voer een geldig e-mailadres in.
-                            </p>
 
                             <label htmlFor="password">
                                 Wachtwoord:
