@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {useNavigate} from 'react-router-dom';
 import DataFetching from "../../DataFetching.js";
 
@@ -16,7 +16,7 @@ const EvenementBlock = (props) => {
 
     return (
         <section className="programmaBlock">
-                <div class="evenementblock">
+                <div className="evenementblock">
                     <div>
                         <img src={LinkToImg} alt="Afbeelding evenement" width="100%" height="100%"></img>
                     </div>
@@ -32,7 +32,7 @@ const EvenementBlock = (props) => {
                         <h3>{datum}</h3>
                         <h3>{tijd}</h3>
                         <br/>
-                        <button onClick={()=>{navigate('/Evenement', { state:props})}} class="btn">bestel</button>
+                        <button onClick={()=>{navigate('/Evenement', { state:props})}} className="btn">bestel</button>
                     </div>
                 </div>
                 

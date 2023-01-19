@@ -1,26 +1,14 @@
-import React, { Component } from "react";
-import EvenementBlock from "../Programma/EvenementBlock";
+import React from "react";
 import Hero2 from "../Shared/Hero2";
+import FakePay from "./FakePay";
 
-
-
-class Contact extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: null,
-        };
-    }
-    render () {
-        return(
-            <>
-                <Hero2 tekst="Winkelmand"/>
-                <EvenementBlock TitelVoorstelling="Titel Voorstelling" Artiest="artiest" zaal="zaal" datum="datum" tijd="tijd" LinkToImg="..\\assets\\image\\LaakZaal3.jpg"/>
-
-                
-            </>
-        );
-    }
+const Winkelmand = () => {
+    return(
+        <>
+            <Hero2 tekst="Winkelmand"/>
+            <FakePay/>
+        </>
+    );
 }
 
-export default Contact;
+export default Winkelmand;

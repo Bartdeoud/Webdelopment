@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-internal class Huren
+public class Huren
 {
     public string Id { get; set; }
     public DateTime Datum { get; set; }

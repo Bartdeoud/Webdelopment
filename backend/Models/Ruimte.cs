@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-internal class Ruimte
+public class Ruimte
 {
     [Key]
     public int RuimteNr { get; set; }
