@@ -22,9 +22,9 @@ const Login = (props) => {
             <section className="contact">
              <form>
                 <label for="gebruikersnaam">Gebruikersnaam</label>
-                <input type="text" placeholder={props.tekst} onChange={handleChange} id="gebruikersnaam"/>
+                <input type="text" placeholder={props.tekst} onChange={handleChange} id="gebruikersnaam" name="gebruikersnaam"/>
                 <label for="wachtwoord">Wachtwoord</label>
-                <input type="password" placeholder={props.tekst} onChange={handleChange} id="wachtwoord"/>
+                <input type="password" placeholder={props.tekst} onChange={handleChange} id="wachtwoord" name="wachtwoord"/>
                 <button className="btn" onClick={handleSubmit}> Submit </button>
             </form>
             </section>   
