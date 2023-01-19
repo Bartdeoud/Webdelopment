@@ -25,7 +25,7 @@ const Login = (props) => {
                 <input type="text" placeholder={props.tekst} onChange={handleChange} id="gebruikersnaam" name="gebruikersnaam"/>
                 <label for="wachtwoord">Wachtwoord</label>
                 <input type="password" placeholder={props.tekst} onChange={handleChange} id="wachtwoord" name="wachtwoord"/>
-                <button className="btn" onClick={handleSubmit}> Submit </button>
+                <button className="btn" onClick={handleSubmit}> Log in </button>
             </form>
             </section>   
         </>
