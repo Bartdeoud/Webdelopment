@@ -96,7 +96,7 @@ const Aanmaken = () => {
                                 <span className={validName || !user ? "hide" : "invalid"}>
                                     <FontAwesomeIcon icon={faTimes}/>
                                 </span>
-                            </label>
+                            </label><br/>
                             <input 
                                 type="text" 
                                 id="username" 
@@ -124,7 +124,7 @@ const Aanmaken = () => {
                                 <span className={validName || !user ? "hide" : "invalid"}>
                                     <FontAwesomeIcon icon={faTimes}/>
                                 </span>
-                            </label>
+                            </label><br/>
                             <input 
                                 type="email" 
                                 id="emailadres" 
@@ -137,6 +137,7 @@ const Aanmaken = () => {
                                 onFocus={()=>setEmailFocus(true)}
                                 onBlur={()=>setEmailFocus(false)}
                             />
+                            <br/>
 
                             <label htmlFor="password">
                                 Wachtwoord:
@@ -146,7 +147,7 @@ const Aanmaken = () => {
                                 <span classname={validPwd || !password ? "hide" : "invalid"}>
                                     <FontAwesomeIcon icon={faTimes}/>
                                 </span>
-                            </label>
+                            </label><br/>
                             <input
                                 type="password"
                                 id="password" 
@@ -172,7 +173,7 @@ const Aanmaken = () => {
                                 <span classname={validMatch || !confirmPassword ? "hide" : "invalid"}>
                                     <FontAwesomeIcon icon={faTimes}/>
                                 </span>
-                            </label>
+                            </label><br/>
                             <input 
                                 type="password"
                                 id="confirm_pwd"
