@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-internal class Show
+public class Show
 {
     [Key]
     public int Shownr { get; set; }
@@ -9,5 +9,5 @@ internal class Show
     public string Leeftijdsgroep { get; set; }
     public int BeginTijd { get; set; }
     public int EindTijd { get; set; }
-    public DateOnly[] Datums { get; set; }
+    //public DataTime[] Datums { get; set; }
 }

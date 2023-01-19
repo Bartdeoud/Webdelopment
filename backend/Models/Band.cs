@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-internal class Band
+public class Band
 {
     [Key]
     public string Id { get; set; }
