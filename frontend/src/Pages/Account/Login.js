@@ -8,12 +8,12 @@ const Login = (props) => {
 
     //e staat voor event
     const handleChange = (e) => {
-        setFormData(e.target.value);
+        //setFormData(e.target.value);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert(formData);
+        //alert(formData);
     }
 
     return (
