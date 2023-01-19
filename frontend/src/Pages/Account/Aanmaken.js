@@ -45,20 +45,17 @@ const Aanmaken = () => {
             return;
         }
         alert(naam + email);
-        console.log(user, naam, password, email);
     }
 
     useEffect(()=>{ //user
         const result = User_regex.test(user);
-        console.log(result);
-        console.log(user);
+
         setValidName(result);
     },[user])
 
     useEffect(()=>{ //password
         const result = Wachtwoord_regex.test(password);
-        console.log(result); //TODO might want to delete this line row when live
-        console.log(password); //TODO might want to delete this row when live
+
         setValidPwd(result);
         const match = password === confirmPassword;
         setValidMatch(match);
@@ -66,8 +63,7 @@ const Aanmaken = () => {
 
     useEffect(()=>{//emailadres
         const result = Email_regex.test(email);
-        console.log(result);
-        console.log(email);
+
         setValidEmail(result);
     },[email])
 
@@ -85,7 +81,7 @@ const Aanmaken = () => {
                 )
                 : 
                 (
-                    <section classname="contact">
+                    <section className="contact">
                         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                         <form onSubmit={handleSubmit}>
                             <label htmlFor="username">
@@ -109,7 +105,7 @@ const Aanmaken = () => {
                                 onFocus={()=>setUserFocus(true)}
                                 onBlur={()=>setUserFocus(false)}
                             />
-                            <p id="uidnote" classname={userFocus && user && !validName ? "instructions" : "offscreen"}>
+                            <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
                                 <FontAwesomeIcon icon={faInfoCircle}/>
                                 Minimaal 8 karakters
                                 Begint met een letter
@@ -144,7 +140,7 @@ const Aanmaken = () => {
                                 <span className={validPwd ? "valid": "hide"}>
                                     <FontAwesomeIcon icon={faCheck}/>
                                 </span>
-                                <span classname={validPwd || !password ? "hide" : "invalid"}>
+                                <span className={validPwd || !password ? "hide" : "invalid"}>
                                     <FontAwesomeIcon icon={faTimes}/>
                                 </span>
                             </label><br/>
@@ -170,7 +166,7 @@ const Aanmaken = () => {
                                 <span className={validMatch && confirmPassword ? "valid": "hide"}>
                                     <FontAwesomeIcon icon={faCheck}/>
                                 </span>
-                                <span classname={validMatch || !confirmPassword ? "hide" : "invalid"}>
+                                <span className={validMatch || !confirmPassword ? "hide" : "invalid"}>
                                     <FontAwesomeIcon icon={faTimes}/>
                                 </span>
                             </label><br/>
@@ -185,9 +181,7 @@ const Aanmaken = () => {
                                 onBlur={()=>setMatchFocus(false)}
                             />
 
-                            <button 
-                                disabled={!validName || !validEmail  || !validPwd || !validMatch ? true : false}
-                            >
+                            <button disabled={!validName || !validEmail  || !validPwd || !validMatch ? true : false}>
                                     Registreer
                             </button>
                         </form>
@@ -196,9 +190,6 @@ const Aanmaken = () => {
             }
         </>
     )
-        
-    
-    
 }
 
 export default Aanmaken;
