@@ -59,8 +59,8 @@ const Aanmaken = () => {
 
     useEffect(()=>{ //password
         const result = Wachtwoord_regex.test(password);
-        console.log(result); //TODO delete this line row when live
-        console.log(password); //TODO delete this row when live
+        console.log(result); //TODO might want to delete this line row when live
+        console.log(password); //TODO might want to delete this row when live
         setValidPwd(result);
         const match = pwd === confirmPassword;
         setValidMatch(match);
