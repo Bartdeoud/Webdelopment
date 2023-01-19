@@ -5,15 +5,12 @@ import {faCheck, faTimes, faInfoCircle} from "@fortawesome/free-solid-svg-icons"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 //import PasswordChecklist from "react-password-checklist";
 
-/*https://www.npmjs.com/package/react-password-checklist*/
-/*https://www.youtube.com/watch?v=brcHK3P6ChQ&list=PL0Zuz27SZ-6PRCpm9clX0WiBEMB70FWwd&ab_channel=DaveGray form validation EN ACCESSIBILIITY VOOR SCREENREADER*/
-
 const User_regex = /^[a-zA-Z][a-zA-Z0-9-_]{8,}$/;
 const Wachtwoord_regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,}$/
 const Email_regex = /^[a-zA-Z0-9.!#$%&*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const Aanmaken = () => {
-    const userRef = userRef();
+    const userRef = useRef();
     const errRef = useRef();
 
     const [user, setUser] = useState("");
