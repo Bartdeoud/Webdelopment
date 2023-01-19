@@ -1,26 +1,14 @@
-import React, { Component } from "react";
-import Alinea from "../Shared/Alinea";
+import React from "react";
 import Hero2 from "../Shared/Hero2";
+import FakePay from "./FakePay";
 
-
-class Contact extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: null,
-        };
-    }
-    render () {
-        return(
-            <>
-                <Hero2 tekst="Winkelmand"/>
-
-                <section className="contact">
-                    <Alinea titel="Dit is een kop" tekst="Dit is een tekst"/>
-                </section>
-            </>
-        );
-    }
+const Winkelmand = () => {
+    return(
+        <>
+            <Hero2 tekst="Winkelmand"/>
+            <FakePay/>
+        </>
+    );
 }
 
-export default Contact;
+export default Winkelmand;

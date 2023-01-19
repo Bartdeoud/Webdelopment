@@ -6,12 +6,8 @@ namespace backend.Controllers;
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
 
-    private readonly ILogger<WeatherForecastController> _logger;
+    private readonly ILogger<WeatherForecastController> _logger; 
 
     public WeatherForecastController(ILogger<WeatherForecastController> logger)
     {
@@ -25,4 +21,10 @@ public class WeatherForecastController : ControllerBase
         dBConnect.open_connection();
         return "Gelukt!!";
     }
+
+    //[HttpGet(Name = "GetEvenementen")]
+    //public List<EvenementHadler> GetEvenementen()
+    //{
+    //    return EvenementHadler.GetEvenementen();
+    //}
 }
