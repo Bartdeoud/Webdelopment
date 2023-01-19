@@ -24,6 +24,7 @@ const Login = (props) => {
              <form onSubmit={handleSubmit}>
                 <label htmlFor="gebruikersnaam">Gebruikersnaam</label>
                 <input value={gebruikersnaam} type="text" placeholder={props.tekst} onChange={handleChange} id="gebruikersnaam" name="gebruikersnaam"/>
+                <br/>
                 <label htmlFor="wachtwoord">Wachtwoord</label>
                 <input value={wachtwoord} type="password" placeholder={props.tekst} onChange={handleChange} id="wachtwoord" name="wachtwoord"/>
                 <button className="btn" onClick={handleSubmit} type="submit"> Log in </button>

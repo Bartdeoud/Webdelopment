@@ -26,9 +26,10 @@ const Aanmaken = () => {
                 <p>*verplicht</p>
                 <label htmlFor="Username">*Gebruikersnaam:</label>
                 <input type="text" onChange={e => setNaam(e.target.value)} id="Username" name="Username" required/>
-                
+                <br/>
                 <label htmlFor="Wachtwoord">*Wachtwoord:</label>
                 <input type="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[$&+,:;=?@#|'<>.^*()%!-]).{7,}" onChange={e => setPassword(e.target.value)} id="Wachtwoord" name="Wachtwoord" required/>
+                <br/>
                 <label htmlFor="herhaalWachtwoord">*Bevestig wachtwoord:</label>
                 <input type="password" onChange={e => setConfirmPassword(e.target.value)} id="herhaalWachtwoord" name="herhaalWachtwoord" required/>
 
