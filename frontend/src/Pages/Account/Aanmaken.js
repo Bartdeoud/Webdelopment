@@ -15,6 +15,7 @@ const Email_regex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA
 const Aanmaken = () => {
     const [user, setUser] = useState("");
     const [naam, setNaam] = useState(false);
+    const [validname, setValidName] = useState(false);
     const [userFocus, setUserFocus] = useState(false);
 
     const [password, setPassword] = useState("");
@@ -43,12 +44,8 @@ const Aanmaken = () => {
             setErrMsg("Een of meerdere ingevoerde gegevens zijn incorrect.")
             return;
         }
-        alert(naam + email + date);
+        alert(naam + email);
     }
-
-    useEffect(()=>{
-        userRef.current.focus();
-    },[])
 
     useEffect(()=>{ //user
         const result = User_regex.test(user);
@@ -62,7 +59,7 @@ const Aanmaken = () => {
         console.log(result); //TODO might want to delete this line row when live
         console.log(password); //TODO might want to delete this row when live
         setValidPwd(result);
-        const match = pwd === confirmPassword;
+        const match = password === confirmPassword;
         setValidMatch(match);
     },[password, confirmPassword])
 
