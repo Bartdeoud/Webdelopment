@@ -2,7 +2,7 @@ namespace backend;
 
 using System;
 
-class Evenement
+public class Evenement
 {
     string TitelVoorstelling,Artiest,zaal,LinkToImg;
     DateTime dateTime;

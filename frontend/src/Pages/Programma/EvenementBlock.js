@@ -20,8 +20,8 @@ const EvenementBlock = (props) => {
                     <div>
                         <img src={LinkToImg} alt="Afbeelding evenement" width="100%" height="100%"></img>
                     </div>
+                    <DataFetching/>
                     <div>
-                        <DataFetching/>
                         <h2>{TitelVoorstelling}</h2>
                         <br></br>
                         <h3>{Artiest}</h3>

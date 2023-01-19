@@ -1,11 +1,11 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 
 function DataFetching(){
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        axios.get('https://localhost:7214/WeatherForecast')
+        axios.get('https://localhost:7214/evenementen')
         .then(res => {
             console.log(res)
             setPosts(res.data)
