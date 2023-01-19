@@ -17,3 +17,6 @@ npm install react-router-dom
 
 React password checklist, (https://www.npmjs.com/package/react-password-checklist)
 npm install react-password-checklist
+
+React icons (https://fontawesome.com)
+npm i @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons @fortawesome/fontawesome-svg-core
