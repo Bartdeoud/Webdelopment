@@ -45,6 +45,7 @@ const Aanmaken = () => {
             return;
         }
         alert(naam + email);
+        console.log(user, naam, password, email);
     }
 
     useEffect(()=>{ //user
@@ -93,7 +94,7 @@ const Aanmaken = () => {
                                     <FontAwesomeicon icon={faCheck}/>
                                 </span>
                                 <span className={validName || !user ? "hide" : "invalid"}>
-                                    <FontAwesomeIcon icon={faTimes}/>
+                                    <FontAwesomeicon icon={faTimes}/>
                                 </span>
                             </label>
                             <input 
@@ -121,7 +122,7 @@ const Aanmaken = () => {
                                     <FontAwesomeicon icon={faCheck}/>
                                 </span>
                                 <span className={validName || !user ? "hide" : "invalid"}>
-                                    <FontAwesomeIcon icon={faTimes}/>
+                                    <FontAwesomeicon icon={faTimes}/>
                                 </span>
                             </label>
                             <input 
