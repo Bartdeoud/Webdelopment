@@ -18,5 +18,8 @@ npm install react-router-dom
 React password checklist, (https://www.npmjs.com/package/react-password-checklist)
 npm install react-password-checklist
 
-React bootstrap, (https://react-bootstrap.github.io/getting-started/introduction)
+React axios, (https://www.npmjs.com/package/axios)
 npm i axios
+
+React bootstrap, (https://react-bootstrap.github.io/getting-started/introduction)
+npm install react-bootstrap bootstrap
