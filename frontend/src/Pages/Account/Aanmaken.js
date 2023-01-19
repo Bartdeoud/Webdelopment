@@ -24,13 +24,13 @@ const Aanmaken = () => {
             <section className="contact">
              <form>
                 <p>*verplicht</p>
-                <p>*Gebruikersnaam:</p>
-                <input type="text" onChange={e => setNaam(e.target.value)} required/>
+                <label for="Username">*Gebruikersnaam:</label>
+                <input type="text" onChange={e => setNaam(e.target.value)} id="Username" name="Username" required/>
                 
-                <p>*Wachtwoord:</p>
-                <input type="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[$&+,:;=?@#|'<>.^*()%!-]).{7,}" onChange={e => setPassword(e.target.value)} required/>
-                <p>*Bevestig wachtwoord:</p>
-                <input type="password" onChange={e => setConfirmPassword(e.target.value)} required/>
+                <label for="Wachtwoord">*Wachtwoord:</label>
+                <input type="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[$&+,:;=?@#|'<>.^*()%!-]).{7,}" onChange={e => setPassword(e.target.value)} id="Wachtwoord" name="Wachtwoord" required/>
+                <label for="herhaalWachtwoord">*Bevestig wachtwoord:</label>
+                <input type="password" onChange={e => setConfirmPassword(e.target.value)} id="herhaalWachtwoord" name="herhaalWachtwoord" required/>
 
                 <PasswordChecklist
                 //these are the default rules
