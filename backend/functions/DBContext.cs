@@ -1,5 +1,7 @@
 // See https://aka.ms/new-console-template for more information
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
+
 public class DBContext : DbContext
 {
     public DbSet<Gebruiker> gebruikers{ get; set; }
@@ -13,7 +15,7 @@ public class DBContext : DbContext
     public DbSet<Ticket> tickets { get; set; }
     public DbSet<Show> shows { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder builder) => builder.UseSqlite("Data Source= ../backend/database.db");
+    protected override void OnConfiguring(DbContextOptionsBuilder builder) => builder.UseSqlServer("Server=tcp:laakentertainment.database.windows.net,1433;Initial Catalog=LaakEntertainment;Persist Security Info=False;User ID=AdminLaak;Password=LaakEntertainment1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=2;");
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.Entity<Gebruiker>().HasData(

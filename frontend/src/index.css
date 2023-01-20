@@ -83,4 +83,16 @@ display:flex;
 .Evenement > p {
 font-size: xx-large;
 font-weight: bold;
+<<<<<<< Updated upstream
+=======
+}
+
+.EvenementPagina > form{
+	width: 70%;
+  font-weight: bold;
+}
+
+.EvenementPagina > button{
+	width: 70%;
+>>>>>>> Stashed changes
 }
