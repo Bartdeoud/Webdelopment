@@ -17,6 +17,7 @@
     "react-bootstrap": "^2.7.0",
     "react-day-picker": "^8.4.1",
     "react-dom": "^18.2.0",
+    "react-dropdown-select": "^4.9.3",
     "react-password-checklist": "^1.4.3",
     "react-router-dom": "^6.6.2",
     "react-scripts": "5.0.1",

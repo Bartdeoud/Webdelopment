@@ -5,18 +5,18 @@ using MySql.Data.MySqlClient;
 
 class DBConnect
 {
-    String conn_string = "Server=77.169.16.216:3306;Database=LaakEntertainment;user id=root;Password=LaakEntertainment1!";
+    string conn_string = @"Server=tcp:laakentertainment.database.windows.net,1433;Initial Catalog=LaakEntertainment;Persist Security Info=False;User ID=AdminLaak;Password=LaakEntertainment1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=2;";
     public void open_connection()
     {
       MySqlConnection conn = new MySqlConnection(conn_string);
       try
       {
-        conn.Open();  // connection opened
+        conn.Open();
       }
       catch(MySqlException err)
       {
         Console.WriteLine($"possible error -> {err}");
       }
-      finally{ conn.Close(); } //closes the connection finally
+      finally{ conn.Close(); }
     }
 }

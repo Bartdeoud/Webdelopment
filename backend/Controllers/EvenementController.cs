@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace backend.Controllers;
 
@@ -15,9 +17,9 @@ public class EvenementController : ControllerBase
     }
 
     [HttpGet(Name = "Evenementen")]
-    public List<Evenement> GetEvenementen()
+    public String GetEvenementen()
     {
         EvenementHadler evenementHadler = new EvenementHadler();
-        return evenementHadler.GetEvenementen();
+        return JsonSerializer.Serialize(evenementHadler.GetEvenementen());
     }
 }
