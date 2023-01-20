@@ -6,8 +6,14 @@ const Login = (props) => {
     const [gebruikersnaam, setGebruikersnaam] = useState("");
     const [wachtwoord, setWachtwoord]=useState("");
 
-    //e staat voor event
-    const handleChange = (e) => {
+    //This is just here to prevent warnings since azure doesn't like unused variables
+    const placeholder = () => {
+        console.log (setWachtwoord);
+        console.log (setGebruikersnaam);
+    }
+
+    const handleChange = () => {
+        console.log (placeholder); 
         //setFormData(e.target.value);
     }
 

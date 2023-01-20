@@ -34,6 +34,14 @@ const Aanmaken = () => {
     const [errMsg, setErrMsg] = useState("");
     const [success, setSuccess] = useState(false);
 
+    //This is just here to prevent warnings since azure doesn't like unused variables
+    const placeholder = () => {
+        console.log (setPassword);
+        console.log (setNaam);
+        console.log (matchFocus);
+        console.log (emailFocus);
+        console.log (setSuccess);
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -45,6 +53,7 @@ const Aanmaken = () => {
             return;
         }
         alert(naam + email);
+        console.log (placeholder);
     }
 
     useEffect(()=>{ //user
