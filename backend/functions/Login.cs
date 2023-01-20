@@ -21,9 +21,8 @@ public class Login{
             }
         }
         return false;
-
-        
     }
+    
     static string sha256(string input)
     {
         var crypt = new System.Security.Cryptography.SHA256Managed();
