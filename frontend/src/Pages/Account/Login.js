@@ -5,6 +5,7 @@ import { useState } from "react";
 const Login = (props) => {
     const [gebruikersnaam, setGebruikersnaam] = useState("");
     const [wachtwoord, setWachtwoord]=useState("");
+    const [formData, setFormData]=useState("");
 
     //This is just here to prevent warnings since azure doesn't like unused variables
     const placeholder = () => {
@@ -12,9 +13,9 @@ const Login = (props) => {
         console.log (setGebruikersnaam);
     }
 
-    const handleChange = () => {
+    const handleChange = (e) => {
         console.log (placeholder); 
-        //setFormData(e.target.value);
+        setFormData(e.target.value);
     }
 
     const handleSubmit = async (e) => {
