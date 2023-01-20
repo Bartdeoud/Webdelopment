@@ -85,9 +85,9 @@ font-size: xx-large;
 font-weight: bold;
 }
 
-
 .EvenementPagina > form{
 	width: 70%;
+  font-weight: bold;
 }
 
 .EvenementPagina > button{
