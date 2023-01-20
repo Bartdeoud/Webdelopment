@@ -17,9 +17,9 @@ const Login = (props) => {
         //setFormData(e.target.value);
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        //alert(formData);
+        alert(formData);
     }
 
     return (

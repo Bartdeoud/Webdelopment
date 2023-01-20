@@ -19,10 +19,10 @@ public class DBContext : DbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.Entity<Gebruiker>().HasData(
-            new Gebruiker(){ Email = "test1@email.com",Naam = "Jan1", Wachtwoord = "Test1", UserID = 1},
-            new Gebruiker(){ Email = "test2@email.com",Naam = "Jan2", Wachtwoord = "Test2", UserID = 2},
-            new Gebruiker(){ Email = "test3@email.com",Naam = "Jan3", Wachtwoord = "Test3", UserID = 3},
-            new Gebruiker(){ Email = "test4@email.com",Naam = "Jan4", Wachtwoord = "Test4", UserID = 4}
+            new Gebruiker(){ Email = "test1@email.com",Username="Jan1",Naam = "Jan1", Wachtwoord = "Test1", UserID = 1},
+            new Gebruiker(){ Email = "test2@email.com",Username="Jan2",Naam = "Jan2", Wachtwoord = "Test2", UserID = 2},
+            new Gebruiker(){ Email = "test3@email.com",Username="Jan3",Naam = "Jan3", Wachtwoord = "Test3", UserID = 3},
+            new Gebruiker(){ Email = "test4@email.com",Username="Jan4",Naam = "Jan4", Wachtwoord = "Test4", UserID = 4}
             );
     }
 
