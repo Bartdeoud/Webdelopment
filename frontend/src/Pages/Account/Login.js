@@ -3,16 +3,23 @@ import Hero2 from '../Shared/Hero2';
 import { useState } from "react";
 
 const Login = (props) => {
-    const [formData, setFormData] = useState();
+    const [gebruikersnaam, setGebruikersnaam] = useState("");
+    const [wachtwoord, setWachtwoord]=useState("");
 
-    //e staat voor event
-    const handleChange = (e) => {
-        setFormData(e.target.value);
+    //This is just here to prevent warnings since azure doesn't like unused variables
+    const placeholder = () => {
+        console.log (setWachtwoord);
+        console.log (setGebruikersnaam);
+    }
+
+    const handleChange = () => {
+        console.log (placeholder); 
+        //setFormData(e.target.value);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert(formData);
+        //alert(formData);
     }
 
     return (
@@ -20,12 +27,13 @@ const Login = (props) => {
             <Hero2 tekst="Inloggen" />
                 
             <section className="contact">
-             <form>
-                <p>Gebruikersnaam</p>
-                <input type="text" placeholder={props.tekst} onChange={handleChange}/>
-                <p>Wachtwoord</p>
-                <input type="password" placeholder={props.tekst} onChange={handleChange}/>
-                <button className="btn" onClick={handleSubmit}> Submit </button>
+             <form onSubmit={handleSubmit}>
+                <label htmlFor="gebruikersnaam">Gebruikersnaam</label>
+                <input value={gebruikersnaam} type="text" placeholder={props.tekst} onChange={handleChange} id="gebruikersnaam" name="gebruikersnaam"/>
+                <br/>
+                <label htmlFor="wachtwoord">Wachtwoord</label>
+                <input value={wachtwoord} type="password" placeholder={props.tekst} onChange={handleChange} id="wachtwoord" name="wachtwoord"/>
+                <button className="btn" onClick={handleSubmit} type="submit"> Log in </button>
             </form>
             </section>   
         </>
