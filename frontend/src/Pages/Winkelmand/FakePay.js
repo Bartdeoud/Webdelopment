@@ -3,6 +3,14 @@ import { Form, Button } from 'react-bootstrap';
 
 const FakePay = () => {
     var [amount , setAmount] = useState('');
+
+    const handleChange = (e) => {
+        if (e.target.value < 0 || e.target.value === ""){
+            setAmount(10);
+        }else{
+            setAmount(e.target.value);
+        }
+    };
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -10,7 +18,6 @@ const FakePay = () => {
             amount
         };
         handleOnSubmit(Order);
-        console.log (Order);
     };
 
     var details = {
@@ -50,22 +57,26 @@ const FakePay = () => {
 
     if (html === undefined || html === ""){
         return (
-            <div>
+            <section className='contact'>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="name">
-                        <Form.Label>amount</Form.Label>
+                        <Form.Label> &nbsp; Te betalen bedrag:</Form.Label>
+                        <br/>
                         <br/>
                         <Form.Control
                             type="number"
                             placeholder="Amount"
+                            required min="1"
                             value={amount}
-                            onChange={(e) => setAmount(e.target.value)}
+                            onChange={handleChange}
                         />
                     </Form.Group>
                     <br/>
-                    <Button type="submit"> Submit </Button>
+                    <Button className='btn' type="submit"> Submit </Button>
                 </Form>
-            </div>
+                <br/>
+                <hr/>
+            </section>
         )
     }else{
         return (
