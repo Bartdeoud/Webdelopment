@@ -1,7 +1,6 @@
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Identity;
 
-public class Ticket: IdentityUser
+public class Ticket
 {
     [Key]
     public int TicketID {get; set;}
