@@ -1,6 +1,13 @@
 namespace backend;
 
 public class Loginhandler{
+    public static List<Gebruiker> gebruikers = new List<Gebruiker>();
+
+    /*public Loginhandler(){
+        gebruikers.add
+    }*/
+
+
     public static Random rnd = new Random();
     public static DBContext database = new DBContext();
     static public async void addUser(String naam, String wachtwoord, String email, String username){
