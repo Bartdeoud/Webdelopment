@@ -60,7 +60,7 @@ const FakePay = () => {
                             placeholder="Amount"
                             required min="1"
                             value={amount}
-                            onChange={(e) => { setAmount(e.target.value) }
+                            onChange={(e) => { setAmount(e.target.value) }}
                         />
                     </Form.Group>
                     <br/>
