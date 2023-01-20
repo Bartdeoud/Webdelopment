@@ -6,7 +6,7 @@ public class EvenementHadler
 
     public EvenementHadler(){
         Evenementen.Add(
-            new Evenement("Soldaat van orangje", "eensoldaat", DateTime.Now, "Zaal 2", "..\\assets\\image\\LaakZaal3.jpg")
+            new Evenement("Soldaat van oranje", "eensoldaat", DateTime.Now, "Zaal 2", "..\\assets\\image\\LaakZaal3.jpg")
         );
     }
 
