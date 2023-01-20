@@ -84,3 +84,12 @@ display:flex;
 font-size: xx-large;
 font-weight: bold;
 }
+
+
+.EvenementPagina > form{
+	width: 70%;
+}
+
+.EvenementPagina > button{
+	width: 70%;
+}
