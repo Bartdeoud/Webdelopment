@@ -83,36 +83,36 @@ const Login = (props) => {
                 </>
             ):(
                 <>
-                <Hero2 tekst="Inloggen" />
-                    
-                <section className="contact">
-                    <p ref={errRef} className={errMsg?"errmsg":"offscreen"} aria-live="assertive">{errMsg}</p>
-                    <form onSubmit={handleSubmit}>
-                        <label htmlFor="gebruikersnaam">Gebruikersnaam:</label>
-                        <input
-                            value={gebruikersnaam}
-                            type="text"
-                            ref={userRef}
-                            placeholder={props.tekst}
-                            onChange={(e)=> setGebruikersnaam(e.target.value)}
-                            id="gebruikersnaam"
-                            name="gebruikersnaam"
-                            required
-                        />
-                        <br/>
-                        <label htmlFor="wachtwoord">Wachtwoord:</label>
-                        <input
-                            value={wachtwoord}
-                            type="password"
-                            placeholder={props.tekst}
-                            onChange={(e)=>setWachtwoord(e.target.value)}
-                            id="wachtwoord"
-                            name="wachtwoord"
-                            required
-                        />
-                        <button className="btn" onClick={handleSubmit} type="submit">Log in</button>
-                    </form>
-                </section>
+                    <Hero2 tekst="Inloggen" />
+                        
+                    <section className="contact">
+                        <p ref={errRef} className={errMsg?"errmsg":"offscreen"} aria-live="assertive">{errMsg}</p>
+                        <form onSubmit={handleSubmit}>
+                            <label htmlFor="gebruikersnaam">Gebruikersnaam:</label>
+                            <input
+                                value={gebruikersnaam}
+                                type="text"
+                                ref={userRef}
+                                placeholder={props.tekst}
+                                onChange={(e)=> setGebruikersnaam(e.target.value)}
+                                id="gebruikersnaam"
+                                name="gebruikersnaam"
+                                required
+                            />
+                            <br/>
+                            <label htmlFor="wachtwoord">Wachtwoord:</label>
+                            <input
+                                value={wachtwoord}
+                                type="password"
+                                placeholder={props.tekst}
+                                onChange={(e)=>setWachtwoord(e.target.value)}
+                                id="wachtwoord"
+                                name="wachtwoord"
+                                required
+                            />
+                            <button className="btn" onClick={handleSubmit} type="submit">Log in</button>
+                        </form>
+                    </section>
                 </>
             )} 
         </>
