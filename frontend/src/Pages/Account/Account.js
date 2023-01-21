@@ -8,16 +8,13 @@ class Account extends Component {
             <>
                 <Hero2 tekst="Mijn account"/>
 
-                <section className="contact">
-                    <Alinea titel="Inloggen" 
+                <Alinea titel="Inloggen" 
                     tekst="U bent momenteel nog niet ingelogd, log in om uw account te bekijken."
                     link="/Login"
                     linknaam="Klik hier om in te loggen"
                     tekst2="Heeft u nog geen account?"
                     link2="/Aanmaken"
                     linknaam2="Klik dan hier om een account aan te maken"/>
-
-                </section>
             </>
         );
     }

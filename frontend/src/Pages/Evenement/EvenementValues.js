@@ -14,7 +14,6 @@ const EvenementValues = () => {
 
     return (
         <section className="programmaBlock">
-                
                 <div class="Evenement">
                     <img src={LinkToImg} alt="Afbeelding evenement" width="50%" height="50%"></img>
                         <p>

@@ -1,7 +1,6 @@
 import React from "react";
 import {useNavigate} from 'react-router-dom';
 
-
 const EvenementBlock = (props) => {
     const {
         TitelVoorstelling,
@@ -34,8 +33,7 @@ const EvenementBlock = (props) => {
                         <br/>
                         <button onClick={()=>{navigate('/Evenement', { state:props})}} className="btn">bestel</button>
                     </div>
-                </div>
-                
+                </div>      
         </section>
     );
 }

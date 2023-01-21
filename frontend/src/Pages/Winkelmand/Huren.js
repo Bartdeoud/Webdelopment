@@ -8,9 +8,7 @@ class Huren extends Component {
             <>
                 <Hero2 tekst="Huren"/>
 
-                <section className="contact">
-                    <Alinea titel="Dit is een kop" tekst="Dit is een tekst"/>
-                </section>
+                <Alinea titel="Dit is een kop" tekst="Dit is een tekst"/>
             </>
         );
     }
