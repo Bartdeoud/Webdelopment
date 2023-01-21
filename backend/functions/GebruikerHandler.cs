@@ -1,11 +1,19 @@
-public class GebruikerHandler
+public static class GebruikerHandler
 {
-    public async static Task<string> getGebruikerWithIDAsync(string gebruiker_id)
+    public async static Task<List<Gebruiker>> getListGebruiker() 
     {
         using (var dB = new DBContext())
         {
-            //return await dB.gebruikers.FirstOrDefault(gebruiker => gebruiker.UserID == gebruiker_id);
-            return "true";
+            return dB.gebruikers.ToList();
+            //ToListAsync kan niet gevonden worden?
+        }
+    }
+    public async static Task<Gebruiker> getGebruikerWithIDAsync(int gebruiker_id)
+    {
+        using (var dB = new DBContext())
+        {
+            return dB.gebruikers.FirstOrDefault(gebruiker => gebruiker.UserID == gebruiker_id);
+            //FirstOrDefaultAsync bestaat maar kan niet gevonden worden;
         }
     }
 
@@ -15,7 +23,7 @@ public class GebruikerHandler
         {
             try
             {
-                await dB.AddAsync(new_gebruiker);
+                await dB.gebruikers.AddAsync(new_gebruiker);
                 return await dB.SaveChangesAsync() >= 1;
             }
             catch
@@ -24,4 +32,37 @@ public class GebruikerHandler
             }
         }
     }
+    public async static Task<bool> updateGebruikerAsync(Gebruiker update)
+    {
+        using (var dB = new DBContext())
+        {
+            try
+            {
+                dB.gebruikers.Update(update);
+                
+                return await dB.SaveChangesAsync() >= 1;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+    }
+    public async static Task<bool> deleteGebruikerAsync(int id)
+    {
+        using (var dB = new DBContext())
+        {
+            try
+            {
+                Gebruiker gebruikerRemove = await getGebruikerWithIDAsync(id);
+                dB.Remove(gebruikerRemove);
+                return await dB.SaveChangesAsync() >= 1;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+    }
+    
 }

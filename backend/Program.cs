@@ -12,6 +12,10 @@ builder.Services.AddCors(options =>
                       });  
 }); 
 
+var _gebruiker =  new Gebruiker(){ Email = "SIM@email.com",Naam = "Sin", Wachtwoord = "Lokaal", UserID = 1000};
+await GebruikerHandler.addGebruikerAsync(_gebruiker);
+
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
