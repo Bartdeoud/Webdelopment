@@ -8,9 +8,15 @@ class OverOns extends Component {
             <>
                 <Hero2 tekst="Over ons"/>
 
-                <section className="contact">
-                    <Alinea titel="Wie wij zijn" tekst="Wij zijn 4 studenten die een phi... euh, Wij zijn het laaktheater! Wij verkopen kaartjes voor al uw favoriete shows"/>
-                </section>
+                <Alinea titel="Over het Laaktheater" 
+                    tekst="Het Laaktheater is een professioneel theatergezelschap 
+                    dat zich richt op het opvoeren van toneelstukken voor een breed 
+                    publiek. Ons doel is om mensen te entertainen en te inspireren 
+                    door middel van onze voorstellingen. Wij werken met een team van 
+                    professionele acteurs, regisseurs en technici om de hoogste 
+                    kwaliteit te leveren. Onze voorstellingen worden opgevoerd in 
+                    diverse theaters in de regio en zijn toegankelijk voor een breed 
+                    publiek. Wij hopen u binnenkort te verwelkomen in ons theater!"/>
             </>
         );
     }
