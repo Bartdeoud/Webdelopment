@@ -61,7 +61,7 @@ const Login = (props) => {
             }else{
                 if(err.response?.status==400){
                     setErrMsg('Gebruikersnaam of wachtwoord ontbreekt');
-                }else if(err.response?.status === 401){
+                }else{
                     setErrMsg('Login lukte niet');
                 }
                 errRef.current.focus();
