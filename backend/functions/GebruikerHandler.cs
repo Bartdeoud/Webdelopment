@@ -1,14 +1,14 @@
 public static class GebruikerHandler
 {
-    public async static Task<List<Gebruiker>> getListGebruiker() 
+    public static List<Gebruiker> getListGebruiker() 
     {
         using (var dB = new DBContext())
         {
             return dB.gebruikers.ToList();
-            //ToListAsync kan niet gevonden worden?
+            //ToListAsync kan niet gevonden worden;
         }
     }
-    public async static Task<Gebruiker> getGebruikerWithIDAsync(int gebruiker_id)
+    public static Gebruiker getGebruikerWithIDAsync(int gebruiker_id)
     {
         using (var dB = new DBContext())
         {
@@ -54,7 +54,7 @@ public static class GebruikerHandler
         {
             try
             {
-                Gebruiker gebruikerRemove = await getGebruikerWithIDAsync(id);
+                Gebruiker gebruikerRemove =  getGebruikerWithIDAsync(id);
                 dB.Remove(gebruikerRemove);
                 return await dB.SaveChangesAsync() >= 1;
             }
