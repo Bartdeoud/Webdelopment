@@ -12,8 +12,6 @@ builder.Services.AddCors(options =>
                       });  
 }); 
 
-var _gebruiker =  new Gebruiker(){ Email = "SIM@email.com",Naam = "Sin", Wachtwoord = "Lokaal", UserID = 1000};
-await GebruikerHandler.addGebruikerAsync(_gebruiker);
 
 
 builder.Services.AddControllers();
@@ -37,5 +35,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.UseCors(MyAllowSpecificOrigins);  
-
 app.Run();
