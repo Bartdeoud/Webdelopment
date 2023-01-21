@@ -8,7 +8,7 @@ import Accesibility from "./Pages/Accesibility/Accesibility";
 import Voorwaarden from "./Pages/Voorwaarden/Voorwaarden";
 import VierNulVier from "./Pages/404/404";
 import Evenement from "./Pages/Evenement/Evenement";
-import Login from "./Pages/Account/Login";
+import Login from "./Pages/Login";
 import Account from "./Pages/Account/Account";
 import Aanmaken from "./Pages/Account/Aanmaken";
 import Huren from "./Pages/Winkelmand/Huren";

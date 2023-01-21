@@ -1,8 +1,8 @@
 import React from 'react';
-import Hero2 from '../Shared/Hero2';
-import Alinea from "../Shared/Alinea";
+import Hero2 from './Shared/Hero2';
+import Alinea from "./Shared/Alinea";
 import { useRef, useState, useEffect, useContext} from "react";
-import AuthContext from ".../context/AuthProvider";
+import AuthContext from "../context/AuthProvider";
 
 import axios from "../api/axios";
 
