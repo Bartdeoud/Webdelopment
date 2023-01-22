@@ -41,5 +41,59 @@ public class DBContext : DbContext
         builder.Entity<Donateur>().HasData(
             new Donateur(){ TotaleDonatie = 1000, UserID = 1}
         );
+
+        builder.Entity<Zaal>().HasData(
+            new Zaal(){
+                Zaalnr=1,
+                Naam="Zaal 1",
+                Aantal_stoelen=240,
+                rij=new List<Stoelrij>(){
+                    new Stoelrij(){Rangnummer=1,Aantal_stoelen=20},
+                    new Stoelrij(){Rangnummer=2,Aantal_stoelen=100},
+                    new Stoelrij(){Rangnummer=3,Aantal_stoelen=120}
+                }
+            },
+            new Zaal(){
+                Zaalnr=2,
+                Naam="Zaal 2",
+                Aantal_stoelen=180,
+                rij=new List<Stoelrij>(){
+                    new Stoelrij(){Rangnummer=1,Aantal_stoelen=20},
+                    new Stoelrij(){Rangnummer=2,Aantal_stoelen=160}
+                }
+            },
+            new Zaal(){
+                Zaalnr=3,
+                Naam="Zaal 3",
+                Aantal_stoelen=90,
+                rij=new List<Stoelrij>(){
+                    new Stoelrij(){Rangnummer=1,Aantal_stoelen=10},
+                    new Stoelrij(){Rangnummer=2,Aantal_stoelen=80}
+                }
+            },
+            new Zaal(){
+                Zaalnr=4,
+                Naam="Zaal 4",
+                Aantal_stoelen=440,
+                rij=new List<Stoelrij>(){
+                    new Stoelrij(){Rangnummer=1,Aantal_stoelen=40},
+                    new Stoelrij(){Rangnummer=2,Aantal_stoelen=200},
+                    new Stoelrij(){Rangnummer=3,Aantal_stoelen=200}
+                }
+            }
+        );
+
+        builder.Entity<Ruimte>().HasData(
+            new Ruimte(){RuimteNr=1 ,Naam="Ruimte 1" , Capaciteit=30},
+            new Ruimte(){RuimteNr=2 ,Naam="Ruimte 2" , Capaciteit=30},
+            new Ruimte(){RuimteNr=3 ,Naam="Ruimte 3" , Capaciteit=30},
+            new Ruimte(){RuimteNr=4 ,Naam="Ruimte 4" , Capaciteit=30},
+            new Ruimte(){RuimteNr=5 ,Naam="Ruimte 5" , Capaciteit=30},
+            new Ruimte(){RuimteNr=6 ,Naam="Ruimte 6" , Capaciteit=30},
+            new Ruimte(){RuimteNr=7 ,Naam="Ruimte 7" , Capaciteit=30},
+            new Ruimte(){RuimteNr=8 ,Naam="Ruimte 8" , Capaciteit=30},
+            new Ruimte(){RuimteNr=9 ,Naam="Ruimte 9" , Capaciteit=30},
+            new Ruimte(){RuimteNr=10,Naam="Ruimte 10", Capaciteit=30}
+        );
     }
 }
