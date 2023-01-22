@@ -10,15 +10,15 @@ public class Loginhandler{
 
     public static Random rnd = new Random();
     public static DBContext database = new DBContext();
-    static public async void addUser(String naam, String wachtwoord, String email, String username){
+    static public async void addUser(string naam, string wachtwoord, string email, string username){
         database.gebruikers.Add(new Gebruiker(){Email=email,Naam=naam,Username=username,Wachtwoord=wachtwoord,UserID=rnd.Next(0,2147483647)});
         database.SaveChanges();
     }
-    static public async void addUser(String naam, String wachtwoord, String email){//If no username, username=naam
+    static public async void addUser(string naam, string wachtwoord, string email){//If no username, username=naam
         addUser(naam, wachtwoord, email, naam);
     }
 
-    static public Task<bool> checkLogin(String gebrnaam, String wwoord){
+    static public Task<bool> checkLogin(string gebrnaam, string wwoord){
 
         var user = database.gebruikers
             .Where(g=>g.Username.Equals(gebrnaam) && g.Wachtwoord==wwoord)
