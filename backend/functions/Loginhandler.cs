@@ -11,7 +11,7 @@ public class Loginhandler{
     public static Random rnd = new Random();
     public static DBContext database = new DBContext();
     static public async void addUser(String naam, String wachtwoord, String email, String username){
-        database.Add(new Gebruiker(){Email=email,Naam=naam,Username=username,Wachtwoord=wachtwoord,UserID=rnd.Next(0,2147483647)});
+        database.gebruikers.Add(new Gebruiker(){Email=email,Naam=naam,Username=username,Wachtwoord=wachtwoord,UserID=rnd.Next(0,2147483647)});
         database.SaveChanges();
     }
     static public async void addUser(String naam, String wachtwoord, String email){//If no username, username=naam
