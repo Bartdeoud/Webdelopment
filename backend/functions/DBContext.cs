@@ -30,27 +30,15 @@ public class DBContext : DbContext
             new Gebruiker(){ Email = "artiestmail5@email.com", Username="Artiest5", Naam = "Artiest5", Wachtwoord = "Test5", UserID = 9}
         );
 
-        builder.Entity<Artiest>().HasData(
-            new Artiest(){ artiest_naam = "Artiest1", UserID = 5},
-            new Artiest(){ artiest_naam = "Artiest2", UserID = 6},
-            new Artiest(){ artiest_naam = "Artiest3", UserID = 7},
-            new Artiest(){ artiest_naam = "Artiest4", UserID = 8},
-            new Artiest(){ artiest_naam = "Artiest5", UserID = 9}
-        );
-
-        builder.Entity<Donateur>().HasData(
-            new Donateur(){ TotaleDonatie = 1000, UserID = 1}
-        );
-
         builder.Entity<Zaal>().HasData(
             new Zaal(){
                 Zaalnr=1,
                 Naam="Zaal 1",
                 Aantal_stoelen=240,
                 rij=new List<Stoelrij>(){
-                    new Stoelrij(){Rangnummer=1,Aantal_stoelen=20},
-                    new Stoelrij(){Rangnummer=2,Aantal_stoelen=100},
-                    new Stoelrij(){Rangnummer=3,Aantal_stoelen=120}
+                    new Stoelrij(){Rangnummer=1,Aantal_stoelen=20, rijid=11},
+                    new Stoelrij(){Rangnummer=2,Aantal_stoelen=100, rijid=12},
+                    new Stoelrij(){Rangnummer=3,Aantal_stoelen=120, rijid=13}
                 }
             },
             new Zaal(){
@@ -58,8 +46,8 @@ public class DBContext : DbContext
                 Naam="Zaal 2",
                 Aantal_stoelen=180,
                 rij=new List<Stoelrij>(){
-                    new Stoelrij(){Rangnummer=1,Aantal_stoelen=20},
-                    new Stoelrij(){Rangnummer=2,Aantal_stoelen=160}
+                    new Stoelrij(){Rangnummer=1,Aantal_stoelen=2, rijid=21},
+                    new Stoelrij(){Rangnummer=2,Aantal_stoelen=160, rijid=22}
                 }
             },
             new Zaal(){
@@ -67,8 +55,8 @@ public class DBContext : DbContext
                 Naam="Zaal 3",
                 Aantal_stoelen=90,
                 rij=new List<Stoelrij>(){
-                    new Stoelrij(){Rangnummer=1,Aantal_stoelen=10},
-                    new Stoelrij(){Rangnummer=2,Aantal_stoelen=80}
+                    new Stoelrij(){Rangnummer=1,Aantal_stoelen=10, rijid=31},
+                    new Stoelrij(){Rangnummer=2,Aantal_stoelen=80, rijid=32}
                 }
             },
             new Zaal(){
@@ -76,9 +64,9 @@ public class DBContext : DbContext
                 Naam="Zaal 4",
                 Aantal_stoelen=440,
                 rij=new List<Stoelrij>(){
-                    new Stoelrij(){Rangnummer=1,Aantal_stoelen=40},
-                    new Stoelrij(){Rangnummer=2,Aantal_stoelen=200},
-                    new Stoelrij(){Rangnummer=3,Aantal_stoelen=200}
+                    new Stoelrij(){Rangnummer=1,Aantal_stoelen=40, rijid=41},
+                    new Stoelrij(){Rangnummer=2,Aantal_stoelen=200, rijid=42},
+                    new Stoelrij(){Rangnummer=3,Aantal_stoelen=200, rijid=43}
                 }
             }
         );
