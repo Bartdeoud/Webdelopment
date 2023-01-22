@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 namespace backend.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class EvenementController : ControllerBase
 {
 
@@ -16,11 +16,12 @@ public class EvenementController : ControllerBase
         _logger = logger;
     }
 
-
-
     [HttpGet(Name = "Evenement/{evenementNaam}")]
-    public String GetEvenementen(string evenementNaam)
+    public string GetEvenementen(string evenementNaam)
     {
+        if(evenementNaam.Equals("0")){
+        return JsonSerializer.Serialize(ShowHandler.GetEvenementen());
+        }
         return JsonSerializer.Serialize(ShowHandler.GetShowByName(evenementNaam));
     }
 }
