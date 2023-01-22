@@ -1,49 +1,44 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import Hero2 from '../Shared/Hero2';
-import { useState } from "react";
 // import { DayPicker } from "react-day-picker";
 import 'react-day-picker/dist/style.css';
 
-const EvenementToevoegen = (props) => {
-    // const [days, setDays] = useState();
-    const [naam, setNaam] = useState();
-    const [zaal, setZaal] = useState();
+const EvenementToevoegen = () => {
+    // const [day, setDay] = useState();
+    const [shownaam, setNaam] = useState();
+    const [showzaal, setZaal] = useState();
     const [leeftijd, setLeeftijd] = useState();
-    const [genre, setGenre] = useState();
+    const [showgenre, setGenre] = useState();
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        handleForSubmit();
-        handleOnSubmit();
+      handleOnSubmit();
     }
 
-    const handleForSubmit = () => {
-        console.log ("handleForSubmit");
-        // await fetch(URL, {
-        // })
-    }
-
-    const handleOnSubmit = async (order) => {
-        console.log ("handleOnSubmit");
-        await fetch(URL, {
-            method: 'POST',
-            headers:{
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+    const handleOnSubmit = async () => {
+        try {
+          let res = await fetch("https://localhost:7214/api/Show", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
             },
-            body : JSON.stringify({
-                "shownr": 0,
-                "afbeelding": "string",
-                "genre": genre,
-                "naam": naam,
-                "leeftijdsgroep": leeftijd,
-                "zaal": zaal,
-                "beginTijd": 0,
-                "eindTijd": 0,
-            })
-        })
-    }
-
+            body: JSON.stringify({
+              shownr: 0,
+              afbeelding: "string",
+              genre: showgenre,
+              naam: shownaam,
+              leeftijdsgroep: leeftijd,
+              zaal: showzaal,
+              beginTijd: "2023-01-22T22:09:07.168Z",
+              eindTijd: "2023-01-22T22:09:07.168Z"
+            }),
+          });
+          if (res.status === 200) {
+            console.log("succes");
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      }
 
     return (
         <>
@@ -51,7 +46,7 @@ const EvenementToevoegen = (props) => {
             <section className="contact">
                 <form>
                     <p>Naam evenement</p>
-                    <input type="text"  required pattern=".*\S+.*" placeholder="Voer hier de naam van de show in" onChange={(e)=>setNaam(e.target.value)}/>
+                    <input type="text" placeholder="Voer hier de naam van de show in" onChange={(e)=>setNaam(e.target.value)}/>
 
                     <p>Zaal</p>
                     <select required="required"  onChange={(e)=>setZaal(e.target.value)}>
@@ -88,10 +83,9 @@ const EvenementToevoegen = (props) => {
 
                     {/* <p>Dagen</p>
                     <DayPicker
-                        mode="multiple"
-                        min={1}
-                        selected={days}
-                        onSelect={setDays}
+                        mode="single"
+                        selected={day}
+                        onSelect={setDay}
                     /> */}
 
                     <button className="btn" onClick={handleSubmit}> Submit </button>

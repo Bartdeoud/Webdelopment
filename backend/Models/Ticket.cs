@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 public class Ticket
 {
@@ -7,4 +8,7 @@ public class Ticket
 
     [Required]
     public string stoelNr {set; get;}
+    
+    [ForeignKey("Show")]
+    public int Shownr {get;set;}
 }

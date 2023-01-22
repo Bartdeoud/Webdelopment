@@ -10,6 +10,7 @@ public class Loginhandler{
 
     public static Random rnd = new Random();
     public static DBContext database = new DBContext();
+    
     static public async void addUser(string naam, string wachtwoord, string email, string username){
         database.gebruikers.Add(new Gebruiker(){Email=email,Naam=naam,Username=username,Wachtwoord=wachtwoord,UserID=rnd.Next(0,2147483647)});
         database.SaveChanges();
