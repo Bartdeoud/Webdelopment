@@ -1,31 +1,16 @@
-var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";  
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddCors(options =>  
-{  
-    options.AddPolicy(name: MyAllowSpecificOrigins,  
-                      policy  =>  
-                      {  
-                          policy.WithOrigins("http://localhost:3000"); // add the allowed origins  
-                      });  
-}); 
-
-async void testDatabase(){
-
-var _gebruiker = new Gebruiker(){ Email = "SIM@email.com",Naam = "Sin", Wachtwoord = "Lokaal", UserID = 1000};
-await GebruikerHandler.addGebruikerAsync(_gebruiker);
-
-List<Gebruiker> ayaya = GebruikerHandler.getListGebruiker();
-foreach (var i in ayaya)
+builder.Services.AddCors(options =>
 {
-    Console.WriteLine(i.Naam);
-}
-}
-
-testDatabase();
-
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:3000"); // add the allowed origins  
+                      });
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -47,5 +32,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseCors(MyAllowSpecificOrigins);  
+app.UseCors(MyAllowSpecificOrigins);
 app.Run();
