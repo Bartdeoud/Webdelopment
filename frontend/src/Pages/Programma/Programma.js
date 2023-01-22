@@ -1,24 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import Hero2 from "../Shared/Hero2";
-import DataFetching from "../../DataFetching.js";
+import DataFetching from "../../api/DataFetching.js";
 
-class Programma extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: null,
-        };
-    }
-
-    render () {
-        return(
-            <>
-                <Hero2 tekst="Programma"/>
-                <DataFetching/>
-            </>
-            
-        );
-    }
+const Programma = () => {
+    return(
+        <>
+            <Hero2 tekst="Programma"/>
+            <DataFetching/>
+        </>
+        
+    );
 }
 
 export default Programma;

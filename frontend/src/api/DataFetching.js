@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import EvenementBlock from "./Pages/Programma/EvenementBlock.js"
+import EvenementBlock from "../Pages/Programma/EvenementBlock.js"
 
 function DataFetching(){
     const [posts, setPosts] = useState([])
