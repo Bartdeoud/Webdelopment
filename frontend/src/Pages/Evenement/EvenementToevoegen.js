@@ -1,43 +1,22 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import Hero2 from '../Shared/Hero2';
-// import { useState } from "react";
 // import { DayPicker } from "react-day-picker";
 import 'react-day-picker/dist/style.css';
-// import axios from 'axios';
-
 
 const EvenementToevoegen = () => {
     // const [day, setDay] = useState();
-    // const [shownaam, setNaam] = useState();
-    // const [showzaal, setZaal] = useState();
-    // const [leeftijd, setLeeftijd] = useState();
-    // const [showgenre, setGenre] = useState();
+    const [shownaam, setNaam] = useState();
+    const [showzaal, setZaal] = useState();
+    const [leeftijd, setLeeftijd] = useState();
+    const [showgenre, setGenre] = useState();
 
     const handleSubmit = (e) => {
       handleOnSubmit();
     }
 
-    // const handleOnSubmit2 = async (e) => {
-    //   axios.post("https://localhost:7214/api/Show/ShowToevoegen", {
-    //     shownr: 0,
-    //     afbeelding: "string",
-    //     genre: "showgenre",
-    //     naam: "shownaam",
-    //     leeftijdsgroep: "leeftijd",
-    //     zaal: "showzaal",
-    //     beginTijd: "2023-01-22T22:09:07.168Z",
-    //     eindTijd: "2023-01-22T22:09:07.168Z"
-    //   })
-    //   .then(res => {
-    //     console.log(res);
-    //     console.log(res.data);
-    //   })
-    // }
-
-
     const handleOnSubmit = async () => {
         try {
-          let res = await fetch("https://localhost:7214/api/Show/ShowToevoegen", {
+          let res = await fetch("https://localhost:7214/api/Show", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -45,10 +24,10 @@ const EvenementToevoegen = () => {
             body: JSON.stringify({
               shownr: 0,
               afbeelding: "string",
-              genre: "showgenre",
-              naam: "shownaam",
-              leeftijdsgroep: "leeftijd",
-              zaal: "showzaal",
+              genre: showgenre,
+              naam: shownaam,
+              leeftijdsgroep: leeftijd,
+              zaal: showzaal,
               beginTijd: "2023-01-22T22:09:07.168Z",
               eindTijd: "2023-01-22T22:09:07.168Z"
             }),
@@ -67,9 +46,9 @@ const EvenementToevoegen = () => {
             <section className="contact">
                 <form>
                     <p>Naam evenement</p>
-                    {/* <input type="text" placeholder="Voer hier de naam van de show in" onChange={(e)=>setNaam(e.target.value)}/> */}
+                    <input type="text" placeholder="Voer hier de naam van de show in" onChange={(e)=>setNaam(e.target.value)}/>
 
-                    {/* <p>Zaal</p>
+                    <p>Zaal</p>
                     <select required="required"  onChange={(e)=>setZaal(e.target.value)}>
                         <option value="" disabled selected>Selecteer een zaal</option>
                         <option value="zaal1">Zaal 1</option>
@@ -98,7 +77,7 @@ const EvenementToevoegen = () => {
                         <option value="Muziek">Muziek</option>
                         <option value="Musical">Musical</option>
                         <option value="Opera">Opera</option>
-                    </select> */}
+                    </select>
 
                     <br/>
 
