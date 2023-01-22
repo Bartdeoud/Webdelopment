@@ -17,7 +17,7 @@ const EvenementValues = () => {
                 <div class="Evenement">
                     <img src={LinkToImg} alt="Afbeelding evenement" width="50%" height="50%"></img>
                         <p>
-                        {TitelVoorstelling}<br/>
+                        <h2 id="titelvoorstelling">{TitelVoorstelling}</h2>
                         {Artiest}<br/>
                         {zaal}<br/>
                         {datum}<br/>

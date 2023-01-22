@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import EvenementValues from "./EvenementValues.js";
 import GetSeats from "./Seats.js";
+import setCookies from "./CookieHandler.js";
+
+
+
 
 class Programma extends Component {
     constructor(props) {
         super(props);
-
-        this.handleSubmit = {}
 
         this.state = {
             textInput: null,
@@ -18,15 +20,18 @@ class Programma extends Component {
             <div className="EvenementPagina">
                 <EvenementValues/>
                 <GetSeats/>
-                <form onSubmit={this.handleSubmit}>
+                <div>
                 <label>
                     Aantal kaartjes (0-9):
-                    <input type="text" ref={this.textInput} />
+                    <input type="text" id="NumberTickets"/>
                 </label>
                     <br/><br/>
-                    <button className="btn" type="button" onClick={""}>Submit</button>
+                    <button className="btn" type="onClick" onClick={() => {
+                            setCookies()
+                            window.location.href='/Winkelmand'
+                    }}>Bestel</button>
                     <br/><br/>
-                </form>
+                </div>
             </div>
         );
     }

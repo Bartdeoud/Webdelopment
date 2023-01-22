@@ -21,7 +21,7 @@ function DataFetching(){
            {posts.map(voorstelling =>
            <EvenementBlock TitelVoorstelling=
            {voorstelling.Naam}
-           Artiest="tja"
+           Artiest={voorstelling.Artiesten}
            zaal={voorstelling.zaal}
            datum={(voorstelling.BeginTijd).substring(0, 10)}
            tijd={(voorstelling.BeginTijd).substring(11, 16)}
