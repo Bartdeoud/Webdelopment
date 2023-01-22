@@ -10,6 +10,4 @@ public class Show
     public string? zaal{get; set;}
     public DateTime BeginTijd { get; set; }
     public DateTime EindTijd { get; set; }
-    public List<Artiest>? Artiesten {get;set;}
-    //public DataTime[] Datums { get; set; }
 }

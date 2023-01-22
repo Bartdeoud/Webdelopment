@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 public class DBContext : DbContext
 {
-    public DBContext(DbContextOptions<DBContext> options) : base(options){}
+    // public DBContext(DbContextOptions<DBContext> options) : base(options){}
     public DbSet<Gebruiker> gebruikers{ get; set; }
     public DbSet<Artiest> artiesten { get; set; }
     public DbSet<Band> bands { get; set; }
@@ -22,7 +22,6 @@ public class DBContext : DbContext
     }
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.Entity<Show>().HasMany(a => a.Artiesten).WithOne();
         builder.Entity<Gebruiker>().HasData(
             new Gebruiker(){ Email = "test2@email.com",Username="Jan2",Naam = "Jan2", Wachtwoord = "Test2", UserID = 2},
             new Gebruiker(){ Email = "test3@email.com",Username="Jan3",Naam = "Jan3", Wachtwoord = "Test3", UserID = 3},
