@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 public class DBContext : DbContext
 {
+    public DBContext(DbContextOptions<DBContext> options) : base(options){}
     public DbSet<Gebruiker> gebruikers{ get; set; }
     public DbSet<Artiest> artiesten { get; set; }
     public DbSet<Band> bands { get; set; }

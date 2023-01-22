@@ -7,14 +7,20 @@ import axios from 'axios';
 
 const EvenementToevoegen = () => {
     const [day, setDay] = useState();
-    const [naam, setNaam] = useState();
-    const [zaal, setZaal] = useState();
+    const [shownaam, setNaam] = useState();
+    const [showzaal, setZaal] = useState();
     const [leeftijd, setLeeftijd] = useState();
-    const [genre, setGenre] = useState();
-    const [shownr, setShownr] = useState([]);
+    const [showgenre, setGenre] = useState();
+    const [shownummer, setShownr] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(day);
+        console.log(shownaam);
+        console.log(showzaal);
+        console.log(leeftijd);
+        console.log(showgenre);
+        console.log(shownummer);
         handleOnSubmit();
     }
 
@@ -29,44 +35,35 @@ const EvenementToevoegen = () => {
         })
     }, []);
 
-    const handleOnSubmit = async () => {
-        axios.post ("https://localhost:7214/api/Show/ShowToevoegen", {
-            "shownr": shownr,
-            "afbeelding": "string",
-            "genre": genre,
-            "naam": naam,
-            "leeftijdsgroep": leeftijd,
-            "zaal": zaal,
-            "beginTijd": day,
-            "eindTijd": day+1,
-        })
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }
-
-    const handleOnSubmit2 = async () => {
-        await fetch("https://localhost:7214/api/Show/ShowToevoegen", {
-            method: 'POST',
-            headers:{
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+    let handleOnSubmit = async (e) => {
+        e.preventDefault();
+        try {
+          let res = await fetch("https://localhost:7214/api/Show/ShowToevoegen", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
             },
-            body : JSON.stringify({
-                "shownr": shownr,
-                "afbeelding": "string",
-                "genre": genre,
-                "naam": naam,
-                "leeftijdsgroep": leeftijd,
-                "zaal": zaal,
-                "beginTijd": day,
-                "eindTijd": day+1,
-            })
-        })
-    }
+            body: JSON.stringify({
+              id: 0,
+              shownr: shownummer,
+              afbeelding: "string",
+              genre: showgenre,
+              naam: shownaam,
+              leeftijdsgroep: leeftijd,
+              zaal: showzaal,
+              beginTijd: day,
+              eindTijd: day,
+            }),
+          });
+          let data = await res.json();
+          console.log(data);
+          if (res.status === 200) {
+            console.log("succes");
+          } else { }
+        } catch (err) {
+          console.log(err);
+        }
+      }
 
     return (
         <>
@@ -111,11 +108,9 @@ const EvenementToevoegen = () => {
 
                     <p>Dagen</p>
                     <DayPicker
-                        mode="multiple"
-                        min={1}
-                        max={1}
+                        mode="single"
                         selected={day}
-                        onSelect={setDay}                      
+                        onSelect={setDay}
                     />
 
                     <button className="btn" onClick={handleSubmit}> Submit </button>
