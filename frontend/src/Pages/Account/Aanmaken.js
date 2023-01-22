@@ -29,7 +29,6 @@ const Aanmaken = () => {
     const [validEmail, setValidEmail]=useState(false);
     // const [emailFocus, setEmailFocus]=useState(false);
 
-    
     const [errMsg, setErrMsg] = useState("");
     const [success, setSuccess] = useState(false);
 

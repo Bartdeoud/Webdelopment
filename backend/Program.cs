@@ -12,6 +12,21 @@ builder.Services.AddCors(options =>
                       });  
 }); 
 
+void testDatabase(){
+
+var _gebruiker =  new Gebruiker(){ Email = "SIM@email.com",Naam = "Sin", Wachtwoord = "Lokaal", UserID = 1000};
+GebruikerHandler.addGebruikerAsync(_gebruiker);
+
+List<Gebruiker> ayaya = GebruikerHandler.getListGebruiker();
+foreach (var i in ayaya)
+{
+    Console.WriteLine(i);
+}
+}
+
+testDatabase();
+
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -33,5 +48,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.UseCors(MyAllowSpecificOrigins);  
-
 app.Run();

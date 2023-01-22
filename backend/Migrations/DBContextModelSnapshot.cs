@@ -2,11 +2,12 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace backend.Data.Migrations
+namespace backend.Migrations
 {
     [DbContext(typeof(DBContext))]
     partial class DBContextModelSnapshot : ModelSnapshot
@@ -14,26 +15,33 @@ namespace backend.Data.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "6.0.11");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("Band", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("IdBand")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdBand"));
 
                     b.Property<string>("Afbeelding")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Naam")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Omschrijving")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdBand");
 
                     b.ToTable("bands");
                 });
@@ -42,66 +50,26 @@ namespace backend.Data.Migrations
                 {
                     b.Property<int>("UserID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("TEXT");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserID"));
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Naam")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Wachtwoord")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserID");
 
@@ -109,65 +77,35 @@ namespace backend.Data.Migrations
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Gebruiker");
 
+                    b.UseTphMappingStrategy();
+
                     b.HasData(
                         new
                         {
                             UserID = 1,
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "cc6bdd53-5f06-4dd6-ba68-4d040f36c635",
                             Email = "test1@email.com",
-                            EmailConfirmed = false,
-                            Id = "b4f4d66e-6c3c-4d45-a10e-29115d9e56c0",
-                            LockoutEnabled = false,
                             Naam = "Jan1",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "160de5bd-1b95-46bf-843e-77198a93c053",
-                            TwoFactorEnabled = false,
                             Wachtwoord = "Test1"
                         },
                         new
                         {
                             UserID = 2,
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "de869b06-1797-44c6-aed8-18a6f465a747",
                             Email = "test2@email.com",
-                            EmailConfirmed = false,
-                            Id = "28da8461-1a24-4242-a383-aa94de4d0908",
-                            LockoutEnabled = false,
                             Naam = "Jan2",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "25d65ad3-41df-4ad0-9b66-c84d93047b85",
-                            TwoFactorEnabled = false,
                             Wachtwoord = "Test2"
                         },
                         new
                         {
                             UserID = 3,
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "382f5e2a-2a16-41db-9496-f814430e002f",
                             Email = "test3@email.com",
-                            EmailConfirmed = false,
-                            Id = "6db07288-4dd9-49a0-a207-71c7da7b3db1",
-                            LockoutEnabled = false,
                             Naam = "Jan3",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "68d43203-a81f-40eb-b316-48015d9d727b",
-                            TwoFactorEnabled = false,
                             Wachtwoord = "Test3"
                         },
                         new
                         {
                             UserID = 4,
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "b065dbcd-75c2-4d69-a821-9bd6d9dbf16a",
                             Email = "test4@email.com",
-                            EmailConfirmed = false,
-                            Id = "2173bfc4-29fb-44e6-82ba-08800d4f24cf",
-                            LockoutEnabled = false,
                             Naam = "Jan4",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "7abebdcc-abd3-42fd-b070-fc392f87a32d",
-                            TwoFactorEnabled = false,
                             Wachtwoord = "Test4"
                         });
                 });
@@ -175,14 +113,14 @@ namespace backend.Data.Migrations
             modelBuilder.Entity("Huren", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("Datum")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("VerhuurdeId")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -192,11 +130,11 @@ namespace backend.Data.Migrations
             modelBuilder.Entity("Leden", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("BandId")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -207,14 +145,16 @@ namespace backend.Data.Migrations
                 {
                     b.Property<int>("RuimteNr")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RuimteNr"));
 
                     b.Property<int>("Capaciteit")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("Naam")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RuimteNr");
 
@@ -225,29 +165,31 @@ namespace backend.Data.Migrations
                 {
                     b.Property<int>("Shownr")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Shownr"));
 
                     b.Property<string>("Afbeelding")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("BeginTijd")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("EindTijd")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("Genre")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Leeftijdsgroep")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Naam")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Shownr");
 
@@ -258,64 +200,24 @@ namespace backend.Data.Migrations
                 {
                     b.Property<int>("TicketID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("TEXT");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TicketID"));
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("GebruikerUserID")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("int");
 
                     b.Property<string>("Wachtwoord")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("stoelNr")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TicketID");
 
@@ -328,14 +230,16 @@ namespace backend.Data.Migrations
                 {
                     b.Property<int>("Zaalnr")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Zaalnr"));
 
                     b.Property<int>("Aantal_stoelen")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("Naam")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Zaalnr");
 
@@ -347,11 +251,11 @@ namespace backend.Data.Migrations
                     b.HasBaseType("Gebruiker");
 
                     b.Property<string>("LedenId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("artiest_naam")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasIndex("LedenId");
 
@@ -363,7 +267,7 @@ namespace backend.Data.Migrations
                     b.HasBaseType("Gebruiker");
 
                     b.Property<int>("TotaleDonatie")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.HasDiscriminator().HasValue("Donateur");
                 });

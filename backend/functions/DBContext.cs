@@ -25,10 +25,4 @@ public class DBContext : DbContext
             new Gebruiker(){ Email = "test4@email.com",Username="Jan4",Naam = "Jan4", Wachtwoord = "Test4", UserID = 4}
             );
     }
-
-
-
-
-
-
 }

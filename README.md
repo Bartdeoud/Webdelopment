@@ -27,4 +27,8 @@ npm i axios
 React bootstrap, (https://react-bootstrap.github.io/getting-started/introduction)
 npm install react-bootstrap bootstrap
 
+React dropdown select, (https://www.npmjs.com/package/react-dropdown-select)
+npm install --save react-dropdown-select
+
+React update
 npm update

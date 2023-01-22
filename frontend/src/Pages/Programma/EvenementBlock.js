@@ -1,6 +1,5 @@
 import React from "react";
 import {useNavigate} from 'react-router-dom';
-import DataFetching from "../../DataFetching.js";
 
 const EvenementBlock = (props) => {
     const {
@@ -20,7 +19,7 @@ const EvenementBlock = (props) => {
                     <div>
                         <img src={LinkToImg} alt="Afbeelding evenement" width="100%" height="100%"></img>
                     </div>
-                    <DataFetching/>
+                    
                     <div>
                         <h2>{TitelVoorstelling}</h2>
                         <br></br>
@@ -34,8 +33,7 @@ const EvenementBlock = (props) => {
                         <br/>
                         <button onClick={()=>{navigate('/Evenement', { state:props})}} className="btn">bestel</button>
                     </div>
-                </div>
-                
+                </div>      
         </section>
     );
 }

@@ -37,5 +37,6 @@ public class PayController : ControllerBase
     [HttpDelete("{id}")]
     public void Delete(int id)
     {
+        
     }
 }
