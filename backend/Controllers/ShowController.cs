@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers;
 
@@ -7,31 +7,45 @@ namespace backend.Controllers;
 [Route("api/[controller]")]
 public class ShowController : ControllerBase
 {
-    private readonly ILogger<ShowController> _logger;
+    public static DBContext _context = new DBContext();
 
-    public ShowController(ILogger<ShowController> logger)
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Show>>> getShows()
     {
-        _logger = logger;
+        if (_context.shows == null)
+          {
+              return NotFound();
+          }
+            return await _context.shows.ToListAsync();
     }
 
-    [HttpGet("{showNaam}")]
-    public string GetEvenementen(string showNaam)
-    {
-        if(showNaam.Equals("0")){
-        return JsonSerializer.Serialize(ShowHandler.GetShows());
-        }else{
-        return JsonSerializer.Serialize(ShowHandler.GetShowByName(showNaam));
+    [HttpGet("{id}")]
+        public async Task<ActionResult<Show>> GetShow(int id)
+        {
+          if (_context.shows == null)
+          {
+              return NotFound();
+          }
+            var show = await _context.shows.FindAsync(id);
+
+            if (show == null)
+            {
+                return NotFound();
+            }
+
+            return show;
         }
-    }
 
-    [HttpPost ("ShowToevoegen")]
-    public void PostEvenement(Show show)
+    [HttpPost]
+    public async Task<ActionResult<Show>> PostShow(Show show)
     {
-        ShowHandler.AddShow(show);
-    }
+        if (_context.shows == null)
+        {
+            return Problem("Entity set 'DBcontext.shows'  is null.");
+        }
+        _context.shows.Add(show);
+        await _context.SaveChangesAsync();
 
-    [HttpGet("getLastShowID")]
-    public int GetLastEvenementID(){
-        return ShowHandler.GetLastEvenementID();
+        return CreatedAtAction("GetShow", new { id = show.Shownr }, show);
     }
 }
