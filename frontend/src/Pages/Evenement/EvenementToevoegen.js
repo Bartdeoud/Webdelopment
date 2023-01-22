@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import Hero2 from '../Shared/Hero2';
 import { useState } from "react";
-// import { DayPicker } from "react-day-picker";
+import { DayPicker } from "react-day-picker";
 import 'react-day-picker/dist/style.css';
 import axios from 'axios';
 
-const EvenementToevoegen = (props) => {
-    // const [days, setDays] = useState();
+const EvenementToevoegen = () => {
+    const [day, setDay] = useState();
     const [naam, setNaam] = useState();
     const [zaal, setZaal] = useState();
     const [leeftijd, setLeeftijd] = useState();
@@ -30,8 +30,26 @@ const EvenementToevoegen = (props) => {
     }, []);
 
     const handleOnSubmit = async () => {
-        console.log (shownr);
-        await fetch(URL, {
+        axios.post ("https://localhost:7214/api/Show/ShowToevoegen", {
+            "shownr": shownr,
+            "afbeelding": "string",
+            "genre": genre,
+            "naam": naam,
+            "leeftijdsgroep": leeftijd,
+            "zaal": zaal,
+            "beginTijd": day,
+            "eindTijd": day+1,
+        })
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+    const handleOnSubmit2 = async () => {
+        await fetch("https://localhost:7214/api/Show/ShowToevoegen", {
             method: 'POST',
             headers:{
                 'Accept': 'application/json',
@@ -44,8 +62,8 @@ const EvenementToevoegen = (props) => {
                 "naam": naam,
                 "leeftijdsgroep": leeftijd,
                 "zaal": zaal,
-                "beginTijd": 0,
-                "eindTijd": 0,
+                "beginTijd": day,
+                "eindTijd": day+1,
             })
         })
     }
@@ -56,7 +74,7 @@ const EvenementToevoegen = (props) => {
             <section className="contact">
                 <form>
                     <p>Naam evenement</p>
-                    <input type="text"  required pattern=".*\S+.*" placeholder="Voer hier de naam van de show in" onChange={(e)=>setNaam(e.target.value)}/>
+                    <input type="text" placeholder="Voer hier de naam van de show in" onChange={(e)=>setNaam(e.target.value)}/>
 
                     <p>Zaal</p>
                     <select required="required"  onChange={(e)=>setZaal(e.target.value)}>
@@ -91,13 +109,14 @@ const EvenementToevoegen = (props) => {
 
                     <br/>
 
-                    {/* <p>Dagen</p>
+                    <p>Dagen</p>
                     <DayPicker
                         mode="multiple"
                         min={1}
-                        selected={days}
-                        onSelect={setDays}
-                    /> */}
+                        max={1}
+                        selected={day}
+                        onSelect={setDay}                      
+                    />
 
                     <button className="btn" onClick={handleSubmit}> Submit </button>
                 </form>
