@@ -26,19 +26,22 @@ const Login = (props) => {
     const placeholder = () => {
         console.log (setWachtwoord);
         console.log (setGebruikersnaam);
+        console.log (formData);
+        console.log (setFormData);
     }
 
     useEffect(()=>{
         userRef.current.focus();
     },[])
 
-    const handleChange = (e) => {
-        console.log (placeholder); 
-        setFormData(e.target.value);
-    }
+    // const handleChange = (e) => {
+    //     console.log (placeholder); 
+    //     setFormData(e.target.value);
+    // }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log (placeholder);
 
         try{
             const response = await axios.post(LOGIN_URL,
@@ -59,7 +62,7 @@ const Login = (props) => {
             if(!err?.response){
                 setErrMsg('No Server Response')
             }else{
-                if(err.response?.status===400){
+                if(err.response?.status === 400){
                     setErrMsg('Gebruikersnaam of wachtwoord ontbreekt');
                 }else{
                     setErrMsg('Login lukte niet');
