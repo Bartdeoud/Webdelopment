@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace backend.Controllers;
 
@@ -7,7 +8,7 @@ namespace backend.Controllers;
 public class GebruikerController : ControllerBase
 {
     // GET: api/<Gebruiker>/
-    [HttpGet("get__all_gebruikers")]
+    [HttpGet("get_all_gebruikers")]
     public List<Gebruiker> Get()
     {
         return GebruikerHandler.getListGebruiker();
