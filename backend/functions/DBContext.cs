@@ -1,6 +1,5 @@
 // See https://aka.ms/new-console-template for more information
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.SqlServer;
 
 public class DBContext : DbContext
 {
@@ -18,6 +17,7 @@ public class DBContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder builder) => builder.UseSqlServer("Server=tcp:laakentertainment.database.windows.net,1433;Initial Catalog=LaakEntertainment;Persist Security Info=False;User ID=AdminLaak;Password=LaakEntertainment1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=2;");
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        builder.Entity<Show>().HasMany(a => a.Artiesten).WithOne();
         builder.Entity<Gebruiker>().HasData(
             new Gebruiker(){ Email = "test1@email.com",Username="Jan1",Naam = "Jan1", Wachtwoord = "Test1", UserID = 1},
             new Gebruiker(){ Email = "test2@email.com",Username="Jan2",Naam = "Jan2", Wachtwoord = "Test2", UserID = 2},

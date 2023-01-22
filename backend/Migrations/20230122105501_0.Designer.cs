@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace backend.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20230120141817_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230122105501_0")]
+    partial class _0
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,6 +70,10 @@ namespace backend.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Wachtwoord")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -88,6 +92,7 @@ namespace backend.Migrations
                             UserID = 1,
                             Email = "test1@email.com",
                             Naam = "Jan1",
+                            Username = "Jan1",
                             Wachtwoord = "Test1"
                         },
                         new
@@ -95,6 +100,7 @@ namespace backend.Migrations
                             UserID = 2,
                             Email = "test2@email.com",
                             Naam = "Jan2",
+                            Username = "Jan2",
                             Wachtwoord = "Test2"
                         },
                         new
@@ -102,6 +108,7 @@ namespace backend.Migrations
                             UserID = 3,
                             Email = "test3@email.com",
                             Naam = "Jan3",
+                            Username = "Jan3",
                             Wachtwoord = "Test3"
                         },
                         new
@@ -109,6 +116,7 @@ namespace backend.Migrations
                             UserID = 4,
                             Email = "test4@email.com",
                             Naam = "Jan4",
+                            Username = "Jan4",
                             Wachtwoord = "Test4"
                         });
                 });
@@ -256,11 +264,16 @@ namespace backend.Migrations
                     b.Property<string>("LedenId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int?>("Shownr")
+                        .HasColumnType("int");
+
                     b.Property<string>("artiest_naam")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasIndex("LedenId");
+
+                    b.HasIndex("Shownr");
 
                     b.HasDiscriminator().HasValue("Artiest");
                 });
@@ -287,6 +300,10 @@ namespace backend.Migrations
                     b.HasOne("Leden", null)
                         .WithMany("artiesten")
                         .HasForeignKey("LedenId");
+
+                    b.HasOne("Show", null)
+                        .WithMany("Artiesten")
+                        .HasForeignKey("Shownr");
                 });
 
             modelBuilder.Entity("Gebruiker", b =>
@@ -297,6 +314,11 @@ namespace backend.Migrations
             modelBuilder.Entity("Leden", b =>
                 {
                     b.Navigation("artiesten");
+                });
+
+            modelBuilder.Entity("Show", b =>
+                {
+                    b.Navigation("Artiesten");
                 });
 #pragma warning restore 612, 618
         }

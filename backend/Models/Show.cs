@@ -7,7 +7,9 @@ public class Show
     public string Genre { get; set; }
     public string Naam { get; set; }
     public string Leeftijdsgroep { get; set; }
+    public string zaal{get; set;}
     public int BeginTijd { get; set; }
     public int EindTijd { get; set; }
+    public List<Artiest> Artiesten {get;set;}
     //public DataTime[] Datums { get; set; }
 }
