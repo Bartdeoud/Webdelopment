@@ -25,7 +25,7 @@ public class ShowController : ControllerBase
     }
 
     [HttpPost ("ShowToevoegen")]
-    public void PostEvenement([FromBody] Show show)
+    public void PostEvenement(Show show)
     {
         ShowHandler.AddShow(show);
     }

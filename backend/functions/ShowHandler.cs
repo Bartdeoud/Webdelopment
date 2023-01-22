@@ -13,7 +13,7 @@ public static class ShowHandler
 
     public static void AddShow(Show show){
         db.shows.Add(show);
-        db.SaveChanges();
+        // db.SaveChanges();
     }
 
     public static int GetLastEvenementID(){
