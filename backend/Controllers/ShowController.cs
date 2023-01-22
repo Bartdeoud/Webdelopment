@@ -18,7 +18,11 @@ public class ShowController : ControllerBase
     [HttpGet("{showNaam}")]
     public String GetEvenementen(string showNaam)
     {
+        if(showNaam.Equals("0")){
+        return JsonSerializer.Serialize(ShowHandler.GetShows());
+        }else{
         return JsonSerializer.Serialize(ShowHandler.GetShowByName(showNaam));
+        }
     }
 
     [HttpPost ("ShowToevoegen")]
@@ -28,8 +32,7 @@ public class ShowController : ControllerBase
     }
 
     [HttpGet("getLastShowID")]
-    public int GetLastEvenementID()
-    {
+    public int GetLastEvenementID(){
         return ShowHandler.GetLastEvenementID();
     }
 }

@@ -3,7 +3,7 @@ namespace backend;
 public static class ShowHandler
 {
     public static DBContext db = new DBContext();
-    public static List<Show> GetEvenementen(){
+    public static List<Show> GetShows(){
         return db.shows.ToList();
     }
 
