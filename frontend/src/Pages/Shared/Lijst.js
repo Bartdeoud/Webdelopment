@@ -8,13 +8,13 @@ const Lijst = (props) => {
             <h3 className="title"> {titel} </h3>
             <p> {tekst} 
                 <ul>
-                    <il>{item1}</il><br/><br/>
-                    <il>{item2}</il><br/><br/>
-                    <il>{item3}</il><br/><br/>
-                    <il>{item4}</il><br/><br/>
-                    <il>{item5}</il><br/><br/>
-                    <il>{item6}</il><br/><br/>
-                    <il>{item7}</il>
+                    <li>{item1}</li><br/>
+                    <li>{item2}</li><br/>
+                    <li>{item3}</li><br/>
+                    <li>{item4}</li><br/>
+                    <li>{item5}</li><br/>
+                    <li>{item6}</li><br/>
+                    <li>{item7}</li>
                 </ul>
                 {tekst2}
             </p>

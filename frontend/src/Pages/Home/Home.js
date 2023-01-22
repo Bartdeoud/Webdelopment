@@ -13,7 +13,7 @@ class Home extends Component {
         return(
             <>
                 <Hero />
-
+                
                 <Alinea titel="Welkom bij het Laaktheater!" 
                     tekst="Met trots presenteren wij onze nieuwe voorstellingenkalender 
                     voor het komende seizoen. Na een moeilijke periode waarin we helaas 
