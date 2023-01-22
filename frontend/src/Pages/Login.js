@@ -59,7 +59,7 @@ const Login = (props) => {
             if(!err?.response){
                 setErrMsg('No Server Response')
             }else{
-                if(err.response?.status==400){
+                if(err.response?.status===400){
                     setErrMsg('Gebruikersnaam of wachtwoord ontbreekt');
                 }else{
                     setErrMsg('Login lukte niet');
