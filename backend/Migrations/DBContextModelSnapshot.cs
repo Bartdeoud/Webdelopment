@@ -262,8 +262,8 @@ namespace backend.Migrations
                         {
                             Shownr = 1,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 22, 17, 4, 57, 313, DateTimeKind.Local).AddTicks(1410),
-                            EindTijd = new DateTime(2023, 1, 22, 17, 4, 57, 313, DateTimeKind.Local).AddTicks(1622),
+                            BeginTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(222),
+                            EindTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(257),
                             Genre = "Horor",
                             Leeftijdsgroep = "18",
                             Naam = "Show 1",
@@ -273,8 +273,8 @@ namespace backend.Migrations
                         {
                             Shownr = 2,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 22, 17, 4, 57, 313, DateTimeKind.Local).AddTicks(1630),
-                            EindTijd = new DateTime(2023, 1, 22, 17, 4, 57, 313, DateTimeKind.Local).AddTicks(1634),
+                            BeginTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(260),
+                            EindTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(261),
                             Genre = "Horor",
                             Leeftijdsgroep = "18",
                             Naam = "Show 2",
@@ -284,8 +284,8 @@ namespace backend.Migrations
                         {
                             Shownr = 3,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 22, 17, 4, 57, 313, DateTimeKind.Local).AddTicks(1640),
-                            EindTijd = new DateTime(2023, 1, 22, 17, 4, 57, 313, DateTimeKind.Local).AddTicks(1644),
+                            BeginTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(263),
+                            EindTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(265),
                             Genre = "Horor",
                             Leeftijdsgroep = "18",
                             Naam = "Show 3",
