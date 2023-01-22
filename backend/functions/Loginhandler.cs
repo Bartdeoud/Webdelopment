@@ -18,16 +18,16 @@ public class Loginhandler{
         addUser(naam, wachtwoord, email, naam);
     }
 
-    static public Boolean checkLogin(String username, String password){
+    static public Task<bool> checkLogin(String username, String password){
         
         foreach(Gebruiker g in database.gebruikers){
 
         
             if(sha256(password)==g.Wachtwoord&&username==g.Username){
-                return true;
+                return new Task<bool>(()=>true);
             }
         }
-        return false;
+        return new Task<bool>(()=>false);
     }
     
     static string sha256(string input)
