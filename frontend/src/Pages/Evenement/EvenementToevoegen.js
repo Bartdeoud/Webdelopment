@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Hero2 from '../Shared/Hero2';
 import { useState } from "react";
 // import { DayPicker } from "react-day-picker";
 import 'react-day-picker/dist/style.css';
+import axios from 'axios';
 
 const EvenementToevoegen = (props) => {
     // const [days, setDays] = useState();
@@ -10,21 +11,26 @@ const EvenementToevoegen = (props) => {
     const [zaal, setZaal] = useState();
     const [leeftijd, setLeeftijd] = useState();
     const [genre, setGenre] = useState();
+    const [shownr, setShownr] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleForSubmit();
         handleOnSubmit();
     }
 
-    const handleForSubmit = () => {
-        console.log ("handleForSubmit");
-        // await fetch(URL, {
-        // })
-    }
+    useEffect(() => {
+        axios.get("https://localhost:7214/api/Show/getLastShowID")
+        .then(res => {
+            console.log(res)
+            setShownr(res.data+1)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }, []);
 
-    const handleOnSubmit = async (order) => {
-        console.log ("handleOnSubmit");
+    const handleOnSubmit = async () => {
+        console.log (shownr);
         await fetch(URL, {
             method: 'POST',
             headers:{
@@ -32,7 +38,7 @@ const EvenementToevoegen = (props) => {
                 'Content-Type': 'application/json'
             },
             body : JSON.stringify({
-                "shownr": 0,
+                "shownr": shownr,
                 "afbeelding": "string",
                 "genre": genre,
                 "naam": naam,
@@ -43,7 +49,6 @@ const EvenementToevoegen = (props) => {
             })
         })
     }
-
 
     return (
         <>
