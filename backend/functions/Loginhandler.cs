@@ -25,7 +25,7 @@ public class Loginhandler{
             .Select(g=>new {g.UserID, g.Username, g.Wachtwoord})
             .ToList();
 
-        if(user.Where(g=>g!=null).Count()==1){
+        if(user.Count()==1){
             return new Task<bool>(()=>true);
         }
         else{
