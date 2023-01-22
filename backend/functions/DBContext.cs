@@ -92,5 +92,12 @@ public class DBContext : DbContext
             new Show(){Shownr = 2, Naam = "Show 2", BeginTijd = DateTime.Now, EindTijd = DateTime.Now, zaal = "zaal 2", Genre = "Horor", Afbeelding = "", Leeftijdsgroep = "18"},
             new Show(){Shownr = 3, Naam = "Show 3", BeginTijd = DateTime.Now, EindTijd = DateTime.Now, zaal = "zaal 3", Genre = "Horor", Afbeelding = "", Leeftijdsgroep = "18"}  
         );
+
+        // builder.Entity<Role>().HasData(new Role(){Name = "Medewerker", NormalizedName = "MEDEWERKER"});
+        // builder.Entity<Role>().HasData(new Role(){Name = "Gebruiker", NormalizedName = "GEBRUIKER"});
+        // builder.Entity<Role>().HasData(new Role(){Name = "Artiest", NormalizedName = "ARTIEST"});
+        // builder.Entity<Role>().HasData(new Role(){Name = "Donateur", NormalizedName = "DONATEUR"});
+
+        //TODO: voor lucas gebruik week 6 van je portfolio
     }
 }
