@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace backend.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class _0 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -108,9 +108,11 @@ namespace backend.Migrations
                     Naam = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Wachtwoord = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     artiestnaam = table.Column<string>(name: "artiest_naam", type: "nvarchar(max)", nullable: true),
                     LedenId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Shownr = table.Column<int>(type: "int", nullable: true),
                     TotaleDonatie = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -121,6 +123,11 @@ namespace backend.Migrations
                         column: x => x.LedenId,
                         principalTable: "leden",
                         principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_gebruikers_shows_Shownr",
+                        column: x => x.Shownr,
+                        principalTable: "shows",
+                        principalColumn: "Shownr");
                 });
 
             migrationBuilder.CreateTable(
@@ -146,19 +153,24 @@ namespace backend.Migrations
 
             migrationBuilder.InsertData(
                 table: "gebruikers",
-                columns: new[] { "UserID", "Discriminator", "Email", "Naam", "Wachtwoord" },
+                columns: new[] { "UserID", "Discriminator", "Email", "Naam", "Username", "Wachtwoord" },
                 values: new object[,]
                 {
-                    { 1, "Gebruiker", "test1@email.com", "Jan1", "Test1" },
-                    { 2, "Gebruiker", "test2@email.com", "Jan2", "Test2" },
-                    { 3, "Gebruiker", "test3@email.com", "Jan3", "Test3" },
-                    { 4, "Gebruiker", "test4@email.com", "Jan4", "Test4" }
+                    { 1, "Gebruiker", "test1@email.com", "Jan1", "Jan1", "Test1" },
+                    { 2, "Gebruiker", "test2@email.com", "Jan2", "Jan2", "Test2" },
+                    { 3, "Gebruiker", "test3@email.com", "Jan3", "Jan3", "Test3" },
+                    { 4, "Gebruiker", "test4@email.com", "Jan4", "Jan4", "Test4" }
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_gebruikers_LedenId",
                 table: "gebruikers",
                 column: "LedenId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_gebruikers_Shownr",
+                table: "gebruikers",
+                column: "Shownr");
 
             migrationBuilder.CreateIndex(
                 name: "IX_tickets_GebruikerUserID",
@@ -179,9 +191,6 @@ namespace backend.Migrations
                 name: "ruimtes");
 
             migrationBuilder.DropTable(
-                name: "shows");
-
-            migrationBuilder.DropTable(
                 name: "tickets");
 
             migrationBuilder.DropTable(
@@ -192,6 +201,9 @@ namespace backend.Migrations
 
             migrationBuilder.DropTable(
                 name: "leden");
+
+            migrationBuilder.DropTable(
+                name: "shows");
         }
     }
 }

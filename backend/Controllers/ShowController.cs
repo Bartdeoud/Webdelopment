@@ -16,10 +16,11 @@ public class EvenementController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet(Name = "Evenementen")]
-    public String GetEvenementen()
+
+
+    [HttpGet(Name = "Evenement/{evenementNaam}")]
+    public String GetEvenementen(string evenementNaam)
     {
-        EvenementHadler evenementHadler = new EvenementHadler();
-        return JsonSerializer.Serialize(evenementHadler.GetEvenementen());
+        return JsonSerializer.Serialize(ShowHandler.GetShowByName(evenementNaam));
     }
 }
