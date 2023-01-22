@@ -35,11 +35,11 @@ public class DBContext : DbContext
         );
 
         builder.Entity<Artiest>().HasData(
-            new Artiest(){ artiest_naam = "Artiest1", UserID = 5},
-            new Artiest(){ artiest_naam = "Artiest2", UserID = 6},
-            new Artiest(){ artiest_naam = "Artiest3", UserID = 7},
-            new Artiest(){ artiest_naam = "Artiest4", UserID = 8},
-            new Artiest(){ artiest_naam = "Artiest5", UserID = 9}
+            new Artiest(){ artiest_naam = "Artiest1"},
+            new Artiest(){ artiest_naam = "Artiest2"},
+            new Artiest(){ artiest_naam = "Artiest3"},
+            new Artiest(){ artiest_naam = "Artiest4"},
+            new Artiest(){ artiest_naam = "Artiest5"}
         );
 
         builder.Entity<Donateur>().HasData(

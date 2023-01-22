@@ -7,10 +7,4 @@ public class Ticket
 
     [Required]
     public string stoelNr {set; get;}
-
-    [Required]
-    public string Email {set; get;}
-
-    [Required]
-    public string Wachtwoord {set; get;}
 }
