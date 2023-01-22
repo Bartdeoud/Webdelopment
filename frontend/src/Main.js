@@ -12,6 +12,7 @@ import Login from "./Pages/Login";
 import Account from "./Pages/Account/Account";
 import Aanmaken from "./Pages/Account/Aanmaken";
 import Huren from "./Pages/Winkelmand/Huren";
+import Doneren from "./Pages/Account/Doneren";
 import EvenementToevoegen from "./Pages/Evenement/EvenementToevoegen";
 
 class Main extends React.Component {
@@ -31,6 +32,7 @@ class Main extends React.Component {
             <Route path="/Aanmaken" element={<Aanmaken />} />
             <Route path="/EvenementToevoegen" element={<EvenementToevoegen />} />
             <Route path="/Huren" element={<Huren />} />
+            <Route path="/Doneren" element={<Doneren />} />
             <Route path="*" element={<VierNulVier />} />
           </Routes>
       </BrowserRouter>

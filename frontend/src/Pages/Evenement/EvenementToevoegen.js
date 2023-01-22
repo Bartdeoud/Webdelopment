@@ -47,7 +47,7 @@ const EvenementToevoegen = (props) => {
 
     return (
         <>
-            <Hero2 tekst="Evenement Toevoegen" />
+            <Hero2 tekst="Show Toevoegen" />
             <section className="contact">
                 <form>
                     <p>Naam evenement</p>
