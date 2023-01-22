@@ -310,6 +310,15 @@ nav a{
 	width: 90%;
 }
 
+.contact form select{
+	padding: 15px;
+	flex: 1;
+	margin-right: 30px;
+	margin-bottom: 20px;
+	font-size: 18px;
+	color: #555;
+}
+
 .contact div{
 	max-width: 800px;
 }

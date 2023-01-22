@@ -19,7 +19,23 @@ public class EvenementController : ControllerBase
     [HttpGet(Name = "Evenementen")]
     public String GetEvenementen()
     {
-        EvenementHadler evenementHadler = new EvenementHadler();
-        return JsonSerializer.Serialize(evenementHadler.GetEvenementen());
+        EvenementHandler evenementHandler = new EvenementHandler();
+        return JsonSerializer.Serialize(evenementHandler.GetEvenementen());
+    }
+
+    //POST api/<Show>
+    [HttpPost("add_show")]
+    public async Task<IResult> Post(Show newShow)
+    {
+        bool returnShowBool = await ShowHandler.addGebruikerAsync(newShow);
+
+        if (returnShowBool)
+        {
+            return Results.Ok("Success");
+        }
+        else
+        {
+            return Results.BadRequest();
+        }
     }
 }
