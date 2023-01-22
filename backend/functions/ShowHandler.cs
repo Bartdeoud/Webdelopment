@@ -7,7 +7,7 @@ public static class ShowHandler
         return db.shows.ToList();
     }
 
-        public static Show GetShowByName(string naam){
+    public static Show GetShowByName(string naam){
         return db.shows.First(s => s.Naam.Equals(naam));
     }
 }
