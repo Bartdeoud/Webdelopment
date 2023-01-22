@@ -9,12 +9,12 @@ namespace backend.Controllers;
 [ApiController]
 public class AccountController : ControllerBase
 {
-    [HttpGet ("checkloginof{username},{password}")]
+    [HttpGet ("checkloginof={username}&password={password}%")]
     public async Task<IResult> Get(String username, string password){
         bool correctelogin = await Loginhandler.checkLogin(username,password);
         if (correctelogin)
         {
-            return Results.Ok("Success");
+            return Results.Ok("success");
         }
         else
         {
