@@ -29,45 +29,39 @@ public class DBContext : DbContext
             new Gebruiker(){ Email = "artiestmail4@email.com", Username="Artiest4", Naam = "Artiest4", Wachtwoord = "Test4", UserID = 8},
             new Gebruiker(){ Email = "artiestmail5@email.com", Username="Artiest5", Naam = "Artiest5", Wachtwoord = "Test5", UserID = 9}
         );
+        builder.Entity<Stoelrij>().HasData(
+            new Stoelrij(){Rangnummer=1,Aantal_stoelen=20, rijid=11, Zaalnr=1},
+            new Stoelrij(){Rangnummer=2,Aantal_stoelen=100, rijid=12, Zaalnr=1},
+            new Stoelrij(){Rangnummer=3,Aantal_stoelen=120, rijid=13, Zaalnr=1},
+            new Stoelrij(){Rangnummer=1,Aantal_stoelen=2, rijid=21, Zaalnr=2},
+            new Stoelrij(){Rangnummer=2,Aantal_stoelen=160, rijid=22,Zaalnr=2},
+            new Stoelrij(){Rangnummer=1,Aantal_stoelen=10, rijid=31, Zaalnr=3},
+            new Stoelrij(){Rangnummer=2,Aantal_stoelen=80, rijid=32, Zaalnr=3},
+            new Stoelrij(){Rangnummer=1,Aantal_stoelen=40, rijid=41, Zaalnr=4},
+            new Stoelrij(){Rangnummer=2,Aantal_stoelen=200, rijid=42, Zaalnr=4},
+            new Stoelrij(){Rangnummer=3,Aantal_stoelen=200, rijid=43, Zaalnr=4}
+        );
 
         builder.Entity<Zaal>().HasData(
             new Zaal(){
                 Zaalnr=1,
                 Naam="Zaal 1",
                 Aantal_stoelen=240,
-                rij=new List<Stoelrij>(){
-                    new Stoelrij(){Rangnummer=1,Aantal_stoelen=20, rijid=11},
-                    new Stoelrij(){Rangnummer=2,Aantal_stoelen=100, rijid=12},
-                    new Stoelrij(){Rangnummer=3,Aantal_stoelen=120, rijid=13}
-                }
             },
             new Zaal(){
                 Zaalnr=2,
                 Naam="Zaal 2",
                 Aantal_stoelen=180,
-                rij=new List<Stoelrij>(){
-                    new Stoelrij(){Rangnummer=1,Aantal_stoelen=2, rijid=21},
-                    new Stoelrij(){Rangnummer=2,Aantal_stoelen=160, rijid=22}
-                }
             },
             new Zaal(){
                 Zaalnr=3,
                 Naam="Zaal 3",
-                Aantal_stoelen=90,
-                rij=new List<Stoelrij>(){
-                    new Stoelrij(){Rangnummer=1,Aantal_stoelen=10, rijid=31},
-                    new Stoelrij(){Rangnummer=2,Aantal_stoelen=80, rijid=32}
-                }
+                Aantal_stoelen=90
             },
             new Zaal(){
                 Zaalnr=4,
                 Naam="Zaal 4",
                 Aantal_stoelen=440,
-                rij=new List<Stoelrij>(){
-                    new Stoelrij(){Rangnummer=1,Aantal_stoelen=40, rijid=41},
-                    new Stoelrij(){Rangnummer=2,Aantal_stoelen=200, rijid=42},
-                    new Stoelrij(){Rangnummer=3,Aantal_stoelen=200, rijid=43}
-                }
             }
         );
 
