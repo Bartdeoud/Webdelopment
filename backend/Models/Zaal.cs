@@ -5,5 +5,6 @@ public class Zaal {
     public int Zaalnr {get;set;}
     public string Naam {get;set;}
     public int Aantal_stoelen {get;set;}
-    // List<string> rijen {get;set;}
+    
+    public List<Stoelrij>? rij {get;set;}
 }
