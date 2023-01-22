@@ -28,7 +28,7 @@ public class DBContext : DbContext
             new Gebruiker(){ Email = "test4@email.com",Username="Jan4",Naam = "Jan4", Wachtwoord = "Test4", UserID = 4}
         );
         builder.Entity<Artiest>().HasData(
-            new Artiest(){Email = "artiestmail1@email.com",Username="Artiest1",Naam = "Artiest1", Wachtwoord = "Test1", artiest_naam = "Artiest1", UserID = 5},
+            new Artiest(){Email = "artiestmail1@email.com", Username="Artiest1", Naam = "Artiest1", Wachtwoord = "Test1", artiest_naam = "Artiest1", UserID = 5},
             new Artiest(){Email = "artiestmail2@email.com", Username="Artiest2", Naam = "Artiest2", Wachtwoord = "Test2", artiest_naam = "Artiest2", UserID = 6},
             new Artiest(){Email = "artiestmail3@email.com", Username="Artiest3", Naam = "Artiest3", Wachtwoord = "Test3", artiest_naam = "Artiest3", UserID = 7},
             new Artiest(){Email = "artiestmail4@email.com", Username="Artiest4", Naam = "Artiest4", Wachtwoord = "Test4", artiest_naam = "Artiest4", UserID = 8},
@@ -37,7 +37,6 @@ public class DBContext : DbContext
 
         builder.Entity<Donateur>().HasData(
             new Donateur(){Email = "test1@email.com",Username="Jan1",Naam = "Jan1", Wachtwoord = "Test1",TotaleDonatie = 1000, UserID = 1}
-
         );
         builder.Entity<Stoelrij>().HasData(
             new Stoelrij(){Rangnummer=1,Aantal_stoelen=20,  rijid=11, Zaalnr=1},
@@ -89,9 +88,9 @@ public class DBContext : DbContext
         );
 
         builder.Entity<Show>().HasData(
-            new Show(){Shownr = 1, Naam = "Show 1", BeginTijd = 2, EindTijd = 3, zaal = "zaal 1", Genre = "Horor", Afbeelding = "", Leeftijdsgroep = "18"},
-            new Show(){Shownr = 2, Naam = "Show 2", BeginTijd = 3, EindTijd = 4, zaal = "zaal 2", Genre = "Horor", Afbeelding = "", Leeftijdsgroep = "18"},
-            new Show(){Shownr = 3, Naam = "Show 3", BeginTijd = 5, EindTijd = 6, zaal = "zaal 3", Genre = "Horor", Afbeelding = "", Leeftijdsgroep = "18"}  
+            new Show(){Shownr = 1, Naam = "Show 1", BeginTijd = DateTime.Now, EindTijd = DateTime.Now, zaal = "zaal 1", Genre = "Horor", Afbeelding = "", Leeftijdsgroep = "18"},
+            new Show(){Shownr = 2, Naam = "Show 2", BeginTijd = DateTime.Now, EindTijd = DateTime.Now, zaal = "zaal 2", Genre = "Horor", Afbeelding = "", Leeftijdsgroep = "18"},
+            new Show(){Shownr = 3, Naam = "Show 3", BeginTijd = DateTime.Now, EindTijd = DateTime.Now, zaal = "zaal 3", Genre = "Horor", Afbeelding = "", Leeftijdsgroep = "18"}  
         );
     }
 }

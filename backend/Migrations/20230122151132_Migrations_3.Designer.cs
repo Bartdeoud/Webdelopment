@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace backend.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20230122151132_Migrations_3")]
+    partial class Migrations3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -234,11 +237,11 @@ namespace backend.Migrations
                     b.Property<string>("Afbeelding")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("BeginTijd")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("BeginTijd")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("EindTijd")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("EindTijd")
+                        .HasColumnType("int");
 
                     b.Property<string>("Genre")
                         .HasColumnType("nvarchar(max)");
@@ -262,8 +265,8 @@ namespace backend.Migrations
                         {
                             Shownr = 1,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 22, 17, 4, 57, 313, DateTimeKind.Local).AddTicks(1410),
-                            EindTijd = new DateTime(2023, 1, 22, 17, 4, 57, 313, DateTimeKind.Local).AddTicks(1622),
+                            BeginTijd = 2,
+                            EindTijd = 3,
                             Genre = "Horor",
                             Leeftijdsgroep = "18",
                             Naam = "Show 1",
@@ -273,8 +276,8 @@ namespace backend.Migrations
                         {
                             Shownr = 2,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 22, 17, 4, 57, 313, DateTimeKind.Local).AddTicks(1630),
-                            EindTijd = new DateTime(2023, 1, 22, 17, 4, 57, 313, DateTimeKind.Local).AddTicks(1634),
+                            BeginTijd = 3,
+                            EindTijd = 4,
                             Genre = "Horor",
                             Leeftijdsgroep = "18",
                             Naam = "Show 2",
@@ -284,8 +287,8 @@ namespace backend.Migrations
                         {
                             Shownr = 3,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 22, 17, 4, 57, 313, DateTimeKind.Local).AddTicks(1640),
-                            EindTijd = new DateTime(2023, 1, 22, 17, 4, 57, 313, DateTimeKind.Local).AddTicks(1644),
+                            BeginTijd = 5,
+                            EindTijd = 6,
                             Genre = "Horor",
                             Leeftijdsgroep = "18",
                             Naam = "Show 3",
