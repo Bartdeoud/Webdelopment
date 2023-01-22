@@ -6,7 +6,7 @@ function DataFetching(){
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        axios.get('https://localhost:7214/Evenement')
+        axios.get('https://localhost:7214/api/Show/0')
         .then(res => {
             console.log(res)
             setPosts(res.data)
@@ -20,12 +20,12 @@ function DataFetching(){
         <div>
            {posts.map(voorstelling =>
            <EvenementBlock TitelVoorstelling=
-           {voorstelling.TitelVoorstelling}
-           Artiest={voorstelling.Artiest}
+           {voorstelling.Naam}
+           Artiest="tja"
            zaal={voorstelling.zaal}
-           datum={(voorstelling.dateTime).substring(0, 10)}
-           tijd={(voorstelling.dateTime).substring(11, 16)}
-           LinkToImg={voorstelling.LinkToImg}/>
+           datum={(voorstelling.BeginTijd).substring(0, 10)}
+           tijd={(voorstelling.BeginTijd).substring(11, 16)}
+           LinkToImg={voorstelling.Afbeelding}/>
            )}
         </div>
     )
