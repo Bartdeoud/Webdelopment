@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import {faCheck, faTimes, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-const User_regex = /^[a-zA-Z][a-zA-Z0-9-_]{8,}$/;
+const User_regex = /^[a-zA-Z][a-zA-Z0-9-_]{8,100}$/;
 const Wachtwoord_regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,}$/
 const Email_regex = /^[a-zA-Z0-9.!#$%&*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -118,6 +118,7 @@ const Aanmaken = () => {
                             {/* <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}> */}
                                 <FontAwesomeIcon icon={faInfoCircle}/>
                                 Minimaal 8 karakters <br/>
+                                Maximaal 100 karakters <br/>
                                 Begint met een letter <br/>
                                 Letters, nummers, underscore, streepjes toegestaan.
                             </p>
