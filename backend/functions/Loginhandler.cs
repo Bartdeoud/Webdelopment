@@ -11,26 +11,37 @@ public class Loginhandler{
     public static Random rnd = new Random();
     public static DBContext database = new DBContext();
     static public async void addUser(String naam, String wachtwoord, String email, String username){
-        database.Add(new Gebruiker(){Email=email,Naam=naam,Username=username,Wachtwoord=sha256(wachtwoord),UserID=rnd.Next(0,2147483647)});
+        database.Add(new Gebruiker(){Email=email,Naam=naam,Username=username,Wachtwoord=wachtwoord,UserID=rnd.Next(0,2147483647)});
         database.SaveChanges();
     }
     static public async void addUser(String naam, String wachtwoord, String email){//If no username, username=naam
         addUser(naam, wachtwoord, email, naam);
     }
 
-    static public Task<bool> checkLogin(String username, String password){
-        
-        foreach(Gebruiker g in database.gebruikers){
+    static public Task<bool> checkLogin(String gebrnaam, String wwoord){
+
+        var user = database.gebruikers
+            .Where(g=>g.Username.Equals(gebrnaam) && g.Wachtwoord==wwoord)
+            .Select(g=>new {g.UserID, g.Username, g.Wachtwoord})
+            .ToList();
+
+        if(user.Where(g=>g!=null).Count()==1){
+            return new Task<bool>(()=>true);
+        }
+        else{
+            return new Task<bool>(()=>false);
+        }
+        /*foreach(Gebruiker g in database.gebruikers){
 
         
-            if(sha256(password)==g.Wachtwoord&&username==g.Username){
+            if(password==g.Wachtwoord&&username==g.Username){
                 return new Task<bool>(()=>true);
             }
         }
-        return new Task<bool>(()=>false);
+        return new Task<bool>(()=>false);*/
     }
     
-    static string sha256(string input)
+    /*static string sha256(string input)
     {
         var crypt = new System.Security.Cryptography.SHA256Managed();
         var hash = new System.Text.StringBuilder();
@@ -40,6 +51,6 @@ public class Loginhandler{
             hash.Append(theByte.ToString("x2"));
         }
         return hash.ToString();
-    }
+    }*/
 
 }
