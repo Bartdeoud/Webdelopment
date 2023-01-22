@@ -13,12 +13,14 @@ const EvenementToevoegen = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(naam);
-        console.log(zaal);
-        // console.log(days);
-        console.log(leeftijd);
-        console.log(genre);
+        handleForSubmit();
         handleOnSubmit();
+    }
+
+    const handleForSubmit = () => {
+        console.log ("handleForSubmit");
+        // await fetch(URL, {
+        // })
     }
 
     const handleOnSubmit = async (order) => {
@@ -28,10 +30,20 @@ const EvenementToevoegen = (props) => {
             headers:{
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }
-            // body: 
+            },
+            body : JSON.stringify({
+                "shownr": 0,
+                "afbeelding": "string",
+                "genre": genre,
+                "naam": naam,
+                "leeftijdsgroep": leeftijd,
+                "zaal": zaal,
+                "beginTijd": 0,
+                "eindTijd": 0,
+            })
         })
     }
+
 
     return (
         <>

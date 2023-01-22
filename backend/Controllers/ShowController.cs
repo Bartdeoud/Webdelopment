@@ -5,20 +5,31 @@ using System.Text.Json.Serialization;
 namespace backend.Controllers;
 
 [ApiController]
-[Route("[controller]")]
-public class EvenementController : ControllerBase
+[Route("api/[controller]")]
+public class ShowController : ControllerBase
 {
+    private readonly ILogger<ShowController> _logger;
 
-    private readonly ILogger<EvenementController> _logger;
-
-    public EvenementController(ILogger<EvenementController> logger)
+    public ShowController(ILogger<ShowController> logger)
     {
         _logger = logger;
     }
 
-    [HttpGet(Name = "Evenement/{evenementNaam}")]
-    public String GetEvenementen(string evenementNaam)
+    [HttpGet("{showNaam}")]
+    public String GetEvenementen(string showNaam)
     {
-        return JsonSerializer.Serialize(ShowHandler.GetShowByName(evenementNaam));
+        return JsonSerializer.Serialize(ShowHandler.GetShowByName(showNaam));
+    }
+
+    [HttpPost ("ShowToevoegen")]
+    public void PostEvenement([FromBody] Show show)
+    {
+        ShowHandler.AddShow(show);
+    }
+
+    [HttpGet("getLastShowID")]
+    public int GetLastEvenementID()
+    {
+        return ShowHandler.GetLastEvenementID();
     }
 }
