@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace backend.Controllers;
 
@@ -16,7 +15,7 @@ public class ShowController : ControllerBase
     }
 
     [HttpGet("{showNaam}")]
-    public String GetEvenementen(string showNaam)
+    public string GetEvenementen(string showNaam)
     {
         if(showNaam.Equals("0")){
         return JsonSerializer.Serialize(ShowHandler.GetShows());

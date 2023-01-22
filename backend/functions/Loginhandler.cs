@@ -21,7 +21,7 @@ public class Loginhandler{
     static public Task<bool> checkLogin(string gebrnaam, string wwoord){
 
         var user = database.gebruikers
-            .Where(g=>g.Username.Equals(gebrnaam) && g.Wachtwoord==wwoord)
+            .Where(g=>g.Username.Equals(gebrnaam) & g.Wachtwoord==wwoord)
             .Select(g=>new {g.UserID, g.Username, g.Wachtwoord})
             .ToList();
 

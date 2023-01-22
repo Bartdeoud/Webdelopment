@@ -86,14 +86,6 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            UserID = 1,
-                            Email = "test1@email.com",
-                            Naam = "Jan1",
-                            Username = "Jan1",
-                            Wachtwoord = "Test1"
-                        },
-                        new
-                        {
                             UserID = 2,
                             Email = "test2@email.com",
                             Naam = "Jan2",
@@ -115,46 +107,6 @@ namespace backend.Migrations
                             Naam = "Jan4",
                             Username = "Jan4",
                             Wachtwoord = "Test4"
-                        },
-                        new
-                        {
-                            UserID = 5,
-                            Email = "artiestmail1@email.com",
-                            Naam = "Artiest1",
-                            Username = "Artiest1",
-                            Wachtwoord = "Test1"
-                        },
-                        new
-                        {
-                            UserID = 6,
-                            Email = "artiestmail2@email.com",
-                            Naam = "Artiest2",
-                            Username = "Artiest2",
-                            Wachtwoord = "Test2"
-                        },
-                        new
-                        {
-                            UserID = 7,
-                            Email = "artiestmail3@email.com",
-                            Naam = "Artiest3",
-                            Username = "Artiest3",
-                            Wachtwoord = "Test3"
-                        },
-                        new
-                        {
-                            UserID = 8,
-                            Email = "artiestmail4@email.com",
-                            Naam = "Artiest4",
-                            Username = "Artiest4",
-                            Wachtwoord = "Test4"
-                        },
-                        new
-                        {
-                            UserID = 9,
-                            Email = "artiestmail5@email.com",
-                            Naam = "Artiest5",
-                            Username = "Artiest5",
-                            Wachtwoord = "Test5"
                         });
                 });
 
@@ -280,21 +232,18 @@ namespace backend.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Shownr"));
 
                     b.Property<string>("Afbeelding")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("BeginTijd")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("BeginTijd")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int>("EindTijd")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("EindTijd")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Genre")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Leeftijdsgroep")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Naam")
@@ -302,12 +251,46 @@ namespace backend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("zaal")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Shownr");
 
                     b.ToTable("shows");
+
+                    b.HasData(
+                        new
+                        {
+                            Shownr = 1,
+                            Afbeelding = "",
+                            BeginTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(222),
+                            EindTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(257),
+                            Genre = "Horor",
+                            Leeftijdsgroep = "18",
+                            Naam = "Show 1",
+                            zaal = "zaal 1"
+                        },
+                        new
+                        {
+                            Shownr = 2,
+                            Afbeelding = "",
+                            BeginTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(260),
+                            EindTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(261),
+                            Genre = "Horor",
+                            Leeftijdsgroep = "18",
+                            Naam = "Show 2",
+                            zaal = "zaal 2"
+                        },
+                        new
+                        {
+                            Shownr = 3,
+                            Afbeelding = "",
+                            BeginTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(263),
+                            EindTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(265),
+                            Genre = "Horor",
+                            Leeftijdsgroep = "18",
+                            Naam = "Show 3",
+                            zaal = "zaal 3"
+                        });
                 });
 
             modelBuilder.Entity("Stoelrij", b =>
@@ -329,7 +312,7 @@ namespace backend.Migrations
 
                     b.HasKey("rijid");
 
-                    b.ToTable("Stoelrij");
+                    b.ToTable("stoelrijen");
 
                     b.HasData(
                         new
@@ -412,16 +395,8 @@ namespace backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TicketID"));
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("GebruikerUserID")
                         .HasColumnType("int");
-
-                    b.Property<string>("Wachtwoord")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("stoelNr")
                         .IsRequired()
@@ -499,6 +474,53 @@ namespace backend.Migrations
                     b.HasIndex("Shownr");
 
                     b.HasDiscriminator().HasValue("Artiest");
+
+                    b.HasData(
+                        new
+                        {
+                            UserID = 5,
+                            Email = "artiestmail1@email.com",
+                            Naam = "Artiest1",
+                            Username = "Artiest1",
+                            Wachtwoord = "Test1",
+                            artiestnaam = "Artiest1"
+                        },
+                        new
+                        {
+                            UserID = 6,
+                            Email = "artiestmail2@email.com",
+                            Naam = "Artiest2",
+                            Username = "Artiest2",
+                            Wachtwoord = "Test2",
+                            artiestnaam = "Artiest2"
+                        },
+                        new
+                        {
+                            UserID = 7,
+                            Email = "artiestmail3@email.com",
+                            Naam = "Artiest3",
+                            Username = "Artiest3",
+                            Wachtwoord = "Test3",
+                            artiestnaam = "Artiest3"
+                        },
+                        new
+                        {
+                            UserID = 8,
+                            Email = "artiestmail4@email.com",
+                            Naam = "Artiest4",
+                            Username = "Artiest4",
+                            Wachtwoord = "Test4",
+                            artiestnaam = "Artiest4"
+                        },
+                        new
+                        {
+                            UserID = 9,
+                            Email = "artiestmail5@email.com",
+                            Naam = "Artiest5",
+                            Username = "Artiest5",
+                            Wachtwoord = "Test5",
+                            artiestnaam = "Artiest5"
+                        });
                 });
 
             modelBuilder.Entity("Donateur", b =>
@@ -509,6 +531,17 @@ namespace backend.Migrations
                         .HasColumnType("int");
 
                     b.HasDiscriminator().HasValue("Donateur");
+
+                    b.HasData(
+                        new
+                        {
+                            UserID = 1,
+                            Email = "test1@email.com",
+                            Naam = "Jan1",
+                            Username = "Jan1",
+                            Wachtwoord = "Test1",
+                            TotaleDonatie = 1000
+                        });
                 });
 
             modelBuilder.Entity("Ticket", b =>

@@ -89,9 +89,9 @@ public class DBContext : DbContext
         );
 
         builder.Entity<Show>().HasData(
-            new Show(){Shownr = 1, Naam = "Show 1", BeginTijd = 2, EindTijd = 3, zaal = "zaal 1", Genre = "Horor", Afbeelding = "", Leeftijdsgroep = "18"},
-            new Show(){Shownr = 2, Naam = "Show 2", BeginTijd = 3, EindTijd = 4, zaal = "zaal 2", Genre = "Horor", Afbeelding = "", Leeftijdsgroep = "18"},
-            new Show(){Shownr = 3, Naam = "Show 3", BeginTijd = 5, EindTijd = 6, zaal = "zaal 3", Genre = "Horor", Afbeelding = "", Leeftijdsgroep = "18"}  
+            new Show(){Shownr = 1, Naam = "Show 1", BeginTijd = DateTime.Now, EindTijd = DateTime.Now, zaal = "zaal 1", Genre = "Horor", Afbeelding = "", Leeftijdsgroep = "18"},
+            new Show(){Shownr = 2, Naam = "Show 2", BeginTijd = DateTime.Now, EindTijd = DateTime.Now, zaal = "zaal 2", Genre = "Horor", Afbeelding = "", Leeftijdsgroep = "18"},
+            new Show(){Shownr = 3, Naam = "Show 3", BeginTijd = DateTime.Now, EindTijd = DateTime.Now, zaal = "zaal 3", Genre = "Horor", Afbeelding = "", Leeftijdsgroep = "18"}  
         );
     }
 }
