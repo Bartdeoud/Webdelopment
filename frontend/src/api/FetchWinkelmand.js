@@ -18,7 +18,6 @@ function GetEvenement(id, rang, aantal){
 
     return (
         <div>
-              <h2>{posts.shownr}</h2>
            <TicketBlok 
            TitelVoorstelling={posts.naam}
            zaal={posts.zaal}
