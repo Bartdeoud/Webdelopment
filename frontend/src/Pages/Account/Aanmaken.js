@@ -15,19 +15,19 @@ const Aanmaken = () => {
     const [user, setUser] = useState("");
     const [naam, setNaam] = useState(false);
     const [validName, setValidName] = useState(false);
-    // const [userFocus, setUserFocus] = useState(false);
+    const [userFocus, setUserFocus] = useState(false);
 
     const [password, setPassword] = useState("");
     const [validPwd, setValidPwd] = useState(false);
-    // const [pwdFocus, setPwdFocus] = useState(false);
+    const [pwdFocus, setPwdFocus] = useState(false);
 
     const [confirmPassword, setConfirmPassword] = useState("");
     const [validMatch, setValidMatch] = useState(false);
-    // const [matchFocus, setMatchFocus] = useState(false);
+    const [matchFocus, setMatchFocus] = useState(false);
 
     const [email, setEmail] = useState("");
     const [validEmail, setValidEmail]=useState(false);
-    // const [emailFocus, setEmailFocus]=useState(false);
+    const [emailFocus, setEmailFocus]=useState(false);
 
     const [errMsg, setErrMsg] = useState("");
     const [success, setSuccess] = useState(false);
@@ -110,12 +110,11 @@ const Aanmaken = () => {
                                 required
                                 aria-invalid={validName ? "false" :  "true"}
                                 aria-describedby="uidnote"
-                                // onFocus={()=>setUserFocus(true)}
-                                // onBlur={()=>setUserFocus(false)}
+                                onFocus={()=>setUserFocus(true)}
+                                onBlur={()=>setUserFocus(false)}
                             />
                             
-                            <p>
-                            {/* <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}> */}
+                            <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
                                 <FontAwesomeIcon icon={faInfoCircle}/>
                                 Minimaal 8 karakters <br/>
                                 Maximaal 100 karakters <br/>
@@ -144,8 +143,8 @@ const Aanmaken = () => {
                                 required
                                 aria-invalid={validName ? "false" :  "true"}
                                 aroa-describedby="emailnote"
-                                // onFocus={()=>setEmailFocus(true)}
-                                // onBlur={()=>setEmailFocus(false)}
+                                onFocus={()=>setEmailFocus(true)}
+                                onBlur={()=>setEmailFocus(false)}
                             />
 
                             <br/>
@@ -169,11 +168,10 @@ const Aanmaken = () => {
                                 required 
                                 aria-invalid={validPwd ? "false" : "true"}
                                 aria-describedby="pwdnote"
-                                // onFocus={()=>setPwdFocus(true)}
-                                // onBlur={()=>setPwdFocus(false)}
+                                onFocus={()=>setPwdFocus(true)}
+                                onBlur={()=>setPwdFocus(false)}
                             />
-                            <p>
-                            {/* <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}> */}
+                            <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
                                 <FontAwesomeIcon icon={faInfoCircle}/>
                                 Minimaal 7 karakters. <br/>
                                 Bevat minimaal 1 kleine letter, 1 hoofdletter, 1 cijfer en 1 speciaal teken.<br/>
@@ -193,8 +191,8 @@ const Aanmaken = () => {
                                 required 
                                 aria-invalid={validMatch ? "false" : "true"}
                                 aria-describedby="contirmnote"
-                                // onFocus={()=>setMatchFocus(true)}
-                                // onBlur={()=>setMatchFocus(false)}
+                                onFocus={()=>setMatchFocus(true)}
+                                onBlur={()=>setMatchFocus(false)}
                             />
 
                             <button disabled={!validName || !validEmail  || !validPwd || !validMatch ? true : false}> Registreer </button>
