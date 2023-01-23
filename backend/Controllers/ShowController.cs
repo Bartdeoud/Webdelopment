@@ -19,7 +19,8 @@ public class ShowController : ControllerBase
             return await _context.shows.ToListAsync();
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("usingId{id}")]
+
     public async Task<ActionResult<Show>> GetShowUsingId(int id)
     {
         if (_context.shows == null)
