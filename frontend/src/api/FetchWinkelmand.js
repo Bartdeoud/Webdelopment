@@ -6,7 +6,7 @@ function GetEvenement(name, rang, aantal){
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        axios.get(('https://localhost:7214/api/Show/2'))
+        axios.get(('https://localhost:7214/api/Show/'+name))
         .then(res => {
             console.log(res.data)
             setPosts(res.data)

@@ -4,27 +4,24 @@ import FakePay from "./FakePay";
 import GetEvenement from "../../api/FetchWinkelmand.js";
 
 const Winkelmand = () => {
-
-    console.log(document.cookie);
-    
+    const showList = [];
     var shows = document.cookie.split(";");
+    // {
+    //     showList.push("Test")
+    // }
 
-    var EvenementBlocks;
-
-    
-
+    {
+        shows.forEach(element => {
+            var parts = element.split("=");
+            var parts2 = parts[1].split("%3B")
+            console.log(parts[0] + "-" + parts2[0] + "-" + parts2[1])
+            showList.push(GetEvenement(parts[0],parts2[0],parts2[1]))
+        })
+    } 
     return(
         <>
             <Hero2 tekst="Winkelmand"/>
-            {
-                    shows.forEach(element => {
-                        var parts = element.split("=");
-                        var parts2 = parts[1].split("%3B")
-                        console.log(parts[0] + "-" + parts2[0] + "-" + parts2[1])
-                        EvenementBlocks = GetEvenement(parts[0],parts2[0],parts2[1])
-                    })
-            }
-            {EvenementBlocks}
+            {showList}
             <FakePay/>
         </>
     );
