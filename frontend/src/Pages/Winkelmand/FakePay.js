@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-const FakePay = () => {
+const FakePay = (props) => {
     var [amount , setAmount] = useState('');
     
     const handleSubmit = (e) => {
@@ -53,8 +53,8 @@ const FakePay = () => {
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="name">
                         <Form.Label> &nbsp; Te betalen bedrag:</Form.Label>
-                        <br/>
-                        <br/>
+                        <p>€ {props.bedrag},00</p>
+                        <br/><br/>
                         <Form.Control
                             type="number"
                             placeholder="Amount"

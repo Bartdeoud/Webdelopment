@@ -19,24 +19,21 @@ function DataFetching(){
 
     if (posts.length === 0){
         return (
-            <section className="contact">
-                <Alinea titel="Geen voorstellingen gevonden"
-                tekst="Herlaad de pagina of probeer het later opnieuw"
-                />
-            </section>
+            <Alinea titel="Geen voorstellingen gevonden"
+            tekst="Herlaad de pagina of probeer het later opnieuw"/>
         )
     }else {
         return (
             <div>
-            {posts.map(voorstelling =>
-            <EvenementBlock 
-            shownr={voorstelling.shownr}
-            TitelVoorstelling={voorstelling.naam}
-            zaal={voorstelling.zaal}
-            datum={(voorstelling.beginTijd).substring(0,10)}
-            tijd={(voorstelling.beginTijd).substring(11,15)}
-            LinkToImg={voorstelling.afbeelding}/>
-            )}
+                {posts.map(voorstelling =>
+                <EvenementBlock 
+                shownr={voorstelling.shownr}
+                TitelVoorstelling={voorstelling.naam}
+                zaal={voorstelling.zaal}
+                datum={(voorstelling.beginTijd).substring(0,10)}
+                tijd={(voorstelling.beginTijd).substring(11,15)}
+                LinkToImg={voorstelling.afbeelding}/>
+                )}
             </div>
         )
     }

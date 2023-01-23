@@ -19,12 +19,13 @@ const options = [
   ]
 
   return(
-    <div>
+    <>
+      <p>Selecteer uw rang</p>
       <Select options={options} dropdownPosition="auto" onChange={(values) => {
         const cookies = new Cookies(document.cookies);
         cookies.set("tempRang", values[0].value);
         }} />
-    </div>
+    </>
   );
 }
 

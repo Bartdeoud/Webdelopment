@@ -8,7 +8,7 @@ const Winkelmand = () => {
     const showListNaam = [];
     const showListRang = [];
     const showListAantal = [];
-    // let totaaltickets;
+    var totaaltickets = 0;
 
     // Wil fail if there are no shows in the cookie
     try{
@@ -23,9 +23,11 @@ const Winkelmand = () => {
                 showListNaam.push(parts[0])
                 showListRang.push(parts2[0])
                 showListAantal.push(parts2[1])
-                // totaaltickets = totaaltickets + parts2[1]
+                totaaltickets = totaaltickets + parseInt(parts2[1])
             }
         })
+        
+        //for loop werkt niet kijken, oftewel kijken naar een andere manier om de array uit te lezen
         for (let i = 0; i < showListNaam.length; i++) {
             console.log("in show " + showListNaam[i] + " - " + showListRang[i] + " - " + showListAantal[i])
             return(
@@ -33,8 +35,7 @@ const Winkelmand = () => {
                     <Hero2 tekst="Winkelmand"/>
                     <TicketBlok TitelVoorstelling={showListNaam[i]} rang={showListRang[i]} AantalTickets={showListAantal[i]}/>
                     <TicketBlok TitelVoorstelling={showListNaam[i+1]} rang={showListRang[i+1]} AantalTickets={showListAantal[i+1]}/>
-                    {/* {totaaltickets} */}
-                    <FakePay/>
+                    <FakePay bedrag={totaaltickets * 10}/>
                 </>
             )
         }
@@ -44,9 +45,7 @@ const Winkelmand = () => {
             <>
                 <Hero2 tekst="Winkelmand"/>
     
-                <section className="contact">
-                    <Alinea titel="Geen kaarten in winkelmand" link="/Programma" linknaam="Ga naar het programma om kaarten toe te voegen."/>
-                </section>
+                <Alinea titel="Geen kaarten in winkelmand" link="/Programma" linknaam="Ga naar het programma om kaarten toe te voegen."/>
             </>
         );
     }
