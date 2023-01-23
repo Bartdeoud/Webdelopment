@@ -1,9 +1,8 @@
-// See https://aka.ms/new-console-template for more information
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-public class DBContext : DbContext
+public class DBContext : IdentityDbContext
 {
-    // public DBContext(DbContextOptions<DBContext> options) : base(options){}
     public DbSet<Gebruiker> gebruikers{ get; set; }
     public DbSet<Artiest> artiesten { get; set; }
     public DbSet<Band> bands { get; set; }
