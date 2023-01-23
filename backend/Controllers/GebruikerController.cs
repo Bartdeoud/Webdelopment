@@ -11,7 +11,7 @@ public class GebruikerController : ControllerBase
 
     // GET: api/Gebruiker
     [HttpGet] 
-    public async Task<ActionResult<IEnumerable<Gebruiker>>> getShows()
+    public async Task<ActionResult<IEnumerable<Gebruiker>>> getGebruiker()
     {
         if (_context.shows == null)
           {
@@ -22,7 +22,7 @@ public class GebruikerController : ControllerBase
 
     // GET: api/Gebruiker/5
     [HttpGet("{id}")] 
-    public async Task<ActionResult<Gebruiker>> GetShowUsingId(int id)
+    public async Task<ActionResult<Gebruiker>> GetGebruikerUsingId(int id)
     {
         if (_context.gebruikers == null)
         {
@@ -39,7 +39,7 @@ public class GebruikerController : ControllerBase
     
     // POST: api/Gebruiker
     [HttpPost] 
-    public async Task<ActionResult<Gebruiker>> PostShow(Gebruiker gebruiker)
+    public async Task<ActionResult<Gebruiker>> PostGebruiker(Gebruiker gebruiker)
     {
         if (_context.gebruikers == null)
         {
@@ -48,7 +48,7 @@ public class GebruikerController : ControllerBase
         _context.gebruikers.Add(gebruiker);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetShow", new { id = gebruiker.UserID }, gebruiker);
+        return CreatedAtAction("GetGebruiker", new { id = gebruiker.UserID }, gebruiker);
     }
 
     //PUT api/Gebruiker/5
@@ -64,21 +64,8 @@ public class GebruikerController : ControllerBase
             return BadRequest();
         }
         _context.Entry(gebruiker).State = EntityState.Modified;
-        try
-        {
-            await _context.SaveChangesAsync();
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!GebruikerExists(id))
-            {
-                return NotFound();
-            }
-            else
-            {
-                throw;
-            }
-        }
+        await _context.SaveChangesAsync();
+
         return NoContent();
     } 
 

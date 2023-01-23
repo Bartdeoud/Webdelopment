@@ -18,7 +18,7 @@ public class Gebruiker //: IdentityUser
 
     [Required]
     public string Username {set;get;} = string.Empty;
-    public List<Ticket>? tickets {set; get;}
+    // public List<Ticket>? tickets {set; get;}
 }
 
 public class GebruikerLogin{
