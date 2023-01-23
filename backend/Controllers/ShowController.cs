@@ -20,21 +20,36 @@ public class ShowController : ControllerBase
     }
 
     [HttpGet("{id}")]
-        public async Task<ActionResult<Show>> GetShow(int id)
+    public async Task<ActionResult<Show>> GetShowUsingId(int id)
+    {
+        if (_context.shows == null)
         {
-          if (_context.shows == null)
-          {
-              return NotFound();
-          }
-            var show = await _context.shows.FindAsync(id);
-
-            if (show == null)
-            {
-                return NotFound();
-            }
-
-            return show;
+            return NotFound();
         }
+        var show = await _context.shows.FindAsync(id);
+
+        if (show == null)
+        {
+            return NotFound();
+        }
+
+        return show;
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Show>> GetShowUsingName(String name)
+    {
+        if (_context.shows == null)
+        {
+            return NotFound();
+        }
+        var show = await _context.shows.FindAsync(name);
+        if (show == null)
+        {
+            return NotFound();
+        }
+        return show;
+    }
 
     [HttpPost]
     public async Task<ActionResult<Show>> PostShow(Show show)
