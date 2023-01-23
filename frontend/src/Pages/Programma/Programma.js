@@ -8,7 +8,6 @@ const Programma = () => {
             <Hero2 tekst="Programma"/>
             <DataFetching/>
         </>
-        
     );
 }
 

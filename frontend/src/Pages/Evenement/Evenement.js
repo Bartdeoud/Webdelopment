@@ -5,22 +5,25 @@ import setCookies from "./CookieHandler.js";
 
 const Programma = () => {
     return(
-        <div className="EvenementPagina">
+        <>
             <EvenementValues/>
-            <GetSeats/>
-            <div>
-            <label>
-                Aantal kaartjes (0-9):
+            
+            <section className="contact">
+                <GetSeats/>
+                <br/>
+
+                <p>Aantal kaartjes (1-9):</p>
                 <input type="text" id="NumberTickets"/>
-            </label>
-                <br/><br/>
+                <br/>
+
                 <button className="btn" type="onClick" onClick={() => {
                         setCookies()
                         window.location.href='/Winkelmand'
                 }}>Bestel</button>
-                <br/><br/>
-            </div>
-        </div>
+                <br/>
+                <hr/>
+            </section>
+        </>
     );
 }
 

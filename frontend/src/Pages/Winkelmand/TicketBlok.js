@@ -3,7 +3,6 @@ import React from "react";
 const TicketBlok = (props) => {
     const {
         TitelVoorstelling,
-        Artiest,
         zaal,
         AantalTickets,
         rang,
@@ -20,7 +19,6 @@ const TicketBlok = (props) => {
                     <div>
                         <h2>{TitelVoorstelling}</h2>
                         <br></br>
-                        <h3>{Artiest}</h3>
                         <h3>{zaal}</h3>
                     </div>
 

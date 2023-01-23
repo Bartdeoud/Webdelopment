@@ -34,7 +34,8 @@ const Aanmaken = () => {
 
     //This is just here to prevent warnings since azure doesn't like unused variables
     const placeholder = () => {
-        console.log (setPassword);
+        console.log (matchFocus);
+        console.log (emailFocus);
         console.log (setNaam);
         console.log (setSuccess);
     }
@@ -171,6 +172,7 @@ const Aanmaken = () => {
                                 onFocus={()=>setPwdFocus(true)}
                                 onBlur={()=>setPwdFocus(false)}
                             />
+                            
                             <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
                                 <FontAwesomeIcon icon={faInfoCircle}/>
                                 Minimaal 7 karakters. <br/>
