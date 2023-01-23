@@ -93,3 +93,11 @@ font-weight: bold;
 .EvenementPagina > button{
 	width: 70%;
 }
+
+span.hide{
+  display: none;
+}
+
+p.offscreen{
+  display: none;
+}
