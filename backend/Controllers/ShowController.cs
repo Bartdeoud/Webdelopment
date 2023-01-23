@@ -37,10 +37,10 @@ public class ShowController : ControllerBase
         return show;
     }
 
-    // GET: api/Show/ShowName
-    //[HttpGet("{name}")] 
-    //public async Task<ActionResult<Show>> GetShowUsingName(String name)
-    //{
+    // // GET: api/Show/ShowName
+    // [HttpGet("{name}")] 
+    // public async Task<ActionResult<Show>> GetShowUsingName(String name)
+    // {
     //    if (_context.shows == null)
     //    {
     //        return NotFound();
@@ -51,7 +51,7 @@ public class ShowController : ControllerBase
     //        return NotFound();
     //    }
     //    return show;
-    //}
+    // }
 
     // POST: api/Show
     [HttpPost] 

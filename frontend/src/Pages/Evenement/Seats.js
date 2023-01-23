@@ -22,7 +22,7 @@ const options = [
     <div>
       <Select options={options} dropdownPosition="auto" onChange={(values) => {
         const cookies = new Cookies(document.cookies);
-        cookies.set("tempRang",values[0].value);
+        cookies.set("tempRang", values[0].value);
         }} />
     </div>
   );

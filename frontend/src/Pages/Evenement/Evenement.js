@@ -10,7 +10,7 @@ const Programma = () => {
             <GetSeats/>
             <div>
             <label>
-                Aantal kaartjes (0-9):
+                Aantal kaartjes (1-9):
                 <input type="text" id="NumberTickets"/>
             </label>
                 <br/><br/>
