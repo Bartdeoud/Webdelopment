@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-public class DBContext : IdentityDbContext
+public class DBContext : DbContext
 {
     public DbSet<Gebruiker> gebruikers{ get; set; }
     public DbSet<Artiest> artiesten { get; set; }
