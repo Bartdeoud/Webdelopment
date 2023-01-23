@@ -9,7 +9,8 @@ public class GebruikerController : ControllerBase
 {
     public static DBContext _context = new DBContext();
 
-    [HttpGet] // GET: api/Gebruiker
+    // GET: api/Gebruiker
+    [HttpGet] 
     public async Task<ActionResult<IEnumerable<Gebruiker>>> getShows()
     {
         if (_context.shows == null)
@@ -19,7 +20,8 @@ public class GebruikerController : ControllerBase
             return await _context.gebruikers.ToListAsync();
     }
 
-    [HttpGet("{id}")] // GET: api/Gebruiker/5
+    // GET: api/Gebruiker/5
+    [HttpGet("{id}")] 
     public async Task<ActionResult<Gebruiker>> GetShowUsingId(int id)
     {
         if (_context.gebruikers == null)
@@ -35,12 +37,13 @@ public class GebruikerController : ControllerBase
         return gebruiker;
     }
     
-    [HttpPost] // POST: api/Gebruiker
+    // POST: api/Gebruiker
+    [HttpPost] 
     public async Task<ActionResult<Gebruiker>> PostShow(Gebruiker gebruiker)
     {
         if (_context.gebruikers == null)
         {
-            return Problem("Entity set 'DBcontext.shows'  is null.");
+            return Problem("Entity set 'DBcontext.gebruikers'  is null.");
         }
         _context.gebruikers.Add(gebruiker);
         await _context.SaveChangesAsync();
@@ -48,35 +51,57 @@ public class GebruikerController : ControllerBase
         return CreatedAtAction("GetShow", new { id = gebruiker.UserID }, gebruiker);
     }
 
-    //PUT api/<Gebruiker/id
+    //PUT api/Gebruiker/5
     [HttpPut ("{id}")]
-    public async Task<IResult> Put(Gebruiker updateGebruiker)
+    public async Task<IActionResult> PutGebruiker(int id, Gebruiker gebruiker)
     {
-        bool updateGebruikerBool = await GebruikerHandler.updateGebruikerAsync(updateGebruiker);
-
-        if (updateGebruikerBool)
+        if (_context.gebruikers == null)
         {
-            return Results.Ok("Success");
+            return Problem("Entity set 'DBcontext.gebruikers'  is null.");
         }
-        else
+        if (id != gebruiker.UserID)
         {
-            return Results.BadRequest();
+            return BadRequest();
         }
+        _context.Entry(gebruiker).State = EntityState.Modified;
+        try
+        {
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!GebruikerExists(id))
+            {
+                return NotFound();
+            }
+            else
+            {
+                throw;
+            }
+        }
+        return NoContent();
     } 
 
-    //DELETE api/<Gebruiker/id
-    [HttpDelete("delete_gebruiker_with_id/{id}")]
-    public async Task<IResult> Delete(int id)
-    {
-        bool deleteGebruikerBool = await GebruikerHandler.deleteGebruikerAsync(id);
+    private bool GebruikerExists(int id){
+        return _context.gebruikers.Any(e => e.UserID == id);
+    }
 
-        if (deleteGebruikerBool)
+    // DELETE: api/Gebruiker/5
+    [HttpDelete("{id}")] 
+    public async Task<ActionResult<Show>> DeleteGebruiker(int id)
+    {
+        if (_context.gebruikers == null)
         {
-            return Results.Ok("Success");
+            return Problem("Entity set 'DBcontext.gebruikers'  is null.");
         }
-        else
+        var gebruiker = await _context.gebruikers.FindAsync(id);
+        if (gebruiker == null)
         {
-            return Results.BadRequest();
+            return NotFound();
         }
+        _context.gebruikers.Remove(gebruiker);
+        await _context.SaveChangesAsync();
+
+        return NoContent();
     }
 }

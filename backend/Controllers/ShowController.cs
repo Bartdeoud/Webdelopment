@@ -9,7 +9,8 @@ public class ShowController : ControllerBase
 {
     public static DBContext _context = new DBContext();
 
-    [HttpGet] // GET: api/Show
+    // GET: api/Show
+    [HttpGet] 
     public async Task<ActionResult<IEnumerable<Show>>> getShows()
     {
         if (_context.shows == null)
@@ -19,7 +20,8 @@ public class ShowController : ControllerBase
             return await _context.shows.ToListAsync();
     }
 
-    [HttpGet("{id}")] // GET: api/Show/5
+    // GET: api/Show/5
+    [HttpGet("{id}")] 
     public async Task<ActionResult<Show>> GetShowUsingId(int id)
     {
         if (_context.shows == null)
@@ -35,7 +37,8 @@ public class ShowController : ControllerBase
         return show;
     }
 
-    [HttpGet("{name}")] // GET: api/Show/ShowName
+    // GET: api/Show/ShowName
+    [HttpGet("{name}")] 
     public async Task<ActionResult<Show>> GetShowUsingName(String name)
     {
         if (_context.shows == null)
@@ -50,7 +53,8 @@ public class ShowController : ControllerBase
         return show;
     }
 
-    [HttpPost] // POST: api/Show
+    // POST: api/Show
+    [HttpPost] 
     public async Task<ActionResult<Show>> PostShow(Show show)
     {
         if (_context.shows == null)
@@ -61,5 +65,24 @@ public class ShowController : ControllerBase
         await _context.SaveChangesAsync();
 
         return CreatedAtAction("GetShow", new { id = show.Shownr }, show);
+    }
+
+    // DELETE: api/Show/5
+    [HttpDelete("{id}")] 
+    public async Task<ActionResult<Show>> DeleteShow(int id)
+    {
+        if (_context.shows == null)
+        {
+            return Problem("Entity set 'DBcontext.shows'  is null.");
+        }
+        var show = await _context.shows.FindAsync(id);
+        if (show == null)
+        {
+            return NotFound();
+        }
+        _context.shows.Remove(show);
+        await _context.SaveChangesAsync();
+
+        return NoContent();
     }
 }
