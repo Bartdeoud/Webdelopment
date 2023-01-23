@@ -21,7 +21,7 @@ public class ShowController : ControllerBase
     }
 
     // GET: api/Show/5
-    [HttpGet("{id}")] 
+    [HttpGet("usingId{id}")]
     public async Task<ActionResult<Show>> GetShowUsingId(int id)
     {
         if (_context.shows == null)
