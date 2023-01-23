@@ -9,10 +9,9 @@ const Winkelmand = () => {
     
     var shows = document.cookie.split(";");
 
+    var EvenementBlocks;
 
-    const addBlock = () =>{
-
-    }
+    
 
     return(
         <>
@@ -21,10 +20,11 @@ const Winkelmand = () => {
                     shows.forEach(element => {
                         var parts = element.split("=");
                         var parts2 = parts[1].split("%3B")
-                        console.log(parts[0]);
-                        GetEvenement(parts[0],parts2[0],parts2[1])
+                        console.log(parts[0] + "-" + parts2[0] + "-" + parts2[1])
+                        EvenementBlocks = GetEvenement(parts[0],parts2[0],parts2[1])
                     })
             }
+            {EvenementBlocks}
             <FakePay/>
         </>
     );

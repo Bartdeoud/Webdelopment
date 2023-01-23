@@ -38,20 +38,20 @@ public class ShowController : ControllerBase
     }
 
     // GET: api/Show/ShowName
-    [HttpGet("{name}")] 
-    public async Task<ActionResult<Show>> GetShowUsingName(String name)
-    {
-        if (_context.shows == null)
-        {
-            return NotFound();
-        }
-        var show = await _context.shows.FindAsync(name);
-        if (show == null)
-        {
-            return NotFound();
-        }
-        return show;
-    }
+    //[HttpGet("{name}")] 
+    //public async Task<ActionResult<Show>> GetShowUsingName(String name)
+    //{
+    //    if (_context.shows == null)
+    //    {
+    //        return NotFound();
+    //    }
+    //    var show = await _context.shows.FindAsync(name);
+    //    if (show == null)
+    //    {
+    //        return NotFound();
+    //    }
+    //    return show;
+    //}
 
     // POST: api/Show
     [HttpPost] 

@@ -6,7 +6,7 @@ function GetEvenement(name, rang, aantal){
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        axios.get(('https://localhost:7214/api/Show/'+decodeURI(name)))
+        axios.get(('https://localhost:7214/api/Show/2'))
         .then(res => {
             console.log(res.data)
             setPosts(res.data)
@@ -19,12 +19,11 @@ function GetEvenement(name, rang, aantal){
     return (
         <div>
            <TicketBlok TitelVoorstelling=
-           {posts.Naam}
-           Artiest={posts.Artiesten}
+           {posts.naam}
            zaal={posts.zaal}
            AantalTickets={aantal}
            rang={rang}
-           LinkToImg={posts.Afbeelding}/>
+           LinkToImg={posts.afbeelding}/>
         </div>
     )
 }
