@@ -30,6 +30,7 @@ npm install react-bootstrap bootstrap
 React dropdown select, (https://www.npmjs.com/package/react-dropdown-select)
 npm install --save react-dropdown-select
 
+React cookies, (https://www.npmjs.com/package/universal-cookie)
 npm i universal-cookie
 
 React update
