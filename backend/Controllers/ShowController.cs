@@ -9,7 +9,7 @@ public class ShowController : ControllerBase
 {
     public static DBContext _context = new DBContext();
 
-    [HttpGet]
+    [HttpGet] // GET: api/Show
     public async Task<ActionResult<IEnumerable<Show>>> getShows()
     {
         if (_context.shows == null)
@@ -19,7 +19,7 @@ public class ShowController : ControllerBase
             return await _context.shows.ToListAsync();
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id}")] // GET: api/Show/5
     public async Task<ActionResult<Show>> GetShowUsingId(int id)
     {
         if (_context.shows == null)
@@ -32,11 +32,10 @@ public class ShowController : ControllerBase
         {
             return NotFound();
         }
-
         return show;
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{name}")] // GET: api/Show/ShowName
     public async Task<ActionResult<Show>> GetShowUsingName(String name)
     {
         if (_context.shows == null)
@@ -51,7 +50,7 @@ public class ShowController : ControllerBase
         return show;
     }
 
-    [HttpPost]
+    [HttpPost] // POST: api/Show
     public async Task<ActionResult<Show>> PostShow(Show show)
     {
         if (_context.shows == null)

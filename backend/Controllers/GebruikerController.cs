@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers;
 
@@ -7,47 +7,45 @@ namespace backend.Controllers;
 [ApiController]
 public class GebruikerController : ControllerBase
 {
-    // GET: api/<Gebruiker>/
-    [HttpGet("get_all_gebruikers")]
-    public List<Gebruiker> Get()
+    public static DBContext _context = new DBContext();
+
+    [HttpGet] // GET: api/Gebruiker
+    public async Task<ActionResult<IEnumerable<Gebruiker>>> getShows()
     {
-        return GebruikerHandler.getListGebruiker();
-    } 
+        if (_context.shows == null)
+          {
+              return NotFound();
+          }
+            return await _context.gebruikers.ToListAsync();
+    }
 
-    //Get api//<Gebruiker>/id
-    [HttpGet("get_gebruiker_withID{userID}")]
-    public IResult Get(int userID)
+    [HttpGet("{id}")] // GET: api/Gebruiker/5
+    public async Task<ActionResult<Gebruiker>> GetShowUsingId(int id)
     {
-        //Gebruiker returnGebruiker = await GebruikerHandler.getGebruikerWithIDAsync(userID);
-        //moet eigenlijk await zijn, zie GebruikerHandler
-        Gebruiker returnGebruiker = GebruikerHandler.getGebruikerWithIDAsync(userID);
-
-        if (returnGebruiker != null)
+        if (_context.gebruikers == null)
         {
-            return Results.Ok(returnGebruiker);
+            return NotFound();
         }
-        else
-        {
-            return Results.BadRequest();
-        }
-    } 
+        var gebruiker = await _context.gebruikers.FindAsync(id);
 
-    //POST api/<Gebruiker>
-    [HttpPost("add_gebruiker")]
-    public async Task<IResult> Post(Gebruiker newGebruiker)
+        if (gebruiker == null)
+        {
+            return NotFound();
+        }
+        return gebruiker;
+    }
+    
+    [HttpPost] // POST: api/Gebruiker
+    public async Task<ActionResult<Gebruiker>> PostShow(Gebruiker gebruiker)
     {
-        //Gebruiker returnGebruiker = await GebruikerHandler.getGebruikerWithIDAsync(userID);
-        //moet eigenlijk await zijn, zie GebruikerHandler
-        bool returnGebruikerBool = await GebruikerHandler.addGebruikerAsync(newGebruiker);
+        if (_context.gebruikers == null)
+        {
+            return Problem("Entity set 'DBcontext.shows'  is null.");
+        }
+        _context.gebruikers.Add(gebruiker);
+        await _context.SaveChangesAsync();
 
-        if (returnGebruikerBool)
-        {
-            return Results.Ok("Success");
-        }
-        else
-        {
-            return Results.BadRequest();
-        }
+        return CreatedAtAction("GetShow", new { id = gebruiker.UserID }, gebruiker);
     }
 
     //PUT api/<Gebruiker/id
