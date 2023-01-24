@@ -1,5 +1,6 @@
 import React from 'react';
 import Hero2 from '../Shared/Hero2';
+import Alinea from '../Shared/Alinea';
 import { useRef, useState, useEffect } from "react";
 import {faCheck, faTimes, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -12,58 +13,72 @@ const Aanmaken = () => {
     const userRef = useRef();
     const errRef = useRef();
 
-    const [user, setUser] = useState("");
-    const [naam, setNaam] = useState(false);
+    // Name
+    const [name, setName] = useState("");
     const [validName, setValidName] = useState(false);
     const [userFocus, setUserFocus] = useState(false);
 
+    // Password
     const [password, setPassword] = useState("");
     const [validPwd, setValidPwd] = useState(false);
     const [pwdFocus, setPwdFocus] = useState(false);
 
+    // Confirm password
     const [confirmPassword, setConfirmPassword] = useState("");
     const [validMatch, setValidMatch] = useState(false);
-    const [matchFocus, setMatchFocus] = useState(false);
 
     const [email, setEmail] = useState("");
     const [validEmail, setValidEmail]=useState(false);
-    const [emailFocus, setEmailFocus]=useState(false);
 
     const [errMsg, setErrMsg] = useState("");
-    const [success, setSuccess] = useState(false);
-
-    //This is just here to prevent warnings since azure doesn't like unused variables
-    const placeholder = () => {
-        console.log (matchFocus);
-        console.log (emailFocus);
-        console.log (setNaam);
-        console.log (setSuccess);
-    }
+    var succes = false;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const v1 = User_regex.test(user);
+        const v1 = User_regex.test(name);
         const v2 = Wachtwoord_regex.test(password);
         const v3 = Email_regex.test(email);
         if(!v1||!v2||!v3){
             setErrMsg("Een of meerdere ingevoerde gegevens zijn incorrect.")
             return;
         }
-        alert(naam + email);
-        console.log (placeholder);
+        handleOnSubmit();
+        succes = true;
+        alert("Account aangemaakt!");
+    }
+
+    const handleOnSubmit = async () => {
+        try {
+            let res = await fetch("https://localhost:7214/api/Gebruiker", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                "userID": 0,
+                "naam": name,
+                "email": email,
+                "wachtwoord": password,
+                "username": name
+              }),
+            });
+            if (res.status === 200) {
+              console.log("succes");
+            }
+        }catch (err){
+            console.log(err);
+        }
     }
 
     //User
     useEffect(()=>{ 
-        const result = User_regex.test(user);
-
+        const result = User_regex.test(name);
         setValidName(result);
-    },[user])
+    },[name])
 
     //Password
     useEffect(()=>{ 
         const result = Wachtwoord_regex.test(password);
-
         setValidPwd(result);
         const match = password === confirmPassword;
         setValidMatch(match);
@@ -78,16 +93,16 @@ const Aanmaken = () => {
 
     useEffect(()=>{
         setErrMsg("");
-    },[user, password, confirmPassword,email])
+    },[name, password, confirmPassword,email])
 
     return(
         <>
             <Hero2 tekst="Account aanmaken" />
 
-            {success ? (
-                    <section>
-                        <h1>Account aanmaken is gelukt!</h1>
-                    </section>
+            {succes ? (
+                    <Alinea titel="Account aanmaken gelukt!" 
+                    link="/Login"
+                    linknaam="Klik hier om in te loggen"/>
                 )
                 : 
                 (
@@ -98,7 +113,7 @@ const Aanmaken = () => {
 
                             <label htmlFor="username"> Gebruikersnaam:
                                 <span className={validName ? "valid" : "hide"}> <FontAwesomeIcon icon={faCheck}/> </span>
-                                <span className={validName || !user ? "hide" : "invalid"}> <FontAwesomeIcon icon={faTimes}/> </span>
+                                <span className={validName || !name ? "hide" : "invalid"}> <FontAwesomeIcon icon={faTimes}/> </span>
                             </label>
                             
                             <br/>
@@ -107,7 +122,7 @@ const Aanmaken = () => {
                                 id="username" 
                                 ref={userRef} 
                                 autoComplete="off" 
-                                onChange={(e)=>setUser(e.target.value)} 
+                                onChange={(e)=>setName(e.target.value)} 
                                 required
                                 aria-invalid={validName ? "false" :  "true"}
                                 aria-describedby="uidnote"
@@ -115,7 +130,7 @@ const Aanmaken = () => {
                                 onBlur={()=>setUserFocus(false)}
                             />
                             
-                            <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
+                            <p id="uidnote" className={userFocus && name && !validName ? "instructions" : "offscreen"}>
                                 <FontAwesomeIcon icon={faInfoCircle}/>
                                 Minimaal 8 karakters <br/>
                                 Maximaal 100 karakters <br/>
@@ -123,14 +138,9 @@ const Aanmaken = () => {
                                 Letters, nummers, underscore, streepjes toegestaan.
                             </p>
 
-                            <label htmlFor="emailadres">
-                                E-mail adres:
-                                <span className={validEmail ? "valid" : "hide"}>
-                                    <FontAwesomeIcon icon={faCheck}/>
-                                </span>
-                                <span className={validName || !user ? "hide" : "invalid"}>
-                                    <FontAwesomeIcon icon={faTimes}/>
-                                </span>
+                            <label htmlFor="emailadres"> E-mail adres:
+                                <span className={validEmail ? "valid" : "hide"}> <FontAwesomeIcon icon={faCheck}/> </span>
+                                <span className={validName || !name ? "hide" : "invalid"}> <FontAwesomeIcon icon={faTimes}/> </span>
                             </label>
                             
                             <br/>
@@ -144,20 +154,13 @@ const Aanmaken = () => {
                                 required
                                 aria-invalid={validName ? "false" :  "true"}
                                 aroa-describedby="emailnote"
-                                onFocus={()=>setEmailFocus(true)}
-                                onBlur={()=>setEmailFocus(false)}
                             />
 
                             <br/>
 
-                            <label htmlFor="password">
-                                Wachtwoord:
-                                <span className={validPwd ? "valid": "hide"}>
-                                    <FontAwesomeIcon icon={faCheck}/>
-                                </span>
-                                <span className={validPwd || !password ? "hide" : "invalid"}>
-                                    <FontAwesomeIcon icon={faTimes}/>
-                                </span>
+                            <label htmlFor="password"> Wachtwoord:
+                                <span className={validPwd ? "valid": "hide"}> <FontAwesomeIcon icon={faCheck}/> </span>
+                                <span className={validPwd || !password ? "hide" : "invalid"}> <FontAwesomeIcon icon={faTimes}/></span>
                             </label>
                             
                             <br/>
@@ -193,8 +196,6 @@ const Aanmaken = () => {
                                 required 
                                 aria-invalid={validMatch ? "false" : "true"}
                                 aria-describedby="contirmnote"
-                                onFocus={()=>setMatchFocus(true)}
-                                onBlur={()=>setMatchFocus(false)}
                             />
 
                             <button disabled={!validName || !validEmail  || !validPwd || !validMatch ? true : false}> Registreer </button>
