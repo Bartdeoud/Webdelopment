@@ -1,20 +1,13 @@
 import React, { useState }  from 'react';
 import Hero2 from '../Shared/Hero2';
-// import { DayPicker } from "react-day-picker";
-import 'react-day-picker/dist/style.css';
 
 const EvenementToevoegen = () => {
-    // const [day, setDay] = useState();
     const [shownaam, setNaam] = useState();
     const [showzaal, setZaal] = useState();
     const [leeftijd, setLeeftijd] = useState();
     const [showgenre, setGenre] = useState();
 
-    const handleSubmit = (e) => {
-      handleOnSubmit();
-    }
-
-    const handleOnSubmit = async () => {
+    const handleSubmit = async () => {
         try {
           let res = await fetch("https://localhost:7214/api/Show", {
             method: "POST",
@@ -78,16 +71,6 @@ const EvenementToevoegen = () => {
                         <option value="Musical">Musical</option>
                         <option value="Opera">Opera</option>
                     </select>
-
-                    <br/>
-
-                    {/* <p>Dagen</p>
-                    <DayPicker
-                        mode="single"
-                        selected={day}
-                        onSelect={setDay}
-                    /> */}
-
                     <button className="btn" onClick={handleSubmit}> Submit </button>
                 </form>
             </section>   
