@@ -32,12 +32,7 @@ const Login = (props) => {
 
     useEffect(()=>{
         userRef.current.focus();
-    },[])
-
-    // const handleChange = (e) => {
-    //     console.log (placeholder); 
-    //     setFormData(e.target.value);
-    // }
+    },[]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
