@@ -8,6 +8,7 @@ const Winkelmand = () => {
     const showListNaam = [];
     const showListRang = [];
     const showListAantal = [];
+    const showList = [];
     var totaaltickets = 0;
 
     // Wil fail if there are no shows in the cookie
@@ -25,20 +26,19 @@ const Winkelmand = () => {
                 showListAantal.push(parts2[1])
                 totaaltickets = totaaltickets + parseInt(parts2[1])
             }
-        })
-        
-        //for loop werkt niet kijken, oftewel kijken naar een andere manier om de array uit te lezen
+        })   
         for (let i = 0; i < showListNaam.length; i++) {
-            console.log("in show " + showListNaam[i] + " - " + showListRang[i] + " - " + showListAantal[i])
-            return(
-                <>
-                    <Hero2 tekst="Winkelmand"/>
-                    <TicketBlok TitelVoorstelling={showListNaam[i]} rang={showListRang[i]} AantalTickets={showListAantal[i]}/>
-                    <TicketBlok TitelVoorstelling={showListNaam[i+1]} rang={showListRang[i+1]} AantalTickets={showListAantal[i+1]}/>
-                    <FakePay bedrag={totaaltickets * 10}/>
-                </>
-            )
+            console.log("in show " + showListNaam[i] + " - " + showListRang[i] + " - " + showListAantal[i])   
+            showList.push(<TicketBlok TitelVoorstelling={showListNaam[i]} rang={showListRang[i]} AantalTickets={showListAantal[i]}/>)                    
         }
+        return(
+            <>
+                <Hero2 tekst="Winkelmand"/>
+                {showList}
+                <FakePay bedrag={totaaltickets * 10}/>
+            </>
+        )
+
     }catch{
         console.log("No shows in cookie")
         return(
