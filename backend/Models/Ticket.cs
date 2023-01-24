@@ -7,7 +7,7 @@ public class Ticket
     public int TicketID {get; set;}
 
     [Required]
-    public string stoelNr {set; get;}
+    public string stoelNr {set; get;}=null!;
     
     [ForeignKey("Show")]
     public int Shownr {get;set;}
