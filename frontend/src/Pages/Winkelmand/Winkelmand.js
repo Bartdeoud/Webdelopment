@@ -34,8 +34,13 @@ const Winkelmand = () => {
         return(
             <>
                 <Hero2 tekst="Winkelmand"/>
+                <section className="contact">
+                    <h3 className="title"> Totaal aantal tickets </h3>
+                    <p> {totaaltickets} tickets voor €{totaaltickets * 10}  </p>
+                </section>
+                <FakePay bedrag={totaaltickets * 10}/>
+                <hr/>
                 {showList}
-                <FakePay totaal={totaaltickets} bedrag={totaaltickets * 10}/>
             </>
         )
 

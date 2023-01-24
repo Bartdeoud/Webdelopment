@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import Alinea from '../Shared/Alinea';
 
 const FakePay = (props) => {
 
@@ -20,9 +20,8 @@ const FakePay = (props) => {
     const [html, setHTML] = useState("");
     let code = `${html}`;
 
-    const handleSubmit = async () => {
-        console.log ("handleOnSubmit");
-        await fetch('https://fakepay.azurewebsites.net/', {
+    useEffect(() => {
+        fetch('https://fakepay.azurewebsites.net/', {
             method: 'POST',
             headers:{
             'Accept': 'application/x-www-form-urlencoded;charset=UTF-8',
@@ -36,34 +35,19 @@ const FakePay = (props) => {
             .then(response => {
             return setHTML(response);
         })
-    }
+    });
 
     if (html === undefined || html === ""){
         return (
-            <section className='contact'>
-                <Form onSubmit={handleSubmit}>
-                    <Form.Group controlId="name">
-
-                    <Form.Label> &nbsp; Totaal aantal kaarten:</Form.Label>
-                    <p>{props.totaal}</p>
-
-                    <br/>
-
-                    <Form.Label> &nbsp; Te betalen bedrag:</Form.Label>
-                    <p>€ {props.bedrag},00</p>
-                        
-                    </Form.Group>
-                    <br/>
-                    <Button className='btn' type="submit"> Submit </Button>
-                </Form>
-                <br/>
-                <hr/>
-            </section>
+            <Alinea titel="Oeps er is iets mis gegaan" 
+            tekst="Probeer het later nog eens"
+            link="/"
+            linknaam="Ga terug naar de homepagina"/>
         )
     }else{
         return (
             <section className='contact'>
-                    <div dangerouslySetInnerHTML={{ __html: code}}/>
+                <div dangerouslySetInnerHTML={{ __html: code}}/>
             </section>
         );
     }
