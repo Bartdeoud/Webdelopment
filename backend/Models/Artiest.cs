@@ -1,4 +1,4 @@
 public class Artiest : Gebruiker
 {
-    public string artiest_naam { get; set; }
+    public string artiest_naam { get; set; }=null!;
 }

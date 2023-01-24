@@ -3,17 +3,17 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 public class DBContext : DbContext
 {
-    public DbSet<Gebruiker> gebruikers{ get; set; }
-    public DbSet<Artiest> artiesten { get; set; }
-    public DbSet<Band> bands { get; set; }
-    public DbSet<Donateur> donateurs { get; set; }
-    public DbSet<Huren> reserveringen { get; set; }
-    public DbSet<Leden> leden { get; set; }
-    public DbSet<Ruimte> ruimtes { get; set; }
-    public DbSet<Zaal> zalen { get; set; }
-    public DbSet<Ticket> tickets { get; set; }
-    public DbSet<Show> shows { get; set; }
-    public DbSet<Stoelrij> stoelrijen {get; set;}
+    public DbSet<Gebruiker> gebruikers{ get; set; }=null!;
+    public DbSet<Artiest> artiesten { get; set; }=null!;
+    public DbSet<Band> bands { get; set; }=null!;
+    public DbSet<Donateur> donateurs { get; set; }=null!;
+    public DbSet<Huren> reserveringen { get; set; }=null!;
+    public DbSet<Leden> leden { get; set; }=null!;
+    public DbSet<Ruimte> ruimtes { get; set; }=null!;
+    public DbSet<Zaal> zalen { get; set; }=null!;
+    public DbSet<Ticket> tickets { get; set; }=null!;
+    public DbSet<Show> shows { get; set; }=null!;
+    public DbSet<Stoelrij> stoelrijen {get; set;}=null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder builder) {
     builder.UseSqlServer("Server=tcp:laakentertainment.database.windows.net,1433;Initial Catalog=LaakEntertainment;Persist Security Info=False;User ID=AdminLaak;Password=LaakEntertainment1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=2;");
