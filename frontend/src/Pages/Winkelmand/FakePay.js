@@ -2,20 +2,11 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 const FakePay = (props) => {
-    var [amount , setAmount] = useState('');
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const Order = {
-            amount
-        };
-        handleOnSubmit(Order);
-    };
 
     var details = {
         "amount": props.bedrag,
         'reference': '123456789', 
-        'url': 'https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/winkelmand',
+        'url': '',
     };
 
     var formBody = [];
@@ -29,7 +20,7 @@ const FakePay = (props) => {
     const [html, setHTML] = useState("");
     let code = `${html}`;
 
-    const handleOnSubmit = async (order) => {
+    const handleSubmit = async () => {
         console.log ("handleOnSubmit");
         await fetch('https://fakepay.azurewebsites.net/', {
             method: 'POST',
