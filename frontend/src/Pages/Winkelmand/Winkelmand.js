@@ -35,7 +35,7 @@ const Winkelmand = () => {
             <>
                 <Hero2 tekst="Winkelmand"/>
                 {showList}
-                <FakePay bedrag={totaaltickets * 10}/>
+                <FakePay totaal={totaaltickets} bedrag={totaaltickets * 10}/>
             </>
         )
 

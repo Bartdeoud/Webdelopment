@@ -13,7 +13,7 @@ const FakePay = (props) => {
     };
 
     var details = {
-        "amount": amount,
+        "amount": props.bedrag,
         'reference': '123456789', 
         'url': 'https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/winkelmand',
     };
@@ -52,16 +52,15 @@ const FakePay = (props) => {
             <section className='contact'>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="name">
-                        <Form.Label> &nbsp; Te betalen bedrag:</Form.Label>
-                        <p>€ {props.bedrag},00</p>
-                        <br/><br/>
-                        <Form.Control
-                            type="number"
-                            placeholder="Amount"
-                            required min="1"
-                            value={amount}
-                            onChange={(e) => { setAmount(e.target.value) }}
-                        />
+
+                    <Form.Label> &nbsp; Totaal aantal kaarten:</Form.Label>
+                    <p>{props.totaal}</p>
+
+                    <br/>
+
+                    <Form.Label> &nbsp; Te betalen bedrag:</Form.Label>
+                    <p>€ {props.bedrag},00</p>
+                        
                     </Form.Group>
                     <br/>
                     <Button className='btn' type="submit"> Submit </Button>

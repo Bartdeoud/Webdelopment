@@ -1,13 +1,17 @@
 import React from "react";
 
 const TicketBlok = (props) => {
-    const {
+    var {
         TitelVoorstelling,
         zaal,
         AantalTickets,
         rang,
         LinkToImg
     } = props
+
+    if (LinkToImg === undefined){
+        LinkToImg = "./assets/image/LaakZaal1.jpg"
+    }
 
     return (
         <section className="programmaBlock">
@@ -25,7 +29,6 @@ const TicketBlok = (props) => {
                     <div id="bestel">
                         <h3>rang: {rang}</h3>
                         <h3>Aantal tickets: {AantalTickets}</h3>
-                        <br/>
                     </div>
                 </div>      
         </section>
