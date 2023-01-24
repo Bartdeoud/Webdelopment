@@ -39,20 +39,7 @@ const Huren = () => {
         }
   
     try{
-        //var shows = document.cookie.split(";");
-        //shows.forEach(element => {
-        //    var parts = element.split("=");
-        //    var parts2 = parts[1].split("%3B")
-        //    if (parts2[1] !== undefined){
-        //        showListNaam.push(parts[0])
-        //        showListRang.push(parts2[0])
-        //        showListAantal.push(parts2[1])
-        //        totaaltickets = totaaltickets + parseInt(parts2[1])
-        //    }
-        //})   
-        //for (let i = 0; i < showListNaam.length; i++) {
-        //    showList.push(<TicketBlok TitelVoorstelling={showListNaam[i]} rang={showListRang[i]} AantalTickets={showListAantal[i]}/>)                    
-        //}
+        //cookies users
         return (
             <>
                 <Hero2 tekst= "Huren" />

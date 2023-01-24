@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Hero2 from "../Shared/Hero2";
 
+
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         alert(email + password);
     }
 

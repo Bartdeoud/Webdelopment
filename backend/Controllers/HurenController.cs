@@ -28,7 +28,7 @@ public class HurenController : ControllerBase
         {
             if (_context.reserveringen == null)
             {
-                return Problem("DBContext.reserveringen is null.", statusCode:400);
+                return Problem(statusCode:400);
             }
             _context.reserveringen.Add(reservering);
             await _context.SaveChangesAsync();
