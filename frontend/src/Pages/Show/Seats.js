@@ -2,7 +2,7 @@ import React from "react";
 import Select from "react-dropdown-select";
 import Cookies from 'universal-cookie';
 
-function GetSeats() {
+function Seats() {
 const options = [
     { 
       value: 1,
@@ -29,4 +29,4 @@ const options = [
   );
 }
 
-export default GetSeats;
+export default Seats;

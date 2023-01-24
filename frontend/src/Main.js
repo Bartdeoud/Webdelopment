@@ -7,13 +7,13 @@ import Programma from "./Pages/Programma/Programma";
 import Accesibility from "./Pages/Accesibility/Accesibility";
 import Voorwaarden from "./Pages/Voorwaarden/Voorwaarden";
 import VierNulVier from "./Pages/404/404";
-import Evenement from "./Pages/Evenement/Evenement";
+import Show from "./Pages/Show/Show";
 import Login from "./Pages/Login";
 import Account from "./Pages/Account/Account";
 import Aanmaken from "./Pages/Account/Aanmaken";
 import Huren from "./Pages/Winkelmand/Huren";
 import Doneren from "./Pages/Account/Doneren";
-import EvenementToevoegen from "./Pages/Evenement/EvenementToevoegen";
+import ShowToevoegen from "./Pages/Show/ShowToevoegen";
 
 class Main extends React.Component {
   render() {
@@ -24,13 +24,13 @@ class Main extends React.Component {
             <Route path="/Overons" element={<About />} />
             <Route path="/Winkelmand" element={<Winkelmand />} />
             <Route path="/Programma" element={<Programma />} />
-            <Route path="/Evenement" element={<Evenement/>} />
+            <Route path="/Show" element={<Show/>} />
             <Route path="/Accesibility" element={<Accesibility />} />
             <Route path="/Voorwaarden" element={<Voorwaarden />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Account" element={<Account />} />
             <Route path="/Aanmaken" element={<Aanmaken />} />
-            <Route path="/EvenementToevoegen" element={<EvenementToevoegen />} />
+            <Route path="/ShowToevoegen" element={<ShowToevoegen />} />
             <Route path="/Huren" element={<Huren />} />
             <Route path="/Doneren" element={<Doneren />} />
             <Route path="*" element={<VierNulVier />} />

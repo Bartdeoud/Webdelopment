@@ -27,6 +27,7 @@ const Aanmaken = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [validMatch, setValidMatch] = useState(false);
 
+    // Emailadres
     const [email, setEmail] = useState("");
     const [validEmail, setValidEmail]=useState(false);
 
@@ -103,9 +104,7 @@ const Aanmaken = () => {
                     <Alinea titel="Account aanmaken gelukt!" 
                     link="/Login"
                     linknaam="Klik hier om in te loggen"/>
-                )
-                : 
-                (
+                ):(
                     <section className="contact">
                         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                         
@@ -198,7 +197,7 @@ const Aanmaken = () => {
                                 aria-describedby="contirmnote"
                             />
 
-                            <button disabled={!validName || !validEmail  || !validPwd || !validMatch ? true : false}> Registreer </button>
+                            <button className="btn" disabled={!validName || !validEmail  || !validPwd || !validMatch ? true : false}> Registreer </button>
                         </form>
                     </section>
                 )

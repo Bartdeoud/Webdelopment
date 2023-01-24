@@ -31,7 +31,7 @@ const EvenementBlock = (props) => {
                         <h3>{datum}</h3>
                         <h3>{tijd}</h3>
                         <br/>
-                        <button onClick={()=>{navigate('/Evenement', { state:props})}} className="btn">bestel</button>
+                        <button onClick={()=>{navigate('/Show', { state:props})}} className="btn">bestel</button>
                     </div>
                 </div>      
         </section>

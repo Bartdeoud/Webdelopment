@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from 'react-router-dom';
 
-const EvenementValues = () => {
+const ShowValues = () => {
     const {state} = useLocation();
     const {
         shownr,
@@ -31,4 +31,4 @@ const EvenementValues = () => {
     );
 }
 
-export default EvenementValues;
+export default ShowValues;

@@ -1,7 +1,7 @@
 import React, { useState }  from 'react';
 import Hero2 from '../Shared/Hero2';
 
-const EvenementToevoegen = () => {
+const ShowToevoegen = () => {
     const [shownaam, setNaam] = useState();
     const [showzaal, setZaal] = useState();
     const [leeftijd, setLeeftijd] = useState();
@@ -78,4 +78,4 @@ const EvenementToevoegen = () => {
     );
 }
 
-export default EvenementToevoegen;
+export default ShowToevoegen;

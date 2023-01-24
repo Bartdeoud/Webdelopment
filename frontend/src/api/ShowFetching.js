@@ -3,7 +3,7 @@ import axios from "axios";
 import EvenementBlock from "../Pages/Programma/EvenementBlock.js"
 import Alinea from "../Pages/Shared/Alinea.js"
 
-function DataFetching(){
+function ShowFetching(){
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
@@ -39,4 +39,4 @@ function DataFetching(){
     }
 }
 
-export default DataFetching
+export default ShowFetching

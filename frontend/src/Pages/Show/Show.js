@@ -1,15 +1,15 @@
 import React from "react";
-import EvenementValues from "./EvenementValues.js";
-import GetSeats from "./Seats.js";
+import EvenementValues from "./ShowValues.js";
+import Seats from "./Seats.js";
 import setCookies from "./CookieHandler.js";
 
-const Programma = () => {
+const Show = () => {
     return(
         <>
             <EvenementValues/>
             
             <section className="contact">
-                <GetSeats/>
+                <Seats/>
                 <br/>
 
                 <p>Aantal kaartjes (1-9):</p>
@@ -17,8 +17,8 @@ const Programma = () => {
                 <br/>
 
                 <button className="btn" type="onClick" onClick={() => {
-                        setCookies()
-                        window.location.href='/Winkelmand'
+                    setCookies()
+                    window.location.href='/Winkelmand'
                 }}>Bestel</button>
                 <br/>
                 <hr/>
@@ -27,4 +27,4 @@ const Programma = () => {
     );
 }
 
-export default Programma;
+export default Show;
