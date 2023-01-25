@@ -2,7 +2,9 @@ import React, { useState } from "react";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+    
+    // Hier denk een check toevoegen zodat mensen die niet ingelogd zijn een andere header te zien krijgen
+    
     return (
         <header>
             <nav className="navigation">
