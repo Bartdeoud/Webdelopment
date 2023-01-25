@@ -2,6 +2,7 @@ import React, { useState }  from 'react';
 import Hero2 from '../Shared/Hero2';
 // import { DayPicker } from "react-day-picker";
 import 'react-day-picker/dist/style.css';
+import Alinea from "../Shared/Alinea";
 
 const Huren = () => {
     // const [day, setDay] = useState();
