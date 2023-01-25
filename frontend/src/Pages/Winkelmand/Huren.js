@@ -1,5 +1,6 @@
 import React, { useState }  from 'react';
 import Hero2 from '../Shared/Hero2';
+import Alinea from "../Shared/Alinea";
 
 const Huren = () => {
     const [hurenNaam, setNaam] = useState();
