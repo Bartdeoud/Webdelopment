@@ -26,3 +26,5 @@ npm install --save react-dropdown-select
 
 React cookies, (https://www.npmjs.com/package/universal-cookie)
 npm i universal-cookie
+
+npm i react-iframe
