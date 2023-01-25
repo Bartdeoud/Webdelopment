@@ -14,6 +14,12 @@ public class DBContext : DbContext
     public DbSet<Ticket> tickets { get; set; }
     public DbSet<Show> shows { get; set; }
     public DbSet<Stoelrij> stoelrijen {get; set;}
+    public DbSet<SessionId> sessionIds {get; set;}
+
+    public DBContext(DbContextOptions<DBContext> options)
+        : base(options)
+    { }
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder builder) {
     builder.UseSqlServer("Server=tcp:laakentertainment.database.windows.net,1433;Initial Catalog=LaakEntertainment;Persist Security Info=False;User ID=AdminLaak;Password=LaakEntertainment1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=2;");

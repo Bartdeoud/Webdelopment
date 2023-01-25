@@ -115,12 +115,21 @@ namespace backend.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("Datum")
+                    b.Property<DateTime?>("Datum")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Naam")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("RuimteNr")
+                        .HasColumnType("int");
 
                     b.Property<string>("VerhuurdeId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Zaalnr")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -223,6 +232,16 @@ namespace backend.Migrations
                         });
                 });
 
+            modelBuilder.Entity("SessionId", b =>
+                {
+                    b.Property<string>("Session")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Session");
+
+                    b.ToTable("sessionIds");
+                });
+
             modelBuilder.Entity("Show", b =>
                 {
                     b.Property<int>("Shownr")
@@ -262,8 +281,8 @@ namespace backend.Migrations
                         {
                             Shownr = 1,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(222),
-                            EindTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(257),
+                            BeginTijd = new DateTime(2023, 1, 25, 23, 40, 47, 419, DateTimeKind.Local).AddTicks(9956),
+                            EindTijd = new DateTime(2023, 1, 25, 23, 40, 47, 419, DateTimeKind.Local).AddTicks(9990),
                             Genre = "Horor",
                             Leeftijdsgroep = "18",
                             Naam = "Show 1",
@@ -273,8 +292,8 @@ namespace backend.Migrations
                         {
                             Shownr = 2,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(260),
-                            EindTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(261),
+                            BeginTijd = new DateTime(2023, 1, 25, 23, 40, 47, 419, DateTimeKind.Local).AddTicks(9993),
+                            EindTijd = new DateTime(2023, 1, 25, 23, 40, 47, 419, DateTimeKind.Local).AddTicks(9995),
                             Genre = "Horor",
                             Leeftijdsgroep = "18",
                             Naam = "Show 2",
@@ -284,8 +303,8 @@ namespace backend.Migrations
                         {
                             Shownr = 3,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(263),
-                            EindTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(265),
+                            BeginTijd = new DateTime(2023, 1, 25, 23, 40, 47, 419, DateTimeKind.Local).AddTicks(9997),
+                            EindTijd = new DateTime(2023, 1, 25, 23, 40, 47, 419, DateTimeKind.Local).AddTicks(9998),
                             Genre = "Horor",
                             Leeftijdsgroep = "18",
                             Naam = "Show 3",
@@ -395,7 +414,7 @@ namespace backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TicketID"));
 
-                    b.Property<int?>("GebruikerUserID")
+                    b.Property<int>("Shownr")
                         .HasColumnType("int");
 
                     b.Property<string>("stoelNr")
@@ -403,8 +422,6 @@ namespace backend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TicketID");
-
-                    b.HasIndex("GebruikerUserID");
 
                     b.ToTable("tickets");
                 });
@@ -462,16 +479,11 @@ namespace backend.Migrations
                     b.Property<string>("LedenId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("Shownr")
-                        .HasColumnType("int");
-
                     b.Property<string>("artiest_naam")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasIndex("LedenId");
-
-                    b.HasIndex("Shownr");
 
                     b.HasDiscriminator().HasValue("Artiest");
 
@@ -544,37 +556,16 @@ namespace backend.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Ticket", b =>
-                {
-                    b.HasOne("Gebruiker", null)
-                        .WithMany("tickets")
-                        .HasForeignKey("GebruikerUserID");
-                });
-
             modelBuilder.Entity("Artiest", b =>
                 {
                     b.HasOne("Leden", null)
                         .WithMany("artiesten")
                         .HasForeignKey("LedenId");
-
-                    b.HasOne("Show", null)
-                        .WithMany("Artiesten")
-                        .HasForeignKey("Shownr");
-                });
-
-            modelBuilder.Entity("Gebruiker", b =>
-                {
-                    b.Navigation("tickets");
                 });
 
             modelBuilder.Entity("Leden", b =>
                 {
                     b.Navigation("artiesten");
-                });
-
-            modelBuilder.Entity("Show", b =>
-                {
-                    b.Navigation("Artiesten");
                 });
 #pragma warning restore 612, 618
         }

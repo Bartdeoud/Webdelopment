@@ -7,7 +7,10 @@ namespace backend.Controllers;
 [Route("api/[controller]")]
 public class ShowController : ControllerBase
 {
-    public static DBContext _context = new DBContext();
+    private DBContext _context;
+    public ShowController(DBContext context){
+        this._context = context;
+    }
 
     // GET: api/Show
     [HttpGet] 
