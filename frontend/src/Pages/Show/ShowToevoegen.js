@@ -9,29 +9,29 @@ const ShowToevoegen = () => {
 
     const handleSubmit = async () => {
         try {
-          let res = await fetch("https://localhost:7214/api/Show", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              shownr: 0,
-              afbeelding: "string",
-              genre: showgenre,
-              naam: shownaam,
-              leeftijdsgroep: leeftijd,
-              zaal: showzaal,
-              beginTijd: "2023-01-22T22:09:07.168Z",
-              eindTijd: "2023-01-22T22:09:07.168Z"
-            }),
-          });
+            let res = await fetch("https://localhost:7214/api/Show", {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                shownr: 0,
+                afbeelding: "string",
+                genre: showgenre,
+                naam: shownaam,
+                leeftijdsgroep: leeftijd,
+                zaal: showzaal,
+                beginTijd: "2023-01-22T22:09:07.168Z",
+                eindTijd: "2023-01-22T22:09:07.168Z"
+                }),
+            });
           if (res.status === 200) {
             console.log("succes");
           }
         } catch (err) {
           console.log(err);
         }
-      }
+    }
 
     return (
         <>
@@ -61,7 +61,7 @@ const ShowToevoegen = () => {
 
                     <p>Genre</p>
                     <select required="required" onChange={(e)=>setGenre(e.target.value)}>
-                    <   option value="" disabled selected>Selecteer een genre</option>
+                        <option value="" disabled selected>Selecteer een genre</option>
                         <option value="Comedy">Comedy</option>
                         <option value="Dance">Dance</option>
                         <option value="Drama">Drama</option>
