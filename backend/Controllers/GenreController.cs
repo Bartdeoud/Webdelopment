@@ -30,6 +30,28 @@ namespace backend.Controllers
             return await _context.genres.ToListAsync();
         }
 
+        // GET: api/Genre/Show/1
+        [HttpGet("Show/{id}")]
+        public async Task<ActionResult<Genre>> GetGenreShow(int id)
+        {
+            if (_context.genres == null){
+                return NotFound();
+            }
+
+            var show = await _context.shows.FindAsync(id);
+            if (show == null){
+                return NotFound();
+            }
+
+            var genre = await _context.genres.FindAsync(show.Genre);
+            if (genre == null){
+                return NotFound();
+            }
+            
+            return genre;
+            
+        }
+
         // GET: api/Genre/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Genre>> GetGenre(int id)

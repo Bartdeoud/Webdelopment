@@ -48,6 +48,28 @@ namespace backend.Controllers
             return leeftijdsgroep;
         }
 
+        // GET: api/LeeftijdsGroep/Show/1
+        [HttpGet("Show/{id}")]
+        public async Task<ActionResult<Leeftijdsgroep>> GetLeeftijdsgroepShow(int id)
+        {
+            if (_context.leeftijdsgroepen == null){
+                return NotFound();
+            }
+
+            var show = await _context.shows.FindAsync(id);
+            if (show == null){
+                return NotFound();
+            }
+
+            var leeftijdsgroep = await _context.leeftijdsgroepen.FindAsync(show.Leeftijdsgroep);
+            if (leeftijdsgroep == null){
+                return NotFound();
+            }
+
+            return leeftijdsgroep;
+        }
+
+
         // PUT: api/LeeftijdsGroep/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

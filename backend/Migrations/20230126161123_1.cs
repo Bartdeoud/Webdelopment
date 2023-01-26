@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace backend.Migrations
 {
     /// <inheritdoc />
-    public partial class _0 : Migration
+    public partial class _1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -116,9 +116,9 @@ namespace backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Afbeelding = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Naam = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    zaal = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BeginTijd = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EindTijd = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Zaal = table.Column<int>(type: "int", nullable: true),
                     Genre = table.Column<int>(type: "int", nullable: true),
                     Leeftijdsgroep = table.Column<int>(type: "int", nullable: true)
                 },
@@ -261,12 +261,12 @@ namespace backend.Migrations
 
             migrationBuilder.InsertData(
                 table: "shows",
-                columns: new[] { "Shownr", "Afbeelding", "BeginTijd", "EindTijd", "Genre", "Leeftijdsgroep", "Naam", "zaal" },
+                columns: new[] { "Shownr", "Afbeelding", "BeginTijd", "EindTijd", "Genre", "Leeftijdsgroep", "Naam", "Zaal" },
                 values: new object[,]
                 {
-                    { 1, "", new DateTime(2023, 1, 26, 15, 18, 26, 182, DateTimeKind.Local).AddTicks(2719), new DateTime(2023, 1, 26, 15, 18, 26, 182, DateTimeKind.Local).AddTicks(2774), 2, 3, "Show 1", "zaal 1" },
-                    { 2, "", new DateTime(2023, 1, 26, 15, 18, 26, 182, DateTimeKind.Local).AddTicks(2777), new DateTime(2023, 1, 26, 15, 18, 26, 182, DateTimeKind.Local).AddTicks(2779), 2, 3, "Show 2", "zaal 2" },
-                    { 3, "", new DateTime(2023, 1, 26, 15, 18, 26, 182, DateTimeKind.Local).AddTicks(2781), new DateTime(2023, 1, 26, 15, 18, 26, 182, DateTimeKind.Local).AddTicks(2783), 2, 3, "Show 3", "zaal 3" }
+                    { 1, "", new DateTime(2023, 1, 26, 17, 11, 23, 244, DateTimeKind.Local).AddTicks(6931), new DateTime(2023, 1, 26, 17, 11, 23, 244, DateTimeKind.Local).AddTicks(6964), 1, 1, "Show 1", 1 },
+                    { 2, "", new DateTime(2023, 1, 26, 17, 11, 23, 244, DateTimeKind.Local).AddTicks(6967), new DateTime(2023, 1, 26, 17, 11, 23, 244, DateTimeKind.Local).AddTicks(6969), 2, 2, "Show 2", 2 },
+                    { 3, "", new DateTime(2023, 1, 26, 17, 11, 23, 244, DateTimeKind.Local).AddTicks(6971), new DateTime(2023, 1, 26, 17, 11, 23, 244, DateTimeKind.Local).AddTicks(6973), 3, 3, "Show 3", 3 }
                 });
 
             migrationBuilder.InsertData(

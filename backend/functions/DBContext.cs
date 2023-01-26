@@ -45,37 +45,10 @@ public class DBContext : DbContext
         );
 
         builder.Entity<Zaal>().HasData(
-            new Zaal(){
-                Zaalnr=1,
-                Naam="Zaal 1",
-                Rang1 = 120,
-                Rang2 = 98,
-                Rang3 = 20,
-                invalideplaatsen = 2,
-            },
-            new Zaal(){
-                Zaalnr=2,
-                Naam="Zaal 2",
-                Rang1 = 100,
-                Rang2 = 80,
-            },
-            new Zaal(){
-                Zaalnr=3,
-                Naam="Zaal 3",
-                Rang1 = 30,
-                Rang2 = 30,
-                Rang3 = 20,
-                Rang4 = 10,
-            },
-            new Zaal(){
-                Zaalnr=4,
-                Naam="Zaal 4",
-                Rang1 = 210,	
-                Rang2 = 115,
-                Rang3 = 90,
-                Rang4 = 20,
-                invalideplaatsen = 5,
-            }
+            new Zaal(){Zaalnr=1, Naam="Zaal 1", Rang1 = 120, Rang2 = 98,Rang3 = 20, invalideplaatsen = 2,},
+            new Zaal(){Zaalnr=2, Naam="Zaal 2", Rang1 = 100, Rang2 = 80},
+            new Zaal(){Zaalnr=3, Naam="Zaal 3", Rang1 = 30, Rang2 = 30, Rang3 = 20, Rang4 = 10},
+            new Zaal(){Zaalnr=4, Naam="Zaal 4", Rang1 = 210, Rang2 = 115, Rang3 = 90, Rang4 = 20, invalideplaatsen = 5}
         );
 
         builder.Entity<Ruimte>().HasData(
@@ -116,9 +89,9 @@ public class DBContext : DbContext
 
 
         builder.Entity<Show>().HasData(
-            new Show(){Shownr = 1, Naam = "Show 1", BeginTijd = DateTime.Now, EindTijd = DateTime.Now, zaal = "zaal 1", Genre = 2, Afbeelding = "", Leeftijdsgroep = 3},
-            new Show(){Shownr = 2, Naam = "Show 2", BeginTijd = DateTime.Now, EindTijd = DateTime.Now, zaal = "zaal 2", Genre = 2, Afbeelding = "", Leeftijdsgroep = 3},
-            new Show(){Shownr = 3, Naam = "Show 3", BeginTijd = DateTime.Now, EindTijd = DateTime.Now, zaal = "zaal 3", Genre = 2, Afbeelding = "", Leeftijdsgroep = 3}  
+            new Show(){Shownr = 1, Naam = "Show 1", BeginTijd = DateTime.Now, EindTijd = DateTime.Now, Zaal = 1, Genre = 1, Afbeelding = "", Leeftijdsgroep = 1},
+            new Show(){Shownr = 2, Naam = "Show 2", BeginTijd = DateTime.Now, EindTijd = DateTime.Now, Zaal = 2, Genre = 2, Afbeelding = "", Leeftijdsgroep = 2},
+            new Show(){Shownr = 3, Naam = "Show 3", BeginTijd = DateTime.Now, EindTijd = DateTime.Now, Zaal = 3, Genre = 3, Afbeelding = "", Leeftijdsgroep = 3}  
         );
 
         // builder.Entity<Role>().HasData(new Role(){Name = "Medewerker", NormalizedName = "MEDEWERKER"});
