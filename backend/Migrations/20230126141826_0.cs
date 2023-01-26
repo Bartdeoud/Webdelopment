@@ -29,6 +29,19 @@ namespace backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "genres",
+                columns: table => new
+                {
+                    GenreID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Naam = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_genres", x => x.GenreID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "leden",
                 columns: table => new
                 {
@@ -38,6 +51,19 @@ namespace backend.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_leden", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "leeftijdsgroepen",
+                columns: table => new
+                {
+                    LeeftijdsgroepID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Naam = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_leeftijdsgroepen", x => x.LeeftijdsgroepID);
                 });
 
             migrationBuilder.CreateTable(
@@ -74,7 +100,8 @@ namespace backend.Migrations
                 name: "sessionIds",
                 columns: table => new
                 {
-                    Session = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    Session = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    email = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -88,31 +115,16 @@ namespace backend.Migrations
                     Shownr = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Afbeelding = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Genre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Naam = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Leeftijdsgroep = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     zaal = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BeginTijd = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EindTijd = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    EindTijd = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Genre = table.Column<int>(type: "int", nullable: true),
+                    Leeftijdsgroep = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_shows", x => x.Shownr);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "stoelrijen",
-                columns: table => new
-                {
-                    rijid = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Rangnummer = table.Column<int>(type: "int", nullable: false),
-                    Aantalstoelen = table.Column<int>(name: "Aantal_stoelen", type: "int", nullable: false),
-                    Zaalnr = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_stoelrijen", x => x.rijid);
                 });
 
             migrationBuilder.CreateTable(
@@ -136,7 +148,11 @@ namespace backend.Migrations
                     Zaalnr = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Naam = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Aantalstoelen = table.Column<int>(name: "Aantal_stoelen", type: "int", nullable: false)
+                    Rang1 = table.Column<int>(type: "int", nullable: false),
+                    Rang2 = table.Column<int>(type: "int", nullable: true),
+                    Rang3 = table.Column<int>(type: "int", nullable: true),
+                    Rang4 = table.Column<int>(type: "int", nullable: true),
+                    invalideplaatsen = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -196,6 +212,37 @@ namespace backend.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "genres",
+                columns: new[] { "GenreID", "Naam" },
+                values: new object[,]
+                {
+                    { 1, "Horror" },
+                    { 2, "Comedy" },
+                    { 3, "Drama" },
+                    { 4, "Action" },
+                    { 5, "Romance" },
+                    { 6, "Adventure" },
+                    { 7, "Mystery" },
+                    { 8, "Family" },
+                    { 9, "Music" },
+                    { 10, "History" },
+                    { 11, "War" },
+                    { 12, "Western" },
+                    { 13, "Sport" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "leeftijdsgroepen",
+                columns: new[] { "LeeftijdsgroepID", "Naam" },
+                values: new object[,]
+                {
+                    { 1, "Alle leeftijden" },
+                    { 2, "Onder de 18" },
+                    { 3, "18-65" },
+                    { 4, "65+" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "ruimtes",
                 columns: new[] { "RuimteNr", "Capaciteit", "Naam" },
                 values: new object[,]
@@ -217,37 +264,20 @@ namespace backend.Migrations
                 columns: new[] { "Shownr", "Afbeelding", "BeginTijd", "EindTijd", "Genre", "Leeftijdsgroep", "Naam", "zaal" },
                 values: new object[,]
                 {
-                    { 1, "", new DateTime(2023, 1, 25, 23, 40, 47, 419, DateTimeKind.Local).AddTicks(9956), new DateTime(2023, 1, 25, 23, 40, 47, 419, DateTimeKind.Local).AddTicks(9990), "Horor", "18", "Show 1", "zaal 1" },
-                    { 2, "", new DateTime(2023, 1, 25, 23, 40, 47, 419, DateTimeKind.Local).AddTicks(9993), new DateTime(2023, 1, 25, 23, 40, 47, 419, DateTimeKind.Local).AddTicks(9995), "Horor", "18", "Show 2", "zaal 2" },
-                    { 3, "", new DateTime(2023, 1, 25, 23, 40, 47, 419, DateTimeKind.Local).AddTicks(9997), new DateTime(2023, 1, 25, 23, 40, 47, 419, DateTimeKind.Local).AddTicks(9998), "Horor", "18", "Show 3", "zaal 3" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "stoelrijen",
-                columns: new[] { "rijid", "Aantal_stoelen", "Rangnummer", "Zaalnr" },
-                values: new object[,]
-                {
-                    { 11, 20, 1, 1 },
-                    { 12, 100, 2, 1 },
-                    { 13, 120, 3, 1 },
-                    { 21, 2, 1, 2 },
-                    { 22, 160, 2, 2 },
-                    { 31, 10, 1, 3 },
-                    { 32, 80, 2, 3 },
-                    { 41, 40, 1, 4 },
-                    { 42, 200, 2, 4 },
-                    { 43, 200, 3, 4 }
+                    { 1, "", new DateTime(2023, 1, 26, 15, 18, 26, 182, DateTimeKind.Local).AddTicks(2719), new DateTime(2023, 1, 26, 15, 18, 26, 182, DateTimeKind.Local).AddTicks(2774), 2, 3, "Show 1", "zaal 1" },
+                    { 2, "", new DateTime(2023, 1, 26, 15, 18, 26, 182, DateTimeKind.Local).AddTicks(2777), new DateTime(2023, 1, 26, 15, 18, 26, 182, DateTimeKind.Local).AddTicks(2779), 2, 3, "Show 2", "zaal 2" },
+                    { 3, "", new DateTime(2023, 1, 26, 15, 18, 26, 182, DateTimeKind.Local).AddTicks(2781), new DateTime(2023, 1, 26, 15, 18, 26, 182, DateTimeKind.Local).AddTicks(2783), 2, 3, "Show 3", "zaal 3" }
                 });
 
             migrationBuilder.InsertData(
                 table: "zalen",
-                columns: new[] { "Zaalnr", "Aantal_stoelen", "Naam" },
+                columns: new[] { "Zaalnr", "Naam", "Rang1", "Rang2", "Rang3", "Rang4", "invalideplaatsen" },
                 values: new object[,]
                 {
-                    { 1, 240, "Zaal 1" },
-                    { 2, 180, "Zaal 2" },
-                    { 3, 90, "Zaal 3" },
-                    { 4, 440, "Zaal 4" }
+                    { 1, "Zaal 1", 120, 98, 20, null, 2 },
+                    { 2, "Zaal 2", 100, 80, null, null, null },
+                    { 3, "Zaal 3", 30, 30, 20, 10, null },
+                    { 4, "Zaal 4", 210, 115, 90, 20, 5 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -266,6 +296,12 @@ namespace backend.Migrations
                 name: "gebruikers");
 
             migrationBuilder.DropTable(
+                name: "genres");
+
+            migrationBuilder.DropTable(
+                name: "leeftijdsgroepen");
+
+            migrationBuilder.DropTable(
                 name: "reserveringen");
 
             migrationBuilder.DropTable(
@@ -276,9 +312,6 @@ namespace backend.Migrations
 
             migrationBuilder.DropTable(
                 name: "shows");
-
-            migrationBuilder.DropTable(
-                name: "stoelrijen");
 
             migrationBuilder.DropTable(
                 name: "tickets");
