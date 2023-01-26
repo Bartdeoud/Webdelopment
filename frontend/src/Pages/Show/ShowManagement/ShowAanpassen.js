@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
-import EvenementBlock from "../Pages/Programma/EvenementBlock.js"
-import Hero2 from "../Pages/Shared/Hero2.js"
-import NoShow from "../Pages/Show/NoShow.js";
+import React, { useState, useEffect } from 'react';
+import Hero2 from '../../Shared/Hero2';
+import axios from 'axios';
+import ShowBlock from './ShowBlock';
+import NoShow from '../NoShow';
 
-function ShowFetching(){
+const ShowAanpassen = () => {
     const [posts, setPosts] = useState([])
-
+    
     useEffect(() => {
         axios.get('https://localhost:7214/api/Show/')
         .then(res => {
@@ -25,19 +25,21 @@ function ShowFetching(){
     }else {
         return (
             <div>
-                <Hero2 tekst="Programma"/>
+                <Hero2 tekst="Shows aanpassen"/>
                 {posts.map(voorstelling =>
-                <EvenementBlock 
+                <ShowBlock 
                     shownr={voorstelling.shownr}
                     TitelVoorstelling={voorstelling.naam}
                     zaal={voorstelling.zaal}
                     datum={(voorstelling.beginTijd).substring(0,10)}
-                    tijd={(voorstelling.beginTijd).substring(11,16)}
-                    LinkToImg={voorstelling.afbeelding}/>
+                    tijd={(voorstelling.beginTijd).substring(11,15)}
+                    LinkToImg={voorstelling.afbeelding}
+                    leeftijdsgroep={voorstelling.leeftijdsgroep}
+                    genre={voorstelling.genre}/>
                 )}
             </div>
         )
     }
 }
 
-export default ShowFetching
+export default ShowAanpassen;

@@ -17,8 +17,8 @@ const Header = () => {
                         <li><a href="/Programma">Programma</a></li>
                         <li><a href="/OverOns">Over ons</a></li>
                         <li><a href="/Huren">Huur</a></li>
-                        <li><a href="/Account">Mijn account</a></li>
-                        <li><a href="/Winkelmand"><i className="fa-solid fa-basket-shopping"></i></a></li>
+                        <li><a href="/Account"><i className="fa-solid fa-circle-user"/></a></li>
+                        <li><a href="/Winkelmand"><i className="fa-solid fa-basket-shopping"/></a></li>
                         <li><a href="/Accesibility"><i className="fa fa-wheelchair" /></a></li>
                     </ul>
                 </div>

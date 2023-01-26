@@ -1,5 +1,5 @@
 import React, { useState }  from 'react';
-import Hero2 from '../Shared/Hero2';
+import Hero2 from '../../Shared/Hero2';
 
 const ShowToevoegen = () => {
     const [shownaam, setNaam] = useState();
