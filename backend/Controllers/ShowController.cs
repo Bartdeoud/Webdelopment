@@ -90,20 +90,19 @@ public class ShowController : ControllerBase
     }
 
     // PUT: api/Show/5
-    [HttpPut]
-    public async Task<IActionResult> PutShow(Show show)
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutShow(int id, Show show)
     {
-        if (_context.shows == null){
-            return Problem("Entity set 'DBcontext.shows'  is null.");
-        }
-        if (show.Shownr != show.Shownr){
+        if (id != show.Shownr){
             return BadRequest();
         }
+
         _context.Entry(show).State = EntityState.Modified;
+        
         try{
             await _context.SaveChangesAsync();
         }catch (DbUpdateConcurrencyException){
-            if (!ShowExists(show.Shownr)){
+            if (!ShowExists(id)){
                 return NotFound();
             }else{
                 throw;

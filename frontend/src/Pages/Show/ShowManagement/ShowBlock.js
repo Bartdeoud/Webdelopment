@@ -4,13 +4,9 @@ import {useNavigate} from 'react-router-dom';
 const ShowBlock = (props) => {
     const {
         TitelVoorstelling,
-        Artiest,
-        zaal,
         datum,
         tijd,
-        LinkToImg,
-        leeftijdsgroep,
-        genre
+        LinkToImg
     } = props
 
     const navigate = useNavigate();
