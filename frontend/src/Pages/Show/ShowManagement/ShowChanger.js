@@ -8,8 +8,8 @@ const ShowChanger = () => {
     const [genre, setGenre] = useState();
     const [zaal2, setZaal2] = useState([]);
     const [zaal, setZaal] = useState([]);
-    const [leeftijdsgroep, setLeeftijdsgroep] = useState([]);
     const [leeftijdsgroep2, setLeeftijdsgroep2] = useState([]);
+    const [leeftijdsgroep, setLeeftijdsgroep] = useState([]);
 
     const {state} = useLocation();
     const {
@@ -60,11 +60,10 @@ const ShowChanger = () => {
         .catch(err =>{
             console.log(err)
         })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // Loads genre of show
     useEffect(() => {
+        // Loads genre of show
         axios.get('https://localhost:7214/api/Genre/Show/' + shownr)
         .then(res => {
             console.log(res)
@@ -73,10 +72,8 @@ const ShowChanger = () => {
         .catch(err =>{
             console.log(err)
         })
-    }, [shownr]);
-
-    // Loads hall of show
-    useEffect(() => {
+    
+        // Loads hall of show
         axios.get('https://localhost:7214/api/Zaal/Show/' + shownr)
         .then(res => {
             console.log(res)
@@ -85,10 +82,8 @@ const ShowChanger = () => {
         .catch(err =>{
             console.log(err)
         })
-    }, [shownr]);
 
-    // Loads agegroup of show
-    useEffect(() => {
+        // Loads agegroup of show
         axios.get('https://localhost:7214/api/Leeftijdsgroep/Show/' + shownr)
         .then(res => {
             console.log(res)

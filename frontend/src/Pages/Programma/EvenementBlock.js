@@ -4,7 +4,6 @@ import {useNavigate} from 'react-router-dom';
 const EvenementBlock = (props) => {
     const {
         TitelVoorstelling,
-        Artiest,
         zaal,
         datum,
         tijd,
