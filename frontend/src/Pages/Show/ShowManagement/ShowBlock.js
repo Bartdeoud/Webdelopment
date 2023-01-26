@@ -23,19 +23,15 @@ const ShowBlock = (props) => {
                     </div>
                     
                     <div>
+                        <br/>
                         <h2>{TitelVoorstelling}</h2>
-                        <br></br>
-                        <h3>{Artiest}</h3>
-                        <h3>{zaal}</h3>
-                        <h3>{leeftijdsgroep}</h3>
-                        <h3>{genre}</h3>
                     </div>
 
                     <div id="bestel">
                         <h3>{datum}</h3>
-                        <h3>{tijd}</h3>
-                        <br/>
+                        <h3>{tijd}</h3>                        
                         <button onClick={()=>{navigate('/ShowChanger', { state:props})}} className="btn">Show aanpassen</button>
+                        <br/>
                     </div>
                 </div>      
         </section>

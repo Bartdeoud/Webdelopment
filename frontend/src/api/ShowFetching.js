@@ -30,7 +30,7 @@ function ShowFetching(){
                 <EvenementBlock 
                     shownr={voorstelling.shownr}
                     TitelVoorstelling={voorstelling.naam}
-                    zaal={voorstelling.zaal}
+                    zaal={"Zaal " + voorstelling.zaal}
                     datum={(voorstelling.beginTijd).substring(0,10)}
                     tijd={(voorstelling.beginTijd).substring(11,16)}
                     LinkToImg={voorstelling.afbeelding}/>

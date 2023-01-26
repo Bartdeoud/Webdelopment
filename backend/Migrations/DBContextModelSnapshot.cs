@@ -194,6 +194,90 @@ namespace backend.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Genre", b =>
+                {
+                    b.Property<int>("GenreID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GenreID"));
+
+                    b.Property<string>("Naam")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("GenreID");
+
+                    b.ToTable("genres");
+
+                    b.HasData(
+                        new
+                        {
+                            GenreID = 1,
+                            Naam = "Horror"
+                        },
+                        new
+                        {
+                            GenreID = 2,
+                            Naam = "Comedy"
+                        },
+                        new
+                        {
+                            GenreID = 3,
+                            Naam = "Drama"
+                        },
+                        new
+                        {
+                            GenreID = 4,
+                            Naam = "Action"
+                        },
+                        new
+                        {
+                            GenreID = 5,
+                            Naam = "Romance"
+                        },
+                        new
+                        {
+                            GenreID = 6,
+                            Naam = "Adventure"
+                        },
+                        new
+                        {
+                            GenreID = 7,
+                            Naam = "Mystery"
+                        },
+                        new
+                        {
+                            GenreID = 8,
+                            Naam = "Family"
+                        },
+                        new
+                        {
+                            GenreID = 9,
+                            Naam = "Music"
+                        },
+                        new
+                        {
+                            GenreID = 10,
+                            Naam = "History"
+                        },
+                        new
+                        {
+                            GenreID = 11,
+                            Naam = "War"
+                        },
+                        new
+                        {
+                            GenreID = 12,
+                            Naam = "Western"
+                        },
+                        new
+                        {
+                            GenreID = 13,
+                            Naam = "Sport"
+                        });
+                });
+
             modelBuilder.Entity("Huren", b =>
                 {
                     b.Property<string>("Id")
@@ -395,8 +479,8 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("zaal")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Zaal")
+                        .HasColumnType("int");
 
                     b.HasKey("Shownr");
 
@@ -407,34 +491,128 @@ namespace backend.Migrations
                         {
                             Shownr = 1,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 26, 19, 0, 50, 166, DateTimeKind.Local).AddTicks(7075),
-                            EindTijd = new DateTime(2023, 1, 26, 19, 0, 50, 166, DateTimeKind.Local).AddTicks(7110),
-                            Genre = 2,
-                            Leeftijdsgroep = 3,
+                            BeginTijd = new DateTime(2023, 1, 26, 14, 29, 46, 20, DateTimeKind.Local).AddTicks(7819),
+                            EindTijd = new DateTime(2023, 1, 26, 14, 29, 46, 20, DateTimeKind.Local).AddTicks(7855),
+                            Genre = "Horor",
+                            Leeftijdsgroep = "18",
                             Naam = "Show 1",
-                            zaal = "zaal 1"
+                            Zaal = 1
                         },
                         new
                         {
                             Shownr = 2,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 26, 19, 0, 50, 166, DateTimeKind.Local).AddTicks(7113),
-                            EindTijd = new DateTime(2023, 1, 26, 19, 0, 50, 166, DateTimeKind.Local).AddTicks(7114),
-                            Genre = 2,
-                            Leeftijdsgroep = 3,
+                            BeginTijd = new DateTime(2023, 1, 26, 14, 29, 46, 20, DateTimeKind.Local).AddTicks(7859),
+                            EindTijd = new DateTime(2023, 1, 26, 14, 29, 46, 20, DateTimeKind.Local).AddTicks(7860),
+                            Genre = "Horor",
+                            Leeftijdsgroep = "18",
                             Naam = "Show 2",
-                            zaal = "zaal 2"
+                            Zaal = 2
                         },
                         new
                         {
                             Shownr = 3,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 26, 19, 0, 50, 166, DateTimeKind.Local).AddTicks(7117),
-                            EindTijd = new DateTime(2023, 1, 26, 19, 0, 50, 166, DateTimeKind.Local).AddTicks(7118),
-                            Genre = 2,
-                            Leeftijdsgroep = 3,
+                            BeginTijd = new DateTime(2023, 1, 26, 14, 29, 46, 20, DateTimeKind.Local).AddTicks(7863),
+                            EindTijd = new DateTime(2023, 1, 26, 14, 29, 46, 20, DateTimeKind.Local).AddTicks(7864),
+                            Genre = "Horor",
+                            Leeftijdsgroep = "18",
                             Naam = "Show 3",
                             zaal = "zaal 3"
+                        });
+                });
+
+            modelBuilder.Entity("Stoelrij", b =>
+                {
+                    b.Property<int>("rijid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("rijid"));
+
+                    b.Property<int>("Aantal_stoelen")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Rangnummer")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Zaalnr")
+                        .HasColumnType("int");
+
+                    b.HasKey("rijid");
+
+                    b.ToTable("stoelrijen");
+
+                    b.HasData(
+                        new
+                        {
+                            rijid = 11,
+                            Aantalstoelen = 20,
+                            Rangnummer = 1,
+                            Zaalnr = 1
+                        },
+                        new
+                        {
+                            rijid = 12,
+                            Aantalstoelen = 100,
+                            Rangnummer = 2,
+                            Zaalnr = 1
+                        },
+                        new
+                        {
+                            rijid = 13,
+                            Aantalstoelen = 120,
+                            Rangnummer = 3,
+                            Zaalnr = 1
+                        },
+                        new
+                        {
+                            rijid = 21,
+                            Aantalstoelen = 2,
+                            Rangnummer = 1,
+                            Zaalnr = 2
+                        },
+                        new
+                        {
+                            rijid = 22,
+                            Aantalstoelen = 160,
+                            Rangnummer = 2,
+                            Zaalnr = 2
+                        },
+                        new
+                        {
+                            rijid = 31,
+                            Aantalstoelen = 10,
+                            Rangnummer = 1,
+                            Zaalnr = 3
+                        },
+                        new
+                        {
+                            rijid = 32,
+                            Aantalstoelen = 80,
+                            Rangnummer = 2,
+                            Zaalnr = 3
+                        },
+                        new
+                        {
+                            rijid = 41,
+                            Aantalstoelen = 40,
+                            Rangnummer = 1,
+                            Zaalnr = 4
+                        },
+                        new
+                        {
+                            rijid = 42,
+                            Aantalstoelen = 200,
+                            Rangnummer = 2,
+                            Zaalnr = 4
+                        },
+                        new
+                        {
+                            rijid = 43,
+                            Aantalstoelen = 200,
+                            Rangnummer = 3,
+                            Zaalnr = 4
                         });
                 });
 

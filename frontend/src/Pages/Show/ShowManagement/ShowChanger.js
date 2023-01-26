@@ -1,27 +1,105 @@
-import React from "react";
+import axios from "axios";
+import React, {useEffect, useState} from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import Hero2 from "../../Shared/Hero2.js";
 
 const ShowChanger = () => {
+    const [genre2, setGenre2] = useState([]);
+    const [genre, setGenre] = useState();
+    const [zaal2, setZaal2] = useState([]);
+    const [zaal, setZaal] = useState([]);
+    const [leeftijdsgroep, setLeeftijdsgroep] = useState([]);
+    const [leeftijdsgroep2, setLeeftijdsgroep2] = useState([]);
+
     const {state} = useLocation();
     const {
         shownr,
         TitelVoorstelling,
-        zaal,
         LinkToImg,
-        genre,
-        leeftijdsgroep
     } = state;
 
     const navigate = useNavigate();
     const titel = TitelVoorstelling + " aanpassen";
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async () => {
         handleOnSubmit();
         navigate('/ShowAanpassen');
     }
 
-    const handleOnSubmit = async (e) => {
+    // Loads all genres
+    useEffect(() => {
+        axios.get('https://localhost:7214/api/Genre')
+        .then(res => {
+            console.log(res)
+            setGenre(res.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }, []);
+
+    // Loads all halls
+    useEffect(() => {
+        axios.get('https://localhost:7214/api/Zaal')
+        .then(res => {
+            console.log(res)
+            setZaal(res.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }, []);
+
+    // Loads all agegroups
+    useEffect(() => {
+        axios.get('https://localhost:7214/api/Leeftijdsgroep')
+        .then(res => {
+            console.log(res)
+            setLeeftijdsgroep(res.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    // Loads genre of show
+    useEffect(() => {
+        axios.get('https://localhost:7214/api/Genre/Show/' + shownr)
+        .then(res => {
+            console.log(res)
+            setGenre2(res.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }, [shownr]);
+
+    // Loads hall of show
+    useEffect(() => {
+        axios.get('https://localhost:7214/api/Zaal/Show/' + shownr)
+        .then(res => {
+            console.log(res)
+            setZaal2(res.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }, [shownr]);
+
+    // Loads agegroup of show
+    useEffect(() => {
+        axios.get('https://localhost:7214/api/Leeftijdsgroep/Show/' + shownr)
+        .then(res => {
+            console.log(res)
+            setLeeftijdsgroep2(res.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }, [shownr]);
+
+    const handleOnSubmit = async () => {
         const NameChange = document.getElementById("NameChange").value;
         const HallChange = document.getElementById("HallChange").value;
         const AgeChange = document.getElementById("AgeChange").value;
@@ -62,15 +140,15 @@ const ShowChanger = () => {
                     <br/>
 
                     <p>Zaal aanpassen</p>
-                    <input type="text" id="HallChange" defaultValue={zaal}/>
+                    <input type="text" id="HallChange" defaultValue={zaal2.naam}/>
                     <br/>
 
                     <p>Leeftijdsgroep aanpassen</p>
-                    <input type="text" id="AgeChange" defaultValue={leeftijdsgroep}/>
+                    <input type="text" id="AgeChange" defaultValue={leeftijdsgroep2.naam}/>
                     <br/>
 
                     <p>Genre aanpassen</p>
-                    <input type="text" id="GenreChange" defaultValue={genre} />
+                    <input type="text" id="GenreChange" defaultValue={genre2.naam} />
                     <br/>
                     
                     <p>Afbeelding aanpassen</p>
