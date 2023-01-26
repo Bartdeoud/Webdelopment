@@ -1,12 +1,12 @@
 import React from "react";
-import EvenementValues from "./ShowValues.js";
+import ShowValues from "./ShowValues.js";
 import Seats from "./Seats.js";
 import setCookies from "./CookieHandler.js";
 
 const Show = () => {
     return(
         <>
-            <EvenementValues/>
+            <ShowValues/>
             
             <section className="contact">
                 <Seats/>

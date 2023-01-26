@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Hero2 from '../../Shared/Hero2';
 import axios from 'axios';
-import EvenementBlock from '../../Programma/EvenementBlock';
+import ShowBlock from './ShowBlock';
 import NoShow from '../NoShow';
 
 const ShowAanpassen = () => {
@@ -27,13 +27,15 @@ const ShowAanpassen = () => {
             <div>
                 <Hero2 tekst="Shows aanpassen"/>
                 {posts.map(voorstelling =>
-                <EvenementBlock 
+                <ShowBlock 
                     shownr={voorstelling.shownr}
                     TitelVoorstelling={voorstelling.naam}
                     zaal={voorstelling.zaal}
                     datum={(voorstelling.beginTijd).substring(0,10)}
                     tijd={(voorstelling.beginTijd).substring(11,15)}
-                    LinkToImg={voorstelling.afbeelding}/>
+                    LinkToImg={voorstelling.afbeelding}
+                    leeftijdsgroep={voorstelling.leeftijdsgroep}
+                    genre={voorstelling.genre}/>
                 )}
             </div>
         )

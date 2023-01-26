@@ -15,10 +15,11 @@ builder.Services.AddCors(options => {
   options.AddPolicy(name: MyAllowSpecificOrigins,
     policy =>
     {
-      // add the allowed origins
-      policy.WithOrigins("http://localhost:3000");
-      policy.WithOrigins("https://salmon-smoke-00d5f3d03.2.azurestaticapps.net");
-      policy.AllowAnyHeader(); 
+        // add the allowed origins
+        policy.WithOrigins("http://localhost:3000");
+        policy.WithOrigins("https://salmon-smoke-00d5f3d03.2.azurestaticapps.net");
+        policy.AllowAnyHeader(); 
+        policy.AllowAnyMethod();
     });
 });
 

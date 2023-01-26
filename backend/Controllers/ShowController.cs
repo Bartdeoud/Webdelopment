@@ -88,4 +88,35 @@ public class ShowController : ControllerBase
 
         return NoContent();
     }
+
+    // PUT: api/Show/5
+    [HttpPut]
+    public async Task<IActionResult> PutShow(Show show)
+    {
+        if (_context.shows == null){
+            return Problem("Entity set 'DBcontext.shows'  is null.");
+        }
+        if (show.Shownr != show.Shownr){
+            return BadRequest();
+        }
+        _context.Entry(show).State = EntityState.Modified;
+        try{
+            await _context.SaveChangesAsync();
+        }catch (DbUpdateConcurrencyException){
+            if (!ShowExists(show.Shownr)){
+                return NotFound();
+            }else{
+                throw;
+            }
+        }
+        return NoContent();
+    }
+
+    private bool ShowExists(int id){
+        if (_context.shows == null){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }
