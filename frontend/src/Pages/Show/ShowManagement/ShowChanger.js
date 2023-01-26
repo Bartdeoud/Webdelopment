@@ -27,12 +27,22 @@ const ShowChanger = () => {
     const titel = TitelVoorstelling + " aanpassen";
 
     const handleSubmit = async () => {
-        console.log(zaalnaam);
+        console.log(genre, genreApi);
         handleOnSubmit();
         navigate('/ShowAanpassen');
     }
 
     useEffect(() => {
+        // Loads all halls
+        axios.get('https://localhost:7214/api/Zaal')
+        .then(res => {
+            console.log(res)
+            setZaal(res.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+
         // Loads all genres
         axios.get('https://localhost:7214/api/Genre')
         .then(res => {
@@ -53,18 +63,6 @@ const ShowChanger = () => {
             console.log(err)
         })
 
-        // Loads all halls
-        axios.get('https://localhost:7214/api/Zaal')
-        .then(res => {
-            console.log(res)
-            setZaal(res.data)
-        })
-        .catch(err =>{
-            console.log(err)
-        })
-    }, []);
-
-    useEffect(() => {
         // Loads genre of show
         axios.get('https://localhost:7214/api/Genre/Show/' + shownr)
         .then(res => {
@@ -100,30 +98,17 @@ const ShowChanger = () => {
         const NameChange = document.getElementById("NameChange").value;
         const ImageChange = document.getElementById("ImageChange").value;
 
-        await fetch('https://localhost:7214/api/Show', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                "shownr" : shownr,
-                "afbeelding" : ImageChange,
-                "naam" : NameChange,
-                "zaal" : zaalApi,
-                "genre" : genreApi,
-                "leeftijdsgroep" : leeftijdsgroepApi
-            })
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-        })
-        .catch(err => {
-            console.log(err);
+        axios.put('https://localhost:7214/api/Show/' + shownr, {
+            "shownr" : shownr,
+            "afbeelding" : ImageChange,
+            "naam" : NameChange,
+            "zaal" : zaalApi,
+            "genre" : 1,
+            "leeftijdsgroep" : 2
         })
     }
 
-    return(
+    return (
         <>
             <Hero2 tekst={titel}/>
 
@@ -137,7 +122,7 @@ const ShowChanger = () => {
                     <select id="HallChange" onChange={(e)=>setZaalApi(e.target.value)}>
                         <option value="" disabled selected>Huidige zaal: {zaalnaam.naam}</option>
                         {zaal.map((zaal) => (
-                            <option key={zaal.id} value={zaal.id}>{zaal.naam}</option>
+                            <option key={zaal.zaalnr} value={zaal.zaalnr}>{zaal.naam}</option>
                         ))}
                     </select>
                     <br/>
@@ -146,7 +131,7 @@ const ShowChanger = () => {
                     <select id="AgeChange" onChange={(e)=>setLeeftijdsgroepApi(e.target.value)}>
                         <option value="" disabled selected>Huidige leeftijdsgroep: {leeftijdsgroepNaam.naam}</option>
                         {leeftijdsgroep.map((leeftijdsgroep) => (
-                            <option key={leeftijdsgroep.id} value={leeftijdsgroep.id}>{leeftijdsgroep.naam}</option>
+                            <option key={leeftijdsgroep.leeftijdsgroepid} value={leeftijdsgroep.leeftijdsgroepid}>{leeftijdsgroep.leeftijdsgroepid}</option>
                         ))}
                     </select>
                     <br/>
@@ -154,9 +139,9 @@ const ShowChanger = () => {
                     <p>Genre aanpassen</p>
                     <select id="GenreChange" onChange={(e)=>setGenreApi(e.target.value)}>
                         <option value="" disabled selected>Huidige genre: {genreNaam.naam}</option>
-                        {genre.map((genre) => (
+                        {/* {genre.map((genre) => (
                             <option key={genre.id} value={genre.id}>{genre.naam}</option>
-                        ))}
+                        ))} */}
                     </select>
                     <br/>
                     
