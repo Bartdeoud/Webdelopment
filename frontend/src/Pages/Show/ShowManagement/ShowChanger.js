@@ -4,13 +4,19 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import Hero2 from "../../Shared/Hero2.js";
 
 const ShowChanger = () => {
-    const [genre2, setGenre2] = useState([]);
     const [genre, setGenre] = useState();
-    const [zaal2, setZaal2] = useState([]);
-    const [zaal, setZaal] = useState([]);
-    const [leeftijdsgroep2, setLeeftijdsgroep2] = useState([]);
-    const [leeftijdsgroep, setLeeftijdsgroep] = useState([]);
+    const [genreApi, setGenreApi] = useState();
+    const [genreNaam, setGenreNaam] = useState([]);
 
+    const [zaal, setZaal] = useState([]);
+    const [zaalApi, setZaalApi] = useState();
+    const [zaalnaam, setZaalNaam] = useState([]);
+
+    const [leeftijdsgroep, setLeeftijdsgroep] = useState([]);
+    const [leeftijdsgroepApi, setLeeftijdsgroepApi] = useState([]);
+    const [leeftijdsgroepNaam, setLeeftijdsgroepNaam] = useState([]);
+
+    const navigate = useNavigate();
     const {state} = useLocation();
     const {
         shownr,
@@ -18,16 +24,16 @@ const ShowChanger = () => {
         LinkToImg,
     } = state;
 
-    const navigate = useNavigate();
     const titel = TitelVoorstelling + " aanpassen";
 
     const handleSubmit = async () => {
+        console.log(zaalnaam);
         handleOnSubmit();
         navigate('/ShowAanpassen');
     }
 
-    // Loads all genres
     useEffect(() => {
+        // Loads all genres
         axios.get('https://localhost:7214/api/Genre')
         .then(res => {
             console.log(res)
@@ -36,26 +42,22 @@ const ShowChanger = () => {
         .catch(err =>{
             console.log(err)
         })
-    }, []);
 
-    // Loads all halls
-    useEffect(() => {
-        axios.get('https://localhost:7214/api/Zaal')
-        .then(res => {
-            console.log(res)
-            setZaal(res.data)
-        })
-        .catch(err =>{
-            console.log(err)
-        })
-    }, []);
-
-    // Loads all agegroups
-    useEffect(() => {
+        // Loads all agegroups
         axios.get('https://localhost:7214/api/Leeftijdsgroep')
         .then(res => {
             console.log(res)
             setLeeftijdsgroep(res.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+
+        // Loads all halls
+        axios.get('https://localhost:7214/api/Zaal')
+        .then(res => {
+            console.log(res)
+            setZaal(res.data)
         })
         .catch(err =>{
             console.log(err)
@@ -67,7 +69,7 @@ const ShowChanger = () => {
         axios.get('https://localhost:7214/api/Genre/Show/' + shownr)
         .then(res => {
             console.log(res)
-            setGenre2(res.data)
+            setGenreNaam(res.data)
         })
         .catch(err =>{
             console.log(err)
@@ -77,7 +79,7 @@ const ShowChanger = () => {
         axios.get('https://localhost:7214/api/Zaal/Show/' + shownr)
         .then(res => {
             console.log(res)
-            setZaal2(res.data)
+            setZaalNaam(res.data)
         })
         .catch(err =>{
             console.log(err)
@@ -87,7 +89,7 @@ const ShowChanger = () => {
         axios.get('https://localhost:7214/api/Leeftijdsgroep/Show/' + shownr)
         .then(res => {
             console.log(res)
-            setLeeftijdsgroep2(res.data)
+            setLeeftijdsgroepNaam(res.data)
         })
         .catch(err =>{
             console.log(err)
@@ -96,9 +98,6 @@ const ShowChanger = () => {
 
     const handleOnSubmit = async () => {
         const NameChange = document.getElementById("NameChange").value;
-        const HallChange = document.getElementById("HallChange").value;
-        const AgeChange = document.getElementById("AgeChange").value;
-        const GenreChange = document.getElementById("GenreChange").value;
         const ImageChange = document.getElementById("ImageChange").value;
 
         await fetch('https://localhost:7214/api/Show', {
@@ -109,10 +108,10 @@ const ShowChanger = () => {
             body: JSON.stringify({
                 "shownr" : shownr,
                 "afbeelding" : ImageChange,
-                "genre" : GenreChange,
                 "naam" : NameChange,
-                "leeftijdsgroep" : AgeChange,
-                "zaal" : HallChange
+                "zaal" : zaalApi,
+                "genre" : genreApi,
+                "leeftijdsgroep" : leeftijdsgroepApi
             })
         })
         .then(res => res.json())
@@ -135,15 +134,30 @@ const ShowChanger = () => {
                     <br/>
 
                     <p>Zaal aanpassen</p>
-                    <input type="text" id="HallChange" defaultValue={zaal2.naam}/>
+                    <select id="HallChange" onChange={(e)=>setZaalApi(e.target.value)}>
+                        <option value="" disabled selected>Huidige zaal: {zaalnaam.naam}</option>
+                        {zaal.map((zaal) => (
+                            <option key={zaal.id} value={zaal.id}>{zaal.naam}</option>
+                        ))}
+                    </select>
                     <br/>
 
                     <p>Leeftijdsgroep aanpassen</p>
-                    <input type="text" id="AgeChange" defaultValue={leeftijdsgroep2.naam}/>
+                    <select id="AgeChange" onChange={(e)=>setLeeftijdsgroepApi(e.target.value)}>
+                        <option value="" disabled selected>Huidige leeftijdsgroep: {leeftijdsgroepNaam.naam}</option>
+                        {leeftijdsgroep.map((leeftijdsgroep) => (
+                            <option key={leeftijdsgroep.id} value={leeftijdsgroep.id}>{leeftijdsgroep.naam}</option>
+                        ))}
+                    </select>
                     <br/>
 
                     <p>Genre aanpassen</p>
-                    <input type="text" id="GenreChange" defaultValue={genre2.naam} />
+                    <select id="GenreChange" onChange={(e)=>setGenreApi(e.target.value)}>
+                        <option value="" disabled selected>Huidige genre: {genreNaam.naam}</option>
+                        {genre.map((genre) => (
+                            <option key={genre.id} value={genre.id}>{genre.naam}</option>
+                        ))}
+                    </select>
                     <br/>
                     
                     <p>Afbeelding aanpassen</p>
