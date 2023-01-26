@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
-import EvenementBlock from "../Pages/Programma/EvenementBlock.js"
-import Hero2 from "../Pages/Shared/Hero2.js"
-import NoShow from "../Pages/Show/NoShow.js";
+import React, { useState, useEffect } from 'react';
+import Hero2 from '../../Shared/Hero2';
+import axios from 'axios';
+import EvenementBlock from '../../Programma/EvenementBlock';
+import NoShow from '../NoShow';
 
-function ShowFetching(){
+const ShowAanpassen = () => {
     const [posts, setPosts] = useState([])
-
+    
     useEffect(() => {
         axios.get('https://localhost:7214/api/Show/')
         .then(res => {
@@ -25,7 +25,7 @@ function ShowFetching(){
     }else {
         return (
             <div>
-                <Hero2 tekst="Programma"/>
+                <Hero2 tekst="Shows aanpassen"/>
                 {posts.map(voorstelling =>
                 <EvenementBlock 
                     shownr={voorstelling.shownr}
@@ -40,4 +40,4 @@ function ShowFetching(){
     }
 }
 
-export default ShowFetching
+export default ShowAanpassen;
