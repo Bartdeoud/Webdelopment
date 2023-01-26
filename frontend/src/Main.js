@@ -36,6 +36,9 @@ class Main extends React.Component {
             <Route path="/ShowToevoegen" element={<ShowToevoegen />} />
             <Route path="/Huren" element={<Huren />} />
             <Route path="/Doneren" element={<Doneren />} />
+            <Route path="/ShowAanpassen" element={<ShowAanpassen />} />
+            <Route path="/ShowChanger" element={<ShowChanger />} />
+            <Route path="/Ticket" element={<Ticket />} />
             <Route path="*" element={<VierNulVier />} />
           </Routes>
       </BrowserRouter>
