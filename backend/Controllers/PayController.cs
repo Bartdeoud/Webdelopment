@@ -18,20 +18,17 @@ public class PayController : ControllerBase
     {
         if(!succes || !_context.sessionIds.Contains(new SessionId(){Session=reference}))
             return Redirect("http://localhost:3000/ticket?succes=False");
-        string email = _context.sessionIds.First(s => s.Session.Equals(reference)).email;
-        MailService.sendMail(email);
         _context.sessionIds.Remove(new SessionId(){Session=reference});
         await _context.SaveChangesAsync();
         return Redirect("http://localhost:3000/ticket?succes=" + succes);
     }
 
-
     // GET: api/
-    [HttpGet("getSessionId{email}")]
-    public async Task<string> getSessionId(string email)
+    [HttpGet("getSessionId")]
+    public async Task<string> getSessionId()
     {
         string session = SessionIdCreator.HashString();
-        _context.sessionIds.Add(new SessionId(){Session=session, email=email});
+        _context.sessionIds.Add(new SessionId(){Session=session});
         await _context.SaveChangesAsync();
         return session;
     }
