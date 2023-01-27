@@ -3,7 +3,7 @@ import Hero2 from "../Shared/Hero2";
 
 function getSucces(){
     const urlParams = new URLSearchParams(window.location.search);
-    if(urlParams.get('succes') == "True"){
+    if(urlParams.get('succes') === "True"){
         return "Betaling gelukt"
     }
     return "Betaling mislukt"

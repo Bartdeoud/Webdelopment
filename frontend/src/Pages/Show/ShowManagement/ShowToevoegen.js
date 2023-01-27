@@ -1,13 +1,63 @@
-import React, { useState }  from 'react';
+import axios from 'axios';
+import React, { useEffect, useState }  from 'react';
 import Hero2 from '../../Shared/Hero2';
 
 const ShowToevoegen = () => {
-    const [shownaam, setNaam] = useState();
-    const [showzaal, setZaal] = useState();
-    const [leeftijd, setLeeftijd] = useState();
-    const [showgenre, setGenre] = useState();
+    const [naamX, setNaam] = useState("");
+    const [image, setImage] = useState("");
+
+    const [genre, setGenre] = useState([]);
+    const [zaal, setZaal] = useState([]);
+    const [leeftijdsgroep, setLeeftijdsgroep] = useState([]);
+
+    const [genreApi, setGenreApi] = useState();
+    const [zaalApi, setZaalApi] = useState();
+    const [leeftijdsgroepApi, setLeeftijdsgroepApi] = useState([]);
+
+    useEffect(() => {
+        axios.get('https://localhost:7214/api/Zaal')
+        .then(res => {
+            setZaal(res.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+
+        axios.get('https://localhost:7214/api/Genre')
+        .then(res => {
+            setGenre(res.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+
+        axios.get('https://localhost:7214/api/Leeftijdsgroep')
+        .then(res => {
+            setLeeftijdsgroep(res.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }, []);
 
     const handleSubmit = async () => {
+        if (check()){
+            await handleOnSubmit()
+            alert("Show is toegevoegd")
+        }else{
+            alert("Vul alle velden correct in")
+        }
+    }
+
+    const check = () => {
+        if (naamX === "" || genreApi === undefined || leeftijdsgroepApi === undefined || zaalApi === undefined){
+            return false
+        }else{
+            return true
+        }
+    }
+
+    const handleOnSubmit = async (e) => {
         try {
             let res = await fetch("https://localhost:7214/api/Show", {
                 method: "POST",
@@ -16,62 +66,60 @@ const ShowToevoegen = () => {
                 },
                 body: JSON.stringify({
                 shownr: 0,
-                afbeelding: "string",
-                genre: showgenre,
-                naam: shownaam,
-                leeftijdsgroep: leeftijd,
-                zaal: showzaal,
-                beginTijd: "2023-01-22T22:09:07.168Z",
-                eindTijd: "2023-01-22T22:09:07.168Z"
+                afbeelding: image,
+                genre: genreApi,
+                naam: naamX,
+                beginTijd: "2023-01-27T10:41:32.651Z",
+                eindTijd: "2023-01-27T10:41:32.651Z",
+                leeftijdsgroep: leeftijdsgroepApi,
+                zaal: zaalApi
                 }),
             });
           if (res.status === 200) {
             console.log("succes");
-          }
-        } catch (err) {
-          console.log(err);
         }
-    }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
 
     return (
         <>
             <Hero2 tekst="Show Toevoegen" />
             <section className="contact">
-                <form>
+                <form onSubmit={handleSubmit}>
                     <p>Naam evenement</p>
-                    <input type="text" placeholder="Voer hier de naam van de show in" onChange={(e)=>setNaam(e.target.value)}/>
+                    <input type="text" id="Name" defaultValue="" placeholder="Voer hier de naam van de show in" onChange={(e) => setNaam(e.target.value)}/>
 
-                    <p>Zaal</p>
-                    <select required="required"  onChange={(e)=>setZaal(e.target.value)}>
-                        <option value="" disabled selected>Selecteer een zaal</option>
-                        <option value="zaal1">Zaal 1</option>
-                        <option value="zaal2">Zaal 2</option>
-                        <option value="zaal3">Zaal 3</option>
-                        <option value="zaal4">Zaal 4</option>
+                    <p>Afbeelding</p>
+                    <input type="text" id="Image" defaultValue="" placeholder="Voer hier de afbeelding van de show in" onChange={(e) => setImage(e.target.value)}/>
+
+                    <p>Genre</p>
+                    <select onChange={(e) => setGenreApi(e.target.value)}>
+                        <option value="" disabled selected>Selecteer een genre</option>
+                        {genre.map(genre => (
+                            <option key={genre.genreID} value={genre.genreID}>{genre.naam}</option>
+                        ))}
                     </select>
 
                     <p>Leeftijdsgroep</p>
-                    <select required="required" onChange={(e)=>setLeeftijd(e.target.value)}>
+                    <select onChange={(e) => setLeeftijdsgroepApi(e.target.value)}>
                         <option value="" disabled selected>Selecteer een leeftijdsgroep</option>
-                        <option value="All">Alle leeftijden</option>
-                        <option value="Onder18">Onder de 18</option>
-                        <option value="18tot65">18 tot 65</option>
-                        <option value="65plus">65+</option>
-                    </select> 
-
-                    <p>Genre</p>
-                    <select required="required" onChange={(e)=>setGenre(e.target.value)}>
-                        <option value="" disabled selected>Selecteer een genre</option>
-                        <option value="Comedy">Comedy</option>
-                        <option value="Dance">Dance</option>
-                        <option value="Drama">Drama</option>
-                        <option value="Film">Film</option>
-                        <option value="Klassiek">Klassiek</option>
-                        <option value="Muziek">Muziek</option>
-                        <option value="Musical">Musical</option>
-                        <option value="Opera">Opera</option>
+                        {leeftijdsgroep.map(leeftijds => (
+                            <option key={leeftijds.leeftijdsgroepID} value={leeftijds.leeftijdsgroepID}>{leeftijds.naam}</option>
+                        ))}
                     </select>
-                    <button className="btn" onClick={handleSubmit}> Submit </button>
+
+                    <p>Zaal</p>
+                    <select onChange={(e) => setZaalApi(e.target.value)}>
+                        <option value="" disabled selected>Selecteer een zaal</option>
+                        {zaal.map(zaal => (
+                            <option key={zaal.zaalnr} value={zaal.zaalnr}>{zaal.naam}</option>
+                            ))}
+                    </select>
+                    
+                    <button className="btn" type="submit"> submit </button>
                 </form>
             </section>   
         </>
