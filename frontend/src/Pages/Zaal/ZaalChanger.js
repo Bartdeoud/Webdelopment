@@ -25,7 +25,7 @@ const ZaalChanger = () => {
         .catch(err =>{
             console.log(err)
         })
-    }, []);
+    }, [zaalnr]);
 
     const handleSubmit = async () => {
         handleOnSubmit();
