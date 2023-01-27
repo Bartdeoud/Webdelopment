@@ -15,6 +15,7 @@ public class PayController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post([FromForm] bool succes, [FromForm] string reference)
     {
+        try{
         var sessionIds = _context.sessionIds;
         foreach (var session in sessionIds)
         { 
@@ -28,6 +29,7 @@ public class PayController : ControllerBase
 
         _context.sessionIds.Remove(sessionId);
         await _context.SaveChangesAsync();
+        } catch{ succes = false; }
         return Redirect("http://localhost:3000/ticket?succes=" + succes);
     }
 
