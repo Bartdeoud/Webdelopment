@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import Hero2 from "../../Shared/Hero2.js";
 
 const ShowChanger = () => {
-    const [genre, setGenre] = useState();
+    const [genre, setGenre] = useState([]);
     const [genreApi, setGenreApi] = useState();
     const [genreNaam, setGenreNaam] = useState([]);
 
@@ -27,7 +27,6 @@ const ShowChanger = () => {
     const titel = TitelVoorstelling + " aanpassen";
 
     const handleSubmit = async () => {
-        console.log(genre, genreApi);
         handleOnSubmit();
         navigate('/ShowAanpassen');
     }
@@ -36,9 +35,7 @@ const ShowChanger = () => {
         // Loads all halls
         axios.get('https://localhost:7214/api/Zaal')
         .then(res => {
-            console.log(res)
             setZaal(res.data)
-            console.log ("Zaal "+zaal)
         })
         .catch(err =>{
             console.log(err)
@@ -57,9 +54,7 @@ const ShowChanger = () => {
         // Loads all agegroups
         axios.get('https://localhost:7214/api/Leeftijdsgroep')
         .then(res => {
-            console.log(res)
             setLeeftijdsgroep(res.data)
-            console.log ("Leeft "+leeftijdsgroep)
         })
         .catch(err =>{
             console.log(err)
@@ -68,7 +63,6 @@ const ShowChanger = () => {
         // Loads genre of show
         axios.get('https://localhost:7214/api/Genre/Show/' + shownr)
         .then(res => {
-            console.log(res)
             setGenreNaam(res.data)
         })
         .catch(err =>{
@@ -78,7 +72,6 @@ const ShowChanger = () => {
         // Loads hall of show
         axios.get('https://localhost:7214/api/Zaal/Show/' + shownr)
         .then(res => {
-            console.log(res)
             setZaalNaam(res.data)
         })
         .catch(err =>{
@@ -88,7 +81,6 @@ const ShowChanger = () => {
         // Loads agegroup of show
         axios.get('https://localhost:7214/api/Leeftijdsgroep/Show/' + shownr)
         .then(res => {
-            console.log(res)
             setLeeftijdsgroepNaam(res.data)
         })
         .catch(err =>{
@@ -105,7 +97,7 @@ const ShowChanger = () => {
             "afbeelding" : ImageChange,
             "naam" : NameChange,
             "zaal" : zaalApi,
-            "genre" : 1,
+            "genre" : genreApi,
             "leeftijdsgroep" : leeftijdsgroepApi
         })
     }
@@ -141,9 +133,9 @@ const ShowChanger = () => {
                     <p>Genre aanpassen</p>
                     <select id="GenreChange" onChange={(e)=>setGenreApi(e.target.value)}>
                         <option value="" disabled selected>Huidige genre: {genreNaam.naam}</option>
-                        {/* {genre.map((genre) => (
-                            <option key={genre.id} value={genre.id}>{genre.naam}</option>
-                        ))} */}
+                        {genre.map((genre) => (
+                            <option key={genre.genreID} value={genre.genreID}>{genre.naam}</option>
+                        ))}
                     </select>
                     <br/>
                     
