@@ -27,6 +27,14 @@ const Account = () => {
                 tekst2="Wilt u een show aanpassen?"
                 link2="/ShowAanpassen"	
                 linknaam2="Klik hier om de shows aan te passen"/>
+
+            <Alinea titel="Admin"
+                tekst="Wilt u een zaal toevoegen?"
+                link="/ZaalToevoegen"
+                linknaam="Klik hier om een zaal toe te voegen"
+                tekst2="Wilt u een zaal aanpassen"
+                link2="/ZaalAanpassen"
+                linknaam2="Klik hier om een zaal aan te passen"/>
         </>
     );
 }

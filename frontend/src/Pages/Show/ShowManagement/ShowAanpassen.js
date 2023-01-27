@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Hero2 from '../../Shared/Hero2';
 import axios from 'axios';
 import ShowBlock from './ShowBlock';
-import NoShow from '../NoShow';
+import Alinea from '../../Shared/Alinea';
 
 const ShowAanpassen = () => {
     const [posts, setPosts] = useState([])
@@ -20,7 +20,11 @@ const ShowAanpassen = () => {
 
     if (posts.length === 0){
         return (
-            <NoShow/>
+            <>
+            <Hero2 tekst="Geen shows gevonden"/>
+            <Alinea titel="We konden helaas geen shows vinden."
+                tekst="Herlaad de pagina of probeer het later opnieuw"/>
+        </>
         )
     }else {
         return (

@@ -83,7 +83,6 @@ const ShowToevoegen = () => {
         }
     };
 
-
     return (
         <>
             <Hero2 tekst="Show Toevoegen" />
