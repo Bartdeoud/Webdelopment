@@ -38,6 +38,7 @@ const ShowChanger = () => {
         .then(res => {
             console.log(res)
             setZaal(res.data)
+            console.log ("Zaal "+zaal)
         })
         .catch(err =>{
             console.log(err)
@@ -58,6 +59,7 @@ const ShowChanger = () => {
         .then(res => {
             console.log(res)
             setLeeftijdsgroep(res.data)
+            console.log ("Leeft "+leeftijdsgroep)
         })
         .catch(err =>{
             console.log(err)
@@ -104,7 +106,7 @@ const ShowChanger = () => {
             "naam" : NameChange,
             "zaal" : zaalApi,
             "genre" : 1,
-            "leeftijdsgroep" : 2
+            "leeftijdsgroep" : leeftijdsgroepApi
         })
     }
 
@@ -130,8 +132,8 @@ const ShowChanger = () => {
                     <p>Leeftijdsgroep aanpassen</p>
                     <select id="AgeChange" onChange={(e)=>setLeeftijdsgroepApi(e.target.value)}>
                         <option value="" disabled selected>Huidige leeftijdsgroep: {leeftijdsgroepNaam.naam}</option>
-                        {leeftijdsgroep.map((leeftijdsgroep) => (
-                            <option key={leeftijdsgroep.leeftijdsgroepid} value={leeftijdsgroep.leeftijdsgroepid}>{leeftijdsgroep.leeftijdsgroepid}</option>
+                        {leeftijdsgroep.map((leeftijds) => (
+                            <option key={leeftijds.leeftijdsgroepID} value={leeftijds.leeftijdsgroepID}>{leeftijds.naam}</option>
                         ))}
                     </select>
                     <br/>
