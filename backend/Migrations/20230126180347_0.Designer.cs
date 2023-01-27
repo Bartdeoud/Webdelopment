@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace backend.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20230126180050_2")]
-    partial class _2
+    [Migration("20230126180347_0")]
+    partial class _0
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -398,8 +398,8 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("zaal")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Zaal")
+                        .HasColumnType("int");
 
                     b.HasKey("Shownr");
 
@@ -410,34 +410,34 @@ namespace backend.Migrations
                         {
                             Shownr = 1,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 26, 19, 0, 50, 166, DateTimeKind.Local).AddTicks(7075),
-                            EindTijd = new DateTime(2023, 1, 26, 19, 0, 50, 166, DateTimeKind.Local).AddTicks(7110),
-                            Genre = 2,
-                            Leeftijdsgroep = 3,
+                            BeginTijd = new DateTime(2023, 1, 26, 19, 3, 47, 396, DateTimeKind.Local).AddTicks(8424),
+                            EindTijd = new DateTime(2023, 1, 26, 19, 3, 47, 396, DateTimeKind.Local).AddTicks(8461),
+                            Genre = 1,
+                            Leeftijdsgroep = 1,
                             Naam = "Show 1",
-                            zaal = "zaal 1"
+                            Zaal = 1
                         },
                         new
                         {
                             Shownr = 2,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 26, 19, 0, 50, 166, DateTimeKind.Local).AddTicks(7113),
-                            EindTijd = new DateTime(2023, 1, 26, 19, 0, 50, 166, DateTimeKind.Local).AddTicks(7114),
+                            BeginTijd = new DateTime(2023, 1, 26, 19, 3, 47, 396, DateTimeKind.Local).AddTicks(8463),
+                            EindTijd = new DateTime(2023, 1, 26, 19, 3, 47, 396, DateTimeKind.Local).AddTicks(8465),
                             Genre = 2,
-                            Leeftijdsgroep = 3,
+                            Leeftijdsgroep = 2,
                             Naam = "Show 2",
-                            zaal = "zaal 2"
+                            Zaal = 2
                         },
                         new
                         {
                             Shownr = 3,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 26, 19, 0, 50, 166, DateTimeKind.Local).AddTicks(7117),
-                            EindTijd = new DateTime(2023, 1, 26, 19, 0, 50, 166, DateTimeKind.Local).AddTicks(7118),
-                            Genre = 2,
+                            BeginTijd = new DateTime(2023, 1, 26, 19, 3, 47, 396, DateTimeKind.Local).AddTicks(8467),
+                            EindTijd = new DateTime(2023, 1, 26, 19, 3, 47, 396, DateTimeKind.Local).AddTicks(8469),
+                            Genre = 3,
                             Leeftijdsgroep = 3,
                             Naam = "Show 3",
-                            zaal = "zaal 3"
+                            Zaal = 3
                         });
                 });
 

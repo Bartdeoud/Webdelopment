@@ -17,6 +17,7 @@ import ShowAanpassen from "./Pages/Show/ShowManagement/ShowAanpassen";
 import ShowChanger from "./Pages/Show/ShowManagement/ShowChanger";
 import Show from "./Pages/Show/Show";
 import Ticket from "./Pages/Ticket/Ticket";
+import Redirect from "./Pages/Winkelmand/redirect";
 
 class Main extends React.Component {
   render() {
@@ -39,6 +40,7 @@ class Main extends React.Component {
             <Route path="/ShowAanpassen" element={<ShowAanpassen />} />
             <Route path="/ShowChanger" element={<ShowChanger />} />
             <Route path="/Ticket" element={<Ticket />} />
+            <Route path="/redirect" element={<Redirect/>} />
             <Route path="*" element={<VierNulVier />} />
           </Routes>
       </BrowserRouter>

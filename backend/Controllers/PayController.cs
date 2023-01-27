@@ -25,8 +25,9 @@ public class PayController : ControllerBase
 
     // GET: api/
     [HttpGet("getSessionId")]
-    public async Task<string> getSessionId()
+    public async Task<string> getSessionId(string email)
     {
+        Console.WriteLine(email);
         string session = SessionIdCreator.HashString();
         _context.sessionIds.Add(new SessionId(){Session=session});
         await _context.SaveChangesAsync();
