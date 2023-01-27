@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import EvenementBlock from "../Pages/Programma/EvenementBlock.js"
 import Hero2 from "../Pages/Shared/Hero2.js"
-import NoShow from "../Pages/Show/NoShow.js";
+import Alinea from "../Pages/Shared/Alinea.js"
 
 function ShowFetching(){
     const [posts, setPosts] = useState([])
@@ -20,7 +20,11 @@ function ShowFetching(){
 
     if (posts.length === 0){
         return (
-            <NoShow/>
+            <>
+            <Hero2 tekst="Geen shows gevonden "/>
+            <Alinea titel="We konden helaas geen shows vinden."
+                tekst="Herlaad de pagina of probeer het later opnieuw"/>
+        </>
         )
     }else {
         return (

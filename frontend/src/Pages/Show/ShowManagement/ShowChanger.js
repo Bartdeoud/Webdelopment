@@ -26,11 +26,6 @@ const ShowChanger = () => {
 
     const titel = TitelVoorstelling + " aanpassen";
 
-    const handleSubmit = async () => {
-        handleOnSubmit();
-        navigate('/ShowAanpassen');
-    }
-
     useEffect(() => {
         // Loads all halls
         axios.get('https://localhost:7214/api/Zaal')
@@ -87,6 +82,11 @@ const ShowChanger = () => {
             console.log(err)
         })
     }, [shownr]);
+
+    const handleSubmit = async () => {
+        handleOnSubmit();
+        navigate('/ShowAanpassen');
+    }
 
     const handleOnSubmit = async () => {
         const NameChange = document.getElementById("NameChange").value;
