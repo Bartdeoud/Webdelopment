@@ -3,6 +3,9 @@ import React, { useEffect, useState }  from 'react';
 import Hero2 from '../../Shared/Hero2';
 
 const ShowToevoegen = () => {
+    const [naamX, setNaam] = useState("");
+    const [image, setImage] = useState("");
+
     const [genre, setGenre] = useState([]);
     const [zaal, setZaal] = useState([]);
     const [leeftijdsgroep, setLeeftijdsgroep] = useState([]);
@@ -38,8 +41,23 @@ const ShowToevoegen = () => {
     }, []);
 
     const handleSubmit = async () => {
-        const Name = document.getElementById("Name").value;
-        const Image = document.getElementById("Image").value;   
+        if (check()){
+            await handleOnSubmit()
+            alert("Show is toegevoegd")
+        }else{
+            alert("Vul alle velden correct in")
+        }
+    }
+
+    const check = () => {
+        if (naamX === "" || genreApi === undefined || leeftijdsgroepApi === undefined || zaalApi === undefined){
+            return false
+        }else{
+            return true
+        }
+    }
+
+    const handleOnSubmit = async (e) => {
         try {
             let res = await fetch("https://localhost:7214/api/Show", {
                 method: "POST",
@@ -48,9 +66,11 @@ const ShowToevoegen = () => {
                 },
                 body: JSON.stringify({
                 shownr: 0,
-                afbeelding: Image,
+                afbeelding: image,
                 genre: genreApi,
-                naam: Name,
+                naam: naamX,
+                beginTijd: "2023-01-27T10:41:32.651Z",
+                eindTijd: "2023-01-27T10:41:32.651Z",
                 leeftijdsgroep: leeftijdsgroepApi,
                 zaal: zaalApi
                 }),
@@ -61,7 +81,8 @@ const ShowToevoegen = () => {
         } catch (err) {
             console.log(err);
         }
-    }
+    };
+
 
     return (
         <>
@@ -69,10 +90,10 @@ const ShowToevoegen = () => {
             <section className="contact">
                 <form onSubmit={handleSubmit}>
                     <p>Naam evenement</p>
-                    <input type="text" id="Name" placeholder="Voer hier de naam van de show in"/>
+                    <input type="text" id="Name" defaultValue="" placeholder="Voer hier de naam van de show in" onChange={(e) => setNaam(e.target.value)}/>
 
                     <p>Afbeelding</p>
-                    <input type="text" id="Image" defaultValue="" placeholder="Voer hier de afbeelding van de show in"/>
+                    <input type="text" id="Image" defaultValue="" placeholder="Voer hier de afbeelding van de show in" onChange={(e) => setImage(e.target.value)}/>
 
                     <p>Genre</p>
                     <select onChange={(e) => setGenreApi(e.target.value)}>
