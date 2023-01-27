@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace backend.Migrations
 {
     /// <inheritdoc />
-    public partial class _1 : Migration
+    public partial class _0 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -101,7 +101,7 @@ namespace backend.Migrations
                 columns: table => new
                 {
                     Session = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    email = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    email = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -264,9 +264,9 @@ namespace backend.Migrations
                 columns: new[] { "Shownr", "Afbeelding", "BeginTijd", "EindTijd", "Genre", "Leeftijdsgroep", "Naam", "Zaal" },
                 values: new object[,]
                 {
-                    { 1, "", new DateTime(2023, 1, 26, 17, 11, 23, 244, DateTimeKind.Local).AddTicks(6931), new DateTime(2023, 1, 26, 17, 11, 23, 244, DateTimeKind.Local).AddTicks(6964), 1, 1, "Show 1", 1 },
-                    { 2, "", new DateTime(2023, 1, 26, 17, 11, 23, 244, DateTimeKind.Local).AddTicks(6967), new DateTime(2023, 1, 26, 17, 11, 23, 244, DateTimeKind.Local).AddTicks(6969), 2, 2, "Show 2", 2 },
-                    { 3, "", new DateTime(2023, 1, 26, 17, 11, 23, 244, DateTimeKind.Local).AddTicks(6971), new DateTime(2023, 1, 26, 17, 11, 23, 244, DateTimeKind.Local).AddTicks(6973), 3, 3, "Show 3", 3 }
+                    { 1, "", new DateTime(2023, 1, 26, 19, 3, 47, 396, DateTimeKind.Local).AddTicks(8424), new DateTime(2023, 1, 26, 19, 3, 47, 396, DateTimeKind.Local).AddTicks(8461), 1, 1, "Show 1", 1 },
+                    { 2, "", new DateTime(2023, 1, 26, 19, 3, 47, 396, DateTimeKind.Local).AddTicks(8463), new DateTime(2023, 1, 26, 19, 3, 47, 396, DateTimeKind.Local).AddTicks(8465), 2, 2, "Show 2", 2 },
+                    { 3, "", new DateTime(2023, 1, 26, 19, 3, 47, 396, DateTimeKind.Local).AddTicks(8467), new DateTime(2023, 1, 26, 19, 3, 47, 396, DateTimeKind.Local).AddTicks(8469), 3, 3, "Show 3", 3 }
                 });
 
             migrationBuilder.InsertData(

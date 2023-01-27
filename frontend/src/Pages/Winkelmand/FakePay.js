@@ -1,13 +1,19 @@
-import GetSessionId from "../../api/SessionId.js";
+import Cookies from 'universal-cookie';
 import React from 'react';
 
 const FakePay = (props) => {
+    const cookies = new Cookies();
+    
+    cookies.set("toPay", props.bedrag)
+
+    const setcookie = (value) =>{
+        cookies.set("email", value);
+    }
+
     return<>
-    <form method="post" action="https://fakepay.azurewebsites.net/">
-    <input type="hidden" name="amount" value={props.bedrag}></input>
-    <input type="hidden" name="reference" value={GetSessionId()}></input>
-    <input type="hidden" name="url" value="https://localhost:7214/api/Pay"></input>
-    <button className="btn" type="onsubmit">Betaal!</button>
+    <form action={"/Redirect"}>
+        <input name="email" type="email" defaultValue="Email" onChange={e => setcookie(e.target.value)}></input>
+        <button className="btn" type="onsubmit">Betaal!</button>
     </form>
     </>
 }

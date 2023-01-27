@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-
 namespace backend.Controllers;
 
 [Route("api/[controller]")]
@@ -18,17 +17,20 @@ public class PayController : ControllerBase
     {
         if(!succes || !_context.sessionIds.Contains(new SessionId(){Session=reference}))
             return Redirect("http://localhost:3000/ticket?succes=False");
-        _context.sessionIds.Remove(new SessionId(){Session=reference});
+
+        SessionId sessionId = _context.sessionIds.First(s => s.Session.Equals(reference));
+        MailService.sendMail(sessionId.email ?? "");
+        _context.sessionIds.Remove(sessionId);
         await _context.SaveChangesAsync();
         return Redirect("http://localhost:3000/ticket?succes=" + succes);
     }
 
     // GET: api/
     [HttpGet("getSessionId")]
-    public async Task<string> getSessionId()
+    public async Task<string> getSessionId(string email)
     {
         string session = SessionIdCreator.HashString();
-        _context.sessionIds.Add(new SessionId(){Session=session});
+        _context.sessionIds.Add(new SessionId(){Session=session, email=email});
         await _context.SaveChangesAsync();
         return session;
     }

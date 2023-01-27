@@ -3,6 +3,8 @@ using System.Net.Mail;
 
 public class MailService{
     public static void sendMail(string email){
+        if(email.Equals(""))return;
+        
         var smtpClient = new SmtpClient("smtp.gmail.com")
         {
             Port = 587,
