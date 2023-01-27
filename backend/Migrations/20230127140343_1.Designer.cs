@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace backend.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20230127140343_1")]
+    partial class _1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -366,9 +369,6 @@ namespace backend.Migrations
                     b.Property<DateTime>("expiration")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ticketData")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Session");
 
                     b.ToTable("sessionIds");
@@ -413,8 +413,8 @@ namespace backend.Migrations
                         {
                             Shownr = 1,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 27, 15, 22, 59, 400, DateTimeKind.Local).AddTicks(6910),
-                            EindTijd = new DateTime(2023, 1, 27, 15, 22, 59, 400, DateTimeKind.Local).AddTicks(6947),
+                            BeginTijd = new DateTime(2023, 1, 27, 15, 3, 42, 961, DateTimeKind.Local).AddTicks(4212),
+                            EindTijd = new DateTime(2023, 1, 27, 15, 3, 42, 961, DateTimeKind.Local).AddTicks(4256),
                             Genre = 1,
                             Leeftijdsgroep = 1,
                             Naam = "Show 1",
@@ -424,8 +424,8 @@ namespace backend.Migrations
                         {
                             Shownr = 2,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 27, 15, 22, 59, 400, DateTimeKind.Local).AddTicks(6951),
-                            EindTijd = new DateTime(2023, 1, 27, 15, 22, 59, 400, DateTimeKind.Local).AddTicks(6953),
+                            BeginTijd = new DateTime(2023, 1, 27, 15, 3, 42, 961, DateTimeKind.Local).AddTicks(4259),
+                            EindTijd = new DateTime(2023, 1, 27, 15, 3, 42, 961, DateTimeKind.Local).AddTicks(4261),
                             Genre = 2,
                             Leeftijdsgroep = 2,
                             Naam = "Show 2",
@@ -435,8 +435,8 @@ namespace backend.Migrations
                         {
                             Shownr = 3,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 27, 15, 22, 59, 400, DateTimeKind.Local).AddTicks(6956),
-                            EindTijd = new DateTime(2023, 1, 27, 15, 22, 59, 400, DateTimeKind.Local).AddTicks(6958),
+                            BeginTijd = new DateTime(2023, 1, 27, 15, 3, 42, 961, DateTimeKind.Local).AddTicks(4263),
+                            EindTijd = new DateTime(2023, 1, 27, 15, 3, 42, 961, DateTimeKind.Local).AddTicks(4264),
                             Genre = 3,
                             Leeftijdsgroep = 3,
                             Naam = "Show 3",

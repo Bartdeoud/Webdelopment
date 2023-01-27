@@ -12,9 +12,8 @@ const redirect = () => {
 
     const cookies = new Cookies(document.cookies);
 
-    const sessionId = GetSessionId(cookies.get("email"))
+    const sessionId = GetSessionId(cookies.get("email"), cookies.get("ticketData"))
     const amount = cookies.get("toPay")
-    console.log(cookies.get("ticketData"))
 
     return(
         <>

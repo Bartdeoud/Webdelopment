@@ -25,12 +25,16 @@ const Winkelmand = () => {
             }
         })   
 
-        const cookies = new Cookies(document.cookies);
-        cookies.set("ticketData",[showListNaam, showListRang, showListAantal])
+        var ticketData = "";
 
         for (let i = 0; i < showListNaam.length; i++) {
-            showList.push(<TicketBlok TitelVoorstelling={showListNaam[i]} rang={showListRang[i]} AantalTickets={showListAantal[i]}/>)                    
+            showList.push(<TicketBlok TitelVoorstelling={showListNaam[i]} rang={showListRang[i]} AantalTickets={showListAantal[i]}/>)
+            ticketData += [showListNaam[i], showListRang[i], showListAantal[i],""];
         }
+
+        const cookies = new Cookies(document.cookies);
+        cookies.set("ticketData",ticketData)
+
         return(
             <>
                 <Hero2 tekst="Winkelmand"/>

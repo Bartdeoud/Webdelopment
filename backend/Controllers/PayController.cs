@@ -15,11 +15,17 @@ public class PayController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post([FromForm] bool succes, [FromForm] string reference)
     {
-        if(!succes || !_context.sessionIds.Contains(new SessionId(){Session=reference}))
-            return Redirect("http://localhost:3000/ticket?succes=False");
+        var sessionIds = _context.sessionIds;
+        foreach (var session in sessionIds)
+        { 
+            if(DateTime.Compare(session.expiration, DateTime.Now) < 0)
+            _context.sessionIds.Remove(session);
+        }
 
         SessionId sessionId = _context.sessionIds.First(s => s.Session.Equals(reference));
-        MailService.sendMail(sessionId.email ?? "");
+
+        if(succes)MailService.sendMail(sessionId.email ?? "",sessionId.ticketData ?? "");
+
         _context.sessionIds.Remove(sessionId);
         await _context.SaveChangesAsync();
         return Redirect("http://localhost:3000/ticket?succes=" + succes);
@@ -27,10 +33,10 @@ public class PayController : ControllerBase
 
     // GET: api/
     [HttpGet("getSessionId")]
-    public async Task<string> getSessionId(string email)
+    public async Task<string> getSessionId(string email, string ticketData)
     {
         string session = SessionIdCreator.HashString();
-        _context.sessionIds.Add(new SessionId(){Session=session, email=email});
+        _context.sessionIds.Add(new SessionId(){Session=session, expiration=DateTime.Now.AddMinutes(5), email=email,ticketData=ticketData});
         await _context.SaveChangesAsync();
         return session;
     }
