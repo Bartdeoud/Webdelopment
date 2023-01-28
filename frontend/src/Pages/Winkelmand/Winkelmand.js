@@ -42,6 +42,7 @@ const Winkelmand = () => {
                     <h3 className="title"> Totaal aantal tickets </h3>
                     <p> {totaaltickets} tickets voor €{totaaltickets * 10} </p>
                     <FakePay bedrag={totaaltickets * 10}/>
+                    <br/>
                     <hr/>
                 </section>
                 {showList}

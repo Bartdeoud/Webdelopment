@@ -12,7 +12,7 @@ const FakePay = (props) => {
 
     return<>
     <form action={"/Redirect"}>
-        <input name="email" type="email" defaultValue="Email" onChange={e => setcookie(e.target.value)}></input>
+        <input name="email" type="email" placeholder="Voer hier uw email in" onChange={e => setcookie(e.target.value)}></input>
         <button className="btn" type="onsubmit">Betaal!</button>
     </form>
     </>
