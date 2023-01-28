@@ -12,8 +12,8 @@ const Footer = () => {
                     <Link icon="fa fa-youtube-square" tekst="Youtube pagina"/>
                     <Link icon="fa-brands fa-square-instagram" tekst="Instagram pagina"/>
                 </ul> 
-                <p>Made by <a href="https://github.com/Kikkerslijm410" target="_blank" rel="noreferrer">Shitshow inc</a></p>
-                <p>Lees hier<a href="/Voorwaarden"> de algemene voorwaarden</a></p>
+                <p>Made by <a href="https://github.com/Kikkerslijm410">Shitshow inc</a></p>
+                <p>Lees hier <a href="/Voorwaarden">de algemene voorwaarden</a></p>
             </footer>
         );
     } 
