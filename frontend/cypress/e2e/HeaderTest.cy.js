@@ -1,13 +1,13 @@
-describe('Check page switching', () => {
+describe('Check if header loads all pages correctly', () => {
   	it('checks if all menu items are present and readable', () => { 
         cy.visit ('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/')
         cy.contains('Menu').click()
-        cy.contains('Programma')
-        cy.contains('Over ons')
-        cy.contains('Huur')
-        cy.contains('Account')
-        cy.contains('Winkelmand')
-        cy.contains('Toegankelijkheid')
+        cy.contains('Programma').should("be.visible")
+        cy.contains('Over ons').should("be.visible")
+        cy.contains('Huur').should("be.visible")
+        cy.contains('Account').should("be.visible")
+        cy.contains('Winkelmand').should("be.visible")
+        cy.contains('Toegankelijkheid').should("be.visible")
     })
 
     it('checks if programma is clickable', () => {
