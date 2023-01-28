@@ -4,7 +4,6 @@ import {useNavigate} from 'react-router-dom';
 const EvenementBlock = (props) => {
     const {
         TitelVoorstelling,
-        Artiest,
         zaal,
         datum,
         tijd,
@@ -21,17 +20,17 @@ const EvenementBlock = (props) => {
                     </div>
                     
                     <div>
+                        <br/>
                         <h2>{TitelVoorstelling}</h2>
-                        <br></br>
-                        <h3>{Artiest}</h3>
+                        <br/>
                         <h3>{zaal}</h3>
                     </div>
 
                     <div id="bestel">
                         <h3>{datum}</h3>
                         <h3>{tijd}</h3>
-                        <br/>
                         <button onClick={()=>{navigate('/Show', { state:props})}} className="btn">bestel</button>
+                        <br/>
                     </div>
                 </div>      
         </section>

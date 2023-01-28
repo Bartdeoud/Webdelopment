@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import EvenementBlock from "../Pages/Programma/EvenementBlock.js"
+import Hero2 from "../Pages/Shared/Hero2.js"
 import Alinea from "../Pages/Shared/Alinea.js"
 
 function ShowFetching(){
@@ -19,20 +20,24 @@ function ShowFetching(){
 
     if (posts.length === 0){
         return (
-            <Alinea titel="Geen voorstellingen gevonden"
-            tekst="Herlaad de pagina of probeer het later opnieuw"/>
+            <>
+            <Hero2 tekst="Geen shows gevonden "/>
+            <Alinea titel="We konden helaas geen shows vinden."
+                tekst="Herlaad de pagina of probeer het later opnieuw"/>
+        </>
         )
     }else {
         return (
             <div>
+                <Hero2 tekst="Programma"/>
                 {posts.map(voorstelling =>
                 <EvenementBlock 
-                shownr={voorstelling.shownr}
-                TitelVoorstelling={voorstelling.naam}
-                zaal={voorstelling.zaal}
-                datum={(voorstelling.beginTijd).substring(0,10)}
-                tijd={(voorstelling.beginTijd).substring(11,15)}
-                LinkToImg={voorstelling.afbeelding}/>
+                    shownr={voorstelling.shownr}
+                    TitelVoorstelling={voorstelling.naam}
+                    zaal={"Zaal " + voorstelling.zaal}
+                    datum={(voorstelling.beginTijd).substring(0,10)}
+                    tijd={(voorstelling.beginTijd).substring(11,16)}
+                    LinkToImg={voorstelling.afbeelding}/>
                 )}
             </div>
         )

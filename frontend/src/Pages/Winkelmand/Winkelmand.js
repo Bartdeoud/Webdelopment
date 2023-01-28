@@ -3,6 +3,7 @@ import Hero2 from "../Shared/Hero2";
 import FakePay from "./FakePay";
 import Alinea from "../Shared/Alinea";
 import TicketBlok from "./TicketBlok";
+import Cookies from 'universal-cookie';
 
 const Winkelmand = () => {
     const showListNaam = [];
@@ -23,9 +24,17 @@ const Winkelmand = () => {
                 totaaltickets = totaaltickets + parseInt(parts2[1])
             }
         })   
+
+        var ticketData = "";
+
         for (let i = 0; i < showListNaam.length; i++) {
-            showList.push(<TicketBlok TitelVoorstelling={showListNaam[i]} rang={showListRang[i]} AantalTickets={showListAantal[i]}/>)                    
+            showList.push(<TicketBlok TitelVoorstelling={showListNaam[i]} rang={showListRang[i]} AantalTickets={showListAantal[i]}/>)
+            ticketData += [showListNaam[i], showListRang[i], showListAantal[i],""];
         }
+
+        const cookies = new Cookies(document.cookies);
+        cookies.set("ticketData",ticketData)
+
         return(
             <>
                 <Hero2 tekst="Winkelmand"/>
@@ -33,6 +42,7 @@ const Winkelmand = () => {
                     <h3 className="title"> Totaal aantal tickets </h3>
                     <p> {totaaltickets} tickets voor €{totaaltickets * 10} </p>
                     <FakePay bedrag={totaaltickets * 10}/>
+                    <br/>
                     <hr/>
                 </section>
                 {showList}

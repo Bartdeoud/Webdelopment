@@ -1,56 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import Alinea from '../Shared/Alinea';
+import Cookies from 'universal-cookie';
+import React from 'react';
 
 const FakePay = (props) => {
+    const cookies = new Cookies();
+    
+    cookies.set("toPay", props.bedrag)
 
-    var details = {
-        "amount": props.bedrag,
-        'reference': '123456789', 
-        'url': '',
-    };
-
-    var formBody = [];
-    for (var property in details) {
-        var encodedKey = encodeURIComponent(property);
-        var encodedValue = encodeURIComponent(details[property]);
-        formBody.push(encodedKey + "=" + encodedValue);
+    const setcookie = (value) =>{
+        cookies.set("email", value);
     }
-    formBody = formBody.join("&");
 
-    const [html, setHTML] = useState("");
-    let code = `${html}`;
-
-    useEffect(() => {
-        fetch('https://fakepay.azurewebsites.net/', {
-            method: 'POST',
-            headers:{
-            'Accept': 'application/x-www-form-urlencoded;charset=UTF-8',
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-            'Access-Control-Allow-Origin': '*'},    
-            body: formBody
-        })
-            .then(response => {
-            return response.text();
-        })
-            .then(response => {
-            return setHTML(response);
-        })
-    });
-
-    if (html === undefined || html === ""){
-        return (
-            <Alinea titel="Oeps er is iets mis gegaan" 
-            tekst="Probeer het later nog eens"
-            link="/"
-            linknaam="Ga terug naar de homepagina"/>
-        )
-    }else{
-        return (
-            <section className='contact'>
-                <div dangerouslySetInnerHTML={{ __html: code}}/>
-            </section>
-        );
-    }
+    return<>
+    <form action={"/Redirect"}>
+        <input name="email" type="email" placeholder="Voer hier uw email in" onChange={e => setcookie(e.target.value)}></input>
+        <button className="btn" type="onsubmit">Betaal!</button>
+    </form>
+    </>
 }
 
 export default FakePay;

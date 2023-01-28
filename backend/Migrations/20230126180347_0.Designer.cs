@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace backend.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20230122154122_0")]
+    [Migration("20230126180347_0")]
     partial class _0
     {
         /// <inheritdoc />
@@ -113,17 +113,110 @@ namespace backend.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Genre", b =>
+                {
+                    b.Property<int>("GenreID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GenreID"));
+
+                    b.Property<string>("Naam")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("GenreID");
+
+                    b.ToTable("genres");
+
+                    b.HasData(
+                        new
+                        {
+                            GenreID = 1,
+                            Naam = "Horror"
+                        },
+                        new
+                        {
+                            GenreID = 2,
+                            Naam = "Comedy"
+                        },
+                        new
+                        {
+                            GenreID = 3,
+                            Naam = "Drama"
+                        },
+                        new
+                        {
+                            GenreID = 4,
+                            Naam = "Action"
+                        },
+                        new
+                        {
+                            GenreID = 5,
+                            Naam = "Romance"
+                        },
+                        new
+                        {
+                            GenreID = 6,
+                            Naam = "Adventure"
+                        },
+                        new
+                        {
+                            GenreID = 7,
+                            Naam = "Mystery"
+                        },
+                        new
+                        {
+                            GenreID = 8,
+                            Naam = "Family"
+                        },
+                        new
+                        {
+                            GenreID = 9,
+                            Naam = "Music"
+                        },
+                        new
+                        {
+                            GenreID = 10,
+                            Naam = "History"
+                        },
+                        new
+                        {
+                            GenreID = 11,
+                            Naam = "War"
+                        },
+                        new
+                        {
+                            GenreID = 12,
+                            Naam = "Western"
+                        },
+                        new
+                        {
+                            GenreID = 13,
+                            Naam = "Sport"
+                        });
+                });
+
             modelBuilder.Entity("Huren", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("Datum")
+                    b.Property<DateTime?>("Datum")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Naam")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("RuimteNr")
+                        .HasColumnType("int");
 
                     b.Property<string>("VerhuurdeId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Zaalnr")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -142,6 +235,45 @@ namespace backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("leden");
+                });
+
+            modelBuilder.Entity("Leeftijdsgroep", b =>
+                {
+                    b.Property<int>("LeeftijdsgroepID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LeeftijdsgroepID"));
+
+                    b.Property<string>("Naam")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("LeeftijdsgroepID");
+
+                    b.ToTable("leeftijdsgroepen");
+
+                    b.HasData(
+                        new
+                        {
+                            LeeftijdsgroepID = 1,
+                            Naam = "Alle leeftijden"
+                        },
+                        new
+                        {
+                            LeeftijdsgroepID = 2,
+                            Naam = "Onder de 18"
+                        },
+                        new
+                        {
+                            LeeftijdsgroepID = 3,
+                            Naam = "18-65"
+                        },
+                        new
+                        {
+                            LeeftijdsgroepID = 4,
+                            Naam = "65+"
+                        });
                 });
 
             modelBuilder.Entity("Ruimte", b =>
@@ -226,6 +358,19 @@ namespace backend.Migrations
                         });
                 });
 
+            modelBuilder.Entity("SessionId", b =>
+                {
+                    b.Property<string>("Session")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Session");
+
+                    b.ToTable("sessionIds");
+                });
+
             modelBuilder.Entity("Show", b =>
                 {
                     b.Property<int>("Shownr")
@@ -243,18 +388,18 @@ namespace backend.Migrations
                     b.Property<DateTime>("EindTijd")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Genre")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Genre")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Leeftijdsgroep")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Leeftijdsgroep")
+                        .HasColumnType("int");
 
                     b.Property<string>("Naam")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("zaal")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Zaal")
+                        .HasColumnType("int");
 
                     b.HasKey("Shownr");
 
@@ -265,128 +410,34 @@ namespace backend.Migrations
                         {
                             Shownr = 1,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(222),
-                            EindTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(257),
-                            Genre = "Horor",
-                            Leeftijdsgroep = "18",
+                            BeginTijd = new DateTime(2023, 1, 26, 19, 3, 47, 396, DateTimeKind.Local).AddTicks(8424),
+                            EindTijd = new DateTime(2023, 1, 26, 19, 3, 47, 396, DateTimeKind.Local).AddTicks(8461),
+                            Genre = 1,
+                            Leeftijdsgroep = 1,
                             Naam = "Show 1",
-                            zaal = "zaal 1"
+                            Zaal = 1
                         },
                         new
                         {
                             Shownr = 2,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(260),
-                            EindTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(261),
-                            Genre = "Horor",
-                            Leeftijdsgroep = "18",
+                            BeginTijd = new DateTime(2023, 1, 26, 19, 3, 47, 396, DateTimeKind.Local).AddTicks(8463),
+                            EindTijd = new DateTime(2023, 1, 26, 19, 3, 47, 396, DateTimeKind.Local).AddTicks(8465),
+                            Genre = 2,
+                            Leeftijdsgroep = 2,
                             Naam = "Show 2",
-                            zaal = "zaal 2"
+                            Zaal = 2
                         },
                         new
                         {
                             Shownr = 3,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(263),
-                            EindTijd = new DateTime(2023, 1, 22, 16, 41, 22, 822, DateTimeKind.Local).AddTicks(265),
-                            Genre = "Horor",
-                            Leeftijdsgroep = "18",
+                            BeginTijd = new DateTime(2023, 1, 26, 19, 3, 47, 396, DateTimeKind.Local).AddTicks(8467),
+                            EindTijd = new DateTime(2023, 1, 26, 19, 3, 47, 396, DateTimeKind.Local).AddTicks(8469),
+                            Genre = 3,
+                            Leeftijdsgroep = 3,
                             Naam = "Show 3",
-                            zaal = "zaal 3"
-                        });
-                });
-
-            modelBuilder.Entity("Stoelrij", b =>
-                {
-                    b.Property<int>("rijid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("rijid"));
-
-                    b.Property<int>("Aantal_stoelen")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Rangnummer")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Zaalnr")
-                        .HasColumnType("int");
-
-                    b.HasKey("rijid");
-
-                    b.ToTable("stoelrijen");
-
-                    b.HasData(
-                        new
-                        {
-                            rijid = 11,
-                            Aantalstoelen = 20,
-                            Rangnummer = 1,
-                            Zaalnr = 1
-                        },
-                        new
-                        {
-                            rijid = 12,
-                            Aantalstoelen = 100,
-                            Rangnummer = 2,
-                            Zaalnr = 1
-                        },
-                        new
-                        {
-                            rijid = 13,
-                            Aantalstoelen = 120,
-                            Rangnummer = 3,
-                            Zaalnr = 1
-                        },
-                        new
-                        {
-                            rijid = 21,
-                            Aantalstoelen = 2,
-                            Rangnummer = 1,
-                            Zaalnr = 2
-                        },
-                        new
-                        {
-                            rijid = 22,
-                            Aantalstoelen = 160,
-                            Rangnummer = 2,
-                            Zaalnr = 2
-                        },
-                        new
-                        {
-                            rijid = 31,
-                            Aantalstoelen = 10,
-                            Rangnummer = 1,
-                            Zaalnr = 3
-                        },
-                        new
-                        {
-                            rijid = 32,
-                            Aantalstoelen = 80,
-                            Rangnummer = 2,
-                            Zaalnr = 3
-                        },
-                        new
-                        {
-                            rijid = 41,
-                            Aantalstoelen = 40,
-                            Rangnummer = 1,
-                            Zaalnr = 4
-                        },
-                        new
-                        {
-                            rijid = 42,
-                            Aantalstoelen = 200,
-                            Rangnummer = 2,
-                            Zaalnr = 4
-                        },
-                        new
-                        {
-                            rijid = 43,
-                            Aantalstoelen = 200,
-                            Rangnummer = 3,
-                            Zaalnr = 4
+                            Zaal = 3
                         });
                 });
 
@@ -398,7 +449,7 @@ namespace backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TicketID"));
 
-                    b.Property<int?>("GebruikerUserID")
+                    b.Property<int>("Shownr")
                         .HasColumnType("int");
 
                     b.Property<string>("stoelNr")
@@ -406,8 +457,6 @@ namespace backend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TicketID");
-
-                    b.HasIndex("GebruikerUserID");
 
                     b.ToTable("tickets");
                 });
@@ -420,12 +469,24 @@ namespace backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Zaalnr"));
 
-                    b.Property<int>("Aantal_stoelen")
-                        .HasColumnType("int");
-
                     b.Property<string>("Naam")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Rang1")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Rang2")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Rang3")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Rang4")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("invalideplaatsen")
+                        .HasColumnType("int");
 
                     b.HasKey("Zaalnr");
 
@@ -435,26 +496,37 @@ namespace backend.Migrations
                         new
                         {
                             Zaalnr = 1,
-                            Aantalstoelen = 240,
-                            Naam = "Zaal 1"
+                            Naam = "Zaal 1",
+                            Rang1 = 120,
+                            Rang2 = 98,
+                            Rang3 = 20,
+                            invalideplaatsen = 2
                         },
                         new
                         {
                             Zaalnr = 2,
-                            Aantalstoelen = 180,
-                            Naam = "Zaal 2"
+                            Naam = "Zaal 2",
+                            Rang1 = 100,
+                            Rang2 = 80
                         },
                         new
                         {
                             Zaalnr = 3,
-                            Aantalstoelen = 90,
-                            Naam = "Zaal 3"
+                            Naam = "Zaal 3",
+                            Rang1 = 30,
+                            Rang2 = 30,
+                            Rang3 = 20,
+                            Rang4 = 10
                         },
                         new
                         {
                             Zaalnr = 4,
-                            Aantalstoelen = 440,
-                            Naam = "Zaal 4"
+                            Naam = "Zaal 4",
+                            Rang1 = 210,
+                            Rang2 = 115,
+                            Rang3 = 90,
+                            Rang4 = 20,
+                            invalideplaatsen = 5
                         });
                 });
 
@@ -465,16 +537,11 @@ namespace backend.Migrations
                     b.Property<string>("LedenId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("Shownr")
-                        .HasColumnType("int");
-
                     b.Property<string>("artiest_naam")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasIndex("LedenId");
-
-                    b.HasIndex("Shownr");
 
                     b.HasDiscriminator().HasValue("Artiest");
 
@@ -547,37 +614,16 @@ namespace backend.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Ticket", b =>
-                {
-                    b.HasOne("Gebruiker", null)
-                        .WithMany("tickets")
-                        .HasForeignKey("GebruikerUserID");
-                });
-
             modelBuilder.Entity("Artiest", b =>
                 {
                     b.HasOne("Leden", null)
                         .WithMany("artiesten")
                         .HasForeignKey("LedenId");
-
-                    b.HasOne("Show", null)
-                        .WithMany("Artiesten")
-                        .HasForeignKey("Shownr");
-                });
-
-            modelBuilder.Entity("Gebruiker", b =>
-                {
-                    b.Navigation("tickets");
                 });
 
             modelBuilder.Entity("Leden", b =>
                 {
                     b.Navigation("artiesten");
-                });
-
-            modelBuilder.Entity("Show", b =>
-                {
-                    b.Navigation("Artiesten");
                 });
 #pragma warning restore 612, 618
         }

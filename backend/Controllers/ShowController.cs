@@ -7,7 +7,10 @@ namespace backend.Controllers;
 [Route("api/[controller]")]
 public class ShowController : ControllerBase
 {
-    public static DBContext _context = new DBContext();
+    private DBContext _context;
+    public ShowController(DBContext context){
+        this._context = context;
+    }
 
     // GET: api/Show
     [HttpGet] 
@@ -84,5 +87,35 @@ public class ShowController : ControllerBase
         await _context.SaveChangesAsync();
 
         return NoContent();
+    }
+
+    // PUT: api/Show/5
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutShow(int id, Show show)
+    {
+        if (id != show.Shownr){
+            return BadRequest();
+        }
+
+        _context.Entry(show).State = EntityState.Modified;
+        
+        try{
+            await _context.SaveChangesAsync();
+        }catch (DbUpdateConcurrencyException){
+            if (!ShowExists(id)){
+                return NotFound();
+            }else{
+                throw;
+            }
+        }
+        return NoContent();
+    }
+
+    private bool ShowExists(int id){
+        if (_context.shows == null){
+            return false;
+        }else{
+            return true;
+        }
     }
 }

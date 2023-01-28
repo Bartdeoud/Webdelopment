@@ -3,17 +3,25 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import About from "./Pages/OverOns/OverOns";
 import Winkelmand from "./Pages/Winkelmand/Winkelmand";
+import Huren from "./Pages/Winkelmand/Huren";
 import Programma from "./Pages/Programma/Programma";
 import Accesibility from "./Pages/Accesibility/Accesibility";
 import Voorwaarden from "./Pages/Voorwaarden/Voorwaarden";
 import VierNulVier from "./Pages/404/404";
-import Show from "./Pages/Show/Show";
 import Login from "./Pages/Account/Login";
 import Account from "./Pages/Account/Account";
 import Aanmaken from "./Pages/Account/Aanmaken";
-import Huren from "./Pages/Winkelmand/Huren";
 import Doneren from "./Pages/Account/Doneren";
-import ShowToevoegen from "./Pages/Show/ShowToevoegen";
+import ShowToevoegen from "./Pages/Show/ShowManagement/ShowToevoegen";
+import ShowAanpassen from "./Pages/Show/ShowManagement/ShowAanpassen";
+import ShowChanger from "./Pages/Show/ShowManagement/ShowChanger";
+import Show from "./Pages/Show/Show";
+import Ticket from "./Pages/Ticket/Ticket";
+import ZaalToevoegen from "./Pages/Zaal/ZaalToevoegen";
+import ZaalAanpassen from "./Pages/Zaal/ZaalAanpassen";
+import ZaalChanger from "./Pages/Zaal/ZaalChanger";
+import Redirect from "./Pages/Winkelmand/redirect";
+
 
 class Main extends React.Component {
   render() {
@@ -33,6 +41,13 @@ class Main extends React.Component {
             <Route path="/ShowToevoegen" element={<ShowToevoegen />} />
             <Route path="/Huren" element={<Huren />} />
             <Route path="/Doneren" element={<Doneren />} />
+            <Route path="/ShowAanpassen" element={<ShowAanpassen />} />
+            <Route path="/ShowChanger" element={<ShowChanger />} />
+            <Route path="/Ticket" element={<Ticket />} />
+            <Route path="/ZaalToevoegen" element={<ZaalToevoegen />} />
+            <Route path="/ZaalAanpassen" element={<ZaalAanpassen />} />
+            <Route path="/ZaalChanger" element={<ZaalChanger />} />
+            <Route path="/redirect" element={<Redirect/>} />
             <Route path="*" element={<VierNulVier />} />
           </Routes>
       </BrowserRouter>

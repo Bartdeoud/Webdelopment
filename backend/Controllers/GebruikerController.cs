@@ -7,7 +7,10 @@ namespace backend.Controllers;
 [ApiController]
 public class GebruikerController : ControllerBase
 {
-    public static DBContext _context = new DBContext();
+    private DBContext _context;
+    public GebruikerController(DBContext context){
+        this._context = context;
+    }
 
     // GET: api/Gebruiker
     [HttpGet] 

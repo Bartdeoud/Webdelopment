@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-
 namespace backend.Controllers;
 
 [Route("api/[controller]")]
@@ -7,36 +6,40 @@ namespace backend.Controllers;
 [ApiController]
 public class PayController : ControllerBase
 {
-    // GET: api/<PayController>
-    [HttpGet]
-    public IEnumerable<string> Get()
-    {
-        return new string[] {"Value1","Value2"};
+    private DBContext _context;
+    public PayController(DBContext context){
+        this._context = context;
     }
-
-    //Get api//<PayController>/id
-    [HttpGet("pay")]
-    public string Get(int id)
-    {
-        return "Value";
-    } 
 
     //POST api/<PayController>
     [HttpPost]
-    public void Post([FromBody] string value)
+    public async Task<IActionResult> Post([FromForm] bool succes, [FromForm] string reference)
     {
+        try{
+        var sessionIds = _context.sessionIds;
+        foreach (var session in sessionIds)
+        { 
+            if(DateTime.Compare(session.expiration, DateTime.Now) < 0)
+            _context.sessionIds.Remove(session);
+        }
+
+        SessionId sessionId = _context.sessionIds.First(s => s.Session.Equals(reference));
+
+        if(succes)MailService.sendMail(sessionId.email ?? "",sessionId.ticketData ?? "");
+
+        _context.sessionIds.Remove(sessionId);
+        await _context.SaveChangesAsync();
+        } catch{ succes = false; }
+        return Redirect("http://localhost:3000/ticket?succes=" + succes);
     }
 
-    //PUT api/<PayController>/id
-    [HttpPut ("{id}")]
-    public void Put(int id, [FromBody] string value)
+    // GET: api/
+    [HttpGet("getSessionId")]
+    public async Task<string> getSessionId(string email, string ticketData)
     {
-    } 
-
-    //DELETE api/<PayController>/id
-    [HttpDelete("{id}")]
-    public void Delete(int id)
-    {
-        
+        string session = SessionIdCreator.HashString();
+        _context.sessionIds.Add(new SessionId(){Session=session, expiration=DateTime.Now.AddMinutes(5), email=email,ticketData=ticketData});
+        await _context.SaveChangesAsync();
+        return session;
     }
 }
