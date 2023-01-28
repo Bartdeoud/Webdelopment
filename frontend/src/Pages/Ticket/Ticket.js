@@ -3,7 +3,6 @@ import Alinea from "../Shared/Alinea";
 import Hero2 from "../Shared/Hero2";
 
 const Ticket = () => {
-    var succes = "";   
     const urlParams = new URLSearchParams(window.location.search);
     if(urlParams.get('succes') === "True"){
         return(
