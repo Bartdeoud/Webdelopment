@@ -20,3 +20,6 @@ npm i universal-cookie
 
 React iframe, (https://www.npmjs.com/package/react-iframe)
 npm i react-iframe
+
+Cypress testing, (https://www.cypress.io/)
+npm install cypress --save-dev

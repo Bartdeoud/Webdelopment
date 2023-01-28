@@ -10,16 +10,15 @@ const Header = () => {
                 <button className="icon" onClick={
                     () => { setIsMenuOpen(!isMenuOpen); }
                 }
-                ><i className="fa fa-bars"></i></button>
+                ><i className="fa fa-bars"/><p className="hidden">Menu</p></button>
                 <div className={isMenuOpen ? "menu open" : "menu"}>
                     <ul>
-                        <li><a href="/">Home</a></li>
                         <li><a href="/Programma">Programma</a></li>
                         <li><a href="/OverOns">Over ons</a></li>
                         <li><a href="/Huren">Huur</a></li>
-                        <li><a href="/Account"><i className="fa-solid fa-circle-user"/></a></li>
-                        <li><a href="/Winkelmand"><i className="fa-solid fa-basket-shopping"/></a></li>
-                        <li><a href="/Accesibility"><i className="fa fa-wheelchair" /></a></li>
+                        <li><a href="/Account"><i className="fa-solid fa-circle-user"><p className="hidden">Account</p></i></a></li>
+                        <li><a href="/Winkelmand"><i className="fa-solid fa-basket-shopping"><p className="hidden">Winkelmand</p></i></a></li>
+                        <li><a href="/Accesibility"><i className="fa fa-wheelchair"><p className="hidden">Toegankelijkheid</p></i></a></li>
                     </ul>
                 </div>
             </nav>
