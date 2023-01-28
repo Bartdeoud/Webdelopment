@@ -5,7 +5,8 @@ import Alinea from "../Shared/Alinea";
 
 const redirect = () => {
     const checkForm = () => {
-        if(document.getElementById('amount') !== undefined & document.getElementById('reference') !== undefined)
+        // eslint-disable-next-line
+        if(document.getElementById('amount') != undefined & document.getElementById('reference') != undefined)
         document.getElementById("redirectForm").submit();
     }
 
