@@ -5,10 +5,9 @@ import Alinea from "../Shared/Alinea";
 
 const redirect = () => {
     const checkForm = () => {
-        if(document.getElementById('amount') != undefined & document.getElementById('reference') != undefined)
+        if(document.getElementById('amount') !== undefined & document.getElementById('reference') !== undefined)
         document.getElementById("redirectForm").submit();
     }
-
 
     const cookies = new Cookies(document.cookies);
 

@@ -13,7 +13,7 @@ function GetSessionId(email, ticketData){
         .catch(err =>{
             console.log(err)
         })
-    }, [email]);
+    }, [email, ticketData]);
     return posts;
     }
 
