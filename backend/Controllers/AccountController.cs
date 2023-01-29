@@ -53,7 +53,7 @@ public async Task<IActionResult> Login([FromBody] GebruikerLogin gebruikerLogin)
                 issuer: "https://localhost:7214",
                 audience: "https://localhost:7214",
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(10),
+                expires: DateTime.Now.AddMinutes(30),
                 signingCredentials: signingCredentials
             );
             return Ok(new { Token = new JwtSecurityTokenHandler().WriteToken(tokenOptions), roles });
