@@ -21,8 +21,7 @@ describe('Zaal toevoegen test', () => {
 
         // Check
         cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ZaalAanpassen')
-        cy.reload()
-        cy.wait(1000)
+        cy.wait(2000)
         cy.reload()
         cy.contains('CypressTest1 aanpassen').should('be.visible')
         
@@ -45,8 +44,7 @@ describe('Zaal toevoegen test', () => {
 
         // Test
         cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ZaalAanpassen')
-        cy.reload()
-        cy.wait(1000)
+        cy.wait(2000)
         cy.reload()
         cy.contains('CypressTest2 aanpassen').click()
         cy.url().should('include', '/ZaalChanger')

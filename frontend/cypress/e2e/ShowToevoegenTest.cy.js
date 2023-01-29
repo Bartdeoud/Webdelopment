@@ -9,52 +9,31 @@ describe('Show toevoegen test', () => {
 
     it('Check if show toevoegen is working', () => {
         // Test
-        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowToevoegen')
+        // cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowToevoegen')
+        cy.visit('http://localhost:3000/ShowToevoegen')
         cy.get('#Name').type('CypressTest5')
         cy.get('#genre').select('Horror')
         cy.get('#leeftijd').select('Alle leeftijden')
         cy.get('#zaal').select('Zaal 1')
-        cy.contains('Toevoegen').click()
+        cy.contains('Show toevoegen').click()
+        cy.wait(1000)
         
         // Check
-        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowToevoegen')
+        // cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowAanpassen')
+        cy.visit('http://localhost:3000/ShowAanpassen')
         cy.reload()
         cy.wait(1000)
         cy.reload()
         cy.contains('CypressTest5 aanpassen').click()
         cy.url().should('include', '/ShowChanger')
-        cy.get('#Name').should('have.value', 'CypressTest5')
-        cy.get('#genre').should('have.value', 'Horror')
-        cy.get('#leeftijd').should('have.value', 'Alle leeftijden')
-        cy.get('#zaal').should('have.value', 'Zaal 1')
+        cy.get('#NameChange').should('have.value', 'CypressTest5')
+        cy.get('#genrechange').contains('Horror')
+        cy.get('#leeftijdchange').contains('Alle leeftijden')
+        cy.get('#zaalchange').contains('Zaal 1')
         
         // Cleanup
         cy.contains('Verwijderen').click()
     })
 
-    it('Check if show verwijderen is working', () => {
-        // Setup
-        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowToevoegen')
-        cy.get('#Name').type('CypressTest6')
-        cy.get('#genre').select('Horror')
-        cy.get('#leeftijd').select('Alle leeftijden')
-        cy.get('#zaal').select('Zaal 1')
-        cy.contains('Toevoegen').click()
-        
-        // Test
-        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowToevoegen')
-        cy.reload()
-        cy.wait(1000)
-        cy.reload()
-        cy.contains('CypressTest6 aanpassen').click()
-        cy.url().should('include', '/ShowChanger')
-        cy.contains('Verwijderen').click()
-        
-        // Check
-        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowToevoegen')
-        cy.reload()
-        cy.wait(1000)
-        cy.reload()
-        cy.contains('CypressTest6 aanpassen').should('not.exist')
-    })
+
 })

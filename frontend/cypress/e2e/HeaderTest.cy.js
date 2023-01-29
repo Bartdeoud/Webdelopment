@@ -53,7 +53,7 @@ describe('Header test', () => {
     })
 
     it('checks if the logo is clickable', () => {
-        cy.visit ('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Programma/')
+        cy.visit ('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/OverOns')
         cy.contains('Laaktheater').click()
         cy.url().should('include', '/')
     })

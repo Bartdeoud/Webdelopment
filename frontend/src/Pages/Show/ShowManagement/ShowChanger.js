@@ -156,7 +156,7 @@ const ShowChanger = () => {
                     <input type="text" placeholder="Plaats hier een afbeelding" id="ImageChange" defaultValue={LinkToImg} />
                     <br/>
 
-                    <button className="btn" type="submit">aanpassen</button>
+                    <button className="btn" type="submit">Aanpassen</button>
                 </form>
 
                 <br/><br/>
