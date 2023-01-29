@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace backend.Migrations
+namespace api.Migrations
 {
     [DbContext(typeof(DBContext))]
     [Migration("20230129104730_0")]
