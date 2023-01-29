@@ -5,7 +5,7 @@ import ZaalBlock from './ZaalBlock';
 import Alinea from '../Shared/Alinea';
 
 const ZaalAanpassen = () => {
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState([]);
     
     useEffect(() => {
         axios.get('https://localhost:7214/api/Zaal/')

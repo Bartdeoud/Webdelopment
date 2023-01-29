@@ -5,21 +5,21 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 const ZaalChanger = () => {
 
-    const [naamX, setNaamX] = useState("");
-    const [rang1, setRang1] = useState(0);
-    const [rang2, setRang2] = useState(0);
-    const [rang3, setRang3] = useState(0);
-    const [rang4, setRang4] = useState(0);
-    const [invalideplaatsen2, setInvalideplaatsen] = useState();
-
     const navigate = useNavigate();
     const {state} = useLocation();
     const {zaalnr, Zaalnaam, Rang1, Rang2, Rang3, Rang4, invalideplaatsen} = state;
-    console.log (Zaalnaam, Rang1, Rang2, Rang3, Rang4, invalideplaatsen)
+
+    const [naamX, setNaamX] = useState(Zaalnaam);
+    const [rang1, setRang1] = useState(Rang1);
+    const [rang2, setRang2] = useState(Rang2);
+    const [rang3, setRang3] = useState(Rang3);
+    const [rang4, setRang4] = useState(Rang4);
+    const [invalideplaatsen2, setInvalideplaatsen] = useState(invalideplaatsen);
 
     const handleSubmit = async () => {
-        handleOnSubmit();
+        handleOnSubmit(); 
         navigate('/ZaalAanpassen');
+        window.location.reload(false);
     }
 
     const handleOnSubmit = async () => {
