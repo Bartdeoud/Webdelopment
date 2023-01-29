@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authorization;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -13,6 +14,8 @@ public class AccountController : ControllerBase
     private readonly UserManager<Gebruiker> _userManager;
     private readonly SignInManager<Gebruiker> _signInManager;
     private readonly RoleManager<IdentityRole> _roleManager;
+
+    private List<string> roles = new List<string>(){"Default","Medewerker","Admin","Artiest","Donateur"};
 
     public AccountController(UserManager<Gebruiker> userManager, SignInManager<Gebruiker> signInManager, RoleManager<IdentityRole> roleManager)
     {
@@ -23,14 +26,30 @@ public class AccountController : ControllerBase
 
     [HttpPost]
     [Route("registreer")]
-    public async Task<ActionResult<IEnumerable<Show>>> Registreer([FromBody] Gebruiker gebruiker)
+    public async Task<IActionResult> Registreer([FromBody] Gebruiker gebruiker)
     {
         var resultaat = await _userManager.CreateAsync(gebruiker, gebruiker.Wachtwoord);
 
-        if(!(await _roleManager.RoleExistsAsync("DefaultAuth")))
-            await _roleManager.CreateAsync(new IdentityRole("DefaultAuth"));
+        if(!(await _roleManager.RoleExistsAsync("Default")))
+            await _roleManager.CreateAsync(new IdentityRole("Default"));
 
-        resultaat = await _userManager.AddToRoleAsync(gebruiker,"DefaultAuth");
+        resultaat = await _userManager.AddToRoleAsync(gebruiker,"Default");
+        return !resultaat.Succeeded ? new BadRequestObjectResult(resultaat) : StatusCode(201);
+    }
+
+    [HttpPost]
+    [Authorize(Roles ="Admin")]
+    [Route("registreerMetRol")]
+    public async Task<ActionResult> RegistreerMetRol([FromBody] Gebruiker gebruiker, string role)
+    {
+        if(!roles.Contains(role)) return BadRequest();
+
+        var resultaat = await _userManager.CreateAsync(gebruiker, gebruiker.Wachtwoord);
+
+        if(!(await _roleManager.RoleExistsAsync(role)))
+            await _roleManager.CreateAsync(new IdentityRole(role));
+
+        resultaat = await _userManager.AddToRoleAsync(gebruiker,role);
         return !resultaat.Succeeded ? new BadRequestObjectResult(resultaat) : StatusCode(201);
     }
 

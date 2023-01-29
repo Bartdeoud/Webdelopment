@@ -58,7 +58,8 @@ public class ShowController : ControllerBase
     // }
 
     // POST: api/Show
-    [HttpPost] 
+    [HttpPost]
+    [Authorize(Roles ="Admin, Medewerker")]
     public async Task<ActionResult<Show>> PostShow(Show show)
     {
         if (_context.shows == null)
@@ -73,6 +74,7 @@ public class ShowController : ControllerBase
 
     // DELETE: api/Show/5
     [HttpDelete("{id}")] 
+    [Authorize(Roles ="Admin, Medewerker")]
     public async Task<ActionResult<Show>> DeleteShow(int id)
     {
         if (_context.shows == null)
@@ -92,6 +94,7 @@ public class ShowController : ControllerBase
 
     // PUT: api/Show/5
     [HttpPut("{id}")]
+    [Authorize(Roles ="Admin, Medewerker")]
     public async Task<IActionResult> PutShow(int id, Show show)
     {
         if (id != show.Shownr){

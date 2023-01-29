@@ -7,10 +7,6 @@ public class Gebruiker : IdentityUser
     public int UserID {get; set;}
 
     [Required]
-    [MaxLength (100)]
-    public string Naam {set; get;} = string.Empty;
-
-    [Required]
     public string Email {set; get;} = string.Empty;
 
     [Required]

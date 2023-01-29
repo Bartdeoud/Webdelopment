@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -72,6 +73,7 @@ namespace api.Controllers
         // PUT: api/Zaal/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> PutZaal(int id, Zaal zaal)
         {
             if (id != zaal.Zaalnr)
@@ -103,6 +105,7 @@ namespace api.Controllers
         // POST: api/Zaal
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Roles ="Admin")]
         public async Task<ActionResult<Zaal>> PostZaal(Zaal zaal)
         {
           if (_context.zalen == null)
@@ -117,6 +120,7 @@ namespace api.Controllers
 
         // DELETE: api/Zaal/5
         [HttpDelete("{id}")]
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> DeleteZaal(int id)
         {
             if (_context.zalen == null)
