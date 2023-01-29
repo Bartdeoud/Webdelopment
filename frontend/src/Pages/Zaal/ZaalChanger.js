@@ -59,7 +59,7 @@ const ZaalChanger = () => {
                     <input id="rang3" type="number" defaultValue={Rang3} onChange={(e)=>setRang3(e.target.value)}/>
                     
                     <p>Aantal stoelen voor Rang 4</p>
-                    <input id="rang3" type="number" defaultValue={Rang4} onChange={(e)=>setRang4(e.target.value)}/>
+                    <input id="rang4" type="number" defaultValue={Rang4} onChange={(e)=>setRang4(e.target.value)}/>
                     
                     <p>Aantal invalideplaatsen</p>
                     <input id="invalideplaatsen" type="number" defaultValue={invalideplaatsen} onChange={(e)=>setInvalideplaatsen(e.target.value)}/>
