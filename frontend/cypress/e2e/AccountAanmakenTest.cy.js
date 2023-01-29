@@ -1,4 +1,4 @@
-describe('template spec', () => {
+describe('Account aanmaken test', () => {
     it('Check if account maken in reachable ', () => {
         cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/')
         cy.contains('Menu').click()
@@ -13,9 +13,9 @@ describe('template spec', () => {
 
     it('Check if gebruikersnaam validation is correct', () => {
         cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Aanmaken')
-        cy.contains('Minimaal 8 karakters').should('be.hidden')
-        cy.contains('Maximaal 100 karakters').should('be.hidden')
-        cy.contains('Begint met een letter').should('be.hidden')
+        cy.contains('Minimaal 8 karakters').should('be.visible')
+        cy.contains('Maximaal 100 karakters').should('be.visible')
+        cy.contains('Begint met een letter').should('be.visible')
         
         cy.get('#username').type('test')
         cy.contains('Minimaal 8 karakters').should('be.visible')
@@ -24,6 +24,10 @@ describe('template spec', () => {
         
         cy.get('#username').clear()
         cy.get('#username').type('1test')
+        cy.contains('Minimaal 8 karakters').should('be.visible')
+
+        cy.get('#username').clear()
+        cy.get('#username').type('Foutwachtwoord123*')
         cy.contains('Minimaal 8 karakters').should('be.visible')
 
         cy.get('#username').clear()

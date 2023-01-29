@@ -1,4 +1,4 @@
-describe('Check page switching', () => {
+describe('Current test', () => {
     // it('passes', () => {
     //   // The backend needs to be running for this test to work
     //   cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/')
