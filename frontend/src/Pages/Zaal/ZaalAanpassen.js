@@ -5,13 +5,14 @@ import ZaalBlock from './ZaalBlock';
 import Alinea from '../Shared/Alinea';
 
 const ZaalAanpassen = () => {
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState([]);
     
     useEffect(() => {
         axios.get('https://localhost:7214/api/Zaal/')
         .then(res => {
             console.log(res)
             setPosts(res.data)
+            console.log()
         })
         .catch(err =>{
             console.log(err)
@@ -31,13 +32,15 @@ const ZaalAanpassen = () => {
             <div>
                 <Hero2 tekst="Zalen aanpassen"/>
                 {posts.map(zaal =>
-                <ZaalBlock 
-                    zaalnr={zaal.zaalnr}
-                    Zaalnaam={zaal.naam}
-                    zaal={zaal.zaal}
-                    LinkToImg={zaal.rang3}
-                    leeftijdsgroep={zaal.rang4}
-                    genre={zaal.invalideplaatsen}/>
+                    <ZaalBlock 
+                        zaalnr={zaal.zaalnr}
+                        Zaalnaam={zaal.naam}
+                        Rang1={zaal.rang1}
+                        Rang2={zaal.rang2}
+                        Rang3={zaal.rang3}
+                        Rang4={zaal.rang4}
+                        invalideplaatsen={zaal.invalideplaatsen}
+                    />
                 )}
             </div>
         )

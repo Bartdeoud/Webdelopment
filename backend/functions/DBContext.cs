@@ -20,6 +20,7 @@ public class DBContext : IdentityDbContext<Gebruiker>
     public DBContext(DbContextOptions<DBContext> options)
         : base(options)
     { }
+
     protected override void OnConfiguring(DbContextOptionsBuilder builder) {
     builder.UseSqlServer("Server=tcp:laakentertainment.database.windows.net,1433;Initial Catalog=LaakEntertainment;Persist Security Info=False;User ID=AdminLaak;Password=LaakTheater2!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=2;");
     builder.EnableSensitiveDataLogging();

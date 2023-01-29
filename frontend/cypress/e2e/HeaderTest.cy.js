@@ -1,4 +1,4 @@
-describe('Check if header loads all pages correctly', () => {
+describe('Header test', () => {
   	it('checks if all menu items are present and readable', () => { 
         cy.visit ('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/')
         cy.contains('Menu').click()

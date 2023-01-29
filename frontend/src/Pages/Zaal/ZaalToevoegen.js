@@ -10,23 +10,6 @@ const ZaalToevoegen = () => {
     const [invalideplaatsenX, setInvalideplaatsenX] = useState();
 
     const handleSubmit = async () => {
-        if (check()){
-            await handleOnSubmit()
-            alert("Zaal is toegevoegd")
-        }else{
-            alert("Vul alle velden correct in")
-        }
-    }
-    
-    const check = () => {
-        if (naamX === "" || naamX === undefined || rang1X === 0 || rang1X === undefined){
-            return false
-        }else{
-            return true
-        }
-    }
-
-    const handleOnSubmit = async () => {
         try {
             let res = await fetch("https://localhost:7214/api/Zaal", {
                 method: "POST",
@@ -43,9 +26,9 @@ const ZaalToevoegen = () => {
                     invalideplaatsen: invalideplaatsenX,
                 }),
             });
-          if (res.status === 200) {
-            console.log("succes");
-        }
+            if (res.status === 200) {
+                console.log("succes");
+            }
         } catch (err) {
             console.log(err);
         }
@@ -57,17 +40,17 @@ const ZaalToevoegen = () => {
             <section className="contact">
                 <form onSubmit={handleSubmit}>
                     <p>Naam zaal</p>
-                    <input type="text" name="naam" placeholder="Naam zaal" onChange={e => setNaamX(e.target.value)}/>
+                    <input id="naam" type="text" min={""} required name="naam" placeholder="Naam zaal" onChange={e => setNaamX(e.target.value)}/>
                     <p>Rang 1</p>
-                    <input type="number" name="rang1" placeholder="Rang 1" onChange={e => setRang1X(e.target.value)}/>
+                    <input id="rang1" type="number" min={0} required name="rang1" placeholder="Rang 1" onChange={e => setRang1X(e.target.value)}/>
                     <p>Rang 2</p>
-                    <input type="number" name="rang2" placeholder="Rang 2" onChange={e => setRang2X(e.target.value)}/>
+                    <input id="rang2" type="number" min={0} name="rang2" placeholder="Rang 2" onChange={e => setRang2X(e.target.value)}/>
                     <p>Rang 3</p>
-                    <input type="number" name="rang3" placeholder="Rang 3" onChange={e => setRang3X(e.target.value)}/>
+                    <input id="rang3" type="number" min={0} name="rang3" placeholder="Rang 3" onChange={e => setRang3X(e.target.value)}/>
                     <p>Rang 4</p>
-                    <input type="number" name="rang4" placeholder="Rang 4" onChange={e => setRang4X(e.target.value)}/>
+                    <input id="rang4" type="number" min={0} name="rang4" placeholder="Rang 4" onChange={e => setRang4X(e.target.value)}/>
                     <p>Invalideplaatsen</p>
-                    <input type="number" name="invalideplaatsen" placeholder="Invalideplaatsen" onChange={e => setInvalideplaatsenX(e.target.value)}/>
+                    <input id="invalide" type="number" min={0} name="invalideplaatsen" placeholder="Invalideplaatsen" onChange={e => setInvalideplaatsenX(e.target.value)}/>
                     <br/>
                     <hr/>
                     <button className="btn" type="submit">Toevoegen</button>

@@ -86,6 +86,7 @@ const ShowChanger = () => {
     const handleSubmit = async () => {
         handleOnSubmit();
         navigate('/ShowAanpassen');
+        window.location.reload(false);
     }
 
     const handleOnSubmit = async () => {
@@ -102,6 +103,18 @@ const ShowChanger = () => {
         })
     }
 
+    const handleDelete = async () => {
+        axios.delete('https://localhost:7214/api/Show/' + shownr)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+        navigate('/ShowAanpassen');
+        window.location.reload(false);
+    }
+
     return (
         <>
             <Hero2 tekst={titel}/>
@@ -109,11 +122,11 @@ const ShowChanger = () => {
             <section className="contact">
                 <form onSubmit={handleSubmit}>
                     <p>Naam aanpassen</p>
-                    <input type="text" id="NameChange" defaultValue={TitelVoorstelling}/>
+                    <input type="text" required id="NameChange" placeholder="Voer hier de naam van de show in" defaultValue={TitelVoorstelling}/>
                     <br/>
 
                     <p>Zaal aanpassen</p>
-                    <select onChange={(e)=>setZaalApi(e.target.value)}>
+                    <select id="zaalchange" required onChange={(e)=>setZaalApi(e.target.value)}>
                         <option value="" disabled selected>Huidige zaal: {zaalnaam.naam}</option>
                         {zaal.map((zaal) => (
                             <option key={zaal.zaalnr} value={zaal.zaalnr}>{zaal.naam}</option>
@@ -122,7 +135,7 @@ const ShowChanger = () => {
                     <br/>
 
                     <p>Leeftijdsgroep aanpassen</p>
-                    <select onChange={(e)=>setLeeftijdsgroepApi(e.target.value)}>
+                    <select id="leeftijdchange" required onChange={(e)=>setLeeftijdsgroepApi(e.target.value)}>
                         <option value="" disabled selected>Huidige leeftijdsgroep: {leeftijdsgroepNaam.naam}</option>
                         {leeftijdsgroep.map((leeftijds) => (
                             <option key={leeftijds.leeftijdsgroepID} value={leeftijds.leeftijdsgroepID}>{leeftijds.naam}</option>
@@ -131,7 +144,7 @@ const ShowChanger = () => {
                     <br/>
 
                     <p>Genre aanpassen</p>
-                    <select onChange={(e)=>setGenreApi(e.target.value)}>
+                    <select id="genrechange" required onChange={(e)=>setGenreApi(e.target.value)}>
                         <option value="" disabled selected>Huidige genre: {genreNaam.naam}</option>
                         {genre.map((genre) => (
                             <option key={genre.genreID} value={genre.genreID}>{genre.naam}</option>
@@ -140,10 +153,17 @@ const ShowChanger = () => {
                     <br/>
                     
                     <p>Afbeelding aanpassen</p>
-                    <input type="text" id="ImageChange" defaultValue={LinkToImg} />
+                    <input type="text" placeholder="Plaats hier een afbeelding" id="ImageChange" defaultValue={LinkToImg} />
                     <br/>
 
                     <button className="btn" type="submit">aanpassen</button>
+                </form>
+
+                <br/><br/>
+                <hr/>
+                <form onSubmit={handleDelete}>
+                    <p>Deze show verwijderen:</p>
+                    <button className="btn" type="submit">Verwijderen</button>
                 </form>
             </section>
         </>

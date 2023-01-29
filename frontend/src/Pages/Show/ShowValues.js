@@ -10,7 +10,6 @@ const ShowValues = () => {
         tijd,
         LinkToImg
     } = state;
-    
 
     return (
         <section className="programmaBlock">
