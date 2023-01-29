@@ -51,8 +51,7 @@ describe('Zaal toevoegen test', () => {
         cy.contains('CypressTest2 aanpassen').click()
         cy.url().should('include', '/ZaalChanger')
         cy.contains('Verwijderen').click()
-
-        // Assert
+        
         cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ZaalAanpassen')
         cy.reload()
         cy.contains('CypressTest2 aanpassen').should('not.exist')

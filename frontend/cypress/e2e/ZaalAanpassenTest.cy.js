@@ -17,8 +17,6 @@ describe('Zaal aanpassen test', () => {
         cy.get('#rang4').type('4')
         cy.get('#invalide').type('5')
         cy.contains('Toevoegen').click()
-        //makes sure database is updated 
-        cy.wait(1000)
 
         // Test
         cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ZaalAanpassen')

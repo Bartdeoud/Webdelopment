@@ -101,7 +101,7 @@ const ShowToevoegen = () => {
                             ))}
                     </select>
                     
-                    <button className="btn" type="submit"> submit </button>
+                    <button className="btn" type="submit"> Toevoegen </button>
                 </form>
             </section>   
         </>
