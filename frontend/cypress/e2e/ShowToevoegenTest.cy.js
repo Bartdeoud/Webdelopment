@@ -9,8 +9,7 @@ describe('Show toevoegen test', () => {
 
     it('Check if show toevoegen is working', () => {
         // Test
-        // cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowToevoegen')
-        cy.visit('http://localhost:3000/ShowToevoegen')
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowToevoegen')
         cy.get('#Name').type('CypressTest5')
         cy.get('#genre').select('Horror')
         cy.get('#leeftijd').select('Alle leeftijden')
@@ -19,8 +18,7 @@ describe('Show toevoegen test', () => {
         cy.wait(1000)
         
         // Check
-        // cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowAanpassen')
-        cy.visit('http://localhost:3000/ShowAanpassen')
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowAanpassen')
         cy.reload()
         cy.wait(1000)
         cy.reload()

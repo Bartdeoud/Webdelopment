@@ -9,8 +9,7 @@ describe('template spec', () => {
 
     it('Check if show aanpassen is working', () => {
         // Setup
-        // cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowToevoegen')
-        cy.visit('http://localhost:3000/ShowToevoegen')
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowToevoegen')
         cy.get('#Name').type('CypressTest4')
         cy.get('#genre').select('Horror')
         cy.get('#leeftijd').select('Alle leeftijden')
@@ -18,8 +17,7 @@ describe('template spec', () => {
         cy.contains('Show toevoegen').click()
 
         // Test
-        // cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowAanpassen')
-        cy.visit('http://localhost:3000/ShowAanpassen')
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowAanpassen')
         cy.wait(1000)
         cy.reload()
         cy.contains('CypressTest4 aanpassen').click()
@@ -31,8 +29,7 @@ describe('template spec', () => {
         cy.contains('Aanpassen').click()
 
         // Cleanup
-        // cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowAanpassen')
-        cy.visit('http://localhost:3000/ShowAanpassen')
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowAanpassen')
         cy.reload()
         cy.wait(1000)
         cy.reload()
@@ -48,8 +45,7 @@ describe('template spec', () => {
 
     it('Check if show verwijderen is working', () => {
         // Setup
-        // cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowToevoegen')
-        cy.visit('http://localhost:3000/ShowToevoegen')
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowToevoegen')
         cy.get('#Name').type('CypressTest6')
         cy.get('#genre').select('Horror')
         cy.get('#leeftijd').select('Alle leeftijden')
@@ -57,8 +53,7 @@ describe('template spec', () => {
         cy.contains('Show toevoegen').click()
         
         // Test
-        // cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowToevoegen')
-        cy.visit('http://localhost:3000/ShowAanpassen')
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowToevoegen')
         cy.reload()
         cy.wait(1000)
         cy.reload()
@@ -67,8 +62,7 @@ describe('template spec', () => {
         cy.contains('Verwijderen').click()
         
         // Check
-        // cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowAanpassen')
-        cy.visit('http://localhost:3000/ShowAanpassen')
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowAanpassen')
         cy.reload()
         cy.wait(1000)
         cy.reload()
