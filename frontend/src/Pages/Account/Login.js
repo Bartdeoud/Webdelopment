@@ -44,7 +44,7 @@ const Login = () => {
             {success ? (
                 <>
                     <Hero2 tekst = "Inloggen"/>
-                    <Alinea titel="U bent ingelogd" tekst="U bent al ingelogd"/>
+                    <Alinea titel="U bent ingelogd" tekst="U bent nu succesvol ingelogd"/>
                 </>
             ):(
                 <>
@@ -53,12 +53,16 @@ const Login = () => {
                     <section className="contact">
                     <p className={errMsg?"errmsg":"offscreen"} aria-live="assertive">{errMsg}</p>
                         <form onSubmit={handleSubmit}>
-                            <input name='userName' type="text" onChange={(e)=> setGebruikersnaam(e.target.value)}/>
+                            <p>Gebruikersnaam:</p>
+                            <input id="username" name='userName' placeholder='Vul hier uw naam in' type="text" onChange={(e)=> setGebruikersnaam(e.target.value)}/>
                             <br/>
-                            <input name='password' type="password" onChange={(e)=>setWachtwoord(e.target.value)}/>
+                            <p>Wachtwoord:</p>
+                            <input id="password" name='password' placeholder='Vul hier uw wachtwoord in' type="password" onChange={(e)=>setWachtwoord(e.target.value)}/>
                             <br/>
                             <button className="btn" type="submit">Log in</button>
                         </form>
+                        <br/><br/>
+                        <hr/>
                     </section>
                 </>
             )} 

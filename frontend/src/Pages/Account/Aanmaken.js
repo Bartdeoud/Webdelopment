@@ -42,7 +42,7 @@ const Aanmaken = () => {
             return;
         }
         handleOnSubmit();
-        succes = true;
+        setSucces(true);
         window.location.href = "/Login";
     }
 

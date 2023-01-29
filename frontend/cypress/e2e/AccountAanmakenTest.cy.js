@@ -36,8 +36,7 @@ describe('Account aanmaken test', () => {
     })
 
     it ('Check if email validation is correct', () => {
-        // cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Aanmaken')
-        cy.visit('http://localhost:3000/Aanmaken')
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Aanmaken')
         cy.contains('Het email adres moet een geldig email adres zijn.').should('be.visible')
 
         cy.get('#emailadres').type('test')
@@ -49,8 +48,7 @@ describe('Account aanmaken test', () => {
     })
 
     it ('Check if password validation is correct', () => {
-        // cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Aanmaken')
-        cy.visit('http://localhost:3000/Aanmaken')
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Aanmaken')
         cy.contains('Het wachtwoord moet minimaal 7 karakaters lang zijn.').should('be.visible')
 
         cy.get('#password').type('fout')
@@ -66,8 +64,7 @@ describe('Account aanmaken test', () => {
     })
 
     it ('Check if password confirmation validation is correct', () => {
-        // cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Aanmaken')
-        cy.visit('http://localhost:3000/Aanmaken')
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Aanmaken')
         cy.contains('Wachtwoorden komen niet overeen').should('be.hidden')
 
         cy.get('#password').type('Goedwachtwoord123!')
@@ -80,14 +77,13 @@ describe('Account aanmaken test', () => {
     })
 
     it ('Check if account aanmaken button is working', () => {
-        // cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Aanmaken')
-        cy.visit('http://localhost:3000/Aanmaken')
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Aanmaken')
         cy.contains('Registreer').should('be.disabled')
 
         cy.get('#username').type('Goedwachtwoord123')
         cy.get('#emailadres').type('test@test')
         cy.get('#password').type('Goedwachtwoord123!')
         cy.get('#confirm_pwd').type('Goedwachtwoord123!')
-        cy.contains('Registreer').should('be.enabled').click()
+        cy.contains('Registreer').should('be.enabled')
     })
 })
