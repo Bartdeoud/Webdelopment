@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace backend.Controllers;
 
@@ -13,7 +14,7 @@ public class ShowController : ControllerBase
     }
 
     // GET: api/Show
-    [HttpGet] 
+    [HttpGet]
     public async Task<ActionResult<IEnumerable<Show>>> getShows()
     {
         if (_context.shows == null)

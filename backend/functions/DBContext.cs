@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-public class DBContext : DbContext
+public class DBContext : IdentityDbContext<Gebruiker>
 {
     public DbSet<Gebruiker> gebruikers{ get; set; }
     public DbSet<Artiest> artiesten { get; set; }
@@ -19,29 +20,28 @@ public class DBContext : DbContext
     public DBContext(DbContextOptions<DBContext> options)
         : base(options)
     { }
-
-
     protected override void OnConfiguring(DbContextOptionsBuilder builder) {
     builder.UseSqlServer("Server=tcp:laakentertainment.database.windows.net,1433;Initial Catalog=LaakEntertainment;Persist Security Info=False;User ID=AdminLaak;Password=LaakTheater2!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=2;");
     builder.EnableSensitiveDataLogging();
     }
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        base.OnModelCreating(builder);
         builder.Entity<Gebruiker>().HasData(
-            new Gebruiker(){ Email = "test2@email.com",Username="Jan2",Naam = "Jan2", Wachtwoord = "Test2", UserID = 2},
-            new Gebruiker(){ Email = "test3@email.com",Username="Jan3",Naam = "Jan3", Wachtwoord = "Test3", UserID = 3},
-            new Gebruiker(){ Email = "test4@email.com",Username="Jan4",Naam = "Jan4", Wachtwoord = "Test4", UserID = 4}
+            new Gebruiker(){ Email = "test2@email.com",Naam = "Jan2", Wachtwoord = "Test2", UserID = 2},
+            new Gebruiker(){ Email = "test3@email.com",Naam = "Jan3", Wachtwoord = "Test3", UserID = 3},
+            new Gebruiker(){ Email = "test4@email.com",Naam = "Jan4", Wachtwoord = "Test4", UserID = 4}
         );
         builder.Entity<Artiest>().HasData(
-            new Artiest(){Email = "artiestmail1@email.com", Username="Artiest1", Naam = "Artiest1", Wachtwoord = "Test1", artiest_naam = "Artiest1", UserID = 5},
-            new Artiest(){Email = "artiestmail2@email.com", Username="Artiest2", Naam = "Artiest2", Wachtwoord = "Test2", artiest_naam = "Artiest2", UserID = 6},
-            new Artiest(){Email = "artiestmail3@email.com", Username="Artiest3", Naam = "Artiest3", Wachtwoord = "Test3", artiest_naam = "Artiest3", UserID = 7},
-            new Artiest(){Email = "artiestmail4@email.com", Username="Artiest4", Naam = "Artiest4", Wachtwoord = "Test4", artiest_naam = "Artiest4", UserID = 8},
-            new Artiest(){Email = "artiestmail5@email.com", Username="Artiest5", Naam = "Artiest5", Wachtwoord = "Test5", artiest_naam = "Artiest5", UserID = 9}
+            new Artiest(){Email = "artiestmail1@email.com", Naam = "Artiest1", Wachtwoord = "Test1", artiest_naam = "Artiest1", UserID = 5},
+            new Artiest(){Email = "artiestmail2@email.com", Naam = "Artiest2", Wachtwoord = "Test2", artiest_naam = "Artiest2", UserID = 6},
+            new Artiest(){Email = "artiestmail3@email.com", Naam = "Artiest3", Wachtwoord = "Test3", artiest_naam = "Artiest3", UserID = 7},
+            new Artiest(){Email = "artiestmail4@email.com", Naam = "Artiest4", Wachtwoord = "Test4", artiest_naam = "Artiest4", UserID = 8},
+            new Artiest(){Email = "artiestmail5@email.com", Naam = "Artiest5", Wachtwoord = "Test5", artiest_naam = "Artiest5", UserID = 9}
         );
 
         builder.Entity<Donateur>().HasData(
-            new Donateur(){Email = "test1@email.com",Username="Jan1",Naam = "Jan1", Wachtwoord = "Test1",TotaleDonatie = 1000, UserID = 1}
+            new Donateur(){Email = "test1@email.com",Naam = "Jan1", Wachtwoord = "Test1",TotaleDonatie = 1000, UserID = 1}
         );
 
         builder.Entity<Zaal>().HasData(

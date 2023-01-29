@@ -45,18 +45,17 @@ const Aanmaken = () => {
         }
         handleOnSubmit();
         succes = true;
-        alert("Account aangemaakt!");
+        window.location.href = "/Login";
     }
 
     const handleOnSubmit = async () => {
         try {
-            let res = await fetch("https://localhost:7214/api/Gebruiker", {
+            let res = await fetch("https://localhost:7214/api/Account/registreer", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
-                "userID": 0,
                 "naam": name,
                 "email": email,
                 "wachtwoord": password,

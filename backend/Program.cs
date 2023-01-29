@@ -23,9 +23,10 @@ builder.Services.AddCors(options => {
     });
 });
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddIdentity<Gebruiker, IdentityRole>()
                 .AddEntityFrameworkStores<DBContext>()
                 .AddDefaultTokenProviders();
+
 builder.Services.AddAuthentication(opt =>
 {
     opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

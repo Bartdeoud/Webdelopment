@@ -1,57 +1,31 @@
 import React from 'react';
 import Hero2 from '../Shared/Hero2';
 import Alinea from '../Shared/Alinea';
-import { useRef, useState, useEffect, useContext} from "react";
-import AuthContext from "../../context/AuthProvider";
+import { useState} from "react";
 import axios from "../../api/axios";
+import Cookies from 'universal-cookie';
 
-const LOGIN_URL = "/auth";
-
-const Login = (props) => {
-    const { setAuth } = useContext(AuthContext);
-
-    //sets focus on error message for screenreaders
-    const userRef = useRef();
-    const errRef = useRef();
-
+const Login = () => {
     const [gebruikersnaam, setGebruikersnaam] = useState("");
     const [wachtwoord, setWachtwoord]=useState("");
-    const [formData, setFormData]=useState("");
-
-    const [errMsg, setErrMsg] = useState("");
     const [success, setSuccess] = useState(false);
-
-    //This is just here to prevent warnings since azure doesn't like unused variables
-    const placeholder = () => {
-        console.log (setWachtwoord);
-        console.log (setGebruikersnaam);
-        console.log (formData);
-        console.log (setFormData);
-    }
-
-    useEffect(()=>{
-        userRef.current.focus();
-    },[]);
+    const [errMsg, setErrMsg] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log (placeholder);
 
         try{
-            const response = await axios.post(LOGIN_URL,
-                JSON.stringify({user: gebruikersnaam,pwd:wachtwoord}),
+            const response = await axios.post("https://localhost:7214/api/Account/login",
+                JSON.stringify({UserName: gebruikersnaam,Password: wachtwoord}),
                 {
                     headers: {'Content-Type': 'application/json'},
-                    withCredentials: true
                 }
             );
-            console.log(JSON.stringify(response?.data));
-            const accessToken = response?.data?.accessToken;
-            const roles = response?.data?.roles;
-            setAuth({gebruikersnaam, wachtwoord, roles, accessToken});
-            setGebruikersnaam("");
-            setWachtwoord("");
-            setSuccess(true);   
+            console.log(response.data)
+            const cookies = new Cookies(document.cookies);
+            cookies.set("Authorization", "Authorization: Bearer " +  response?.data?.token)
+            cookies.set("roles",response?.data?.roles)
+            setSuccess(true);
         }catch(err){
             if(!err?.response){
                 setErrMsg('No Server Response')
@@ -61,12 +35,8 @@ const Login = (props) => {
                 }else{
                     setErrMsg('Login lukte niet');
                 }
-                errRef.current.focus();
             }
         }
-
-        console.log(gebruikersnaam);
-        console.log(wachtwoord);
     }
 
     return (
@@ -79,33 +49,15 @@ const Login = (props) => {
             ):(
                 <>
                     <Hero2 tekst="Inloggen" />
-                        
+
                     <section className="contact">
-                        <p ref={errRef} className={errMsg?"errmsg":"offscreen"} aria-live="assertive">{errMsg}</p>
+                    <p className={errMsg?"errmsg":"offscreen"} aria-live="assertive">{errMsg}</p>
                         <form onSubmit={handleSubmit}>
-                            <label htmlFor="gebruikersnaam">Gebruikersnaam:</label>
-                            <input
-                                value={gebruikersnaam}
-                                type="text"
-                                ref={userRef}
-                                placeholder={props.tekst}
-                                onChange={(e)=> setGebruikersnaam(e.target.value)}
-                                id="gebruikersnaam"
-                                name="gebruikersnaam"
-                                required
-                            />
+                            <input name='userName' type="text" onChange={(e)=> setGebruikersnaam(e.target.value)}/>
                             <br/>
-                            <label htmlFor="wachtwoord">Wachtwoord:</label>
-                            <input
-                                value={wachtwoord}
-                                type="password"
-                                placeholder={props.tekst}
-                                onChange={(e)=>setWachtwoord(e.target.value)}
-                                id="wachtwoord"
-                                name="wachtwoord"
-                                required
-                            />
-                            <button className="btn" onClick={handleSubmit} type="submit">Log in</button>
+                            <input name='password' type="password" onChange={(e)=>setWachtwoord(e.target.value)}/>
+                            <br/>
+                            <button className="btn" type="submit">Log in</button>
                         </form>
                     </section>
                 </>
@@ -113,5 +65,6 @@ const Login = (props) => {
         </>
     );
 }
+
 
 export default Login;

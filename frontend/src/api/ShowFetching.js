@@ -3,12 +3,17 @@ import axios from "axios";
 import EvenementBlock from "../Pages/Programma/EvenementBlock.js"
 import Hero2 from "../Pages/Shared/Hero2.js"
 import Alinea from "../Pages/Shared/Alinea.js"
+import Cookies from 'universal-cookie';
 
 function ShowFetching(){
     const [posts, setPosts] = useState([])
+    const cookies = new Cookies(document.cookies);
 
     useEffect(() => {
-        axios.get('https://localhost:7214/api/Show/')
+        axios.get('https://localhost:7214/api/Show/',
+        {
+            headers: cookies.get("Authorization"),
+        })
         .then(res => {
             console.log(res)
             setPosts(res.data)
