@@ -33,7 +33,6 @@ const Huren = () => {
     }
   
     try{
-        //cookies users
         return (
             <>
                 <Hero2 tekst= "Huren" />

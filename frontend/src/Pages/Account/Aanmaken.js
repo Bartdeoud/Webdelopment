@@ -16,12 +16,10 @@ const Aanmaken = () => {
     // Name
     const [name, setName] = useState("");
     const [validName, setValidName] = useState(false);
-    const [userFocus, setUserFocus] = useState(false);
 
     // Password
     const [password, setPassword] = useState("");
     const [validPwd, setValidPwd] = useState(false);
-    const [pwdFocus, setPwdFocus] = useState(false);
 
     // Confirm password
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -32,7 +30,7 @@ const Aanmaken = () => {
     const [validEmail, setValidEmail]=useState(false);
 
     const [errMsg, setErrMsg] = useState("");
-    var succes = false;
+    const [succes, setSucces] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -44,8 +42,7 @@ const Aanmaken = () => {
             return;
         }
         handleOnSubmit();
-        succes = true;
-        alert("Account aangemaakt!");
+        setSucces(true);
     }
 
     const handleOnSubmit = async () => {
@@ -64,13 +61,13 @@ const Aanmaken = () => {
               }),
             });
             if (res.status === 200) {
-              console.log("succes");
+                console.log("succes");
             }
         }catch (err){
             console.log(err);
         }
     }
-
+    
     //User
     useEffect(()=>{ 
         const result = User_regex.test(name);
@@ -88,7 +85,6 @@ const Aanmaken = () => {
     //Emailadres
     useEffect(()=>{
         const result = Email_regex.test(email);
-
         setValidEmail(result);
     },[email])
 
@@ -109,10 +105,9 @@ const Aanmaken = () => {
                         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                         
                         <form onSubmit={handleSubmit}>
-
                             <label htmlFor="username"> Gebruikersnaam:
-                                <span className={validName ? "valid" : "hide"}> <FontAwesomeIcon icon={faCheck}/> </span>
-                                <span className={validName || !name ? "hide" : "invalid"}> <FontAwesomeIcon icon={faTimes}/> </span>
+                                <span className={validName ? "valid" : "hide"}><FontAwesomeIcon icon={faCheck}/></span>
+                                <span className={validName || !name ? "hide" : "invalid"}> <FontAwesomeIcon icon={faTimes}/></span>
                             </label>
                             
                             <br/>
@@ -125,12 +120,10 @@ const Aanmaken = () => {
                                 required
                                 aria-invalid={validName ? "false" :  "true"}
                                 aria-describedby="uidnote"
-                                onFocus={()=>setUserFocus(true)}
-                                onBlur={()=>setUserFocus(false)}
                             />
                             
-                            <p id="uidnote" className={userFocus && name && !validName ? "instructions" : "offscreen"}>
-                                <FontAwesomeIcon icon={faInfoCircle}/>
+                            <p id="uidnote" className={!validName ? "instructions" : "offscreen"}>
+                                <FontAwesomeIcon icon={faInfoCircle}/>&nbsp;
                                 Minimaal 8 karakters <br/>
                                 Maximaal 100 karakters <br/>
                                 Begint met een letter <br/>
@@ -138,8 +131,8 @@ const Aanmaken = () => {
                             </p>
 
                             <label htmlFor="emailadres"> E-mail adres:
-                                <span className={validEmail ? "valid" : "hide"}> <FontAwesomeIcon icon={faCheck}/> </span>
-                                <span className={validName || !name ? "hide" : "invalid"}> <FontAwesomeIcon icon={faTimes}/> </span>
+                                <span className={validEmail ? "valid" : "hide"}> <FontAwesomeIcon icon={faCheck}/></span>
+                                <span className={validEmail || !email ? "hide" : "invalid"}> <FontAwesomeIcon icon={faTimes}/></span>
                             </label>
                             
                             <br/>
@@ -155,11 +148,16 @@ const Aanmaken = () => {
                                 aroa-describedby="emailnote"
                             />
 
+                            <p id="emailnote" className={!validEmail ? "instructions" : "offscreen"}>
+                                <FontAwesomeIcon icon={faInfoCircle}/>&nbsp;
+                                Het email adres moet een geldig email adres zijn.
+                            </p>
+
                             <br/>
 
                             <label htmlFor="password"> Wachtwoord:
-                                <span className={validPwd ? "valid": "hide"}> <FontAwesomeIcon icon={faCheck}/> </span>
-                                <span className={validPwd || !password ? "hide" : "invalid"}> <FontAwesomeIcon icon={faTimes}/></span>
+                                <span className={validPwd ? "valid": "hide"}><FontAwesomeIcon icon={faCheck}/></span>
+                                <span className={validPwd || !password ? "hide" : "invalid"}><FontAwesomeIcon icon={faTimes}/></span>
                             </label>
                             
                             <br/>
@@ -171,20 +169,18 @@ const Aanmaken = () => {
                                 required 
                                 aria-invalid={validPwd ? "false" : "true"}
                                 aria-describedby="pwdnote"
-                                onFocus={()=>setPwdFocus(true)}
-                                onBlur={()=>setPwdFocus(false)}
                             />
                             
-                            <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
-                                <FontAwesomeIcon icon={faInfoCircle}/>
-                                Minimaal 7 karakters. <br/>
+                            <p id="pwdnote" className={!validPwd ? "instructions" : "offscreen"}>
+                                <FontAwesomeIcon icon={faInfoCircle}/>&nbsp;
+                                Het wachtwoord moet minimaal 7 karakaters lang zijn.<br/>
                                 Bevat minimaal 1 kleine letter, 1 hoofdletter, 1 cijfer en 1 speciaal teken.<br/>
                                 Toegestane speciale tekens: <span aria-label="uitroepteken">!</span> <span aria-label="apenstaartje">@</span> <span aria-label="hekje">#</span> <span aria-label="dollar teken">$</span> <span aria-label="procennt">%</span>
                             </p>
                                 
                             <label htmlFor="confirm_pwd"> Bevestig wachtwoord:
-                                <span className={validMatch && confirmPassword ? "valid": "hide"}> <FontAwesomeIcon icon={faCheck}/> </span>
-                                <span className={validMatch || !confirmPassword ? "hide" : "invalid"}> <FontAwesomeIcon icon={faTimes}/> </span>
+                                <span className={validMatch && confirmPassword ? "valid": "hide"}><FontAwesomeIcon icon={faCheck}/></span>
+                                <span className={validMatch || !confirmPassword ? "hide" : "invalid"}><FontAwesomeIcon icon={faTimes}/></span>
                             </label>
                             
                             <br/>
@@ -196,6 +192,11 @@ const Aanmaken = () => {
                                 aria-invalid={validMatch ? "false" : "true"}
                                 aria-describedby="contirmnote"
                             />
+
+                            <p id="contirmnote" className={!validMatch ? "instructions" : "offscreen"}>
+                                <FontAwesomeIcon icon={faInfoCircle}/>&nbsp;
+                                Wachtwoorden komen niet overeen
+                            </p>
 
                             <button className="btn" disabled={!validName || !validEmail  || !validPwd || !validMatch ? true : false}> Registreer </button>
                         </form>
