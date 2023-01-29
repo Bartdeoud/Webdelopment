@@ -30,7 +30,7 @@ const ZaalBlock = (props) => {
 
                     <div id="bestel">
                         <br/>
-                        <button onClick={()=>{navigate('/ZaalChanger', { state:props})}} className="btn">Zaal aanpassen</button>
+                        <button onClick={()=>{navigate('/ZaalChanger', { state:props})}} className="btn">{Zaalnaam} aanpassen</button>
                         <br/>
                     </div>
                 </div>      
