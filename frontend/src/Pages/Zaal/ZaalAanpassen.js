@@ -40,7 +40,7 @@ const ZaalAanpassen = () => {
                         Rang3={zaal.rang3}
                         Rang4={zaal.rang4}
                         invalideplaatsen={zaal.invalideplaatsen}
-                        />
+                    />
                 )}
             </div>
         )
