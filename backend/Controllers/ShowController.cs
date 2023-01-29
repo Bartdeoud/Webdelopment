@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 
-namespace backend.Controllers;
+namespace api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
