@@ -54,10 +54,9 @@ const Aanmaken = () => {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
-                "naam": name,
+                "UserName": name,
                 "email": email,
-                "wachtwoord": password,
-                "username": name
+                "Password": password
               }),
             });
             if (res.status === 200) {

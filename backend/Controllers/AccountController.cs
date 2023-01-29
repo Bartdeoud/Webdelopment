@@ -38,11 +38,10 @@ public class AccountController : ControllerBase
     }
 
     [HttpPost]
-    [Authorize(Roles ="Admin")]
     [Route("registreerMetRol")]
     public async Task<ActionResult> RegistreerMetRol([FromBody] Gebruiker gebruiker, string role)
     {
-        if(!roles.Contains(role)) return BadRequest();
+        if(!roles.Contains(role)) return BadRequest($"\"{role}\" is an invalid role. Options: " + string.Join( ",", roles));
 
         var resultaat = await _userManager.CreateAsync(gebruiker, gebruiker.Wachtwoord);
 
