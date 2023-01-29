@@ -56,7 +56,7 @@ const Aanmaken = () => {
               body: JSON.stringify({
                 "UserName": name,
                 "email": email,
-                "wachtwoord": password
+                "Password": password
               }),
             });
             if (res.status === 200) {
