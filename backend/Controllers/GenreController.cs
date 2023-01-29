@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -67,6 +68,7 @@ namespace api.Controllers
 
         // PUT: api/Genre/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles ="Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutGenre(int id, Genre genre)
         {
@@ -99,6 +101,7 @@ namespace api.Controllers
         // POST: api/Genre
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Roles ="Admin")]
         public async Task<ActionResult<Genre>> PostGenre(Genre genre)
         {
           if (_context.genres == null)
@@ -113,6 +116,7 @@ namespace api.Controllers
 
         // DELETE: api/Genre/5
         [HttpDelete("{id}")]
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> DeleteGenre(int id)
         {
             if (_context.genres == null)
