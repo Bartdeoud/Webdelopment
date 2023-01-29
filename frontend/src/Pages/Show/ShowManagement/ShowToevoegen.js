@@ -78,7 +78,7 @@ const ShowToevoegen = () => {
                     <input type="text" id="Image" defaultValue="" placeholder="Voer hier de afbeelding van de show in" onChange={(e) => setImage(e.target.value)}/>
 
                     <p>Genre</p>
-                    <select required onChange={(e) => setGenreApi(e.target.value)}>
+                    <select id="genre" required onChange={(e) => setGenreApi(e.target.value)}>
                         <option value="" disabled selected>Selecteer een genre</option>
                         {genre.map(genre => (
                             <option key={genre.genreID} value={genre.genreID}>{genre.naam}</option>
@@ -86,7 +86,7 @@ const ShowToevoegen = () => {
                     </select>
 
                     <p>Leeftijdsgroep</p>
-                    <select required onChange={(e) => setLeeftijdsgroepApi(e.target.value)}>
+                    <select id="leeftijd" required onChange={(e) => setLeeftijdsgroepApi(e.target.value)}>
                         <option value="" disabled selected>Selecteer een leeftijdsgroep</option>
                         {leeftijdsgroep.map(leeftijds => (
                             <option key={leeftijds.leeftijdsgroepID} value={leeftijds.leeftijdsgroepID}>{leeftijds.naam}</option>
@@ -94,7 +94,7 @@ const ShowToevoegen = () => {
                     </select>
 
                     <p>Zaal</p>
-                    <select required onChange={(e) => setZaalApi(e.target.value)}>
+                    <select id="zaal" required onChange={(e) => setZaalApi(e.target.value)}>
                         <option value="" disabled selected>Selecteer een zaal</option>
                         {zaal.map(zaal => (
                             <option key={zaal.zaalnr} value={zaal.zaalnr}>{zaal.naam}</option>

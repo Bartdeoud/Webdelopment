@@ -47,22 +47,22 @@ const ZaalChanger = () => {
             <section className="contact">
                 <form onSubmit={handleSubmit}>
                     <p>Naam</p>
-                    <input type="text" defaultValue={Zaalnaam} onChange={(e)=>setNaamX(e.target.value)}/>
+                    <input id="naam" type="text" defaultValue={Zaalnaam} onChange={(e)=>setNaamX(e.target.value)}/>
                     
                     <p>Aantal stoelen voor Rang 1</p>
-                    <input type="number" defaultValue={Rang1} onChange={(e)=>setRang1(e.target.value)}/>
+                    <input id="rang1" type="number" defaultValue={Rang1} onChange={(e)=>setRang1(e.target.value)}/>
                     
                     <p>Aantal stoelen voor Rang 2</p>
-                    <input type="number" defaultValue={Rang2} onChange={(e)=>setRang2(e.target.value)}/>
+                    <input id="rang2" type="number" defaultValue={Rang2} onChange={(e)=>setRang2(e.target.value)}/>
                     
                     <p>Aantal stoelen voor Rang 3</p>
-                    <input type="number" defaultValue={Rang3} onChange={(e)=>setRang3(e.target.value)}/>
+                    <input id="rang3" type="number" defaultValue={Rang3} onChange={(e)=>setRang3(e.target.value)}/>
                     
                     <p>Aantal stoelen voor Rang 4</p>
-                    <input type="number" defaultValue={Rang4} onChange={(e)=>setRang4(e.target.value)}/>
+                    <input id="rang3" type="number" defaultValue={Rang4} onChange={(e)=>setRang4(e.target.value)}/>
                     
                     <p>Aantal invalideplaatsen</p>
-                    <input type="number" defaultValue={invalideplaatsen} onChange={(e)=>setInvalideplaatsen(e.target.value)}/>
+                    <input id="invalideplaatsen" type="number" defaultValue={invalideplaatsen} onChange={(e)=>setInvalideplaatsen(e.target.value)}/>
                     <br/>
                     <button className="btn" type="submit">Aanpassen</button>
                 </form>

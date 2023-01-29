@@ -126,7 +126,7 @@ const ShowChanger = () => {
                     <br/>
 
                     <p>Zaal aanpassen</p>
-                    <select required onChange={(e)=>setZaalApi(e.target.value)}>
+                    <select id="zaalchange" required onChange={(e)=>setZaalApi(e.target.value)}>
                         <option value="" disabled selected>Huidige zaal: {zaalnaam.naam}</option>
                         {zaal.map((zaal) => (
                             <option key={zaal.zaalnr} value={zaal.zaalnr}>{zaal.naam}</option>
@@ -135,7 +135,7 @@ const ShowChanger = () => {
                     <br/>
 
                     <p>Leeftijdsgroep aanpassen</p>
-                    <select required onChange={(e)=>setLeeftijdsgroepApi(e.target.value)}>
+                    <select id="leeftijdchange" required onChange={(e)=>setLeeftijdsgroepApi(e.target.value)}>
                         <option value="" disabled selected>Huidige leeftijdsgroep: {leeftijdsgroepNaam.naam}</option>
                         {leeftijdsgroep.map((leeftijds) => (
                             <option key={leeftijds.leeftijdsgroepID} value={leeftijds.leeftijdsgroepID}>{leeftijds.naam}</option>
@@ -144,7 +144,7 @@ const ShowChanger = () => {
                     <br/>
 
                     <p>Genre aanpassen</p>
-                    <select required onChange={(e)=>setGenreApi(e.target.value)}>
+                    <select id="genrechange" required onChange={(e)=>setGenreApi(e.target.value)}>
                         <option value="" disabled selected>Huidige genre: {genreNaam.naam}</option>
                         {genre.map((genre) => (
                             <option key={genre.genreID} value={genre.genreID}>{genre.naam}</option>
@@ -158,7 +158,7 @@ const ShowChanger = () => {
 
                     <button className="btn" type="submit">aanpassen</button>
                 </form>
-                
+
                 <br/><br/>
                 <hr/>
                 <form onSubmit={handleDelete}>
