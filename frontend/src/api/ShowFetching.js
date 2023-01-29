@@ -10,7 +10,7 @@ function ShowFetching(){
     const cookies = new Cookies(document.cookies);
 
     useEffect(() => {
-        axios.get('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/api/Show/',
+        axios.get('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net:7071/api/Show/',
         {
             headers: cookies.get("Authorization"),
         })
