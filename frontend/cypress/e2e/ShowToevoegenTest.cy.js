@@ -34,6 +34,4 @@ describe('Show toevoegen test', () => {
         // Cleanup
         cy.contains('Verwijderen').click()
     })
-
-
 })
