@@ -34,6 +34,12 @@ const ZaalChanger = () => {
           })        
     }
 
+    const handleDelete = async () => {
+        axios.delete('https://localhost:7214/api/Zaal/' + zaalnr);
+        navigate('/ZaalAanpassen');
+        window.location.reload(false);
+    }
+
     return (
         <>
             <Hero2 tekst="Zaal aanpassen"/>
@@ -59,6 +65,13 @@ const ZaalChanger = () => {
                     <input type="number" defaultValue={invalideplaatsen} onChange={(e)=>setInvalideplaatsen(e.target.value)}/>
                     <br/>
                     <button className="btn" type="submit">Aanpassen</button>
+                </form>
+                
+                <br/><br/>
+                <hr/>
+                <form onSubmit={handleDelete}>
+                    <p>Deze zaal verwijderen:</p>
+                    <button className="btn" type="submit">Verwijderen</button>
                 </form>
             </section>
         </>

@@ -40,24 +40,7 @@ const ShowToevoegen = () => {
         })
     }, []);
 
-    const handleSubmit = async () => {
-        if (check()){
-            await handleOnSubmit()
-            alert("Show is toegevoegd")
-        }else{
-            alert("Vul alle velden correct in")
-        }
-    }
-
-    const check = () => {
-        if (naamX === "" || genreApi === undefined || leeftijdsgroepApi === undefined || zaalApi === undefined){
-            return false
-        }else{
-            return true
-        }
-    }
-
-    const handleOnSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         try {
             let res = await fetch("https://localhost:7214/api/Show", {
                 method: "POST",
@@ -89,13 +72,13 @@ const ShowToevoegen = () => {
             <section className="contact">
                 <form onSubmit={handleSubmit}>
                     <p>Naam evenement</p>
-                    <input type="text" id="Name" defaultValue="" placeholder="Voer hier de naam van de show in" onChange={(e) => setNaam(e.target.value)}/>
+                    <input type="text" id="Name" required placeholder="Voer hier de naam van de show in" onChange={(e) => setNaam(e.target.value)}/>
 
                     <p>Afbeelding</p>
                     <input type="text" id="Image" defaultValue="" placeholder="Voer hier de afbeelding van de show in" onChange={(e) => setImage(e.target.value)}/>
 
                     <p>Genre</p>
-                    <select onChange={(e) => setGenreApi(e.target.value)}>
+                    <select required onChange={(e) => setGenreApi(e.target.value)}>
                         <option value="" disabled selected>Selecteer een genre</option>
                         {genre.map(genre => (
                             <option key={genre.genreID} value={genre.genreID}>{genre.naam}</option>
@@ -103,7 +86,7 @@ const ShowToevoegen = () => {
                     </select>
 
                     <p>Leeftijdsgroep</p>
-                    <select onChange={(e) => setLeeftijdsgroepApi(e.target.value)}>
+                    <select required onChange={(e) => setLeeftijdsgroepApi(e.target.value)}>
                         <option value="" disabled selected>Selecteer een leeftijdsgroep</option>
                         {leeftijdsgroep.map(leeftijds => (
                             <option key={leeftijds.leeftijdsgroepID} value={leeftijds.leeftijdsgroepID}>{leeftijds.naam}</option>
@@ -111,7 +94,7 @@ const ShowToevoegen = () => {
                     </select>
 
                     <p>Zaal</p>
-                    <select onChange={(e) => setZaalApi(e.target.value)}>
+                    <select required onChange={(e) => setZaalApi(e.target.value)}>
                         <option value="" disabled selected>Selecteer een zaal</option>
                         {zaal.map(zaal => (
                             <option key={zaal.zaalnr} value={zaal.zaalnr}>{zaal.naam}</option>
