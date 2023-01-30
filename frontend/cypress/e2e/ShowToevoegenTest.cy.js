@@ -69,4 +69,32 @@ describe('Show toevoegen test', () => {
         cy.reload()
         cy.contains('CypressTest6 aanpassen').should('not.exist')
     })
+
+    it('Check if show is correctly added to programma', () => {
+        // Setup
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Login')
+        cy.get('#username').type('Admin')
+        cy.get('#password').type('AdminW1!')
+        cy.contains('Log in').click()
+        cy.contains('U bent ingelogd')
+        
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowToevoegen')
+        cy.get('#Name').type('CypressTest7')
+        cy.get('#genre').select('Horror')
+        cy.get('#leeftijd').select('Alle leeftijden')
+        cy.get('#zaal').select('Zaal 1')
+        cy.contains('Show toevoegen').click()
+        
+        // Test
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Programma')
+        cy.contains('CypressTest7')
+        
+        // Cleanup
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowAanpassen')
+        cy.wait(1000)
+        cy.reload()
+        cy.contains('CypressTest7 aanpassen').click()
+        cy.url().should('include', '/ShowChanger')
+        cy.contains('Verwijderen').click()
+    })
 })
