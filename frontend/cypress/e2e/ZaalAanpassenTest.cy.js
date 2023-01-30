@@ -9,6 +9,12 @@ describe('Zaal aanpassen test', () => {
 
     it('Check if zaal aanpassen is working', () => {
         // Setup
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Login')
+        cy.get('#username').type('Admin')
+        cy.get('#password').type('AdminW1!')
+        cy.contains('Log in').click()
+        cy.contains('U bent ingelogd')
+        
         cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ZaalToevoegen')
         cy.get('#naam').type('CypressTest3')
         cy.get('#rang1').type('1')
