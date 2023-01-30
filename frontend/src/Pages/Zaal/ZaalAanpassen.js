@@ -28,10 +28,10 @@ const ZaalAanpassen = () => {
     if (posts.length === 0){
         return (
             <>
-            <Hero2 tekst="Geen zalen gevonden"/>
-            <Alinea titel="We konden helaas geen zalen vinden."
-                tekst="Herlaad de pagina of probeer het later opnieuw"/>
-        </>
+                <Hero2 tekst="Geen zalen gevonden"/>
+                <Alinea titel="We konden helaas geen zalen vinden."
+                    tekst="Herlaad de pagina of probeer het later opnieuw"/>
+            </>
         )
     }else {
         return (
