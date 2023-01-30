@@ -9,6 +9,12 @@ describe('template spec', () => {
 
     it('Check if show aanpassen is working', () => {
         // Setup
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Login')
+        cy.get('#username').type('Admin')
+        cy.get('#password').type('AdminW1!')
+        cy.contains('Log in').click()
+        cy.contains('U bent ingelogd')
+
         cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowToevoegen')
         cy.get('#Name').type('CypressTest4')
         cy.get('#genre').select('Horror')
@@ -45,6 +51,12 @@ describe('template spec', () => {
 
     it('Check if show verwijderen is working', () => {
         // Setup
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Login')
+        cy.get('#username').type('Admin')
+        cy.get('#password').type('AdminW1!')
+        cy.contains('Log in').click()
+        cy.contains('U bent ingelogd')
+        
         cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ShowToevoegen')
         cy.get('#Name').type('CypressTest6')
         cy.get('#genre').select('Horror')

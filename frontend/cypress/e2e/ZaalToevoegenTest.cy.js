@@ -9,6 +9,12 @@ describe('Zaal toevoegen test', () => {
 
     it('Check if zaal toevoegen is working', () => {
         // Test
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Login')
+        cy.get('#username').type('Admin')
+        cy.get('#password').type('AdminW1!')
+        cy.contains('Log in').click()
+        cy.contains('U bent ingelogd')
+
         cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ZaalToevoegen')
         cy.get('#naam').type('CypressTest1')
         cy.get('#rang1').type('1')
@@ -33,6 +39,12 @@ describe('Zaal toevoegen test', () => {
 
     it('Check if zaal verwijderen is working', () => {
         // Setup
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Login')
+        cy.get('#username').type('Admin')
+        cy.get('#password').type('AdminW1!')
+        cy.contains('Log in').click()
+        cy.contains('U bent ingelogd')
+        
         cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ZaalToevoegen')
         cy.get('#naam').type('CypressTest2')
         cy.get('#rang1').type('1')

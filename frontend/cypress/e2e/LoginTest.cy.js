@@ -8,10 +8,9 @@ describe('template spec', () => {
     })
 
     it('Check if login works (valid login)', () => {
-        // Username: CypressTest, Email: CypressTest@Cypress, Password: CypressW1!
         cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Login')
-        cy.get('#username').type('CypressTest')
-        cy.get('#password').type('CypressW1!')
+        cy.get('#username').type('Gebruiker')
+        cy.get('#password').type('GebruikerW1!')
         cy.contains('Log in').click()
         cy.contains('U bent ingelogd')
     })
