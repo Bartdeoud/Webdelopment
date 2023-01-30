@@ -1,15 +1,31 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import {useNavigate} from 'react-router-dom';
 
 const EvenementBlock = (props) => {
+    const [zaal2, setZaal] = useState()
     const {
         TitelVoorstelling,
         zaal,
         datum,
         tijd,
-        LinkToImg
+        LinkToImg,
+        genre,
+        leeftijd
     } = props
 
+    useEffect(() => {
+        axios.get('https://localhost:7214/api/Zaal/' + zaal,)
+        .then(res => {
+            console.log(res)
+            setZaal(res.data.naam)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }, [zaal]);
+
+    console.log(leeftijd, genre)
     const navigate = useNavigate();
 
     return (
@@ -23,7 +39,7 @@ const EvenementBlock = (props) => {
                         <br/>
                         <h2>{TitelVoorstelling}</h2>
                         <br/>
-                        <h3>{zaal}</h3>
+                        <h3>{zaal2}</h3>
                     </div>
 
                     <div id="bestel">

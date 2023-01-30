@@ -22,6 +22,7 @@ const options = [
     <>
       <p>Selecteer uw rang</p>
       <Select options={options} dropdownPosition="auto" onChange={(values) => {
+        console.log(values)
         const cookies = new Cookies(document.cookies);
         cookies.set("tempRang", values[0].value);
         }} />

@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Alinea from "../Shared/Alinea";
 import Hero2 from "../Shared/Hero2";
 
 const Ticket = () => {
     const urlParams = new URLSearchParams(window.location.search);
+
+    useEffect(() => {
+    }, []);
+
     if(urlParams.get('succes') === "True"){
         return(
             <>
