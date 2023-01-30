@@ -1,4 +1,4 @@
-describe('template spec', () => {
+describe('Show toevoegen test', () => {
     it('Checks if show aanpassen is reachable', () => {
         cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/')
         cy.contains('Menu').click()

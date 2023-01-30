@@ -1,4 +1,13 @@
-describe('template spec', () => {
+describe('Login test', () => {
+    it('Check if login is reachable', () => {
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/')
+        cy.contains('Menu').click()
+        cy.contains('Account').click()
+        cy.contains('Klik hier om in te loggen').click()
+        cy.url().should('include', '/Login')
+        cy.contains('Inloggen').should("be.visible")
+    })
+
     it('Check if login works (invalid login)', () => {
         cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Login')
         cy.get('#username').type('test')

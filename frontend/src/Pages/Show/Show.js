@@ -98,7 +98,7 @@ const Show = () => {
             
             <section className="contact">
                 <form onSubmit={handleSubmit}>
-                    <h1>Bestel kaartjes</h1>
+                    <h1>Kaartjes Bestellen</h1>
                     <br/>
                     <p>Rang:</p>
                     <select required onChange={feetlicker} id="SelectedRang">
