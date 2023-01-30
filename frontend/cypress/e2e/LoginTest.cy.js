@@ -7,7 +7,7 @@ describe('template spec', () => {
         cy.contains('Login lukte niet')
     })
 
-    it('Check if login works (valid login)', () => {
+    it('Check if login works (Gebruiker)', () => {
         cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Login')
         cy.get('#username').type('Gebruiker')
         cy.get('#password').type('GebruikerW1!')
