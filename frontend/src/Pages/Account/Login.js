@@ -23,7 +23,7 @@ const Login = () => {
             );
             console.log(response.data)
             const cookies = new Cookies(document.cookies);
-            cookies.set("Authorization", "Authorization: Bearer " +  response?.data?.token)
+            cookies.set("Authorization", "Bearer " +  response?.data?.token)
             cookies.set("roles",response?.data?.roles)
             setSuccess(true);
         }catch(err){
