@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Hero2 from "../Shared/Hero2";
+import Cookies from "universal-cookie";
 
 const ZaalToevoegen = () => {
     const [naamX, setNaamX] = useState("");
@@ -8,6 +9,7 @@ const ZaalToevoegen = () => {
     const [rang3X, setRang3X] = useState(0);
     const [rang4X, setRang4X] = useState(0);
     const [invalideplaatsenX, setInvalideplaatsenX] = useState();
+    const cookies = new Cookies(document.cookies);
 
     const handleSubmit = async () => {
         try {
@@ -15,6 +17,7 @@ const ZaalToevoegen = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": cookies.get("Authorization")
                 },
                 body: JSON.stringify({
                     zaalnr: 0,
