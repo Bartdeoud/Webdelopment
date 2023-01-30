@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState }  from 'react';
 import Hero2 from '../../Shared/Hero2';
+import Cookies from "universal-cookie";
 
 const ShowToevoegen = () => {
     const [naamX, setNaam] = useState("");
@@ -40,12 +41,15 @@ const ShowToevoegen = () => {
         })
     }, []);
 
+    const cookies = new Cookies(document.cookies);
+
     const handleSubmit = async (e) => {
         try {
             let res = await fetch("https://localhost:7214/api/Show", {
                 method: "POST",
                 headers: {
                 "Content-Type": "application/json",
+                "Authorization": cookies.get("Authorization")
                 },
                 body: JSON.stringify({
                 shownr: 0,

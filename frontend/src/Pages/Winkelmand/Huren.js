@@ -1,19 +1,22 @@
 import React, { useState }  from 'react';
 import Hero2 from '../Shared/Hero2';
 import Alinea from "../Shared/Alinea";
+import Cookies from "universal-cookie";
 
 const Huren = () => {
     const [hurenNaam, setNaam] = useState();
     //const [userID, getID] = useState();
     const [hurenZaal, setZaal] = useState();
     const [hurenRuimte, setRuimte] = useState();
-  
+    const cookies = new Cookies(document.cookies);
+
     const handleSubmit = async () => {
         try {
         let res = await fetch("https://localhost:7214/api/Huren", {
             method: "POST",
             headers: {
             "Content-Type": "application/json",
+            "Authorization": cookies.get("Authorization")
             },
             body: JSON.stringify({
             id: 0,

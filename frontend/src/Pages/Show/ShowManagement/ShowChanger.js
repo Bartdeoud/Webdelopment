@@ -2,11 +2,14 @@ import axios from "axios";
 import React, {useEffect, useState} from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import Hero2 from "../../Shared/Hero2.js";
+import Cookies from "universal-cookie";
 
 const ShowChanger = () => {
     const [genre, setGenre] = useState([]);
     const [genreApi, setGenreApi] = useState();
     const [genreNaam, setGenreNaam] = useState([]);
+
+    const cookies = new Cookies(document.cookies);
 
     const [zaal, setZaal] = useState([]);
     const [zaalApi, setZaalApi] = useState();
@@ -93,18 +96,27 @@ const ShowChanger = () => {
         const NameChange = document.getElementById("NameChange").value;
         const ImageChange = document.getElementById("ImageChange").value;
 
+
         axios.put('https://localhost:7214/api/Show/' + shownr, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": cookies.get("Authorization")
+            },
+            body: JSON.stringify({
             "shownr" : shownr,
             "afbeelding" : ImageChange,
             "naam" : NameChange,
             "zaal" : zaalApi,
             "genre" : genreApi,
-            "leeftijdsgroep" : leeftijdsgroepApi
+            "leeftijdsgroep" : leeftijdsgroepApi})
         })
     }
 
     const handleDelete = async () => {
-        axios.delete('https://localhost:7214/api/Show/' + shownr)
+        axios.delete('https://localhost:7214/api/Show/' + shownr,{
+            headers:{
+            "Authorization": cookies.get("Authorization")}
+        })
         .then(res => {
             console.log(res)
         })

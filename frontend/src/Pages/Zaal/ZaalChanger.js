@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "../../api/axios";
 import Hero2 from "../Shared/Hero2";
 import { useNavigate, useLocation } from 'react-router-dom';
+import Cookies from "universal-cookie";
 
 const ZaalChanger = () => {
 
@@ -16,6 +17,8 @@ const ZaalChanger = () => {
     const [rang4, setRang4] = useState(Rang4);
     const [invalideplaatsen2, setInvalideplaatsen] = useState(invalideplaatsen);
 
+    const cookies = new Cookies(document.cookies);
+
     const handleSubmit = async () => {
         handleOnSubmit(); 
         navigate('/ZaalAanpassen');
@@ -23,19 +26,28 @@ const ZaalChanger = () => {
     }
 
     const handleOnSubmit = async () => {
-        axios.put ('https://localhost:7214/api/Zaal/' + zaalnr, {
+        axios.put ('https://localhost:7214/api/Zaal/' + zaalnr,
+        {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": cookies.get("Authorization")
+            },
+            body: JSON.stringify({
             "zaalnr": zaalnr,
             "naam": naamX,
             "rang1": rang1,
             "rang2": rang2,
             "rang3": rang3,
             "rang4": rang4,
-            "invalideplaatsen": invalideplaatsen2
+            "invalideplaatsen": invalideplaatsen2})
           })        
     }
 
     const handleDelete = async () => {
-        axios.delete('https://localhost:7214/api/Zaal/' + zaalnr);
+        axios.delete('https://localhost:7214/api/Zaal/' + zaalnr,{
+        headers: {
+            "Authorization": cookies.get("Authorization")
+        }});
         navigate('/ZaalAanpassen');
         window.location.reload(false);
     }

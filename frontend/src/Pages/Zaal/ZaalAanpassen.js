@@ -3,12 +3,18 @@ import axios from '../../api/axios';
 import Hero2 from '../Shared/Hero2';
 import ZaalBlock from './ZaalBlock';
 import Alinea from '../Shared/Alinea';
+import Cookies from "universal-cookie";
 
 const ZaalAanpassen = () => {
     const [posts, setPosts] = useState([]);
-    
+    const cookies = new Cookies(document.cookies);
+
     useEffect(() => {
-        axios.get('https://localhost:7214/api/Zaal/')
+        axios.get('https://localhost:7214/api/Zaal/',{
+            headers: {
+                "Authorization": cookies.get("Authorization")
+            }
+        })
         .then(res => {
             console.log(res)
             setPosts(res.data)

@@ -19,7 +19,7 @@ const redirect = () => {
         <>
         <Alinea tekst="Redirecting..."></Alinea>
         <form id="redirectForm" method="post" action="https://fakepay.azurewebsites.net/">
-        <input type="hidden" id="amount" name="amount" value={amount}></input>
+        <input type="hidden" id="amount" name="amount" value={amount} onChange={checkForm()}></input>
         <input type="hidden" name="url" value="https://localhost:7214/api/Pay"></input>
         <input type="hidden" id="reference" name="reference" value={sessionId} onChange={checkForm()}></input>
         </form>
