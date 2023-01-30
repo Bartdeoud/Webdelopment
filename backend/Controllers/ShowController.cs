@@ -66,7 +66,7 @@ public class ShowController : ControllerBase{
 
     // PUT: api/Show/5
     [HttpPut("{id}")]
-    [Authorize(Roles ="Admin, Medewerker")]
+    //[Authorize(Roles ="Admin, Medewerker")]
     public async Task<IActionResult> PutShow(int id, Show show){
         if (id != show.Shownr){
             return BadRequest();

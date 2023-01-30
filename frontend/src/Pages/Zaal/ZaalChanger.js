@@ -26,20 +26,20 @@ const ZaalChanger = () => {
     }
 
     const handleOnSubmit = async () => {
-        axios.put ('https://localhost:7214/api/Zaal/' + zaalnr,
-        {
+        await axios.put ('https://localhost:7214/api/Zaal/'+zaalnr, {
             headers: {
-                "Content-Type": "application/json",
                 "Authorization": cookies.get("Authorization")
             },
-            body: JSON.stringify({
-            "zaalnr": zaalnr,
-            "naam": naamX,
-            "rang1": rang1,
-            "rang2": rang2,
-            "rang3": rang3,
-            "rang4": rang4,
-            "invalideplaatsen": invalideplaatsen2})
+            zaalnr: zaalnr,
+            naam: naamX,
+            rang1: rang1,
+            rang2: rang2,
+            rang3: rang3,
+            rang4: rang4,
+            invalideplaatsen: invalideplaatsen2
+        })
+        .catch(err =>{
+            console.log(err)    
         })
     }
 
@@ -78,7 +78,6 @@ const ZaalChanger = () => {
                     <br/>
                     <button className="btn" type="submit">Aanpassen</button>
                 </form>
-                
                 <br/><br/>
                 <hr/>
                 <form onSubmit={handleDelete}>

@@ -61,7 +61,7 @@ public class ZaalController : ControllerBase{
 
     // PUT: api/Zaal/5
     [HttpPut("{id}")]
-    [Authorize(Roles ="Admin")]
+    //[Authorize(Roles ="Admin")]
     public async Task<IActionResult> PutZaal(int id, Zaal zaal){
         if (id != zaal.Zaalnr){
             return BadRequest();

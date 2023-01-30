@@ -21,7 +21,6 @@ const Login = () => {
                     headers: {'Content-Type': 'application/json'},
                 }
             );
-            console.log(response.data)
             const cookies = new Cookies(document.cookies);
             cookies.set("Authorization", "Bearer " +  response?.data?.token)
             cookies.set("roles",response?.data?.roles)

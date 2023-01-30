@@ -96,19 +96,20 @@ const ShowChanger = () => {
         const NameChange = document.getElementById("NameChange").value;
         const ImageChange = document.getElementById("ImageChange").value;
 
-
-        axios.put('https://localhost:7214/api/Show/' + shownr, {
+        await axios.put('https://localhost:7214/api/Show/1',//+shownr, 
+        {
             headers: {
-                "Content-Type": "application/json",
                 "Authorization": cookies.get("Authorization")
             },
-            body: JSON.stringify({
-            "shownr" : shownr,
-            "afbeelding" : ImageChange,
-            "naam" : NameChange,
-            "zaal" : zaalApi,
-            "genre" : genreApi,
-            "leeftijdsgroep" : leeftijdsgroepApi})
+            shownr: shownr,
+            afbeelding: ImageChange,
+            naam: NameChange,
+            zaal: zaalApi,
+            genre: genreApi,
+            leeftijdsgroep: leeftijdsgroepApi
+        })
+        .catch(err =>{
+            console.log(err)    
         })
     }
 
@@ -170,7 +171,6 @@ const ShowChanger = () => {
 
                     <button className="btn" type="submit">Aanpassen</button>
                 </form>
-
                 <br/><br/>
                 <hr/>
                 <form onSubmit={handleDelete}>
