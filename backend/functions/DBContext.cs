@@ -94,10 +94,5 @@ public class DBContext : IdentityDbContext<Gebruiker>
             new Show(){Shownr = 2, Naam = "Show 2", BeginTijd = DateTime.Now, EindTijd = DateTime.Now, Zaal = 2, Genre = 2, Afbeelding = "", Leeftijdsgroep = 2},
             new Show(){Shownr = 3, Naam = "Show 3", BeginTijd = DateTime.Now, EindTijd = DateTime.Now, Zaal = 3, Genre = 3, Afbeelding = "", Leeftijdsgroep = 3}  
         );
-
-        // builder.Entity<Role>().HasData(new Role(){Name = "Medewerker", NormalizedName = "MEDEWERKER"});
-        // builder.Entity<Role>().HasData(new Role(){Name = "Gebruiker", NormalizedName = "GEBRUIKER"});
-        // builder.Entity<Role>().HasData(new Role(){Name = "Artiest", NormalizedName = "ARTIEST"});
-        // builder.Entity<Role>().HasData(new Role(){Name = "Donateur", NormalizedName = "DONATEUR"});
     }
 }

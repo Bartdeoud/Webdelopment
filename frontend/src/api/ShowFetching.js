@@ -12,7 +12,7 @@ function ShowFetching(){
     useEffect(() => {
         axios.get('https://localhost:7214/api/Show',
         {
-            headers: cookies.get("Authorization"),
+            headers: cookies.get("Authorization")
         })
         .then(res => {
             console.log(res)
