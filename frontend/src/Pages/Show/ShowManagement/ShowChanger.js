@@ -96,7 +96,7 @@ const ShowChanger = () => {
         const NameChange = document.getElementById("NameChange").value;
         const ImageChange = document.getElementById("ImageChange").value;
 
-        await axios.put('https://localhost:7214/api/Show/1',//+shownr, 
+        await axios.put('https://localhost:7214/api/Show/'+shownr, 
         {
             headers: {
                 "Authorization": cookies.get("Authorization")
