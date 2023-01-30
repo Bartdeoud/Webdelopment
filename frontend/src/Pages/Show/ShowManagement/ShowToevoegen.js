@@ -102,7 +102,7 @@ const ShowToevoegen = () => {
                         <option value="" disabled selected>Selecteer een zaal</option>
                         {zaal.map(zaal => (
                             <option key={zaal.zaalnr} value={zaal.zaalnr}>{zaal.naam}</option>
-                            ))}
+                        ))}
                     </select>
                     
                     <button className="btn" type="submit"> Show toevoegen </button>

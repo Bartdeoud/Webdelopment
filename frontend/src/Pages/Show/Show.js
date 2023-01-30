@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import setCookies from "./CookieHandler.js";
 import { useLocation } from 'react-router-dom';
 import axios from "axios";
+import Option from "./Option.js";
 
 const Show = () => {
+    const [zaalX, setZaalX] = useState([]);
     const [zaal2, setZaal] = useState()
     const [genre2, setGenre] = useState()
     const [leeftijd2, setLeeftijd] = useState()
+    const [max, setMax] = useState(1)
 
     const {state} = useLocation();
     const {
@@ -46,12 +49,34 @@ const Show = () => {
         .catch(err =>{
             console.log(err)
         })
+
+        axios.get('https://localhost:7214/api/Zaal/' + zaal,)
+        .then(res => {
+            console.log(res)
+            setZaalX(res.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
     }, [zaal, genre, leeftijd]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setCookies(TitelVoorstelling);
         window.location.href='/Winkelmand';
+    }
+    
+    const feetlicker = (e) => {
+        e.preventDefault();
+        const rang = document.getElementById("SelectedRang").value;
+        console.log(rang)
+        setMax(rang)
+        if (rang > 10){
+            setMax(10)
+        }
+        if (max === 0 || max === null || max === undefined){
+            setMax(1)
+        }
     }
 
     return(
@@ -76,25 +101,20 @@ const Show = () => {
                     <h1>Bestel kaartjes</h1>
                     <br/>
                     <p>Rang:</p>
-                    <select required id="SelectedRang">
+                    <select required onChange={feetlicker} id="SelectedRang">
                         <option value="" disabled selected hidden>Kies een rang</option>
-                        <option value="Rang 1">Rang 1</option>
-                        <option value="Rang 2">Rang 2</option>
-                        <option value="Rang 3">Rang 3</option>
-                        <option value="Rang 4">Rang 4</option>
-                        <option value="Rang 5">Invalide plaatsen</option>
+                        <Option naam="Rang 1" value={zaalX.rang1} rang={zaalX.rang1}/>
+                        <Option naam="Rang 2" value={zaalX.rang2} rang={zaalX.rang2}/>
+                        <Option naam="Rang 3" value={zaalX.rang3} rang={zaalX.rang3}/>
+                        <Option naam="Rang 4" value={zaalX.rang4} rang={zaalX.rang4}/>
+                        <Option naam="Invalide plekken" value={zaalX.invalideplaatsen} rang={zaalX.invalideplaatsen}/>    
                     </select>
 
-                    <p>Aantal tickets (1-10):</p>
-                    <input type="number" placeholder="Kies het aantal tickets" min={1} max={10} id="NumberTickets"/>
+                    <p>Aantal tickets (1-{max}):</p>
+                    <input type="number" required placeholder="Kies het aantal tickets" min={1} max={max} id="NumberTickets"/>
 
                     <button className="btn" type="submit">Bestel</button>
                 </form>
-                
-
-                <br/>
-                <hr/>
-                <button className="btn" type="onClick" onClick={handleSubmit}>Bestel</button>
                 <br/>
                 <hr/>
             </section>
