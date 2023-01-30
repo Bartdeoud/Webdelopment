@@ -8,7 +8,7 @@ const ZaalToevoegen = () => {
     const [rang2X, setRang2X] = useState(0);
     const [rang3X, setRang3X] = useState(0);
     const [rang4X, setRang4X] = useState(0);
-    const [invalideplaatsenX, setInvalideplaatsenX] = useState();
+    const [invalideplaatsenX, setInvalideplaatsenX] = useState(0);
     const cookies = new Cookies(document.cookies);
 
     const handleSubmit = async () => {

@@ -38,6 +38,9 @@ describe('Zaal aanpassen test', () => {
         cy.get('#invalideplaatsen').clear().type('50')
         cy.contains('Aanpassen').click()
 
+        cy.wait(1000)
+        cy.reload()
+        
         cy.contains('CypressTest3.5 aanpassen').click()
         cy.url().should('include', '/ZaalChanger')
         cy.get('#naam').should('have.value', 'CypressTest3.5')
@@ -49,6 +52,7 @@ describe('Zaal aanpassen test', () => {
 
         // Cleanup
         cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ZaalAanpassen')
+        cy.wait(1000)
         cy.reload()
         cy.contains('CypressTest3.5 aanpassen').click()
         cy.url().should('include', '/ZaalChanger')

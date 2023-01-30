@@ -40,7 +40,7 @@ const ZaalChanger = () => {
             "rang3": rang3,
             "rang4": rang4,
             "invalideplaatsen": invalideplaatsen2})
-          })        
+        })
     }
 
     const handleDelete = async () => {
