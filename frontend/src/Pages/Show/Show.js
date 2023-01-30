@@ -50,7 +50,7 @@ const Show = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setCookies();
+        setCookies(TitelVoorstelling);
         window.location.href='/Winkelmand';
     }
 
@@ -76,13 +76,13 @@ const Show = () => {
                     <h1>Bestel kaartjes</h1>
                     <br/>
                     <p>Rang:</p>
-                    <select required id="Rang">
+                    <select required id="SelectedRang">
                         <option value="" disabled selected hidden>Kies een rang</option>
-                        <option value="1">Rang 1</option>
-                        <option value="2">Rang 2</option>
-                        <option value="3">Rang 3</option>
-                        <option value="4">Rang 4</option>
-                        <option value="5">Invalide plaatsen</option>
+                        <option value="Rang 1">Rang 1</option>
+                        <option value="Rang 2">Rang 2</option>
+                        <option value="Rang 3">Rang 3</option>
+                        <option value="Rang 4">Rang 4</option>
+                        <option value="Rang 5">Invalide plaatsen</option>
                     </select>
 
                     <p>Aantal tickets (1-10):</p>
