@@ -41,10 +41,12 @@ const Programma = () => {
                 <EvenementBlock 
                     shownr={voorstelling.shownr}
                     TitelVoorstelling={voorstelling.naam}
-                    zaal={"Zaal " + voorstelling.zaal}
+                    zaal={voorstelling.zaal}
                     datum={(voorstelling.beginTijd).substring(0,10)}
                     tijd={(voorstelling.beginTijd).substring(11,16)}
-                    LinkToImg={voorstelling.afbeelding}/>
+                    LinkToImg={voorstelling.afbeelding}
+                    genre={voorstelling.genre}
+                    leeftijd={voorstelling.leeftijdsgroep}/>
                 )}
             </div>
         )
