@@ -11,7 +11,6 @@ import VierNulVier from "./Pages/404/404";
 import Login from "./Pages/Account/Login";
 import Account from "./Pages/Account/Account";
 import Aanmaken from "./Pages/Account/Aanmaken";
-import Doneren from "./Pages/Account/Doneren";
 import ShowToevoegen from "./Pages/Show/ShowManagement/ShowToevoegen";
 import ShowAanpassen from "./Pages/Show/ShowManagement/ShowAanpassen";
 import ShowChanger from "./Pages/Show/ShowManagement/ShowChanger";
@@ -21,6 +20,7 @@ import ZaalToevoegen from "./Pages/Zaal/ZaalToevoegen";
 import ZaalAanpassen from "./Pages/Zaal/ZaalAanpassen";
 import ZaalChanger from "./Pages/Zaal/ZaalChanger";
 import Redirect from "./Pages/Winkelmand/redirect";
+import Doneren from "./Pages/Doneren/Doneren.js";
 
 
 class Main extends React.Component {
