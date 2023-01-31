@@ -18,7 +18,10 @@ const Account = () => {
             <Alinea titel="Donatie"
                 tekst="Wilt u ons helpen om de website te onderhouden en te verbeteren? Doneer dan via onderstaande link."
                 link="/Doneren"
-                linknaam="Klik hier om te doneren"/>
+                linknaam="Klik hier om te doneren"
+                tekst2="Heeft u al gedoneerd?"
+                link2="/BegunstigersPortaal"
+                linknaam2="Klik dan hier om naar het begunstigersportaal te gaan."/>
 
             <Alinea titel="Medewerkers"
                 tekst="Wilt u een show toevoegen?"

@@ -21,7 +21,9 @@ import ZaalAanpassen from "./Pages/Zaal/ZaalAanpassen";
 import ZaalChanger from "./Pages/Zaal/ZaalChanger";
 import Redirect from "./Pages/Winkelmand/redirect";
 import Doneren from "./Pages/Doneren/Doneren.js";
-
+import BegunstigersPortaal from "./Pages/Doneren/BegunstigersPortaal.js";
+import Review from "./Pages/Doneren/Review.js";
+import ReviewToevoegen from "./Pages/Doneren/ReviewToevoegen.js";
 
 class Main extends React.Component {
   render() {
@@ -41,6 +43,9 @@ class Main extends React.Component {
             <Route path="/ShowToevoegen" element={<ShowToevoegen />} />
             <Route path="/Huren" element={<Huren />} />
             <Route path="/Doneren" element={<Doneren />} />
+            <Route path="/BegunstigersPortaal" element={<BegunstigersPortaal />} />
+            <Route path="/Review" element={<Review />} />
+            <Route path="/ReviewToevoegen" element={<ReviewToevoegen />} />
             <Route path="/ShowAanpassen" element={<ShowAanpassen />} />
             <Route path="/ShowChanger" element={<ShowChanger />} />
             <Route path="/Ticket" element={<Ticket />} />
