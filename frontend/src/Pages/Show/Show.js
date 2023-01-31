@@ -83,7 +83,7 @@ const Show = () => {
         <>
             <section className="programmaBlock">
                 <div className="Evenement">
-                    <img src={LinkToImg} alt="Afbeelding evenement" width="40%" height="40%"></img>
+                    <img src={LinkToImg} alt="Afbeelding show" width="40%" height="40%"></img>
                         <h1>{TitelVoorstelling} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h1>
                         <p>
                             {zaal2}<br/>

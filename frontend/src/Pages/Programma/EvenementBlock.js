@@ -32,7 +32,7 @@ const EvenementBlock = (props) => {
         <section className="programmaBlock">
                 <div className="evenementblock">
                     <div>
-                        <img src={LinkToImg} alt="Afbeelding evenement" width="100%" height="100%"></img>
+                        <img src={LinkToImg} alt="Afbeelding show" width="100%" height="100%"></img>
                     </div>
                     
                     <div>

@@ -1,15 +1,23 @@
 describe('Current test', () => {
     // it doesn't work because of the fakepay website: reference is required
     // it('Checks if betaling works (succes)', () => {
-    //     //cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Login')
-    //     cy.visit('http://localhost:3000/Login')
+    //     // Setup
+    //     cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net')
+    //     cy.clearCookies()
+    //     cy.clearLocalStorage()
+    //     cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Winkelmand')
+    //     cy.clearCookies()
+    //     cy.contains('Geen kaarten in winkelmand').should('be.visible')
+
+    //     cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Login')
+    //     //cy.visit('http://localhost:3000/Login')
     //     cy.get('#username').type('Gebruiker')
     //     cy.get('#password').type('GebruikerW1!')
     //     cy.contains('Log in').click()
     //     cy.contains('U bent ingelogd')
 
-    //     //cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Programma')
-    //     cy.visit('http://localhost:3000/Programma')
+    //     cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Programma')
+    //     //cy.visit('http://localhost:3000/Programma')
     //     cy.contains('bestel').click()
     //     cy.get('#SelectedRang').select('Rang 1')
     //     cy.get('#NumberTickets').type('1')
@@ -23,10 +31,10 @@ describe('Current test', () => {
     //     cy.get('#account').type('NL55ABNA5660751954')
     //     cy.contains('Betaal').click()	
     //     })
-    //     cy.contains('Betaling gelukt').should('be.visible')
+    //     //cy.contains('Betaling gelukt').should('be.visible')
     // })
 
-        // it('Checks if betaling works (failed)', () => {
+    // it('Checks if betaling works (failed)', () => {
     //     //cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Login')
     //     cy.visit('http://localhost:3000/Login')
     //     cy.get('#username').type('Gebruiker')
