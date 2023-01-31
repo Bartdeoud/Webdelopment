@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace backend.Migrations
 {
     /// <inheritdoc />
-    public partial class _4 : Migration
+    public partial class _1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -96,6 +96,20 @@ namespace backend.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_reserveringen", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Review",
+                columns: table => new
+                {
+                    reviewId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Show = table.Column<int>(type: "int", nullable: false),
+                    reviewtekst = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Review", x => x.reviewId);
                 });
 
             migrationBuilder.CreateTable(
@@ -321,45 +335,6 @@ namespace backend.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LedenId", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "Wachtwoord", "artiest_naam" },
-                values: new object[] { "159ba6d4-7286-4cf8-a79d-f93ba2d33f45", 0, "de68ba32-423b-44af-84ef-1f6bba414565", "Artiest", "artiestmail4@email.com", false, null, false, null, null, null, null, null, false, "9773bb5d-9ae1-4b03-8722-4e8a4872865b", false, "Artiest4", "Test4", "Artiest4" });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TotaleDonatie", "TwoFactorEnabled", "UserName", "Wachtwoord" },
-                values: new object[] { "527037d3-93cc-41ef-8e53-079e587d4f90", 0, "6fd1858c-5f7f-4bee-8a45-257bb8243497", "Donateur", "test1@email.com", false, false, null, null, null, null, null, false, "138fde59-a095-48be-b568-2b2fcdbc6957", 1000, false, "Jan1", "Test1" });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "Wachtwoord" },
-                values: new object[,]
-                {
-                    { "544e2630-3e0e-453a-8778-45731f4fe324", 0, "20306d7f-f600-40cb-a1b7-0320d9624030", "Gebruiker", "test2@email.com", false, false, null, null, null, null, null, false, "d89b8c85-b3a4-47f1-86b5-54774119ab95", false, "Jan2", "Test2" },
-                    { "79531cf1-99f1-4c31-925a-17248ad77393", 0, "2c2c7fc8-ea36-4499-8566-d857f512d527", "Gebruiker", "test4@email.com", false, false, null, null, null, null, null, false, "607c1eb8-77c4-4818-95ef-2fd85c630148", false, "Jan4", "Test4" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LedenId", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "Wachtwoord", "artiest_naam" },
-                values: new object[,]
-                {
-                    { "8fdaf54c-90bc-43d7-874e-45cb9a70ed53", 0, "0da18a50-3f7a-4c61-82e5-7544fa92cc82", "Artiest", "artiestmail2@email.com", false, null, false, null, null, null, null, null, false, "e6dc03b3-99eb-4661-8fe0-f8855e1a41bb", false, "Artiest2", "Test2", "Artiest2" },
-                    { "917caade-565e-4105-9272-c2cfadb2b53d", 0, "ca5fe9f6-e3fb-49a3-b362-e7e7c210826e", "Artiest", "artiestmail1@email.com", false, null, false, null, null, null, null, null, false, "93fcfa16-c141-4279-8d17-977687f19bb4", false, "Artiest1", "Test1", "Artiest1" },
-                    { "9e91501e-ad72-4334-8820-da52d3280b4c", 0, "bc4bda97-31d2-4dd3-8afc-579182224616", "Artiest", "artiestmail5@email.com", false, null, false, null, null, null, null, null, false, "6cac4571-ac00-40c6-b3b0-c2613c207c2d", false, "Artiest5", "Test5", "Artiest5" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "Wachtwoord" },
-                values: new object[] { "b86c8b73-b2af-4bfd-acfa-0365e3d8b2b0", 0, "1e4b85fc-3b94-4764-a380-51cf620d497a", "Gebruiker", "test3@email.com", false, false, null, null, null, null, null, false, "be5c8194-720a-4334-8dae-5db64acf68cc", false, "Jan3", "Test3" });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LedenId", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "Wachtwoord", "artiest_naam" },
-                values: new object[] { "eb5b10de-edc7-469c-abca-f7a5c5c7738d", 0, "47140611-b589-48e0-8df2-46aee2e1f432", "Artiest", "artiestmail3@email.com", false, null, false, null, null, null, null, null, false, "f8b5a574-822e-4a49-8a32-adb75b63245e", false, "Artiest3", "Test3", "Artiest3" });
-
-            migrationBuilder.InsertData(
                 table: "genres",
                 columns: new[] { "GenreID", "Naam" },
                 values: new object[,]
@@ -412,9 +387,9 @@ namespace backend.Migrations
                 columns: new[] { "Shownr", "Afbeelding", "BeginTijd", "EindTijd", "Genre", "Leeftijdsgroep", "Naam", "Zaal" },
                 values: new object[,]
                 {
-                    { 1, "", new DateTime(2023, 1, 31, 14, 40, 18, 675, DateTimeKind.Local).AddTicks(3321), new DateTime(2023, 1, 31, 14, 40, 18, 675, DateTimeKind.Local).AddTicks(3352), 1, 1, "Show 1", 1 },
-                    { 2, "", new DateTime(2023, 1, 31, 14, 40, 18, 675, DateTimeKind.Local).AddTicks(3355), new DateTime(2023, 1, 31, 14, 40, 18, 675, DateTimeKind.Local).AddTicks(3357), 2, 2, "Show 2", 2 },
-                    { 3, "", new DateTime(2023, 1, 31, 14, 40, 18, 675, DateTimeKind.Local).AddTicks(3360), new DateTime(2023, 1, 31, 14, 40, 18, 675, DateTimeKind.Local).AddTicks(3362), 3, 3, "Show 3", 3 }
+                    { 1, "", new DateTime(2023, 1, 31, 15, 9, 32, 3, DateTimeKind.Local).AddTicks(9039), new DateTime(2023, 1, 31, 15, 9, 32, 3, DateTimeKind.Local).AddTicks(9072), 1, 1, "Show 1", 1 },
+                    { 2, "", new DateTime(2023, 1, 31, 15, 9, 32, 3, DateTimeKind.Local).AddTicks(9075), new DateTime(2023, 1, 31, 15, 9, 32, 3, DateTimeKind.Local).AddTicks(9077), 2, 2, "Show 2", 2 },
+                    { 3, "", new DateTime(2023, 1, 31, 15, 9, 32, 3, DateTimeKind.Local).AddTicks(9079), new DateTime(2023, 1, 31, 15, 9, 32, 3, DateTimeKind.Local).AddTicks(9081), 3, 3, "Show 3", 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -502,6 +477,9 @@ namespace backend.Migrations
 
             migrationBuilder.DropTable(
                 name: "reserveringen");
+
+            migrationBuilder.DropTable(
+                name: "Review");
 
             migrationBuilder.DropTable(
                 name: "ruimtes");

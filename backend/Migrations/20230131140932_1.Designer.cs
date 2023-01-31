@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace backend.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20230131134802_1")]
+    [Migration("20230131140932_1")]
     partial class _1
     {
         /// <inheritdoc />
@@ -123,50 +123,6 @@ namespace backend.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("Gebruiker");
 
                     b.UseTphMappingStrategy();
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "5aeb91df-eec4-44f9-bb43-68e79fcc7190",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "0846b332-92c5-4032-b600-ee8413020b6b",
-                            Email = "test2@email.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "3905051c-edf9-4231-94b0-51b2e3fceef7",
-                            TwoFactorEnabled = false,
-                            UserName = "Jan2",
-                            Wachtwoord = "Test2"
-                        },
-                        new
-                        {
-                            Id = "e8b76d29-87e0-42a5-bc38-ad421df3490a",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "c980ead1-fa1c-4cbb-a581-46ab02282fd3",
-                            Email = "test3@email.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "81d85a94-908d-463b-91f1-e86019527381",
-                            TwoFactorEnabled = false,
-                            UserName = "Jan3",
-                            Wachtwoord = "Test3"
-                        },
-                        new
-                        {
-                            Id = "441d4dad-c724-4401-9498-d33000ec8a36",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "1513f327-8632-4593-b3b1-7de4eb48aa4b",
-                            Email = "test4@email.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "64edff5b-2cab-4050-bb91-5b5d2f4bbe68",
-                            TwoFactorEnabled = false,
-                            UserName = "Jan4",
-                            Wachtwoord = "Test4"
-                        });
                 });
 
             modelBuilder.Entity("Genre", b =>
@@ -629,8 +585,8 @@ namespace backend.Migrations
                         {
                             Shownr = 1,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 31, 14, 48, 1, 774, DateTimeKind.Local).AddTicks(4447),
-                            EindTijd = new DateTime(2023, 1, 31, 14, 48, 1, 774, DateTimeKind.Local).AddTicks(4478),
+                            BeginTijd = new DateTime(2023, 1, 31, 15, 9, 32, 3, DateTimeKind.Local).AddTicks(9039),
+                            EindTijd = new DateTime(2023, 1, 31, 15, 9, 32, 3, DateTimeKind.Local).AddTicks(9072),
                             Genre = 1,
                             Leeftijdsgroep = 1,
                             Naam = "Show 1",
@@ -640,8 +596,8 @@ namespace backend.Migrations
                         {
                             Shownr = 2,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 31, 14, 48, 1, 774, DateTimeKind.Local).AddTicks(4482),
-                            EindTijd = new DateTime(2023, 1, 31, 14, 48, 1, 774, DateTimeKind.Local).AddTicks(4483),
+                            BeginTijd = new DateTime(2023, 1, 31, 15, 9, 32, 3, DateTimeKind.Local).AddTicks(9075),
+                            EindTijd = new DateTime(2023, 1, 31, 15, 9, 32, 3, DateTimeKind.Local).AddTicks(9077),
                             Genre = 2,
                             Leeftijdsgroep = 2,
                             Naam = "Show 2",
@@ -651,8 +607,8 @@ namespace backend.Migrations
                         {
                             Shownr = 3,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 31, 14, 48, 1, 774, DateTimeKind.Local).AddTicks(4486),
-                            EindTijd = new DateTime(2023, 1, 31, 14, 48, 1, 774, DateTimeKind.Local).AddTicks(4488),
+                            BeginTijd = new DateTime(2023, 1, 31, 15, 9, 32, 3, DateTimeKind.Local).AddTicks(9079),
+                            EindTijd = new DateTime(2023, 1, 31, 15, 9, 32, 3, DateTimeKind.Local).AddTicks(9081),
                             Genre = 3,
                             Leeftijdsgroep = 3,
                             Naam = "Show 3",
@@ -768,83 +724,6 @@ namespace backend.Migrations
                     b.HasIndex("LedenId");
 
                     b.HasDiscriminator().HasValue("Artiest");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "0589fe0a-7b1c-4f4e-8e0d-91eadb2a7235",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "ce1c6053-3ba9-44e4-b550-1f055ab18e91",
-                            Email = "artiestmail1@email.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "86183929-dc7b-465f-a71a-c16cd1fe4712",
-                            TwoFactorEnabled = false,
-                            UserName = "Artiest1",
-                            Wachtwoord = "Test1",
-                            artiestnaam = "Artiest1"
-                        },
-                        new
-                        {
-                            Id = "55f68882-7a4b-4102-9af1-49fb213f42a6",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "a17121ac-7d34-4719-b422-0277e506d0c7",
-                            Email = "artiestmail2@email.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "7d2cc785-80d6-4d6f-9aab-572cc130f820",
-                            TwoFactorEnabled = false,
-                            UserName = "Artiest2",
-                            Wachtwoord = "Test2",
-                            artiestnaam = "Artiest2"
-                        },
-                        new
-                        {
-                            Id = "fbcb8954-d743-4f2e-9e9e-fe42039ac8cd",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "e6b6d377-d19f-49b7-8b08-2f2dedd05489",
-                            Email = "artiestmail3@email.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "7b19cfa2-bf51-401b-b398-5d67510315d6",
-                            TwoFactorEnabled = false,
-                            UserName = "Artiest3",
-                            Wachtwoord = "Test3",
-                            artiestnaam = "Artiest3"
-                        },
-                        new
-                        {
-                            Id = "2f49e4f8-3f90-4817-abc0-3a09846a6b95",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "9bb1fae8-c34d-4a09-8dd1-d1b648489601",
-                            Email = "artiestmail4@email.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "17b729dd-41c0-45e0-a7ec-2345e2200b3e",
-                            TwoFactorEnabled = false,
-                            UserName = "Artiest4",
-                            Wachtwoord = "Test4",
-                            artiestnaam = "Artiest4"
-                        },
-                        new
-                        {
-                            Id = "0f44928b-d9be-4433-bbf7-8d546d12419e",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "f2688d65-9540-426e-833c-9a02fd96b4f5",
-                            Email = "artiestmail5@email.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "ed8fadd6-0354-4a05-bd88-89bfddc932e6",
-                            TwoFactorEnabled = false,
-                            UserName = "Artiest5",
-                            Wachtwoord = "Test5",
-                            artiestnaam = "Artiest5"
-                        });
                 });
 
             modelBuilder.Entity("Donateur", b =>
@@ -855,23 +734,6 @@ namespace backend.Migrations
                         .HasColumnType("int");
 
                     b.HasDiscriminator().HasValue("Donateur");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "5f080ecf-badc-4131-933c-bc6d3cc315d9",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "062da52b-209a-41af-96ff-9aad3c86f751",
-                            Email = "test1@email.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "49c732e4-3675-4b5c-9d93-d5a4c2e5635b",
-                            TwoFactorEnabled = false,
-                            UserName = "Jan1",
-                            Wachtwoord = "Test1",
-                            TotaleDonatie = 1000
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
