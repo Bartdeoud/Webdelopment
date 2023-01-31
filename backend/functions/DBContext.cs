@@ -29,23 +29,6 @@ public class DBContext : IdentityDbContext<Gebruiker>
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-        builder.Entity<Gebruiker>().HasData(
-            new Gebruiker(){ Email = "test2@email.com",UserName = "Jan2", Wachtwoord = "Test2"},
-            new Gebruiker(){ Email = "test3@email.com",UserName = "Jan3", Wachtwoord = "Test3"},
-            new Gebruiker(){ Email = "test4@email.com",UserName = "Jan4", Wachtwoord = "Test4"}
-        );
-        builder.Entity<Artiest>().HasData(
-            new Artiest(){Email = "artiestmail1@email.com", UserName = "Artiest1", Wachtwoord = "Test1", artiest_naam = "Artiest1"},
-            new Artiest(){Email = "artiestmail2@email.com", UserName = "Artiest2", Wachtwoord = "Test2", artiest_naam = "Artiest2"},
-            new Artiest(){Email = "artiestmail3@email.com", UserName = "Artiest3", Wachtwoord = "Test3", artiest_naam = "Artiest3"},
-            new Artiest(){Email = "artiestmail4@email.com", UserName = "Artiest4", Wachtwoord = "Test4", artiest_naam = "Artiest4"},
-            new Artiest(){Email = "artiestmail5@email.com", UserName = "Artiest5", Wachtwoord = "Test5", artiest_naam = "Artiest5"}
-        );
-
-        builder.Entity<Donateur>().HasData(
-            new Donateur(){Email = "test1@email.com",UserName = "Jan1", Wachtwoord = "Test1",TotaleDonatie = 1000}
-        );
-
         builder.Entity<Zaal>().HasData(
             new Zaal(){Zaalnr=1, Naam="Zaal 1", Rang1 = 120, Rang2 = 98,Rang3 = 20, invalideplaatsen = 2,},
             new Zaal(){Zaalnr=2, Naam="Zaal 2", Rang1 = 100, Rang2 = 80},
