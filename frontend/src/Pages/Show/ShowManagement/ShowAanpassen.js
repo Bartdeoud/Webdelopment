@@ -36,7 +36,7 @@ const ShowAanpassen = () => {
                     TitelVoorstelling={voorstelling.naam}
                     zaal={voorstelling.zaal}
                     datum={(voorstelling.beginTijd).substring(0,10)}
-                    tijd={(voorstelling.beginTijd).substring(11,15)}
+                    tijd={(voorstelling.beginTijd).substring(11,16)}
                     LinkToImg={voorstelling.afbeelding}
                     leeftijdsgroep={voorstelling.leeftijdsgroep}
                     genre={voorstelling.genre}/>

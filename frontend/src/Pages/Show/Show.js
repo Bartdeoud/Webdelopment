@@ -68,7 +68,9 @@ const Show = () => {
     
     const feetlicker = (e) => {
         e.preventDefault();
-        const rang = document.getElementById("SelectedRang").value;
+        const seats = [zaalX.rang1,zaalX.rang2,zaalX.rang3,zaalX.rang4]
+        const rang = seats[document.getElementById("SelectedRang").value - 1];
+        console.log(seats)
         setMax(rang)
         if (rang > 10){
             setMax(10)
@@ -102,10 +104,10 @@ const Show = () => {
                     <p>Rang:</p>
                     <select required onChange={feetlicker} id="SelectedRang">
                         <option value="" disabled selected hidden>Kies een rang</option>
-                        <Option naam="Rang 1" value={zaalX.rang1} rang={zaalX.rang1}/>
-                        <Option naam="Rang 2" value={zaalX.rang2} rang={zaalX.rang2}/>
-                        <Option naam="Rang 3" value={zaalX.rang3} rang={zaalX.rang3}/>
-                        <Option naam="Rang 4" value={zaalX.rang4} rang={zaalX.rang4}/>
+                        <Option naam="Rang 1" value="1" rang={zaalX.rang1}/>
+                        <Option naam="Rang 2" value="2" rang={zaalX.rang2}/>
+                        <Option naam="Rang 3" value="3" rang={zaalX.rang3}/>
+                        <Option naam="Rang 4" value="4" rang={zaalX.rang4}/>
                         <Option naam="Invalide plekken" value={zaalX.invalideplaatsen} rang={zaalX.invalideplaatsen}/>    
                     </select>
 

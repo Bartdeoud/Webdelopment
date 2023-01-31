@@ -7,7 +7,7 @@ public class Ticket
     public int TicketID {get; set;}
 
     [Required]
-    public int stoelNr {set; get;}
+    public int aantal {set; get;}
     public int Rang {get; set;}
     public string? email {get; set;}
     

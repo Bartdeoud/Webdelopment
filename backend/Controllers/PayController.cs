@@ -18,6 +18,7 @@ public class PayController : ControllerBase{
             if(DateTime.Compare(session.expiration, DateTime.Now) < 0)
             _context.sessionIds.Remove(session);
         }
+
         SessionId sessionId = _context.sessionIds.First(s => s.Session.Equals(reference));
 
         if(succes)MailService.sendMail(sessionId.email ?? "",sessionId.Data ?? "");
@@ -27,6 +28,7 @@ public class PayController : ControllerBase{
         }catch{ 
             succes = false; 
         }
+
         return Redirect("https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ticket?succes=" + succes);
     }
 
@@ -37,6 +39,7 @@ public class PayController : ControllerBase{
         string session = SessionIdCreator.HashString(25);
         _context.sessionIds.Add(new SessionId(){Session=session, expiration=DateTime.Now.AddMinutes(10), email=email,Data=ticketData});
         await _context.SaveChangesAsync();
+        Console.WriteLine(ticketData);
         return session;
     }
 }
