@@ -25,4 +25,31 @@ describe('Alternate text test', () => {
         cy.get('img')
             .should('have.attr', 'alt', 'Afbeelding show')    
     })
+
+    it('Check if alt text is displayed correctly (Review)', () => {
+        // Setup
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Login')
+        cy.get('#username').type('Donateur')
+        cy.get('#password').type('DonateurW1!')
+        cy.contains('Log in').click()
+        cy.contains('U bent ingelogd')
+
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Review')
+        cy.get(':nth-child(8) > .evenementblock > :nth-child(1) > img')
+            .should('have.attr', 'alt', 'Afbeelding evenement')
+    })
+
+    it('Check if alt text is displayed correctly (ReviewToevoegen)', () => {
+        // Setup
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Login')
+        cy.get('#username').type('Donateur')
+        cy.get('#password').type('DonateurW1!')
+        cy.contains('Log in').click()
+        cy.contains('U bent ingelogd')
+
+        cy.visit('https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/Review')
+        cy.get(':nth-child(8) > .evenementblock > #bestel > .btn').click()
+        cy.get('img')
+            .should('have.attr', 'alt', 'Afbeelding evenement')
+    })
 })
