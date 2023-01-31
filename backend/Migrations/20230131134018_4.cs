@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace api.Migrations
+namespace backend.Migrations
 {
     /// <inheritdoc />
-    public partial class _0 : Migration
+    public partial class _4 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,8 +34,8 @@ namespace api.Migrations
                     IdBand = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Naam = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Omschrijving = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Afbeelding = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Omschrijving = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Afbeelding = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -59,7 +59,8 @@ namespace api.Migrations
                 name: "leden",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     BandId = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -84,10 +85,11 @@ namespace api.Migrations
                 name: "reserveringen",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Naam = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Datum = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    VerhuurdeId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    VerhuurdeId = table.Column<int>(type: "int", nullable: false),
                     Zaalnr = table.Column<int>(type: "int", nullable: true),
                     RuimteNr = table.Column<int>(type: "int", nullable: true)
                 },
@@ -149,7 +151,9 @@ namespace api.Migrations
                 {
                     TicketID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    stoelNr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    stoelNr = table.Column<int>(type: "int", nullable: false),
+                    Rang = table.Column<int>(type: "int", nullable: false),
+                    email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Shownr = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -201,13 +205,11 @@ namespace api.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UserID = table.Column<int>(type: "int", nullable: false),
-                    Naam = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     Wachtwoord = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     artiestnaam = table.Column<string>(name: "artiest_naam", type: "nvarchar(max)", nullable: true),
-                    LedenId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    LedenId = table.Column<int>(type: "int", nullable: true),
                     TotaleDonatie = table.Column<int>(type: "int", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -320,34 +322,42 @@ namespace api.Migrations
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Naam", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TotaleDonatie", "TwoFactorEnabled", "UserID", "UserName", "Wachtwoord" },
-                values: new object[] { "0a2fc4df-4156-4746-a5c9-f4d91cd7c503", 0, "c044d82f-8f8a-4c6d-9bcd-77f259758e70", "Donateur", "test1@email.com", false, false, null, "Jan1", null, null, null, null, false, "1e68f8c0-77ca-4cdb-87e6-86b73c2ad9b0", 1000, false, 1, null, "Test1" });
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LedenId", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "Wachtwoord", "artiest_naam" },
+                values: new object[] { "159ba6d4-7286-4cf8-a79d-f93ba2d33f45", 0, "de68ba32-423b-44af-84ef-1f6bba414565", "Artiest", "artiestmail4@email.com", false, null, false, null, null, null, null, null, false, "9773bb5d-9ae1-4b03-8722-4e8a4872865b", false, "Artiest4", "Test4", "Artiest4" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LedenId", "LockoutEnabled", "LockoutEnd", "Naam", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserID", "UserName", "Wachtwoord", "artiest_naam" },
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TotaleDonatie", "TwoFactorEnabled", "UserName", "Wachtwoord" },
+                values: new object[] { "527037d3-93cc-41ef-8e53-079e587d4f90", 0, "6fd1858c-5f7f-4bee-8a45-257bb8243497", "Donateur", "test1@email.com", false, false, null, null, null, null, null, false, "138fde59-a095-48be-b568-2b2fcdbc6957", 1000, false, "Jan1", "Test1" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "Wachtwoord" },
                 values: new object[,]
                 {
-                    { "356ff5b6-4d93-4a39-b896-f984760effc7", 0, "17585997-1872-4180-9fb7-538e0a8fb187", "Artiest", "artiestmail2@email.com", false, null, false, null, "Artiest2", null, null, null, null, false, "6539edf2-592f-4501-b97d-bdee077f53dc", false, 6, null, "Test2", "Artiest2" },
-                    { "35d873e1-729b-4f4c-8153-7c246b17dc38", 0, "90dc1fa9-0afa-4b65-b8fe-0e712d202bdc", "Artiest", "artiestmail4@email.com", false, null, false, null, "Artiest4", null, null, null, null, false, "fd99516a-4dee-4e3c-a789-7ebd7afa3bc6", false, 8, null, "Test4", "Artiest4" },
-                    { "417ca7f8-f0e3-4680-bc19-9213521a8f6e", 0, "41eafd92-a97c-4ffe-9154-a99182e09471", "Artiest", "artiestmail1@email.com", false, null, false, null, "Artiest1", null, null, null, null, false, "f219d035-0732-4176-9c6b-cca6b075136f", false, 5, null, "Test1", "Artiest1" },
-                    { "6b3d21ac-5292-4dee-b4cb-9edb67b38e88", 0, "5942b8ab-96c9-4864-89e5-c30af260965f", "Artiest", "artiestmail5@email.com", false, null, false, null, "Artiest5", null, null, null, null, false, "f9aeaaaa-4361-4a16-ad08-8382fa17ccc7", false, 9, null, "Test5", "Artiest5" }
+                    { "544e2630-3e0e-453a-8778-45731f4fe324", 0, "20306d7f-f600-40cb-a1b7-0320d9624030", "Gebruiker", "test2@email.com", false, false, null, null, null, null, null, false, "d89b8c85-b3a4-47f1-86b5-54774119ab95", false, "Jan2", "Test2" },
+                    { "79531cf1-99f1-4c31-925a-17248ad77393", 0, "2c2c7fc8-ea36-4499-8566-d857f512d527", "Gebruiker", "test4@email.com", false, false, null, null, null, null, null, false, "607c1eb8-77c4-4818-95ef-2fd85c630148", false, "Jan4", "Test4" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Naam", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserID", "UserName", "Wachtwoord" },
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LedenId", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "Wachtwoord", "artiest_naam" },
                 values: new object[,]
                 {
-                    { "72460b90-c1e7-4033-880e-213709b26f20", 0, "58765d9a-4371-4ff8-9401-84532d74dad2", "Gebruiker", "test3@email.com", false, false, null, "Jan3", null, null, null, null, false, "b02995b7-20ee-4480-bd6a-c63bfddc6065", false, 3, null, "Test3" },
-                    { "a244c26a-ee98-4fd7-af12-6207e8b54b6a", 0, "79871082-cbee-4eaf-b278-a4348e237750", "Gebruiker", "test4@email.com", false, false, null, "Jan4", null, null, null, null, false, "c3e6d05c-2618-47dc-a528-2effa1a3e9ab", false, 4, null, "Test4" },
-                    { "c24d7dee-d214-4a07-bc18-ee175301c0e9", 0, "97a6d0d1-885c-4aec-8b07-1353d9ee77bd", "Gebruiker", "test2@email.com", false, false, null, "Jan2", null, null, null, null, false, "17ffcf4c-dcdf-49ab-928c-5ee98875b9ae", false, 2, null, "Test2" }
+                    { "8fdaf54c-90bc-43d7-874e-45cb9a70ed53", 0, "0da18a50-3f7a-4c61-82e5-7544fa92cc82", "Artiest", "artiestmail2@email.com", false, null, false, null, null, null, null, null, false, "e6dc03b3-99eb-4661-8fe0-f8855e1a41bb", false, "Artiest2", "Test2", "Artiest2" },
+                    { "917caade-565e-4105-9272-c2cfadb2b53d", 0, "ca5fe9f6-e3fb-49a3-b362-e7e7c210826e", "Artiest", "artiestmail1@email.com", false, null, false, null, null, null, null, null, false, "93fcfa16-c141-4279-8d17-977687f19bb4", false, "Artiest1", "Test1", "Artiest1" },
+                    { "9e91501e-ad72-4334-8820-da52d3280b4c", 0, "bc4bda97-31d2-4dd3-8afc-579182224616", "Artiest", "artiestmail5@email.com", false, null, false, null, null, null, null, null, false, "6cac4571-ac00-40c6-b3b0-c2613c207c2d", false, "Artiest5", "Test5", "Artiest5" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LedenId", "LockoutEnabled", "LockoutEnd", "Naam", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserID", "UserName", "Wachtwoord", "artiest_naam" },
-                values: new object[] { "f82dbf8d-cf99-44c1-b4c3-2be386aa482d", 0, "110e537c-feca-42cb-903c-bfb4fbffc2b1", "Artiest", "artiestmail3@email.com", false, null, false, null, "Artiest3", null, null, null, null, false, "d8a30b10-ef88-4f15-adc2-70b0f8536b41", false, 7, null, "Test3", "Artiest3" });
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "Wachtwoord" },
+                values: new object[] { "b86c8b73-b2af-4bfd-acfa-0365e3d8b2b0", 0, "1e4b85fc-3b94-4764-a380-51cf620d497a", "Gebruiker", "test3@email.com", false, false, null, null, null, null, null, false, "be5c8194-720a-4334-8dae-5db64acf68cc", false, "Jan3", "Test3" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LedenId", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "Wachtwoord", "artiest_naam" },
+                values: new object[] { "eb5b10de-edc7-469c-abca-f7a5c5c7738d", 0, "47140611-b589-48e0-8df2-46aee2e1f432", "Artiest", "artiestmail3@email.com", false, null, false, null, null, null, null, null, false, "f8b5a574-822e-4a49-8a32-adb75b63245e", false, "Artiest3", "Test3", "Artiest3" });
 
             migrationBuilder.InsertData(
                 table: "genres",
@@ -402,9 +412,9 @@ namespace api.Migrations
                 columns: new[] { "Shownr", "Afbeelding", "BeginTijd", "EindTijd", "Genre", "Leeftijdsgroep", "Naam", "Zaal" },
                 values: new object[,]
                 {
-                    { 1, "", new DateTime(2023, 1, 29, 11, 47, 30, 452, DateTimeKind.Local).AddTicks(7209), new DateTime(2023, 1, 29, 11, 47, 30, 452, DateTimeKind.Local).AddTicks(7242), 1, 1, "Show 1", 1 },
-                    { 2, "", new DateTime(2023, 1, 29, 11, 47, 30, 452, DateTimeKind.Local).AddTicks(7245), new DateTime(2023, 1, 29, 11, 47, 30, 452, DateTimeKind.Local).AddTicks(7247), 2, 2, "Show 2", 2 },
-                    { 3, "", new DateTime(2023, 1, 29, 11, 47, 30, 452, DateTimeKind.Local).AddTicks(7249), new DateTime(2023, 1, 29, 11, 47, 30, 452, DateTimeKind.Local).AddTicks(7250), 3, 3, "Show 3", 3 }
+                    { 1, "", new DateTime(2023, 1, 31, 14, 40, 18, 675, DateTimeKind.Local).AddTicks(3321), new DateTime(2023, 1, 31, 14, 40, 18, 675, DateTimeKind.Local).AddTicks(3352), 1, 1, "Show 1", 1 },
+                    { 2, "", new DateTime(2023, 1, 31, 14, 40, 18, 675, DateTimeKind.Local).AddTicks(3355), new DateTime(2023, 1, 31, 14, 40, 18, 675, DateTimeKind.Local).AddTicks(3357), 2, 2, "Show 2", 2 },
+                    { 3, "", new DateTime(2023, 1, 31, 14, 40, 18, 675, DateTimeKind.Local).AddTicks(3360), new DateTime(2023, 1, 31, 14, 40, 18, 675, DateTimeKind.Local).AddTicks(3362), 3, 3, "Show 3", 3 }
                 });
 
             migrationBuilder.InsertData(

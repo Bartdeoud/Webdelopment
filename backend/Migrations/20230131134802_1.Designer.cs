@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace api.Migrations
+namespace backend.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20230129200237_2")]
-    partial class _2
+    [Migration("20230131134802_1")]
+    partial class _1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,6 @@ namespace api.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdBand"));
 
                     b.Property<string>("Afbeelding")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Naam")
@@ -41,7 +40,6 @@ namespace api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Omschrijving")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdBand");
@@ -129,42 +127,42 @@ namespace api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f9d22672-c1cd-43b6-b102-4bd401112c4d",
+                            Id = "5aeb91df-eec4-44f9-bb43-68e79fcc7190",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9df8795a-abe4-4aec-849c-8c4324b5165b",
+                            ConcurrencyStamp = "0846b332-92c5-4032-b600-ee8413020b6b",
                             Email = "test2@email.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "57f6ea41-a5f7-4c92-a8a2-16de6496c6e7",
+                            SecurityStamp = "3905051c-edf9-4231-94b0-51b2e3fceef7",
                             TwoFactorEnabled = false,
                             UserName = "Jan2",
                             Wachtwoord = "Test2"
                         },
                         new
                         {
-                            Id = "3a32ad7d-7322-4636-b9d8-f7504428b62f",
+                            Id = "e8b76d29-87e0-42a5-bc38-ad421df3490a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "090a9637-a45f-41ed-a316-91d2bed3ff61",
+                            ConcurrencyStamp = "c980ead1-fa1c-4cbb-a581-46ab02282fd3",
                             Email = "test3@email.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ed21fea7-e9b2-4bc8-84c0-53f29c208892",
+                            SecurityStamp = "81d85a94-908d-463b-91f1-e86019527381",
                             TwoFactorEnabled = false,
                             UserName = "Jan3",
                             Wachtwoord = "Test3"
                         },
                         new
                         {
-                            Id = "d9fb8668-a59e-4629-99f2-b1caf6bd3b99",
+                            Id = "441d4dad-c724-4401-9498-d33000ec8a36",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c07ca54b-808a-4fcc-bf7a-12d85b70e3e7",
+                            ConcurrencyStamp = "1513f327-8632-4593-b3b1-7de4eb48aa4b",
                             Email = "test4@email.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2f92245f-943d-40bb-a509-4594246b7174",
+                            SecurityStamp = "64edff5b-2cab-4050-bb91-5b5d2f4bbe68",
                             TwoFactorEnabled = false,
                             UserName = "Jan4",
                             Wachtwoord = "Test4"
@@ -257,8 +255,11 @@ namespace api.Migrations
 
             modelBuilder.Entity("Huren", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime?>("Datum")
                         .HasColumnType("datetime2");
@@ -269,9 +270,8 @@ namespace api.Migrations
                     b.Property<int?>("RuimteNr")
                         .HasColumnType("int");
 
-                    b.Property<string>("VerhuurdeId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("VerhuurdeId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("Zaalnr")
                         .HasColumnType("int");
@@ -283,8 +283,11 @@ namespace api.Migrations
 
             modelBuilder.Entity("Leden", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("BandId")
                         .IsRequired()
@@ -467,6 +470,25 @@ namespace api.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Review", b =>
+                {
+                    b.Property<int>("reviewId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("reviewId"));
+
+                    b.Property<int>("Show")
+                        .HasColumnType("int");
+
+                    b.Property<string>("reviewtekst")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("reviewId");
+
+                    b.ToTable("Review");
+                });
+
             modelBuilder.Entity("Ruimte", b =>
                 {
                     b.Property<int>("RuimteNr")
@@ -607,8 +629,8 @@ namespace api.Migrations
                         {
                             Shownr = 1,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 29, 21, 2, 36, 753, DateTimeKind.Local).AddTicks(1769),
-                            EindTijd = new DateTime(2023, 1, 29, 21, 2, 36, 753, DateTimeKind.Local).AddTicks(1809),
+                            BeginTijd = new DateTime(2023, 1, 31, 14, 48, 1, 774, DateTimeKind.Local).AddTicks(4447),
+                            EindTijd = new DateTime(2023, 1, 31, 14, 48, 1, 774, DateTimeKind.Local).AddTicks(4478),
                             Genre = 1,
                             Leeftijdsgroep = 1,
                             Naam = "Show 1",
@@ -618,8 +640,8 @@ namespace api.Migrations
                         {
                             Shownr = 2,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 29, 21, 2, 36, 753, DateTimeKind.Local).AddTicks(1812),
-                            EindTijd = new DateTime(2023, 1, 29, 21, 2, 36, 753, DateTimeKind.Local).AddTicks(1813),
+                            BeginTijd = new DateTime(2023, 1, 31, 14, 48, 1, 774, DateTimeKind.Local).AddTicks(4482),
+                            EindTijd = new DateTime(2023, 1, 31, 14, 48, 1, 774, DateTimeKind.Local).AddTicks(4483),
                             Genre = 2,
                             Leeftijdsgroep = 2,
                             Naam = "Show 2",
@@ -629,8 +651,8 @@ namespace api.Migrations
                         {
                             Shownr = 3,
                             Afbeelding = "",
-                            BeginTijd = new DateTime(2023, 1, 29, 21, 2, 36, 753, DateTimeKind.Local).AddTicks(1816),
-                            EindTijd = new DateTime(2023, 1, 29, 21, 2, 36, 753, DateTimeKind.Local).AddTicks(1817),
+                            BeginTijd = new DateTime(2023, 1, 31, 14, 48, 1, 774, DateTimeKind.Local).AddTicks(4486),
+                            EindTijd = new DateTime(2023, 1, 31, 14, 48, 1, 774, DateTimeKind.Local).AddTicks(4488),
                             Genre = 3,
                             Leeftijdsgroep = 3,
                             Naam = "Show 3",
@@ -646,12 +668,17 @@ namespace api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TicketID"));
 
+                    b.Property<int>("Rang")
+                        .HasColumnType("int");
+
                     b.Property<int>("Shownr")
                         .HasColumnType("int");
 
-                    b.Property<string>("stoelNr")
-                        .IsRequired()
+                    b.Property<string>("email")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("stoelNr")
+                        .HasColumnType("int");
 
                     b.HasKey("TicketID");
 
@@ -731,8 +758,8 @@ namespace api.Migrations
                 {
                     b.HasBaseType("Gebruiker");
 
-                    b.Property<string>("LedenId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("LedenId")
+                        .HasColumnType("int");
 
                     b.Property<string>("artiest_naam")
                         .IsRequired()
@@ -745,14 +772,14 @@ namespace api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5aeff7ff-75a8-4dcb-8637-7be48799db0a",
+                            Id = "0589fe0a-7b1c-4f4e-8e0d-91eadb2a7235",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fdf785b5-0b35-46b5-8fd9-29e5f897e8f0",
+                            ConcurrencyStamp = "ce1c6053-3ba9-44e4-b550-1f055ab18e91",
                             Email = "artiestmail1@email.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "924e36fd-9a28-4e59-8e93-9a6ce9aba7a3",
+                            SecurityStamp = "86183929-dc7b-465f-a71a-c16cd1fe4712",
                             TwoFactorEnabled = false,
                             UserName = "Artiest1",
                             Wachtwoord = "Test1",
@@ -760,14 +787,14 @@ namespace api.Migrations
                         },
                         new
                         {
-                            Id = "8ceb4422-8492-441f-9678-9f42256507b3",
+                            Id = "55f68882-7a4b-4102-9af1-49fb213f42a6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a02e334e-bffb-426e-8a83-064d73b0d0b7",
+                            ConcurrencyStamp = "a17121ac-7d34-4719-b422-0277e506d0c7",
                             Email = "artiestmail2@email.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1fd2ad67-32ec-48ac-b657-4d502cd17b5f",
+                            SecurityStamp = "7d2cc785-80d6-4d6f-9aab-572cc130f820",
                             TwoFactorEnabled = false,
                             UserName = "Artiest2",
                             Wachtwoord = "Test2",
@@ -775,14 +802,14 @@ namespace api.Migrations
                         },
                         new
                         {
-                            Id = "0f6e2c3a-0e5f-4616-b9f6-45ebfa8de5bf",
+                            Id = "fbcb8954-d743-4f2e-9e9e-fe42039ac8cd",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3c1353fa-af9d-49ea-9b69-d9c68e418b43",
+                            ConcurrencyStamp = "e6b6d377-d19f-49b7-8b08-2f2dedd05489",
                             Email = "artiestmail3@email.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "efbb77c6-f89d-4882-b3a9-a2a4a86004d2",
+                            SecurityStamp = "7b19cfa2-bf51-401b-b398-5d67510315d6",
                             TwoFactorEnabled = false,
                             UserName = "Artiest3",
                             Wachtwoord = "Test3",
@@ -790,14 +817,14 @@ namespace api.Migrations
                         },
                         new
                         {
-                            Id = "3cff8772-f457-4f93-9e99-6a8a6f38f954",
+                            Id = "2f49e4f8-3f90-4817-abc0-3a09846a6b95",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "603c69c6-f895-4717-8b1e-efe2e260c204",
+                            ConcurrencyStamp = "9bb1fae8-c34d-4a09-8dd1-d1b648489601",
                             Email = "artiestmail4@email.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4f0eeac1-5d57-44db-9e35-1b2b3b41ac5a",
+                            SecurityStamp = "17b729dd-41c0-45e0-a7ec-2345e2200b3e",
                             TwoFactorEnabled = false,
                             UserName = "Artiest4",
                             Wachtwoord = "Test4",
@@ -805,14 +832,14 @@ namespace api.Migrations
                         },
                         new
                         {
-                            Id = "c2c39bbe-b73b-494e-9631-9c6d481fc618",
+                            Id = "0f44928b-d9be-4433-bbf7-8d546d12419e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2abd0dfe-a8e8-4676-975b-79a0d0964b56",
+                            ConcurrencyStamp = "f2688d65-9540-426e-833c-9a02fd96b4f5",
                             Email = "artiestmail5@email.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "60b2a7b7-cf7e-4708-8d70-1bf71939edb5",
+                            SecurityStamp = "ed8fadd6-0354-4a05-bd88-89bfddc932e6",
                             TwoFactorEnabled = false,
                             UserName = "Artiest5",
                             Wachtwoord = "Test5",
@@ -832,14 +859,14 @@ namespace api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ca8cc35f-8ffe-4661-a303-9bbef810bbd0",
+                            Id = "5f080ecf-badc-4131-933c-bc6d3cc315d9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1e1251fc-e7a8-4b39-99cf-f510698a131d",
+                            ConcurrencyStamp = "062da52b-209a-41af-96ff-9aad3c86f751",
                             Email = "test1@email.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "497bad59-de51-46f8-a5dc-1ce912a9d18d",
+                            SecurityStamp = "49c732e4-3675-4b5c-9d93-d5a4c2e5635b",
                             TwoFactorEnabled = false,
                             UserName = "Jan1",
                             Wachtwoord = "Test1",

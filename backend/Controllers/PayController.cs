@@ -16,8 +16,7 @@ public class PayController : ControllerBase
     public async Task<IActionResult> Post([FromForm] bool succes, [FromForm] string reference)
     {
         try{
-        var sessionIds = _context.sessionIds;
-        foreach (var session in sessionIds)
+        foreach (var session in _context.sessionIds)
         { 
             if(DateTime.Compare(session.expiration, DateTime.Now) < 0)
             _context.sessionIds.Remove(session);
@@ -38,7 +37,7 @@ public class PayController : ControllerBase
     public async Task<string> getSessionId(string email, string ticketData)
     {
         string session = SessionIdCreator.HashString();
-        _context.sessionIds.Add(new SessionId(){Session=session, expiration=DateTime.Now.AddMinutes(5), email=email,ticketData=ticketData});
+        _context.sessionIds.Add(new SessionId(){Session=session, expiration=DateTime.Now.AddMinutes(10), email=email,ticketData=ticketData});
         await _context.SaveChangesAsync();
         return session;
     }
