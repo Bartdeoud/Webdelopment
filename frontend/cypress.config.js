@@ -4,6 +4,7 @@ module.exports = defineConfig({
     projectId: 'ohio9k',
     e2e: {
         video:false,
-        screenshotOnRunFailure:false
+        screenshotOnRunFailure:false,
+        pageLoadTimeout: 5000,
     },
 });

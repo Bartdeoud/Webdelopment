@@ -3,7 +3,7 @@ import GetSessionId from "../../api/SessionId";
 import Cookies from 'universal-cookie';
 import Alinea from "../Shared/Alinea";
 
-const redirect = () => {
+const redirect = async () => {
     const checkForm = () => {
         // eslint-disable-next-line
         if(document.getElementById('amount') != undefined & document.getElementById('reference') != undefined)
@@ -12,7 +12,7 @@ const redirect = () => {
 
     const cookies = new Cookies(document.cookies);
 
-    const sessionId = GetSessionId(cookies.get("email"), cookies.get("ticketData"))
+    const sessionId = await GetSessionId(cookies.get("email"), cookies.get("ticketData"))
     const amount = cookies.get("toPay")
 
     return(
