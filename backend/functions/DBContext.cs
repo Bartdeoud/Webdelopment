@@ -16,6 +16,7 @@ public class DBContext : IdentityDbContext<Gebruiker>
     public DbSet<SessionId> sessionIds {get; set;}
     public DbSet<Genre> genres {get; set;}
     public DbSet<Leeftijdsgroep> leeftijdsgroepen {get; set;}
+    public DbSet<Review>? Review { get; set; }
 
     public DBContext(DbContextOptions<DBContext> options)
         : base(options)
