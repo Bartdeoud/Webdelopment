@@ -39,7 +39,7 @@ public class ReviewController : ControllerBase{
 
     // PUT: api/Review/5
     [HttpPut("{id}")]
-    [Authorize(Roles ="Admin, Medewerker")]
+    [Authorize(Roles ="Admin, Medewerker, Donateur")]
     public async Task<IActionResult> PutReview(int id, Review review){
         if (id != review.reviewId){
             return BadRequest();
@@ -60,7 +60,7 @@ public class ReviewController : ControllerBase{
 
     // POST: api/Review
     [HttpPost]
-    [Authorize(Roles ="Admin, Medewerker")]
+    [Authorize(Roles ="Admin, Medewerker, Donateur")]
     public async Task<ActionResult<Review>> PostReview(Review review){
         if (_context.Review == null){
             return Problem("Entity set 'DBContext.Review'  is null.");
@@ -72,7 +72,7 @@ public class ReviewController : ControllerBase{
 
     // DELETE: api/Review/5
     [HttpDelete("{id}")]
-    [Authorize(Roles ="Admin, Medewerker")]
+    [Authorize(Roles ="Admin, Medewerker, Donateur")]
     public async Task<IActionResult> DeleteReview(int id){
         if (_context.Review == null){
             return NotFound();

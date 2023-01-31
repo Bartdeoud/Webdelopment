@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Hero2 from "../Shared/Hero2";
 import Cookies from "universal-cookie";
 import PoorPeoplePage from "./PoorPeoplePage";
-import { Navigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const ReviewToevoegen = () => {
     const cookies = new Cookies(document.cookies);
+    const [review, setReview] = useState("");
+    const navigate = useNavigate();
     const {state} = useLocation();
     const {
         TitelVoorstelling,
@@ -13,9 +15,10 @@ const ReviewToevoegen = () => {
         LinkToImg
     } = state
 
-    const handleSubmit = (e) => {
+    const handleSubmit = () => {
         handleOnSubmit();
-        Navigate("/BegunstigersPortaal");
+        navigate('/Review');
+        window.location.reload(false);
     }
 
     const handleOnSubmit = async (e) => {
@@ -28,8 +31,8 @@ const ReviewToevoegen = () => {
                 },
                 body: JSON.stringify({
                     reviewId: 0,
-                    reviewtekst: e.target.Review.value,
-                    show: shownr
+                    show: shownr,
+                    reviewtekst: review
                 }),
             });
           if (res.status === 200) {
@@ -59,11 +62,12 @@ const ReviewToevoegen = () => {
                 <section className="contact">
                     <form onSubmit={handleSubmit}>
                         <p>Review:</p>
-                        <textarea name="Review" id="Review" cols="30" rows="10"></textarea>
+                        <input required placeholder="Shrijf hier uw review" name="Review" id="Review" onChange={(e) => setReview(e.target.value)}/>
                         <br/>
                         <button className="btn" type="submit">Review plaatsen</button>
                     </form>
                 </section>
+                
             </>
         );
     }else{
