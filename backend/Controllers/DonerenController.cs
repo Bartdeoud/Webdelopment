@@ -41,6 +41,9 @@ public class DonerenController : ControllerBase
     {
         SessionId sessionId = _context.sessionIds.First(s => s.Session.Equals(session));
 
+        if(DateTime.Compare(sessionId.expiration, DateTime.Now) < 0)
+            return BadRequest("Session no longer vaild");
+
         using StringContent jsonContent = new(
         JsonSerializer.Serialize(new
         {
