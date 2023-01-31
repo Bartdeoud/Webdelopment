@@ -13,7 +13,7 @@ const Ticket = () => {
             <>
                 <Hero2 tekst="Betaling gelukt"/>
                 <Alinea titel="De betaling is succesvol verwerkt"
-                tekst="Alle gegevens zijn opgeslagen en een email is verzonden."/>
+                tekst="Alle gegevens zijn opgeslagen."/>
             </>
         );
     }else{

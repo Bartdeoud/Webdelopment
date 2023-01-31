@@ -71,6 +71,6 @@ public class DonerenController : ControllerBase
         
 
         await _context.SaveChangesAsync();
-        return Redirect("http://localhost:3000/Doneren?");
+        return Redirect("http://localhost:3000/ticket?succes=" + responseString.Contains("Succes!"));
     }
 }
