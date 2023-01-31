@@ -24,7 +24,7 @@ public class PayController : ControllerBase
 
         SessionId sessionId = _context.sessionIds.First(s => s.Session.Equals(reference));
 
-        if(succes)MailService.sendMail(sessionId.email ?? "",sessionId.ticketData ?? "");
+        if(succes)MailService.sendMail(sessionId.email ?? "",sessionId.Data ?? "");
 
         _context.sessionIds.Remove(sessionId);
         await _context.SaveChangesAsync();
@@ -36,8 +36,8 @@ public class PayController : ControllerBase
     [HttpGet("getSessionId")]
     public async Task<string> getSessionId(string email, string ticketData)
     {
-        string session = SessionIdCreator.HashString();
-        _context.sessionIds.Add(new SessionId(){Session=session, expiration=DateTime.Now.AddMinutes(10), email=email,ticketData=ticketData});
+        string session = SessionIdCreator.HashString(25);
+        _context.sessionIds.Add(new SessionId(){Session=session, expiration=DateTime.Now.AddMinutes(10), email=email,Data=ticketData});
         await _context.SaveChangesAsync();
         return session;
     }

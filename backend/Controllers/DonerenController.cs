@@ -13,18 +13,31 @@ public class DonerenController : ControllerBase
         this._context = context;
     }
 
+
+    // GET: api/
+    [HttpPost("getSession")]
+    public async Task<string> getSessionId(string Email, string bedrag)
+    {
+        string sessionId = SessionIdCreator.HashString(10);
+        _context.sessionIds.Add(new SessionId(){Session=sessionId,expiration=DateTime.Now.AddMinutes(10),Data=bedrag,email=Email});
+        await _context.SaveChangesAsync();
+        Console.WriteLine("email: " + Email);
+        Console.WriteLine("bedrag: " + bedrag);
+        Console.WriteLine("sessionId: " + sessionId);
+        return sessionId;
+    }
+
     //POST api/<PayController>
     [HttpPost]
-    public async Task<IActionResult> Post(string bedrag , [FromForm] string token)
+    public async Task<IActionResult> Post(string session, [FromForm] string token)
     {
-
-        Console.WriteLine(bedrag);
+        SessionId sessionId = _context.sessionIds.First(s => s.Session.Equals(session));
 
         using StringContent jsonContent = new(
         JsonSerializer.Serialize(new
         {
             Doel = 74,
-            Hoeveelheid = bedrag,
+            Hoeveelheid = sessionId.Data,
             Tekst = "Donatie aan SIM"
         }),
         Encoding.UTF8,
@@ -40,16 +53,9 @@ public class DonerenController : ControllerBase
 
         Console.WriteLine(responseString);
 
+        if(responseString.Contains("Succes!"))
+            _context.gebruikers.First(g => g.Email.Equals(sessionId.email)).;
+
         return Redirect("http://localhost:3000/Doneren?");
-    }
-}
-
-public class values{
-    public string? header{get;set;}
-    public string? value{get;set;}
-
-    public values(string header, string value){
-        this.header = header;
-        this.value = value;
     }
 }

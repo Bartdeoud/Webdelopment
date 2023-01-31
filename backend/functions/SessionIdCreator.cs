@@ -1,12 +1,9 @@
-using System.Security.Cryptography;
-using System.Web;
-
 public class SessionIdCreator{
-public static string HashString()
+public static string HashString(int length)
 {
     Random random = new Random();
     const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    return new string(Enumerable.Repeat(chars, 25)
+    return new string(Enumerable.Repeat(chars, length)
         .Select(s => s[random.Next(s.Length)]).ToArray());
     }
 }
