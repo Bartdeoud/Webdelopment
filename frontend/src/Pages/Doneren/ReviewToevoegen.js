@@ -47,7 +47,7 @@ const ReviewToevoegen = () => {
         return(
             <PoorPeoplePage />
         );
-    }else if (cookies.get("roles")[0] === 'Donateur'){
+    }else if (cookies.get("roles").includes('Donateur')){
         return(
             <>
                 <Hero2 tekst="Review plaatsen" />

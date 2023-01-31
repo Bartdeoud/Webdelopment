@@ -6,7 +6,6 @@ public class DBContext : IdentityDbContext<Gebruiker>
     public DbSet<Gebruiker> gebruikers{ get; set; }
     public DbSet<Artiest> artiesten { get; set; }
     public DbSet<Band> bands { get; set; }
-    public DbSet<Donateur> donateurs { get; set; }
     public DbSet<Huren> reserveringen { get; set; }
     public DbSet<Leden> leden { get; set; }
     public DbSet<Ruimte> ruimtes { get; set; }

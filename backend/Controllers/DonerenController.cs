@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 using System.Text.Json;
+using Microsoft.AspNetCore.Identity;
 
 namespace api.Controllers;
 
@@ -9,8 +10,15 @@ namespace api.Controllers;
 public class DonerenController : ControllerBase
 {
     private DBContext _context;
-    public DonerenController(DBContext context){
-        this._context = context;
+    private readonly UserManager<Gebruiker> _userManager;
+    private readonly SignInManager<Gebruiker> _signInManager;
+
+    private List<string> roles = new List<string>(){"Default","Medewerker","Admin","Artiest","Donateur"};
+
+    public DonerenController(DBContext context, UserManager<Gebruiker> userManager, SignInManager<Gebruiker> signInManager){
+        _context = context;
+        _userManager = userManager;
+        _signInManager = signInManager;
     }
 
 
@@ -53,9 +61,16 @@ public class DonerenController : ControllerBase
 
         Console.WriteLine(responseString);
 
-        if(responseString.Contains("Succes!"))
-            _context.gebruikers.First(g => g.Email.Equals(sessionId.email)).;
+        Gebruiker gebruiker = _context.gebruikers.First(g => g.Email.Equals(sessionId.email));
 
+        if(responseString.Contains("Succes!"))
+            gebruiker.TotaleDonatie += int.Parse(sessionId.Data);
+
+        if(gebruiker.TotaleDonatie >= 5)
+            await _userManager.AddToRoleAsync(gebruiker,"Donateur");
+        
+
+        await _context.SaveChangesAsync();
         return Redirect("http://localhost:3000/Doneren?");
     }
 }
