@@ -21,9 +21,11 @@ const Doneren = () => {
             <Hero2 tekst="Doneren"/>
             <section className="contact">
             <form id="FormDoneer" method="post">
-                <input id="bedrag" required placeholder='Vul hier uw bedrag in' type="text" onChange={(e)=>setbedrag(e.target.value)}/>
+                <p>Bedrag:</p>
+                <input id="bedrag" required placeholder='Vul hier uw bedrag in' type="number" min={1} max={1000} onChange={(e)=>setbedrag(e.target.value)}/>
                 <br/>
-                <input type="email" required placeholder="Voer hier uw email in" onChange={e => setemail(e.target.value)}></input>
+                <p>Email:</p>
+                <input id="emailneefjeweettochikbenkaulorijkwantikdoneeraaneenpaupertheater" type="email" required placeholder="Voer hier uw email in" onChange={e => setemail(e.target.value)}></input>
             </form>
             <button className="btn" type="onClick" onClick={Donate}>Doneren</button>
             </section>
