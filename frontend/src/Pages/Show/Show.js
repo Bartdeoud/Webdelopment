@@ -69,7 +69,6 @@ const Show = () => {
     const feetlicker = (e) => {
         e.preventDefault();
         const rang = document.getElementById("SelectedRang").value;
-        console.log(rang)
         setMax(rang)
         if (rang > 10){
             setMax(10)

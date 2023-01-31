@@ -2,11 +2,8 @@ import React from "react";
 import {useNavigate} from 'react-router-dom';
 
 const DonatieBlock = (props) => {
-    const {
-        //shownr,
-        TitelVoorstelling,
-        LinkToImg
-    } = props
+    // eslint-disable-next-line
+    const {shownr, TitelVoorstelling, LinkToImg} = props
 
     const navigate = useNavigate();
 

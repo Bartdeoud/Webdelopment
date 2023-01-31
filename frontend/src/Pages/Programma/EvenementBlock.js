@@ -4,15 +4,8 @@ import {useNavigate} from 'react-router-dom';
 
 const EvenementBlock = (props) => {
     const [zaal2, setZaal] = useState()
-    const {
-        TitelVoorstelling,
-        zaal,
-        datum,
-        tijd,
-        LinkToImg,
-        genre,
-        leeftijd
-    } = props
+    // eslint-disable-next-line
+    const {TitelVoorstelling, zaal, datum, tijd, LinkToImg, genre, leeftijd} = props
 
     useEffect(() => {
         axios.get('https://localhost:7214/api/Zaal/' + zaal,)
@@ -25,7 +18,6 @@ const EvenementBlock = (props) => {
         })
     }, [zaal]);
 
-    console.log(leeftijd, genre)
     const navigate = useNavigate();
 
     return (

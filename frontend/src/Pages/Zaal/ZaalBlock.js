@@ -2,18 +2,10 @@ import React from "react";
 import {useNavigate} from 'react-router-dom';
 
 const ZaalBlock = (props) => {
-    const {
-        zaalnr,
-        Zaalnaam,
-        Rang1,
-        Rang2,
-        Rang3,
-        Rang4,
-        invalideplaatsen
-    } = props
+    // eslint-disable-next-line
+    const {zaalnr, Zaalnaam, Rang1, Rang2, Rang3, Rang4, invalideplaatsen} = props
 
     const navigate = useNavigate();
-    console.log (Rang1, Rang2, Rang3, Rang4, invalideplaatsen)
 
     return (
         <section className="programmaBlock">

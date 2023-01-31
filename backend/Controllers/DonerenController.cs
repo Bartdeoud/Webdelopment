@@ -7,8 +7,7 @@ namespace api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class DonerenController : ControllerBase
-{
+public class DonerenController : ControllerBase{
     private DBContext _context;
     private readonly UserManager<Gebruiker> _userManager;
     private readonly SignInManager<Gebruiker> _signInManager;
@@ -21,7 +20,6 @@ public class DonerenController : ControllerBase
         _signInManager = signInManager;
     }
 
-
     // GET: api/
     [HttpPost("getSession")]
     public async Task<string> getSessionId(string Email, string bedrag)
@@ -29,9 +27,6 @@ public class DonerenController : ControllerBase
         string sessionId = SessionIdCreator.HashString(10);
         _context.sessionIds.Add(new SessionId(){Session=sessionId,expiration=DateTime.Now.AddMinutes(10),Data=bedrag,email=Email});
         await _context.SaveChangesAsync();
-        Console.WriteLine("email: " + Email);
-        Console.WriteLine("bedrag: " + bedrag);
-        Console.WriteLine("sessionId: " + sessionId);
         return sessionId;
     }
 
@@ -59,8 +54,6 @@ public class DonerenController : ControllerBase
 
         var responseString = await response.Content.ReadAsStringAsync();
 
-        Console.WriteLine(responseString);
-
         Gebruiker gebruiker = _context.gebruikers.First(g => g.Email.Equals(sessionId.email));
 
         if(responseString.Contains("Succes!"))
@@ -69,8 +62,7 @@ public class DonerenController : ControllerBase
         if(gebruiker.TotaleDonatie >= 1000)
             await _userManager.AddToRoleAsync(gebruiker,"Donateur");
         
-
         await _context.SaveChangesAsync();
-        return Redirect("http://localhost:3000/ticket?succes=" + responseString.Contains("Succes!"));
+        return Redirect("https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ticket?succes=" + responseString.Contains("Succes!"));
     }
 }

@@ -9,11 +9,7 @@ const ReviewToevoegen = () => {
     const [review, setReview] = useState("");
     const navigate = useNavigate();
     const {state} = useLocation();
-    const {
-        TitelVoorstelling,
-        shownr,
-        LinkToImg
-    } = state
+    const {TitelVoorstelling, shownr, LinkToImg} = state
 
     const handleSubmit = () => {
         handleOnSubmit();

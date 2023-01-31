@@ -4,8 +4,7 @@ namespace api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class PayController : ControllerBase
-{
+public class PayController : ControllerBase{
     private DBContext _context;
     public PayController(DBContext context){
         this._context = context;
@@ -13,23 +12,22 @@ public class PayController : ControllerBase
 
     //POST api/<PayController>
     [HttpPost]
-    public async Task<IActionResult> Post([FromForm] bool succes, [FromForm] string reference)
-    {
+    public async Task<IActionResult> Post([FromForm] bool succes, [FromForm] string reference){
         try{
-        foreach (var session in _context.sessionIds)
-        { 
+        foreach (var session in _context.sessionIds){ 
             if(DateTime.Compare(session.expiration, DateTime.Now) < 0)
             _context.sessionIds.Remove(session);
         }
-
         SessionId sessionId = _context.sessionIds.First(s => s.Session.Equals(reference));
 
         if(succes)MailService.sendMail(sessionId.email ?? "",sessionId.Data ?? "");
 
         _context.sessionIds.Remove(sessionId);
         await _context.SaveChangesAsync();
-        } catch{ succes = false; }
-        return Redirect("http://localhost:3000/ticket?succes=" + succes);
+        }catch{ 
+            succes = false; 
+        }
+        return Redirect("https://salmon-smoke-00d5f3d03.2.azurestaticapps.net/ticket?succes=" + succes);
     }
 
     // GET: api/

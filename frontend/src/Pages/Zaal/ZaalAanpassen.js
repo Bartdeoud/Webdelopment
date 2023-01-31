@@ -18,7 +18,6 @@ const ZaalAanpassen = () => {
         .then(res => {
             console.log(res)
             setPosts(res.data)
-            console.log()
         })
         .catch(err =>{
             console.log(err)
