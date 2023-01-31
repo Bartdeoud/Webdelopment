@@ -66,7 +66,7 @@ public class DonerenController : ControllerBase
         if(responseString.Contains("Succes!"))
             gebruiker.TotaleDonatie += int.Parse(sessionId.Data);
 
-        if(gebruiker.TotaleDonatie >= 5)
+        if(gebruiker.TotaleDonatie >= 1000)
             await _userManager.AddToRoleAsync(gebruiker,"Donateur");
         
 
